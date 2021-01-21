@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { w3cwebsocket as W3CWebSocket } from 'websocket';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const client = new W3CWebSocket('ws://127.0.0.1:9000');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+export default class App extends Component {
+  componentDidMount() {
+    client.onopen = () => {
+      console.log('Websocket Client conected');
+    };
+    client.onmessage = (message) => {
+      const dataFromServer = JSON.parse(message.data);
+      console.log('got reply!', dataFromServer);
+    };
+  }
+
+  onButtonClicked = (value) => {
+    client.send(JSON.stringify({
+      type: 'message',
+      msg: value,
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        <button type="button" onClick={() => this.onButtonClicked('hello')}> Send message </button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { w3cwebsocket as W3CWebSocket } from 'websocket';
+// import { w3cwebsocket as W3CWebSocket } from 'websocket';
+import App from './App';
+
+/*
 
 const client = new W3CWebSocket('ws://127.0.0.1:9000');
 
@@ -31,5 +34,5 @@ export default class App extends Component {
     );
   }
 }
-
+*/
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -8,7 +8,6 @@ function App() {
   return (
     <ThemeContextProvider>
       <div className="teste" />
-      matheus
     </ThemeContextProvider>
   );
 }

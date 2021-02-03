@@ -29,7 +29,7 @@ const themes = {
     graphColor6: '#190902',
   },
 };
-const ThemeContext = React.createContext({});
+export const ThemeContext = React.createContext({});
 
 function ThemeContextProvider({ children }) {
   const [themeName, setThemeName] = useState('technologic');
@@ -68,8 +68,8 @@ function ThemeContextProvider({ children }) {
     localStorage.setItem('my-theme', themeName);
   }, [theme]);
 
-  return (
-    <ThemeContext.Provider value={{ toggleTheme, themeName }}>
+  function ThemeSwitch() {
+    return (
       <Switch
         onChange={toggleTheme}
         checked={themeName === 'technologic'}
@@ -83,6 +83,11 @@ function ThemeContextProvider({ children }) {
         onHandleColor="#1B2126"
         offHandleColor="#1B2126"
       />
+    );
+  }
+
+  return (
+    <ThemeContext.Provider value={{ toggleTheme, themeName, ThemeSwitch }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -1,0 +1,39 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.MuiDrawer-paperAnchorDockedLeft {
+  border: none;
+}
+
+.header {
+  background-color: #233643;
+  justify-content: center;
+  color: white;
+}
+
+.menu-bar {
+  background-color: #1b2126;
+  height: 100%;
+}
+
+.top-divider {
+  color: #1b2126;
+  background-color: #1b2126;
+}
+
+.menu-icon {
+  color: white;
+}
+
+.content {
+  color: white;
+  background-color: #0e1317;
+  height: 100vh;
+  border: none;
+}
+
+.drawer {
+  border: none !important;
+}

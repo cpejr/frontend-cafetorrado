@@ -3,16 +3,10 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
-import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import MenuIcon from '@material-ui/icons/Menu';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
+import { DrawerMenu, DrawerHeader, OutrasInformacoes } from './insideDrawer';
+import { useToggle } from '../../../hooks';
 
 import './styles.css';
 
@@ -83,11 +77,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MiniDrawer({ children }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setOpen(!open);
-  };
+  const [open, drawerToggle] = useToggle(true);
 
   return (
     <div className={classes.root}>
@@ -111,26 +101,9 @@ export default function MiniDrawer({ children }) {
           }),
         }}
       >
-        <List className="header">
-          <ListItem button onClick={handleDrawerToggle}>
-            <ListItemIcon>
-              <MenuIcon className="menu-icon" />
-            </ListItemIcon>
-            <ListItemText> Menu </ListItemText>
-          </ListItem>
-        </List>
-        <Divider className="top-divider" />
-        <List className="menu-bar">
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem className="menu-icon" button key={text}>
-              <ListItemIcon className="menu-icon">
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
+        <DrawerHeader drawerToggle={drawerToggle} />
+        <DrawerMenu />
+        <OutrasInformacoes />
       </Drawer>
       <main className={`${classes.content} content`}>{children}</main>
     </div>

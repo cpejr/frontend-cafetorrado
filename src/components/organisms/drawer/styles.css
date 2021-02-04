@@ -27,6 +27,18 @@
   color: white;
 }
 
+.menu-icon svg {
+  color: white;
+}
+
+.menu-text {
+  color: white;
+}
+
+.menu-monitoramento-radio {
+  color: white;
+}
+
 .content {
   color: white;
   background-color: #0e1317;
@@ -36,4 +48,26 @@
 
 .drawer {
   border: none !important;
+}
+
+.outras-info {
+  color: white;
+  background-color: #1b2126;
+
+  padding: 1rem;
+}
+.outras-info h1 {
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.outras-info p {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.outras-info p strong {
+  font-weight: 300;
+  color: #cacaca;
 }

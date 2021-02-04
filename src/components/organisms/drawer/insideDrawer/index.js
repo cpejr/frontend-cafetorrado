@@ -4,24 +4,25 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  Checkbox,
   FormControl,
-  FormLabel,
   FormControlLabel,
   RadioGroup,
-  Radio,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 
+import clsx from 'clsx';
+import StyledRadio from '../../../atoms/styledRadio';
+
 const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(5),
+  },
+  hide: {
+    display: 'none',
   },
 }));
 
@@ -38,62 +39,72 @@ const DrawerHeader = ({ drawerToggle }) => {
   );
 };
 
-const menuItens = [
-  {
-    title: 'Buscar Perfil',
-    icon: <SearchIcon />,
-  },
-  {
-    title: 'Adicionar Perfil',
-    icon: <AddToPhotosIcon />,
-  },
-];
-
-const DrawerMenu = () => {
+const DrawerMenu = ({ drawerOpen }) => {
   const classes = useStyles();
+
+  const menuItens = [
+    {
+      title: 'Buscar Perfil',
+      icon: <SearchIcon />,
+    },
+    {
+      title: 'Adicionar Perfil',
+      icon: <AddToPhotosIcon />,
+    },
+  ];
 
   return (
     <List className="menu-bar">
       {menuItens.map(({ title, icon }) => (
-        <ListItem className="menu-icon" button key={title}>
+        <ListItem button key={title}>
           <ListItemIcon className="menu-icon">{icon}</ListItemIcon>
-          <ListItemText primary={title} />
+          <ListItemText className="menu-text" primary={title} />
         </ListItem>
       ))}
 
       {/* Monitoramento */}
-      <ListItem className="menu-icon">
+      <ListItem>
         <ListItemIcon className="menu-icon">
           <InsertChartIcon />
         </ListItemIcon>
-        <ListItemText primary="Monitoramento" />
+        <ListItemText className="menu-text" primary="Monitoramento" />
       </ListItem>
-
-      <FormControl component="fieldset" className={classes.nested}>
+      <FormControl className={`${classes.nested} menu-monitoramento-radio`}>
         <RadioGroup
-        // aria-label="gender"
-        // name="gender1"
-        // value={value}
-        // onChange={handleChange}
+          defaultValue="automatico"
+          className={clsx({ [classes.hide]: !drawerOpen })}
         >
           <FormControlLabel
             value="automatico"
-            control={<Radio />}
+            control={<StyledRadio />}
             label="Automático"
           />
-          <FormControlLabel value="manual" control={<Radio />} label="Manual" />
+          <FormControlLabel
+            value="manual"
+            control={<StyledRadio />}
+            label="Manual"
+          />
         </RadioGroup>
       </FormControl>
     </List>
   );
 };
 
-const OutrasInformacoes = () => {
+const OutrasInformacoes = ({ drawerOpen }) => {
+  const classes = useStyles();
   return (
-    <>
-      <h3>Outras informações</h3>
-      <h4>Outras também</h4>
-    </>
+    <div className={`outras-info ${clsx({ [classes.hide]: !drawerOpen })}`}>
+      <h1>Outras Informações</h1>
+      <p>
+        <strong>Pressão: </strong>7.4 ATM
+      </p>
+      <p>
+        <strong>Umidade: </strong>80 %
+      </p>
+      <p>
+        <strong>Massa de Grãos: </strong>1764 g
+      </p>
+    </div>
   );
 };
 

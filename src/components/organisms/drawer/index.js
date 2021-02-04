@@ -35,9 +35,6 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: 36,
   },
-  hide: {
-    display: 'none',
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -61,14 +58,6 @@ const useStyles = makeStyles((theme) => ({
       width: closedWidth,
     },
   },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
@@ -82,12 +71,14 @@ export default function MiniDrawer({ children }) {
   return (
     <div className={classes.root}>
       <CssBaseline />
+
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       />
+
       <Drawer
         variant="permanent"
         className={`drawer ${clsx(classes.drawer, {
@@ -102,9 +93,10 @@ export default function MiniDrawer({ children }) {
         }}
       >
         <DrawerHeader drawerToggle={drawerToggle} />
-        <DrawerMenu />
-        <OutrasInformacoes />
+        <DrawerMenu drawerOpen={open} />
+        <OutrasInformacoes drawerOpen={open} />
       </Drawer>
+
       <main className={`${classes.content} content`}>{children}</main>
     </div>
   );

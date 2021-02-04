@@ -6,6 +6,12 @@ import TemplateWithDrawer from './templates';
 
 const client = new W3CWebSocket('ws://127.0.0.1:9000');
 
+const valuesInfo = {
+  pressao: 8.9,
+  umidade: 79,
+  massaGraos: 2468,
+};
+
 export default class App extends Component {
   componentDidMount() {
     client.onopen = () => {
@@ -28,7 +34,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <TemplateWithDrawer>
+      <TemplateWithDrawer valuesInfo={valuesInfo}>
         <h1>Apenas um teste</h1>
         <h2>Outro teste</h2>
         <button type="button" onClick={() => this.onButtonClicked('hello')}>

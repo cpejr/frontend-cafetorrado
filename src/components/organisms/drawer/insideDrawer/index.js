@@ -90,19 +90,22 @@ const DrawerMenu = ({ drawerOpen }) => {
   );
 };
 
-const OutrasInformacoes = ({ drawerOpen }) => {
+const OutrasInformacoes = ({ drawerOpen, valuesInfo }) => {
   const classes = useStyles();
   return (
     <div className={`outras-info ${clsx({ [classes.hide]: !drawerOpen })}`}>
       <h1>Outras Informações</h1>
       <p>
-        <strong>Pressão: </strong>7.4 ATM
+        <strong>Pressão: </strong>
+        {valuesInfo.pressao} ATM
       </p>
       <p>
-        <strong>Umidade: </strong>80 %
+        <strong>Umidade: </strong>
+        {valuesInfo.umidade} %
       </p>
       <p>
-        <strong>Massa de Grãos: </strong>1764 g
+        <strong>Massa de Grãos: </strong>
+        {valuesInfo.massaGraos} g
       </p>
     </div>
   );

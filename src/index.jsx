@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
@@ -12,8 +12,8 @@ const valuesInfo = {
   massaGraos: 2468,
 };
 
-export default class App extends Component {
-  componentDidMount() {
+export default function App() {
+  useEffect(() => {
     client.onopen = () => {
       console.log('Websocket Client conected');
     };
@@ -21,9 +21,9 @@ export default class App extends Component {
       const dataFromServer = JSON.parse(message.data);
       console.log('got reply!', dataFromServer);
     };
-  }
+  }, []);
 
-  onButtonClicked = (value) => {
+  const onButtonClicked = (value) => {
     client.send(
       JSON.stringify({
         type: 'message',
@@ -32,18 +32,16 @@ export default class App extends Component {
     );
   };
 
-  render() {
-    return (
-      <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <h1>Apenas um teste</h1>
-        <h2>Outro teste</h2>
-        <button type="button" onClick={() => this.onButtonClicked('hello')}>
-          {' '}
-          Send message{' '}
-        </button>
-      </TemplateWithDrawer>
-    );
-  }
+  return (
+    <TemplateWithDrawer valuesInfo={valuesInfo}>
+      <h1>Apenas um teste</h1>
+      <h2>Outro teste</h2>
+      <button type="button" onClick={() => onButtonClicked('hello')}>
+        {' '}
+        Send message{' '}
+      </button>
+    </TemplateWithDrawer>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));

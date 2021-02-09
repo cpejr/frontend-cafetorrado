@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import TemplateWithDrawer from './templates';
+// import { w3cwebsocket as W3CWebSocket } from 'websocket';
+import App from './App';
+/*
+
 
 const client = new W3CWebSocket('ws://127.0.0.1:9000');
 
@@ -43,5 +47,5 @@ export default function App() {
     </TemplateWithDrawer>
   );
 }
-
+*/
 ReactDOM.render(<App />, document.getElementById('root'));

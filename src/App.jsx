@@ -3,6 +3,7 @@ import ThemeContextProvider from './Context/ThemeContext';
 import './App.css';
 import Teste from './Components/teste';
 import TemplateWithDrawer from './templates';
+import RouterComponent from './routes';
 // import coffee from './styles/themes/coffee';
 
 const valuesInfo = {
@@ -14,11 +15,20 @@ const valuesInfo = {
 import Automatico from './Pages/TelaAutomatico/Automatico';
 
 function App() {
+  // return (
+  //   <ThemeContextProvider>
+  //     <TemplateWithDrawer valuesInfo={valuesInfo}>
+  //       <div className="teste">
+  //         <Teste />
+  //       </div>
+  //     </TemplateWithDrawer>
+  //   </ThemeContextProvider>
+  // );
   return (
     <ThemeContextProvider>
-      <div className="teste">
-        <Automatico />
-      </div>
+      <TemplateWithDrawer valuesInfo={valuesInfo}>
+        <RouterComponent />
+      </TemplateWithDrawer>
     </ThemeContextProvider>
   );
 }

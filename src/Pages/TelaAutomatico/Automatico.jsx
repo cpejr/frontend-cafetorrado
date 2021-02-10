@@ -7,7 +7,7 @@ function Automatico() {
   return (
     <div className="telaContainer">
       <div className="parteSuperior">
-        <h1 className="espacoGrafico"> ESPAÇO DO GRÁFICO</h1>
+        <h1 className="historyGraph">HISTÓRICO DE TEMPERATURA</h1>
       </div>
 
       <div className="parteInferior">

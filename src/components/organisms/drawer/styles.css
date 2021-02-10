@@ -1,6 +1,9 @@
 .body {
   display: flex;
   flex-direction: row;
+  height: 100vh;
+  font-family: "Rubik" sans-serif;
+  font-weight: 500;
 }
 
 .drawer-content {

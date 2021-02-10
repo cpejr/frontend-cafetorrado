@@ -17,6 +17,7 @@
     "no-unused-vars":["off"],
     "no-var":["off"],
     "no-unused-expressions":["off"],
+    "react/jsx-props-no-spreading": "off",
     "no-restricted-syntax":["off"],
    "no-param-reassign":["off"],
    "no-use-before-define":["off"],

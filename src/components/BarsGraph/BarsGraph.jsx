@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveBullet } from '@nivo/bullet';
+import { ResponsiveBullet, Bullet } from '@nivo/bullet';
 
 const MyResponsiveBullet = ({
   data = [
@@ -25,11 +25,12 @@ const MyResponsiveBullet = ({
 }) => (
   <ResponsiveBullet
     data={data}
-    margin={{ top: 20, right: 90, bottom: 20, left: 90 }}
-    spacing={30}
-    titleAlign="start"
-    titleOffsetX={-65}
-    titleOffsetY={0}
+    margin={{ top: 5, right: 130, bottom: 30, left: 130 }}
+    layout="vertical"
+    spacing={50}
+    titleAlign="middle"
+    titleOffsetX={1}
+    titleOffsetY={155}
     markerSize={0}
     rangeColors="#0029FF"
   />

@@ -3,6 +3,7 @@ import ThemeContextProvider from './Context/ThemeContext';
 import './App.css';
 import Teste from './Components/teste';
 import TemplateWithDrawer from './templates';
+import RouterComponent from './routes';
 // import coffee from './styles/themes/coffee';
 
 const valuesInfo = {
@@ -12,12 +13,19 @@ const valuesInfo = {
 };
 
 function App() {
+  // return (
+  //   <ThemeContextProvider>
+  //     <TemplateWithDrawer valuesInfo={valuesInfo}>
+  //       <div className="teste">
+  //         <Teste />
+  //       </div>
+  //     </TemplateWithDrawer>
+  //   </ThemeContextProvider>
+  // );
   return (
     <ThemeContextProvider>
       <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <div className="teste">
-          <Teste />
-        </div>
+        <RouterComponent />
       </TemplateWithDrawer>
     </ThemeContextProvider>
   );

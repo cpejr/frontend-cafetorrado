@@ -1,5 +1,5 @@
 import React from 'react';
-import DrawerComponent from '../Components/organisms/drawer';
+import DrawerComponent from '../components/organisms/drawer';
 
 const TemplateWithDrawer = ({ children, valuesInfo }) => {
   return <DrawerComponent valuesInfo={valuesInfo}>{children}</DrawerComponent>;

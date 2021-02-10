@@ -1,5 +1,31 @@
-header {
+.header {
   width: 100%;
-  height: 50px;
+  height: 40px;
+  background-color: var(--headerBackground);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.time {
+  flex-grow: 2;
+  text-align: center;
+  color: var(--fontColor);
+  font-size: 18px;
+}
+
+.buttons button {
+  margin: 0;
+  outline: none;
+  border: none;
   background-color: transparent;
+}
+
+.icon svg {
+  width: 25px;
+  height: 25px;
+  color: var(--fontColor);
+
+  padding: 0 5px;
 }

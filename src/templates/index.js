@@ -9,7 +9,7 @@ const TemplateWithDrawer = ({ children, valuesInfo }) => {
       <DrawerComponent valuesInfo={valuesInfo} />
 
       <div className="page">
-        {/* <HeaderComponent /> */}
+        <HeaderComponent />
         {children}
       </div>
     </div>

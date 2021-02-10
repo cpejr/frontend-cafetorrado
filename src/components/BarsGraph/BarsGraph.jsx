@@ -25,10 +25,10 @@ const MyResponsiveBullet = ({
 }) => (
   <ResponsiveBullet
     data={data}
-    margin={{ top: 520, right: 650, bottom: 60, left: 350 }}
+    margin={{ top: 20, right: 90, bottom: 20, left: 90 }}
     spacing={30}
     titleAlign="start"
-    titleOffsetX={-60}
+    titleOffsetX={-65}
     titleOffsetY={0}
     markerSize={0}
     rangeColors="#0029FF"

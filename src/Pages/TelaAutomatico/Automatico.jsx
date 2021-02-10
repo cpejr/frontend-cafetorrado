@@ -13,6 +13,7 @@ function Automatico() {
       <div className="parteInferior">
         <div className="statusBar">
           <h1 className="status">STATUS DA TORRA</h1>
+          <BarsGraph />
         </div>
         <div className="timeChronometer">
           <h1 className="time">TEMPO DE TORRA</h1>

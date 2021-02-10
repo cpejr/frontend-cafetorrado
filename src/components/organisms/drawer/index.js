@@ -4,6 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
+import { useLocation } from 'react-router-dom';
 import Divider from '../../atoms/divider';
 
 import { useToggle } from '../../../hooks';
@@ -68,7 +69,7 @@ const DrawerComponent = ({ valuesInfo }) => {
         <Divider />
       </div>
 
-      {open && (
+      {!(useLocation().pathname === '/automatico') && open && (
         <div className="outras-infos">
           <h1>Mais Informações:</h1>
           <p>

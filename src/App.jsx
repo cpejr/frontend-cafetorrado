@@ -1,10 +1,11 @@
 import React from 'react';
 import ThemeContextProvider from './Context/ThemeContext';
 import './App.css';
-import Teste from './Components/teste';
+
 import TemplateWithDrawer from './templates';
 import RouterComponent from './routes';
-// import coffee from './styles/themes/coffee';
+
+import Automatico from './Pages/TelaAutomatico/Automatico';
 
 const valuesInfo = {
   pressao: 8.9,
@@ -12,25 +13,21 @@ const valuesInfo = {
   massaGraos: 2468,
 };
 
-import Automatico from './Pages/TelaAutomatico/Automatico';
-
 function App() {
-  // return (
-  //   <ThemeContextProvider>
-  //     <TemplateWithDrawer valuesInfo={valuesInfo}>
-  //       <div className="teste">
-  //         <Teste />
-  //       </div>
-  //     </TemplateWithDrawer>
-  //   </ThemeContextProvider>
-  // );
   return (
     <ThemeContextProvider>
       <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <RouterComponent />
+        <Automatico />
       </TemplateWithDrawer>
     </ThemeContextProvider>
   );
+  // return (
+  //    <ThemeContextProvider>
+  //     <TemplateWithDrawer valuesInfo={valuesInfo}>
+  //        <RouterComponent />
+  //      </TemplateWithDrawer>
+  //    </ThemeContextProvider>
+  // );
 }
 
 export default App;

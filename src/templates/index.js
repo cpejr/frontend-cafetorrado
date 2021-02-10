@@ -1,6 +1,7 @@
 import React from 'react';
 import DrawerComponent from '../components/organisms/drawer';
-import HeaderComponent from '../components/organisms/header';
+// import HeaderComponent from '../components/organisms/header';
+import Header from '../components/Header/Header';
 import './styles.css';
 
 const TemplateWithDrawer = ({ children, valuesInfo }) => {
@@ -9,7 +10,7 @@ const TemplateWithDrawer = ({ children, valuesInfo }) => {
       <DrawerComponent valuesInfo={valuesInfo} />
 
       <div className="page">
-        <HeaderComponent />
+        <Header />
         {children}
       </div>
     </div>

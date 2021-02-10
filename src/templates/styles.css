@@ -1,0 +1,9 @@
+.body {
+  display: flex;
+}
+
+.page {
+  background-color: var(--componentsBackgroud);
+  flex-grow: 2;
+  height: 100vh;
+}

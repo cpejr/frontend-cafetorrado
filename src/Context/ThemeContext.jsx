@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Switch from 'react-switch';
+import { MdBrightness6 } from 'react-icons/md';
 
 const themes = {
   technologic: {
-    backgroundColor: '#233643',
-    fontColor: '#FFF',
+    backgroundColor: '#0E1317',
+    fontColor: '#E0E0E0',
     headerBackground: '#1B2126',
     dashboardBackground: '#1B2126',
     componentsBackgroud: '#0E1317',
@@ -16,17 +16,17 @@ const themes = {
     graphColor6: '#08306B',
   },
   coffee: {
-    backgroundColor: '#4D2914',
-    fontColor: '#FFF',
-    headerBackground: '#190902',
-    dashboardBackground: '#DEA779',
-    componentsBackgroud: '#2F1608',
-    graphColor1: '#E8A900',
-    graphColor2: '#E3A841',
-    graphColor3: '#DEA779',
-    graphColor4: '#956746',
-    graphColor5: '#4D2914',
-    graphColor6: '#190902',
+    backgroundColor: '#E0E0E0',
+    fontColor: '#0E1317',
+    headerBackground: '#1B2126',
+    dashboardBackground: '#1B2126',
+    componentsBackgroud: '#0E1317',
+    graphColor1: '#DEEBF7',
+    graphColor2: '#C6DBEF',
+    graphColor3: '#9ECAE1',
+    graphColor4: '#4292C6',
+    graphColor5: '#2171B5',
+    graphColor6: '#08306B',
   },
 };
 export const ThemeContext = React.createContext({});
@@ -70,18 +70,13 @@ function ThemeContextProvider({ children }) {
 
   function ThemeSwitch() {
     return (
-      <Switch
-        onChange={toggleTheme}
+      <MdBrightness6
+        onClick={toggleTheme}
         checked={themeName === 'technologic'}
         checkedIcon={false}
         uncheckedIcon={false}
-        height={10}
-        width={40}
-        handleDiameter={20}
-        offColor="#E8A900"
-        onColor="#2171B5"
-        onHandleColor="#1B2126"
-        offHandleColor="#1B2126"
+        size={24}
+        color="#E0E0E0"
       />
     );
   }

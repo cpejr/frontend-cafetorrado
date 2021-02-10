@@ -11,14 +11,14 @@ const valuesInfo = {
   massaGraos: 2468,
 };
 
+import Automatico from './Pages/TelaAutomatico/Automatico';
+
 function App() {
   return (
     <ThemeContextProvider>
-      <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <div className="teste">
-          <Teste />
-        </div>
-      </TemplateWithDrawer>
+      <div className="teste">
+        <Automatico />
+      </div>
     </ThemeContextProvider>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Teste from './Components/teste';
+import Teste from './components/theme';
+import Automatico from './Pages/TelaAutomatico/Automatico';
 
 const RouterComponent = () => {
   return (
@@ -9,6 +10,10 @@ const RouterComponent = () => {
         <Route path="/" exact>
           <h1>Página Home</h1>
           <Link to="/teste">Ir para teste</Link>
+        </Route>
+
+        <Route path="/automatico">
+          <Automatico />
         </Route>
 
         <Route path="/teste">

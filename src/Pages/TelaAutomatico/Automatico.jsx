@@ -1,15 +1,16 @@
+/* eslint-disable*/
 import React from 'react';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import BarsGraph from '../../components/BarsGraph/BarsGraph';
+//import { newDetails } from '../../index';
 import './Automatico.css';
 
 function Automatico() {
   return (
     <div className="telaContainer">
       <div className="parteSuperior">
-        <h1 className="espacoGrafico"> ESPAÇO DO GRÁFICO</h1>
+        <h1 className="espacoGrafico"></h1>
       </div>
-
       <div className="parteInferior">
         <div className="statusBar">
           <h1 className="status">STATUS DA TORRA</h1>

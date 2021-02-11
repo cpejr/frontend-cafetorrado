@@ -9,7 +9,6 @@
 
 .parteSuperior{
     height: 65%;
-
 }
 .historyGraph{
     text-align: center;
@@ -23,8 +22,7 @@
 .parteInferior{
     height: 25%;
     display: flex;
-    flex-direction: row;
-      
+    flex-direction: row; 
 }
 
 .timeChronometer{
@@ -40,7 +38,6 @@
     font-weight: 500;
     text-align: center;
     margin-bottom: 10%;
-
 }
 
 .informations{
@@ -52,8 +49,6 @@
    align-items: center;
    flex-direction: row;
    text-align: center;
-
-
 }
 .informationsTitle{
     width: 100%;
@@ -61,14 +56,14 @@
     font-weight: 500;
     text-align: center;
     margin-bottom: 10%;
-
 }
 
 .statusBar{
     width: 40%;
     flex-direction: column;
-    color: #E0E0E0 ;
+    color: var(--fontColor) !important;
 }
+
 .status{
     width: 100%;
     align-items: center;

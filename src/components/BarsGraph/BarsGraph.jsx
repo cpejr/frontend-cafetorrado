@@ -6,20 +6,20 @@ const MyResponsiveBullet = ({
     {
       id: 'Temperatura',
       ranges: [240],
-      measures: [0],
-      markers: [0],
+      measures: [],
+      markers: [],
     },
     {
       id: 'Pressão',
       ranges: [10],
-      measures: [0],
-      markers: [0],
+      measures: [],
+      markers: [],
     },
     {
       id: 'ROR',
       ranges: [10],
-      measures: [0],
-      markers: [0],
+      measures: [],
+      markers: [],
     },
   ],
 }) => (
@@ -33,6 +33,11 @@ const MyResponsiveBullet = ({
     titleOffsetY={155}
     markerSize={0}
     rangeColors="#0029FF"
+    theme={{
+      textColor: 'var(--fontColor)',
+      fontFamily: 'Rubik 700 sans serif',
+      axis: { ticks: { line: { strokeWidth: 0 } } },
+    }}
   />
 );
 

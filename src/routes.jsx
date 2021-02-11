@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Teste from './components/theme';
 import Automatico from './Pages/TelaAutomatico/Automatico';
 
-const RouterComponent = () => {
+const RouterComponent = ({ data }) => {
   return (
     <Router>
       <Switch>
@@ -13,7 +13,7 @@ const RouterComponent = () => {
         </Route>
 
         <Route path="/automatico">
-          <Automatico />
+          <Automatico data={data} />
         </Route>
 
         <Route path="/teste">

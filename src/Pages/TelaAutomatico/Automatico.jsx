@@ -5,11 +5,12 @@ import BarsGraph from '../../components/BarsGraph/BarsGraph';
 //import { newDetails } from '../../index';
 import './Automatico.css';
 
-function Automatico() {
+function Automatico({ data }) {
+  console.log(data);
   return (
     <div className="telaContainer">
       <div className="parteSuperior">
-        <h1 className="espacoGrafico"></h1>
+        <h1 className="espacoGrafico">{data.ROR}</h1>
       </div>
       <div className="parteInferior">
         <div className="statusBar">

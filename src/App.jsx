@@ -15,20 +15,26 @@ const valuesInfo = {
   massaGraos: 2468,
 };
 function App() {
+  const [newData, setNewData] = useState({ waterTemp: 0, fireTemp: 0, ROR: 0 });
+  //return (
+  //   <ThemeContextProvider>
+  //     <TemplateWithDrawer valuesInfo={valuesInfo}>
+  //       <Automatico newData={newData} />
+  //     </TemplateWithDrawer>
+  //   </ThemeContextProvider>
+  // );
+  socket.on('connect', (data) => {
+    socket.on('newData', (_data) => {
+      setNewData(_data);
+    });
+  });
   return (
     <ThemeContextProvider>
       <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <Automatico newData={newData} />
+        <RouterComponent data={newData} />
       </TemplateWithDrawer>
     </ThemeContextProvider>
   );
-  // return (
-  //    <ThemeContextProvider>
-  //     <TemplateWithDrawer valuesInfo={valuesInfo}>
-  //        <RouterComponent />
-  //      </TemplateWithDrawer>
-  //    </ThemeContextProvider>
-  // );
 }
 
 export default App;

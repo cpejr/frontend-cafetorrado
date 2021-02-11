@@ -2,7 +2,7 @@
 import React from 'react';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import BarsGraph from '../../components/BarsGraph/BarsGraph';
-//import { newDetails } from '../../index';
+import MainGraph from '../../components/MainGraph/MainGraph';
 import './Automatico.css';
 
 function Automatico({ data }) {
@@ -10,11 +10,13 @@ function Automatico({ data }) {
   return (
     <div className="telaContainer">
       <div className="parteSuperior">
-        <h1 className="espacoGrafico">{data.ROR}</h1>
+        <h1 className="historyGraph">HISTÓRICO DE TEMPERATURA</h1>
+        <MainGraph />
       </div>
       <div className="parteInferior">
         <div className="statusBar">
           <h1 className="status">STATUS DA TORRA</h1>
+          <BarsGraph />
         </div>
         <div className="timeChronometer">
           <h1 className="time">TEMPO DE TORRA</h1>

@@ -4,24 +4,25 @@
     width: 100vw;
     height: 100vh;   
     background-color:var(--backgroundColor) ;
+    font-family: "Rubik" sans-serif;
 }
 
 .parteSuperior{
     height: 65%;
-    background-color: lawngreen;
 }
-.espacoGrafico{
+.historyGraph{
     text-align: center;
     align-items: center;
-    margin: 0;
-    color: magenta;
+    font-size: 18px;
+    font-weight: 500;
+    margin:0;
+    color: var(--fontColor)
 }
 
 .parteInferior{
     height: 25%;
     display: flex;
-    flex-direction: row;
-      
+    flex-direction: row; 
 }
 
 .timeChronometer{
@@ -34,10 +35,9 @@
     color: var(--fontColor);
     font-family: "Rubik" sans-serif;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
     text-align: center;
     margin-bottom: 10%;
-
 }
 
 .informations{
@@ -49,29 +49,28 @@
    align-items: center;
    flex-direction: row;
    text-align: center;
-
-
 }
 .informationsTitle{
     width: 100%;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
     text-align: center;
     margin-bottom: 10%;
-
 }
 
 .statusBar{
     width: 40%;
     flex-direction: column;
+    color: var(--fontColor) !important;
 }
+
 .status{
     width: 100%;
     align-items: center;
     color: var(--fontColor);
     font-family: "Rubik" sans-serif;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
     text-align: center;
    
 }

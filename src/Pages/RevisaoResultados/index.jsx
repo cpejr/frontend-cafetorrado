@@ -2,6 +2,8 @@ import React from 'react';
 import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
+import RevisaoGraph from '../../components/RevisaoGraph';
+import data from './data';
 
 const RevisaoResultados = () => {
   return (
@@ -9,14 +11,16 @@ const RevisaoResultados = () => {
       <div className="salvar-nome">
         <input type="text" name="name" />
         <button type="button">
-          <AddToPhotosIcon /> Salva
+          <AddToPhotosIcon /> Salvar
         </button>
         <button type="button">
           <CloseIcon />
           Excluir
         </button>
       </div>
-      <div className="grafico">grafico</div>
+      <div className="grafico">
+        <RevisaoGraph data={data} />
+      </div>
       <div className="informacoes">
         <h1>Informações</h1>
         <div className="colunas-info">

@@ -33,16 +33,14 @@
   justify-content: center;
   gap: 10px;
 
-  color: var(--colorFont);
+  color: #e0e0e0;
   background-color: var(--componentsBackgroud);
 }
 
 /* Grafico */
 .grafico {
   margin-top: 20px;
-  height: 300px;
-  flex-grow: 2;
-  background-color: green;
+  height: 400px;
 }
 
 /* Informações */

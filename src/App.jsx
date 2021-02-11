@@ -1,31 +1,30 @@
-import React from 'react';
+/* eslint-disable*/
+import React, { useState } from 'react';
 import ThemeContextProvider from './Context/ThemeContext';
 import './App.css';
-import Teste from './Components/teste';
-import TemplateWithDrawer from './templates';
 import RouterComponent from './routes';
-// import coffee from './styles/themes/coffee';
 
-const valuesInfo = {
-  pressao: 8.9,
-  umidade: 79,
-  massaGraos: 2468,
-};
-
+import Automatico from './Pages/TelaAutomatico/Automatico';
+import { socket } from './index';
 function App() {
-  // return (
+  const [newData, setNewData] = useState({ waterTemp: 0, fireTemp: 0, ROR: 0 });
+  //return (
   //   <ThemeContextProvider>
   //     <TemplateWithDrawer valuesInfo={valuesInfo}>
-  //       <div className="teste">
-  //         <Teste />
-  //       </div>
+  //       <Automatico newData={newData} />
   //     </TemplateWithDrawer>
   //   </ThemeContextProvider>
   // );
+  socket.on('connect', (data) => {
+    socket.on('newData', (_data) => {
+      setNewData(_data);
+    });
+  });
   return (
     <ThemeContextProvider>
+      <RouterComponent />
       <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <RouterComponent />
+        <RouterComponent data={newData} />
       </TemplateWithDrawer>
     </ThemeContextProvider>
   );

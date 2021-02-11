@@ -3,10 +3,10 @@ import { MdBrightness6 } from 'react-icons/md';
 
 const themes = {
   technologic: {
-    backgroundColor: '#0E1317',
-    fontColor: '#E0E0E0',
-    headerBackground: '#1B2126',
-    dashboardBackground: '#1B2126',
+    backgroundColor: '#0B1E40',
+    fontColor: '#FFFFFF',
+    headerBackground: '#091929',
+    dashboardBackground: '#091929',
     componentsBackgroud: '#0E1317',
     graphColor1: '#DEEBF7',
     graphColor2: '#C6DBEF',
@@ -17,9 +17,9 @@ const themes = {
   },
   coffee: {
     backgroundColor: '#E0E0E0',
-    fontColor: '#0E1317',
-    headerBackground: '#1B2126',
-    dashboardBackground: '#1B2126',
+    fontColor: '#091929',
+    headerBackground: '#091929',
+    dashboardBackground: '#091929',
     componentsBackgroud: '#0E1317',
     graphColor1: '#DEEBF7',
     graphColor2: '#C6DBEF',

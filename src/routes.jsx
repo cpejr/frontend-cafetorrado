@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import RevisaoResultados from './pages/RevisaoResultados';
+import RevisaoResultados from './Pages/RevisaoResultados';
 import Teste from './components/theme';
 import TemplateWithDrawer from './templates';
 import Automatico from './Pages/TelaAutomatico/Automatico';

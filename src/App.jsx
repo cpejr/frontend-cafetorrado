@@ -22,10 +22,7 @@ function App() {
   });
   return (
     <ThemeContextProvider>
-      <RouterComponent />
-      <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <RouterComponent data={newData} />
-      </TemplateWithDrawer>
+      <RouterComponent data={newData} />
     </ThemeContextProvider>
   );
 }

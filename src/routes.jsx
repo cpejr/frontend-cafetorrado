@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -7,7 +8,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import Teste from './components/theme';
-import TemplateWithDrawer from './templates';
+import TemplateWithDrawer from './templates/index';
 import Automatico from './Pages/TelaAutomatico/Automatico';
 
 const valuesInfo = {
@@ -26,9 +27,9 @@ const RouterComponent = ({ data }) => {
             <Link to="/teste">Ir para teste</Link>
           </Route>
 
-        <Route path="/automatico">
-          <Automatico data={data} />
-        </Route>
+          <Route path="/automatico">
+            <Automatico data={data} />
+          </Route>
 
           <Route path="/teste">
             <Teste />

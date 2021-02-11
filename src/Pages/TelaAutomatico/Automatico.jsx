@@ -6,7 +6,6 @@ import MainGraph from '../../components/MainGraph/MainGraph';
 import './Automatico.css';
 
 function Automatico({ data }) {
-  console.log(data);
   return (
     <div className="telaContainer">
       <div className="parteSuperior">

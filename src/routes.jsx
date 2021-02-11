@@ -1,12 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import RevisaoResultados from './pages/RevisaoResultados';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  useLocation,
-} from 'react-router-dom';
 import Teste from './components/theme';
 import TemplateWithDrawer from './templates';
 import Automatico from './Pages/TelaAutomatico/Automatico';
@@ -31,11 +25,11 @@ const RouterComponent = ({ data }) => {
             <Link to="/automatico">Ir para Tela Automático</Link>
           </Route>
 
-        <Route path="/automatico">
-          <Automatico data={data} />
-        </Route>
+          <Route path="/automatico">
+            <Automatico data={data} />
+          </Route>
 
-        <Route path="/revisaoresult" component={RevisaoResultados} />
+          <Route path="/revisaoresult" component={RevisaoResultados} />
 
           <Route path="/teste">
             <Teste />

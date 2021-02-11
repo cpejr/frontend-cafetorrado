@@ -4,8 +4,8 @@ import ThemeContextProvider from './Context/ThemeContext';
 import './App.css';
 import RouterComponent from './routes';
 
-import Automatico from './Pages/TelaAutomatico/Automatico';
 import { socket } from './index';
+
 function App() {
   const [newData, setNewData] = useState({ waterTemp: 0, fireTemp: 0, ROR: 0 });
   //return (
@@ -22,10 +22,7 @@ function App() {
   });
   return (
     <ThemeContextProvider>
-      <RouterComponent />
-      <TemplateWithDrawer valuesInfo={valuesInfo}>
-        <RouterComponent data={newData} />
-      </TemplateWithDrawer>
+      <RouterComponent data={newData} />
     </ThemeContextProvider>
   );
 }

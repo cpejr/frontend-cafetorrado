@@ -1,6 +1,7 @@
 import React from 'react';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import BarsGraph from '../../components/BarsGraph/BarsGraph';
+import MainGraph from '../../components/MainGraph/MainGraph';
 import './Automatico.css';
 
 function Automatico() {
@@ -8,6 +9,7 @@ function Automatico() {
     <div className="telaContainer">
       <div className="parteSuperior">
         <h1 className="historyGraph">HISTÓRICO DE TEMPERATURA</h1>
+        <MainGraph />
       </div>
 
       <div className="parteInferior">

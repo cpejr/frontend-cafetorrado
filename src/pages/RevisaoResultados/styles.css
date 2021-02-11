@@ -1,0 +1,69 @@
+.content {
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Campo para salvar nome */
+.salvar-nome {
+  height: 40px;
+
+  display: flex;
+  gap: 30px;
+}
+.salvar-nome input {
+  padding: 10px;
+  flex-grow: 2;
+  height: 100%;
+  border: none;
+  box-sizing: border-box;
+
+  font-size: 18px;
+}
+.salvar-nome button {
+  padding: 10px;
+  width: 120px;
+  height: 100%;
+  border: none;
+  box-sizing: border-box;
+
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  color: var(--colorFont);
+  background-color: var(--componentsBackgroud);
+}
+
+/* Grafico */
+.grafico {
+  margin-top: 20px;
+  height: 300px;
+  flex-grow: 2;
+  background-color: green;
+}
+
+/* Informações */
+.informacoes {
+  margin-top: 20px;
+  height: 200px;
+
+  display: flex;
+  flex-direction: column;
+}
+.informacoes h1 {
+  font-size: 22px;
+  line-height: 0;
+}
+.colunas-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.coluna-info {
+  width: 30%;
+  color: var(--colorFont);
+  font-size: 18px;
+}

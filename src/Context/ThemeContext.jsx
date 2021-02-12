@@ -15,9 +15,35 @@ const themes = {
     graphColor5: '#2171B5',
     graphColor6: '#08306B',
   },
-  coffee: {
+  grey: {
     backgroundColor: '#E0E0E0',
-    fontColor: '#091929',
+    fontColor: '#0E1317',
+    headerBackground: '#091929',
+    dashboardBackground: '#091929',
+    componentsBackgroud: '#0E1317',
+    graphColor1: '#DEEBF7',
+    graphColor2: '#C6DBEF',
+    graphColor3: '#9ECAE1',
+    graphColor4: '#4292C6',
+    graphColor5: '#2171B5',
+    graphColor6: '#08306B',
+  },
+  white: {
+    backgroundColor: '#FFFFFF',
+    fontColor: '#0E1317',
+    headerBackground: '#091929',
+    dashboardBackground: '#091929',
+    componentsBackgroud: '#0E1317',
+    graphColor1: '#DEEBF7',
+    graphColor2: '#C6DBEF',
+    graphColor3: '#9ECAE1',
+    graphColor4: '#4292C6',
+    graphColor5: '#2171B5',
+    graphColor6: '#08306B',
+  },
+  dark: {
+    backgroundColor: '#0E1317',
+    fontColor: '#FFFFFF',
     headerBackground: '#091929',
     dashboardBackground: '#091929',
     componentsBackgroud: '#0E1317',
@@ -48,8 +74,14 @@ function ThemeContextProvider({ children }) {
 
   const toggleTheme = () => {
     if (themeName === 'technologic') {
-      setTheme(themes.coffee);
-      setThemeName('coffee');
+      setTheme(themes.grey);
+      setThemeName('grey');
+    } else if (themeName === 'grey') {
+      setTheme(themes.dark);
+      setThemeName('dark');
+    } else if (themeName === 'dark') {
+      setTheme(themes.white);
+      setThemeName('white');
     } else {
       setTheme(themes.technologic);
       setThemeName('technologic');

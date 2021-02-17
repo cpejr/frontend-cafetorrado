@@ -28,7 +28,7 @@ function Automatico() {
           <h1 className="buttonsTitle">CONTROLES</h1>
           <div className="botoes">
             <div className="button1">
-              <h1>Mechedor</h1>
+              <h1>Mexedor</h1>
               <ButtonController1 />
             </div>
             <div className="button2">

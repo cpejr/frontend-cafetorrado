@@ -78,12 +78,12 @@ const DrawerComponent = ({ valuesInfo }) => {
           </div>
         )}
         <Divider />
-      </div>
-
-      <div className="tema">
-        <button className="theme" type="button">
-          <Theme />
-        </button>
+        <div className="link-menu">
+          <Theme>
+            <spam>Temas</spam>
+          </Theme>
+        </div>
+        <Divider />
       </div>
 
       {!(useLocation().pathname === '/automatico') && open && (

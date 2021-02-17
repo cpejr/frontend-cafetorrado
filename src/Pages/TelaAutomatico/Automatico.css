@@ -2,7 +2,7 @@
 
 
 .telaContainer{
-    width: 80vw;
+    width: 100%;
     height: 95vh;   
     background-color:var(--backgroundColor) ;
     font-family: Rubik , sans-serif;

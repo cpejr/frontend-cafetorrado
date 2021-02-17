@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdBrightness6 } from 'react-icons/md';
+import './ThemeContext.css';
 
 const themes = {
   technologic: {
@@ -15,9 +16,35 @@ const themes = {
     graphColor5: '#2171B5',
     graphColor6: '#08306B',
   },
-  coffee: {
-    backgroundColor: '#E0E0E0',
-    fontColor: '#091929',
+  grey: {
+    backgroundColor: '#F3EFEF',
+    fontColor: '#0E1317',
+    headerBackground: '#091929',
+    dashboardBackground: '#091929',
+    componentsBackgroud: '#0E1317',
+    graphColor1: '#DEEBF7',
+    graphColor2: '#C6DBEF',
+    graphColor3: '#9ECAE1',
+    graphColor4: '#4292C6',
+    graphColor5: '#2171B5',
+    graphColor6: '#08306B',
+  },
+  white: {
+    backgroundColor: '#FFFFFF',
+    fontColor: '#0E1317',
+    headerBackground: '#091929',
+    dashboardBackground: '#091929',
+    componentsBackgroud: '#0E1317',
+    graphColor1: '#DEEBF7',
+    graphColor2: '#C6DBEF',
+    graphColor3: '#9ECAE1',
+    graphColor4: '#4292C6',
+    graphColor5: '#2171B5',
+    graphColor6: '#08306B',
+  },
+  dark: {
+    backgroundColor: '#0E1317',
+    fontColor: '#FFFFFF',
     headerBackground: '#091929',
     dashboardBackground: '#091929',
     componentsBackgroud: '#0E1317',
@@ -48,8 +75,14 @@ function ThemeContextProvider({ children }) {
 
   const toggleTheme = () => {
     if (themeName === 'technologic') {
-      setTheme(themes.coffee);
-      setThemeName('coffee');
+      setTheme(themes.grey);
+      setThemeName('grey');
+    } else if (themeName === 'grey') {
+      setTheme(themes.dark);
+      setThemeName('dark');
+    } else if (themeName === 'dark') {
+      setTheme(themes.white);
+      setThemeName('white');
     } else {
       setTheme(themes.technologic);
       setThemeName('technologic');
@@ -70,14 +103,20 @@ function ThemeContextProvider({ children }) {
 
   function ThemeSwitch() {
     return (
-      <MdBrightness6
+      <button
+        className="buttonTheme"
+        type="button"
         onClick={toggleTheme}
         checked={themeName === 'technologic'}
-        checkedIcon={false}
-        uncheckedIcon={false}
-        size={24}
-        color="#E0E0E0"
-      />
+      >
+        <MdBrightness6
+          checkedIcon={false}
+          uncheckedIcon={false}
+          size={24}
+          color="#E0E0E0"
+        />
+        <span>Temas</span>
+      </button>
     );
   }
 

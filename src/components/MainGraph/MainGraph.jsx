@@ -4,19 +4,19 @@ import { ResponsiveLine } from '@nivo/line';
 import { socket } from '../../index';
 import $ from 'jquery';
 
-let oldData = {
-  waterTemp: 0,
-  fireTemp: 0,
-  ROR: 0,
-};
+let dataArray = [];
+
+function dataArr(data) {
+  dataArray = [...dataArray, data];
+  console.log(dataArray);
+}
 
 function MainGraph() {
   socket.on('connect', (data) => {
     socket.on('newData', (_data) => {
-      $.extend(oldData, _data);
+      dataArr(_data);
     });
   });
-  console.log(oldData);
   return <MyResponsiveLine />;
 }
 
@@ -26,144 +26,16 @@ const MyResponsiveLine = ({
       id: 'Temperatura',
       data: [
         {
-          x: 0,
-          y: 131,
+          x: 1,
+          y: 2,
         },
         {
           x: 1,
-          y: 113,
+          y: 1,
         },
         {
           x: 2,
-          y: 224,
-        },
-        {
-          x: 3,
-          y: 83,
-        },
-        {
-          x: 4,
-          y: 64,
-        },
-        {
-          x: 5,
-          y: 174,
-        },
-      ],
-    },
-    {
-      id: 'Velocidade',
-      data: [
-        {
-          x: 0,
-          y: 30,
-        },
-        {
-          x: 1,
-          y: 78,
-        },
-        {
-          x: 2,
-          y: 127,
-        },
-        {
-          x: 3,
-          y: 145,
-        },
-        {
-          x: 4,
-          y: 116,
-        },
-        {
-          x: 5,
-          y: 130,
-        },
-      ],
-    },
-    {
-      id: 'Pressão',
-      data: [
-        {
-          x: 0,
-          y: 60,
-        },
-        {
-          x: 1,
-          y: 22,
-        },
-        {
-          x: 2,
-          y: 70,
-        },
-        {
-          x: 3,
-          y: 115,
-        },
-        {
-          x: 4,
-          y: 142,
-        },
-        {
-          x: 5,
-          y: 128,
-        },
-      ],
-    },
-    {
-      id: 'Ror',
-      data: [
-        {
-          x: 0,
-          y: 15,
-        },
-        {
-          x: 1,
-          y: 5,
-        },
-        {
-          x: 2,
-          y: 20,
-        },
-        {
-          x: 3,
-          y: 40,
-        },
-        {
-          x: 4,
-          y: 15,
-        },
-        {
-          x: 5,
-          y: 0,
-        },
-      ],
-    },
-    {
-      id: 'Umidade',
-      data: [
-        {
-          x: 0,
-          y: 70,
-        },
-        {
-          x: 1,
-          y: 65,
-        },
-        {
-          x: 2,
-          y: 50,
-        },
-        {
-          x: 3,
-          y: 80,
-        },
-        {
-          x: 4,
-          y: 95,
-        },
-        {
-          x: 5,
-          y: 30,
+          y: 1,
         },
       ],
     },
@@ -238,7 +110,7 @@ const MyResponsiveLine = ({
     ]}
     theme={{
       textColor: '#ffffff',
-      fontSize: '13px'
+      fontSize: '13px',
     }}
   />
 );

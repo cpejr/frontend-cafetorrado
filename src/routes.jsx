@@ -5,6 +5,7 @@ import RevisaoResultados from './Pages/RevisaoResultados';
 import Teste from './components/theme';
 import TemplateWithDrawer from './templates/index';
 import Automatico from './Pages/TelaAutomatico/Automatico';
+import manual from './Pages/Telamanual/manual';
 
 const valuesInfo = {
   pressao: 8.9,
@@ -24,6 +25,7 @@ const RouterComponent = ({ data }) => {
             <Link to="/revisaoresult">Ir para Revisão de Resultados</Link>
             <br />
             <Link to="/automatico">Ir para Tela Automático</Link>
+            <Link to="/manual">Ir para Tela Manual</Link>
           </Route>
 
           <Route path="/automatico">

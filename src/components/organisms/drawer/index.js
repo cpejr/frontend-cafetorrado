@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 import { useLocation, Route } from 'react-router-dom';
+import Theme from '../../theme';
 import Divider from '../../atoms/divider';
 
 import { useToggle } from '../../../hooks';
@@ -77,6 +78,12 @@ const DrawerComponent = ({ valuesInfo }) => {
           </div>
         )}
         <Divider />
+      </div>
+
+      <div className="tema">
+        <button className="theme" type="button">
+          <Theme />
+        </button>
       </div>
 
       {!(useLocation().pathname === '/automatico') && open && (

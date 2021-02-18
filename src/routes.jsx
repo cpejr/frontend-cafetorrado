@@ -1,8 +1,9 @@
+/*eslint-disable*/
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import RevisaoResultados from './Pages/RevisaoResultados';
 import Teste from './components/theme';
-import TemplateWithDrawer from './templates';
+import TemplateWithDrawer from './templates/index';
 import Automatico from './Pages/TelaAutomatico/Automatico';
 
 const valuesInfo = {

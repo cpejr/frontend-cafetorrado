@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { React, useState } from 'react';
 import { FaPowerOff } from 'react-icons/fa';
 import Chronometer from '../../components/Chronometer/Chronometer';

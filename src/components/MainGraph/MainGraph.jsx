@@ -1,118 +1,87 @@
 /* eslint-disable*/
-import React, { useState } from 'react';
-import { ResponsiveLine } from '@nivo/line';
+import React, { useEffect, useState } from 'react';
 import { socket } from '../../index';
-import $ from 'jquery';
+import { Line } from 'react-chartjs-2';
 
-let dataArray = [];
-
+let dataArray = [
+  {
+    waterTemp: 0,
+    fireTemp: 0,
+    ROR: 0,
+    time: 0,
+  },
+];
+let counter = 0;
+let numErr = 0;
+var numErrTime = [];
 function dataArr(data) {
-  dataArray = [...dataArray, data];
-  console.log(dataArray);
+  const position = dataArray.length - 1;
+  console.log(counter);
+  dataArray[position].time + 1 != data.time
+    ? ((dataArray = [...dataArray, data]), counter++, (numErr = counter))
+    : ((dataArray = [...dataArray, data]), (counter = 0));
 }
 
-function MainGraph() {
-  socket.on('connect', (data) => {
+const MainGraph = () => {
+  const [chartData, setChartData] = useState({});
+
+  const chart = () => {
+    setChartData({
+      labels: dataArray,
+      datasets: [
+        {
+          label: 'I really know what i"m doing',
+          data: dataArray,
+          backgroundColor: ['rgba(192, 255, 6.65)'],
+          borderWidth: 4,
+        },
+      ],
+    });
+  };
+  useEffect(() => {
     socket.on('newData', (_data) => {
       dataArr(_data);
     });
-  });
-  return <MyResponsiveLine />;
-}
+    setInterval(() => {
+      numErrTime.push(numErr);
+    }, 15 * 100);
+    setTimeout(() => {
+      socket.off('newData');
+      console.log(numErr, numErrTime);
+    }, 15 * 60 * 1000);
+    chart();
+  }, []);
 
-const MyResponsiveLine = ({
-  data = [
-    {
-      id: 'Temperatura',
-      data: [
-        {
-          x: 1,
-          y: 2,
-        },
-        {
-          x: 1,
-          y: 1,
-        },
-        {
-          x: 2,
-          y: 1,
-        },
-      ],
-    },
-  ],
-}) => (
-  <ResponsiveLine
-    data={data}
-    margin={{ top: 20, right: 150, bottom: 70, left: 60 }}
-    xScale={{ type: 'point' }}
-    xFormat=" >-.1f"
-    yScale={{
-      type: 'linear',
-      min: 'auto',
-      max: 'auto',
-      stacked: false,
-      reverse: false,
-    }}
-    yFormat=" >-.2f"
-    curve="linear"
-    axisTop={null}
-    axisRight={null}
-    axisBottom={{
-      orient: 'bottom',
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: 'TEMPO (MIN)',
-      legendOffset: 36,
-      legendPosition: 'middle',
-    }}
-    axisLeft={{
-      orient: 'left',
-      tickSize: 5,
-      tickPadding: 5,
-      tickRotation: 0,
-      legend: 'VALORES',
-      legendOffset: -40,
-      legendPosition: 'middle',
-    }}
-    colors={{ scheme: 'set1' }}
-    lineWidth={4}
-    pointSize={10}
-    pointColor={{ theme: 'background' }}
-    pointBorderWidth={2}
-    pointBorderColor={{ from: 'serieColor' }}
-    pointLabelYOffset={-12}
-    useMesh={true}
-    legends={[
-      {
-        anchor: 'top-right',
-        direction: 'column',
-        justify: false,
-        translateX: 110,
-        translateY: 0,
-        itemWidth: 100,
-        itemHeight: 25,
-        itemsSpacing: 5,
-        symbolSize: 20,
-        symbolShape: 'circle',
-        itemDirection: 'left-to-right',
-        itemTextColor: '#777',
-        effects: [
-          {
-            on: 'hover',
-            style: {
-              itemBackground: 'rgba(0, 0, 0, .03)',
-              itemOpacity: 1,
-            },
+  return (
+    <div style={{ height: '50%', width: '80%' }}>
+      <Line
+        data={chartData}
+        options={{
+          responsive: true,
+          title: { text: ' Tempo de torra ', display: true },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 100,
+                  beginAtZero: true,
+                },
+                gridLines: {
+                  display: false,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                gridLines: { display: false },
+              },
+            ],
           },
-        ],
-      },
-    ]}
-    theme={{
-      textColor: '#ffffff',
-      fontSize: '13px',
-    }}
-  />
-);
+        }}
+      />
+    </div>
+  );
+};
 
 export default MainGraph;

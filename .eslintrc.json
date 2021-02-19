@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:prettier/recommended",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -12,17 +8,17 @@
     "node": true
   },
   "rules": {
-    "no-undef":["off"],
-    "camelcase":["off"],
-    "no-unused-vars":["off"],
-    "no-var":["off"],
-    "no-unused-expressions":["off"],
+    "no-undef": ["off"],
+    "camelcase": ["off"],
+    "no-unused-vars": ["off"],
+    "no-var": ["off"],
+    "no-unused-expressions": ["off"],
     "react/jsx-props-no-spreading": "off",
-    "no-restricted-syntax":["off"],
-   "no-param-reassign":["off"],
-   "no-use-before-define":["off"],
-   "no-plusplus":["off"],
-   "func-names":["off"],
+    "no-restricted-syntax": ["off"],
+    "no-param-reassign": ["off"],
+    "no-use-before-define": ["off"],
+    "no-plusplus": ["off"],
+    "func-names": ["off"],
     "linebreak-style": 0,
     "react/prop-types": ["off"],
     "jsx-a11y/href-no-hash": ["off"],

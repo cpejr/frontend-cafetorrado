@@ -13,6 +13,7 @@ let dataArray = [
     time: 0,
   },
 ];
+
 const Temp = [4, 8, 98, 10];
 const Temp_ = [8, 65, 84, 65];
 
@@ -38,21 +39,19 @@ function dataArr(data) {
 
 const MainGraph = () => {
   const [chartData, setChartData] = useState({});
-  const config = {
-    type: 'line',
-    data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  const chart = () => {
+    setChartData({
+      labels: Temp_,
       datasets: [
         {
-          label: 'My First dataset',
-          data: [65, 0, 80, 81, 56, 85, 40],
-          fill: false,
+          label: 'I really know what i"m doing',
+          data: Temp,
+          backgroundColor: ['rgba(192, 255, 6.65)'],
+          borderWidth: 4,
         },
       ],
-    },
+    });
   };
-  const ctx = document.getElementById('main-chart').getContext('2d');
-  const dataChart = new Chart(ctx, config);
   useEffect(() => {
     // socket.on('newData', (_data) => {
     //   dataArr(_data);
@@ -66,13 +65,14 @@ const MainGraph = () => {
     // }, 15 * 60 * 1000);
     // chart.update();
     //addData_(chart, 'a', 2);
-    config();
+    setInterval(() => {
+      chartData.labels.push('a');
+    }, 1 * 1000);
   }, []);
 
   return (
     <div style={{ height: '50%', width: '80%' }}>
       <Line
-        id="main-chart"
         data={chartData}
         options={{
           responsive: true,

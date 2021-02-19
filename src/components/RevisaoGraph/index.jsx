@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
+import data from './data';
+import './styles.css';
 
-const RevisaoGraph = ({ data }) => {
+const RevisaoGraph = () => {
+  const [dataChart, setDataChart] = useState(data);
   return (
-    <div style={{ height: '50%', width: '100%' }}>
+    <div className="chart">
       <Line
-        data={data}
+        data={dataChart}
+        height={null}
+        width={null}
         options={{
           responsive: true,
-          // title: { text: ' Tempo de torra ', display: true },
           scales: {
             yAxes: [
               {

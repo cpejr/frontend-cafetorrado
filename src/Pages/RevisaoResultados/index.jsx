@@ -3,7 +3,6 @@ import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
 import RevisaoGraph from '../../components/RevisaoGraph';
-import data from './data';
 
 const RevisaoResultados = () => {
   return (
@@ -19,7 +18,7 @@ const RevisaoResultados = () => {
         </button>
       </div>
       <div className="grafico">
-        <RevisaoGraph data={data} />
+        <RevisaoGraph />
       </div>
       <div className="informacoes">
         <h1>Informações</h1>

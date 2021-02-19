@@ -4,7 +4,11 @@
 }
 
 .page {
-  background-color: var(--backgroundColor);
-  flex-grow: 2;
+  background-color: var(--componentsBackgroud);
+  width: 80vw;
   height: 100vh;
+}
+
+.page-close{
+  width: calc(100vw - 60px);
 }

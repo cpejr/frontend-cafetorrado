@@ -66,6 +66,7 @@
   padding-right: 10px;
 }
 
+
 .monitoramento-opcoes {
   font-size: 20px;
   color: #E0E0E0;
@@ -105,26 +106,7 @@
   height: 100vh;
 }
 
-.tema {
-  width: 100%;
-  height: 100%;
-  flex-grow: 4;
-}
 
-.theme {
-  font-family: Rubik , sans-serif ;
-  font-weight: 700;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  width: 100%;
-  color: #E0E0E0;
-  font-size: 20px;
-  text-decoration: none;
-  padding: 15px 10px;
-  display: flex;
-  align-items: center;
-}
 
 .theme svg {
   height: 40px;

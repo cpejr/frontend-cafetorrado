@@ -8,12 +8,9 @@ import { useLocation, Route } from 'react-router-dom';
 import Theme from '../../theme';
 import Divider from '../../atoms/divider';
 
-import { useToggle } from '../../../hooks';
-
 import './styles.css';
 
-const DrawerComponent = ({ valuesInfo }) => {
-  const [open, toggle] = useToggle(true);
+const DrawerComponent = ({ open, toggle, valuesInfo }) => {
   return (
     <div
       className={
@@ -78,12 +75,12 @@ const DrawerComponent = ({ valuesInfo }) => {
           </div>
         )}
         <Divider />
-      </div>
-
-      <div className="tema">
-        <button className="theme" type="button">
-          <Theme />
-        </button>
+        <div className="link-menu">
+          <Theme>
+            <spam>Temas</spam>
+          </Theme>
+        </div>
+        <Divider />
       </div>
 
       {!(useLocation().pathname === '/automatico') && open && (

@@ -112,7 +112,6 @@ function ThemeContextProvider({ children }) {
         <MdBrightness6
           checkedIcon={false}
           uncheckedIcon={false}
-          size={24}
           color="#E0E0E0"
         />
         <span>Temas</span>

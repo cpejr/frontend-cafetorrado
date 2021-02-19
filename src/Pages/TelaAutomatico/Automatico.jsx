@@ -7,12 +7,16 @@ import MainGraph from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonController2';
 
+
 import './Automatico.css';
 
 // <BarsGraph />
 function Automatico() {
+
+  //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
+  
   return (
-    <div className="telaContainer">
+    <div className="telaContainer" >
       <div className="parteSuperior">
         <h1 className="historyGraphTitle">HISTÓRICO DE TEMPERATURA</h1>
         <MainGraph />
@@ -20,33 +24,33 @@ function Automatico() {
 
       <div className="parteInferior">
         <div className="statusBar">
-          <h1 className="statusTitle">STATUS DA TORRA</h1>
-          <h1>Temperatura: </h1>
-          <h1>Pressão: </h1>
-          <h1>ROR: </h1>
+          <p className="statusTitle">STATUS DA TORRA</p>
+          <p>Temperatura: 160°C</p>
+          <p>Pressão: 7,4atm </p>
+          <p>ROR: 20</p>
         </div>
         <div className="controlButtons">
-          <h1 className="buttonsTitle">CONTROLES</h1>
+          <p className="buttonsTitle">CONTROLES</p>
           <div className="botoes">
             <div className="button1">
-              <h1>Mexedor</h1>
+              <p>Mexedor</p>
               <ButtonController1 />
             </div>
             <div className="button2">
-              <h1>Resfriador</h1>
+              <p>Resfriador</p>
               <ButtonController2 />
             </div>
           </div>
         </div>
         <div className="timeChronometer">
-          <h1 className="timeTitle">TEMPO DE TORRA</h1>
+          <p className="timeTitle">TEMPO DE TORRA</p>
           <Chronometer />
         </div>
         <div className="informations">
-          <h1 className="informationsTitle">OUTRAS INFORMAÇÕES</h1>
-          <h1>Pressão: </h1>
-          <h1>Umidade: </h1>
-          <h1>Massa de Grãos: </h1>
+          <p className="informationsTitle">OUTRAS INFORMAÇÕES</p>
+          <p>Pressão: 7,4 atm </p>
+          <p>Umidade: 30% </p>
+          <p>Massa de Grãos: 470g </p>
         </div>
       </div>
     </div>

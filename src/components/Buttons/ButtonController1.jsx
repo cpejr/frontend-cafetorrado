@@ -3,21 +3,17 @@ import { FaPowerOff } from 'react-icons/fa';
 import './ButtonController1.css';
 
 function ButtonController1() {
-  const [colorMechedor, setColorMechedor] = useState('#BC1212');
+  const [colorMechedor, setColorMechedor] = useState('#202020');
 
   const changeColorMechedor = () => {
-    if (colorMechedor === '#BC1212') {
+    if (colorMechedor === '#202020') {
       setColorMechedor('#0029FF');
-    } else setColorMechedor('#BC1212');
+    } else setColorMechedor('#202020');
   };
   return (
     <div>
-      <button className="power1" type="button">
-        <FaPowerOff
-          size={35}
-          color={colorMechedor}
-          onClick={changeColorMechedor}
-        />
+      <button className="power1" type="button" onClick={changeColorMechedor}>
+        <FaPowerOff size={35} color={colorMechedor} />
       </button>
     </div>
   );

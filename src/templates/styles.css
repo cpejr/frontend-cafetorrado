@@ -5,6 +5,10 @@
 
 .page {
   background-color: var(--componentsBackgroud);
-  flex-grow: 2;
+  width: 80vw;
   height: 100vh;
+}
+
+.page-close{
+  width: calc(100vw - 60px);
 }

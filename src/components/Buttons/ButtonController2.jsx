@@ -3,21 +3,17 @@ import { FaPowerOff } from 'react-icons/fa';
 import './ButtonController2.css';
 
 function ButtonController2() {
-  const [colorResfriador, setColorResfriador] = useState('#BC1212');
+  const [colorResfriador, setColorResfriador] = useState('#202020');
 
   const changeColorResfriador = () => {
-    if (colorResfriador === '#BC1212') {
+    if (colorResfriador === '#202020') {
       setColorResfriador('#0029FF');
-    } else setColorResfriador('#BC1212');
+    } else setColorResfriador('#202020');
   };
   return (
     <div>
-      <button className="power1" type="button">
-        <FaPowerOff
-          size={35}
-          color={colorResfriador}
-          onClick={changeColorResfriador}
-        />
+      <button className="power1" type="button" onClick={changeColorResfriador}>
+        <FaPowerOff size={35} color={colorResfriador} />
       </button>
     </div>
   );

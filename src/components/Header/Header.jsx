@@ -9,9 +9,9 @@ import './Header.css';
 function Header() {
   return (
     <div className="headerContainer">
-      <h1 className="date">
+      <p className="date">
         {format(new Date(), 'MMM dd, hh:mm', { locale: ptBR })}
-      </h1>
+      </p>
       <div className="buttons">
         <button className="crack" type="button">
           <BiPlayCircle size={23} color="#E0E0E0" />

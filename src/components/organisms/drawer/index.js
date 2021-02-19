@@ -8,12 +8,9 @@ import { useLocation, Route } from 'react-router-dom';
 import Theme from '../../theme';
 import Divider from '../../atoms/divider';
 
-import { useToggle } from '../../../hooks';
-
 import './styles.css';
 
-const DrawerComponent = ({ valuesInfo }) => {
-  const [open, toggle] = useToggle(true);
+const DrawerComponent = ({ open, toggle, valuesInfo }) => {
   return (
     <div
       className={

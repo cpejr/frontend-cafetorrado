@@ -3990,6 +3990,14 @@ char-regex@^1.0.2:
   resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
   integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
 
+chart-library@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/chart-library/-/chart-library-1.2.1.tgz#f7bbaf8833a4df13abb41404cb4cb4ca2fb7aea8"
+  integrity sha512-sEuQE1vOhNg8uXxeKnn/bTUXokv51azR0ryD7lXncaCJ+10+cOUOTkBSrXojr8LEGGgXnYBhrTj//ki27VG5KA==
+  dependencies:
+    gauges-library latest
+    mindfusion-common latest
+
 chart.js@^2.9.4:
   version "2.9.4"
   resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.4.tgz#0827f9563faffb2dc5c06562f8eb10337d5b9684"
@@ -6868,6 +6876,13 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+gauges-library@latest:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gauges-library/-/gauges-library-1.1.1.tgz#35a1828b1182d9599852eb7e006ad218aa6d726a"
+  integrity sha512-l+bno6v/UilVqSOHEsJxD6MAhEJZcH/LdKx+uWjeyzbASYnaL4LS98Ka+BysxxvE/mDV9nW6Gq5GFJbEmn4Gag==
+  dependencies:
+    mindfusion-common latest
+
 generator-supported@*, generator-supported@~0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/generator-supported/-/generator-supported-0.0.1.tgz#922bd2201a6c38d8facb815d593d8a03c898c299"
@@ -9426,6 +9441,11 @@ min-indent@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
+
+mindfusion-common@latest:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/mindfusion-common/-/mindfusion-common-1.2.2.tgz#eb44f99fea95b6346ad79d94c5f83c9b371c3283"
+  integrity sha512-Atb101aM5ET3U9CthKOHy5pZJ2KsQeR3i7pyaZo/1+Noi2unIPdyj0E/J6oV4wrAijmRh/78eyCeuvy1UT798w==
 
 mini-create-react-context@^0.4.0:
   version "0.4.1"

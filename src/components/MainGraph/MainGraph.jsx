@@ -1,7 +1,9 @@
-/* eslint-disable*/
+/*eslint-disable*/
 import React, { useEffect, useState } from 'react';
-import { socket } from '../../index';
 import { Line } from 'react-chartjs-2';
+import addData from '../Functions/addData';
+import { socket } from '../../index';
+import { Update } from '@material-ui/icons';
 
 let dataArray = [
   {
@@ -11,50 +13,66 @@ let dataArray = [
     time: 0,
   },
 ];
+const Temp = [4, 8, 98, 10];
+const Temp_ = [8, 65, 84, 65];
+
 let counter = 0;
 let numErr = 0;
 var numErrTime = [];
+
 function dataArr(data) {
   const position = dataArray.length - 1;
   console.log(counter);
-  dataArray[position].time + 1 != data.time
+  dataArray[position].time + 1 !== data.time
     ? ((dataArray = [...dataArray, data]), counter++, (numErr = counter))
     : ((dataArray = [...dataArray, data]), (counter = 0));
 }
 
+// function addData_(chartData, label, data) {
+//   chartData.labels.push(label);
+//   chartData.data.datasets.forEach((dataset) => {
+//     dataset.data.push(data);
+//   });
+//   chartData.update();
+// }
+
 const MainGraph = () => {
   const [chartData, setChartData] = useState({});
-
-  const chart = () => {
-    setChartData({
-      labels: dataArray,
+  const config = {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          label: 'I really know what i"m doing',
-          data: dataArray,
-          backgroundColor: ['rgba(192, 255, 6.65)'],
-          borderWidth: 4,
+          label: 'My First dataset',
+          data: [65, 0, 80, 81, 56, 85, 40],
+          fill: false,
         },
       ],
-    });
+    },
   };
+  const ctx = document.getElementById('main-chart').getContext('2d');
+  const dataChart = new Chart(ctx, config);
   useEffect(() => {
-    socket.on('newData', (_data) => {
-      dataArr(_data);
-    });
-    setInterval(() => {
-      numErrTime.push(numErr);
-    }, 15 * 100);
-    setTimeout(() => {
-      socket.off('newData');
-      console.log(numErr, numErrTime);
-    }, 15 * 60 * 1000);
-    chart();
+    // socket.on('newData', (_data) => {
+    //   dataArr(_data);
+    // });
+    // setInterval(() => {
+    //   numErrTime.push(numErr);
+    // }, 15 * 100);
+    // setTimeout(() => {
+    //   socket.off('newData');
+    //   console.log(numErr, numErrTime);
+    // }, 15 * 60 * 1000);
+    // chart.update();
+    //addData_(chart, 'a', 2);
+    config();
   }, []);
 
   return (
     <div style={{ height: '50%', width: '80%' }}>
       <Line
+        id="main-chart"
         data={chartData}
         options={{
           responsive: true,
@@ -75,6 +93,11 @@ const MainGraph = () => {
             xAxes: [
               {
                 gridLines: { display: false },
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 100,
+                  beginAtZero: true,
+                },
               },
             ],
           },

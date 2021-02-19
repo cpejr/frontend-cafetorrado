@@ -4,8 +4,8 @@ import { FaPowerOff } from 'react-icons/fa';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import BarsGraph from '../../components/BarsGraph/BarsGraph';
 import MainGraph from '../../components/MainGraph/MainGraph';
-import ButtonController1 from '../../components/Buttons/ButtonController1';
-import ButtonController2 from '../../components/Buttons/ButtonController2';
+import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
+import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 
 
 import './Automatico.css';
@@ -18,7 +18,7 @@ function Automatico() {
   return (
     <div className="telaContainer" >
       <div className="parteSuperior">
-        <h1 className="historyGraphTitle">HISTÓRICO DE TEMPERATURA</h1>
+        <p className="historyGraphTitle">HISTÓRICO DE TEMPERATURA</p>
         <MainGraph />
       </div>
 

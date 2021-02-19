@@ -29,16 +29,16 @@ margin-left: 45%;
     border: none;
     outline: none;
 }
-.crack:hover{
-    opacity: 0.8;
+.crack:hover {
+  opacity: 0.8;
 }
 
-.power{
-    background-color: #091929;
-    border: none;
-    outline: none;
+.power {
+  background-color: #091929;
+  border: none;
+  outline: none;
 }
 
-.power:hover{
-    opacity: 0.8;
+.power:hover {
+  opacity: 0.8;
 }

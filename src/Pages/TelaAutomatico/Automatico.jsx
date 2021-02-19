@@ -1,4 +1,4 @@
-/*eslint-disable*/
+/* eslint-disable */
 import { React, useState } from 'react';
 import { FaPowerOff } from 'react-icons/fa';
 import Chronometer from '../../components/Chronometer/Chronometer';
@@ -21,7 +21,6 @@ function Automatico() {
         <p className="historyGraphTitle">HISTÓRICO DE TEMPERATURA</p>
         <MainGraph />
       </div>
-
       <div className="parteInferior">
         <div className="statusBar">
           <p className="statusTitle">STATUS DA TORRA</p>

@@ -26,10 +26,10 @@
     
 }
 
-.parteInferior{
-    height: 30%;
-    display: flex;
-    flex-direction: row; 
+.parteInferior {
+  height: 30%;
+  display: flex;
+  flex-direction: row;
 }
 
 /*.statusBar{
@@ -69,20 +69,19 @@
    font-size: 20px;
      
 }
-.botoes{
-display: flex;
-flex-direction: row;
-text-align: center;
+.botoes {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
 }
 
-.button1{
-    width: 50%;
-    flex-direction: column;
+.button1 {
+  width: 50%;
+  flex-direction: column;
 }
-.button2{
-    width: 50%;
-    flex-direction: column;
-    
+.button2 {
+  width: 50%;
+  flex-direction: column;
 }
 
 .buttonsTitle{
@@ -97,9 +96,9 @@ text-align: center;
     
 }
 
-.timeChronometer{
-    flex-direction: column;
-    width: 25%;
+.timeChronometer {
+  flex-direction: column;
+  width: 25%;
 }
 .timeTitle{
     width: 100%;
@@ -129,6 +128,3 @@ text-align: center;
     text-align: center;
     margin-bottom: 10%;
 }
-
-
-

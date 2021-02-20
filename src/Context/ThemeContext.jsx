@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdBrightness6 } from 'react-icons/md';
-import './themeContext.css';
+import './ThemeContext.css';
 
 const themes = {
   technologic: {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './chronometer.css';
+import './Chronometer.css';
 
 function Chronometer() {
   const [time, setTime] = useState({ minute: 0, second: 0 });

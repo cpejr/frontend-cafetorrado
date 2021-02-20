@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { Update } from '@material-ui/icons';
@@ -14,40 +14,42 @@ let dataArray = [
   },
 ];
 
-const Temp = [4, 8, 98, 10];
-const Temp_ = [8, 65, 84, 65];
+const Temp = [4, 8, 98, 10, 65];
+const Temp_ = [8, 65, 84, 65, 65];
 
 let counter = 0;
 let numErr = 0;
 var numErrTime = [];
 
-function dataArr(data) {
-  const position = dataArray.length - 1;
-  console.log(counter);
-  dataArray[position].time + 1 !== data.time
-    ? ((dataArray = [...dataArray, data]), counter++, (numErr = counter))
-    : ((dataArray = [...dataArray, data]), (counter = 0));
+function updateData(mainGraph, data) {
+  mainGraph.current.chartInstance.data.labels.push(counter);
+  mainGraph.current.chartInstance.data.datasets[0].data.push(data.waterTemp);
+  mainGraph.current.chartInstance.update();
+  counter++;
+  // const position = dataArray.length - 1;
+  // console.log(counter);
+  // dataArray[position].time + 1 !== data.time
+  //   ? ((dataArray = [...dataArray, data]), counter++, (numErr = counter))
+  //   : ((dataArray = [...dataArray, data]), (counter = 0));
 }
+const INITALLDATA = {
+  type: 'line',
+  labels:[],
+  datasets: [
+    {
+      label: 'I really know what i"m doing',
+      data: [],
+      backgroundColor: ['rgba(192, 255, 6.65)'],
+      borderWidth: 4,
+    }]
+  }
 
 const MainGraph = () => {
-  //var ctx = document.getElementById('main-graph').getContext('2d');
-  const [chartData, setChartData] = useState({});
-  const chart = () => {
-    setChartData({
-      labels: Temp_,
-      datasets: [
-        {
-          label: 'I really know what i"m doing',
-          data: Temp,
-          backgroundColor: ['rgba(192, 255, 6.65)'],
-          borderWidth: 4,
-        },
-      ],
-    });
-  };
+  const mainGraph = useRef();
+  
   useEffect(() => {
     socket.on('newData', (_data) => {
-      dataArr(_data);
+      updateData(mainGraph, _data);
     });
     // setInterval(() => {
     //   numErrTime.push(numErr);
@@ -56,17 +58,14 @@ const MainGraph = () => {
     //   socket.off('newData');
     //   console.log(numErr, numErrTime);
     // }, 15 * 60 * 1000);
-    // chart.update();
-    //addData_(chart, 'a', 2);
-
-    chart();
   }, []);
 
   return (
     <div style={{ height: '50%', width: '80%' }}>
       <Line
         id="main-graph"
-        data={chartData}
+        data={INITALLDATA}
+        ref={mainGraph}
         options={{
           responsive: true,
           title: { text: ' Tempo de torra ', display: true },

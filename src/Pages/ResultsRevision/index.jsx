@@ -34,7 +34,7 @@ const ResultsRevision = () => (
           <p>Pressão média: </p>
           <p>Velocidade média do tambor: </p>
         </div>
-        <div className="coluna-info">
+        <div className="col-info">
           <p>Data: </p>
           <p>Hora: </p>
         </div>

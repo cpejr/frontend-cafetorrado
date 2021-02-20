@@ -5,7 +5,6 @@ import ResultsRevision from './Pages/ResultsRevision';
 import Teste from './components/theme';
 import TemplateWithDrawer from './Templates/index';
 import Automatic from './Pages/AutomaticPage/Automatic';
-import Test from './components/Index/Test'
 import Manual from './Pages/ManualPage/Manual';
 
 const valuesInfo = {

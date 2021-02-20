@@ -2,35 +2,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
-import { Update } from '@material-ui/icons';
-import jquery from 'jquery';
-
-let dataArray = [
-  {
-    waterTemp: 0,
-    fireTemp: 0,
-    ROR: 0,
-    time: 0,
-  },
-];
-
-const Temp = [4, 8, 98, 10, 65];
-const Temp_ = [8, 65, 84, 65, 65];
 
 let counter = 0;
 let numErr = 0;
 var numErrTime = [];
 
 function updateData(mainGraph, data) {
-  mainGraph.current.chartInstance.data.labels.push(counter);
+  mainGraph.current.chartInstance.data.labels.push(data.time);
   mainGraph.current.chartInstance.data.datasets[0].data.push(data.waterTemp);
   mainGraph.current.chartInstance.update();
-  counter++;
-  // const position = dataArray.length - 1;
-  // console.log(counter);
-  // dataArray[position].time + 1 !== data.time
-  //   ? ((dataArray = [...dataArray, data]), counter++, (numErr = counter))
-  //   : ((dataArray = [...dataArray, data]), (counter = 0));
+  const position = mainGraph.current.chartInstance.data.labels.length - 1;
+  const _position = mainGraph.current.chartInstance.data.datasets[0].data.length - 1
+  let isError = (mainGraph.current.chartInstance.data.labels[position] !== data.time)
+  let _isError = (mainGraph.current.chartInstance.data.datasets[0].data[_position] !== data.waterTemp)
+  isError || _isError ? (counter++) : (numErr = counter),(counter = 0);
+  console.log(counter, data,mainGraph.current.chartInstance.data.labels)
 }
 const INITALLDATA = {
   type: 'line',
@@ -51,13 +37,13 @@ const MainGraph = () => {
     socket.on('newData', (_data) => {
       updateData(mainGraph, _data);
     });
-    // setInterval(() => {
-    //   numErrTime.push(numErr);
-    // }, 15 * 100);
-    // setTimeout(() => {
-    //   socket.off('newData');
-    //   console.log(numErr, numErrTime);
-    // }, 15 * 60 * 1000);
+    setInterval(() => {
+      numErrTime.push(numErr);
+    }, 15 * 100);
+    setTimeout(() => {
+      socket.off('newData');
+      console.log(numErr, numErrTime);
+    },  60 * 1000);
   }, []);
 
   return (

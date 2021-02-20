@@ -1,6 +1,4 @@
-const generateValues = () => {
-  return Math.random() * (50 - 0);
-};
+const generateValues = () => Math.random() * (50 - 0);
 
 const randomDatas = (manyTimes) => {
   var data = [];

@@ -67,7 +67,7 @@ function ThemeContextProvider({ children }) {
       if (themeAux[value]) {
         document.documentElement.style.setProperty(
           `--${value}`,
-          themeAux[value]
+          themeAux[value],
         );
       }
     }

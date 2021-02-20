@@ -25,7 +25,9 @@ const MyResponsiveBullet = ({
 }) => (
   <ResponsiveBullet
     data={data}
-    margin={{ top: 5, right: 130, bottom: 63, left: 130 }}
+    margin={{
+      top: 5, right: 130, bottom: 63, left: 130,
+    }}
     layout="vertical"
     spacing={50}
     titleAlign="middle"

@@ -5,7 +5,8 @@ import ResultsRevision from './Pages/ResultsRevision';
 import Teste from './components/theme';
 import TemplateWithDrawer from './Templates/index';
 import Automatic from './Pages/AutomaticPage/Automatic';
-import Manual from './Pages/ManualPage/manual';
+import Test from './components/Index/Test'
+import Manual from './Pages/ManualPage/Manual';
 
 const valuesInfo = {
   pressao: 8.9,
@@ -21,6 +22,7 @@ const RouterComponent = ({ data }) => {
           <Route path="/" exact>
             <h1>Página Home</h1>
             <Link to="/teste">Ir para teste</Link>
+
             <br />
             <Link to="/ResultsRevision">Ir para Revisão de Resultados</Link>
             <br />
@@ -29,7 +31,7 @@ const RouterComponent = ({ data }) => {
             <Link to="/Manual">Ir para Tela Manual</Link>
           </Route>
 
-          <Route path="/automatic">
+          <Route path="/Automatic">
             <Automatic data={data} />
           </Route>
 

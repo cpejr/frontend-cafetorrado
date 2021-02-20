@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 import data from './data';
 import './styles.css';
 
-const RevisaoGraph = () => {
+const revisionGraph = () => {
   const [dataChart, setDataChart] = useState(data);
   return (
     <div className="chart">
@@ -38,4 +38,4 @@ const RevisaoGraph = () => {
   );
 };
 
-export default RevisaoGraph;
+export default revisionGraph;

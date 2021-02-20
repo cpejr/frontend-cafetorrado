@@ -5,8 +5,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 import { useLocation, Route } from 'react-router-dom';
-import Theme from '../../theme';
-import Divider from '../../atoms/divider';
+import Theme from '../theme';
+import Divider from '../Divider';
 
 import './styles.css';
 
@@ -44,7 +44,7 @@ const DrawerComponent = ({ open, toggle, valuesInfo }) => {
         </div>
 
         {open && (
-          <div className="monitoramento-opcoes">
+          <div className="monitoring-options">
             <form>
               <div className="radio-group">
                 <label>
@@ -84,7 +84,7 @@ const DrawerComponent = ({ open, toggle, valuesInfo }) => {
       </div>
 
       {!(useLocation().pathname === '/automatico') && open && (
-        <div className="outras-infos">
+        <div className="other-infos">
           <h1>Mais Informações:</h1>
           <p>
             Pressão: <span>{valuesInfo.pressao} atm</span>

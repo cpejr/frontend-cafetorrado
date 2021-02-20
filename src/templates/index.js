@@ -1,7 +1,6 @@
 import React from 'react';
-import DrawerComponent from '../components/organisms/drawer';
-// import HeaderComponent from '../components/organisms/header';
-import { useToggle } from '../hooks';
+import DrawerComponent from '../components/Drawer';
+import { useToggle } from '../Hooks';
 import Header from '../components/Header/Header';
 import './styles.css';
 

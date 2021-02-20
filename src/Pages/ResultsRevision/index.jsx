@@ -2,12 +2,12 @@ import React from 'react';
 import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
-import RevisaoGraph from '../../components/RevisaoGraph';
+import revisionGraph from '../../components/RevisionGraph';
 
-const RevisaoResultados = () => {
+const ResultsRevision = () => {
   return (
     <div className="content">
-      <div className="salvar-nome">
+      <div className="save-nome">
         <input type="text" name="name" />
         <button type="button">
           <AddToPhotosIcon /> Salvar
@@ -17,18 +17,18 @@ const RevisaoResultados = () => {
           Excluir
         </button>
       </div>
-      <div className="grafico">
-        <RevisaoGraph />
+      <div className="graph">
+        <revisionGraph />
       </div>
-      <div className="informacoes">
+      <div className="informations">
         <h1>Informações</h1>
-        <div className="colunas-info">
-          <div className="coluna-info">
+        <div className="cols-info">
+          <div className="col-info">
             <p>Temperatura mínima: </p>
             <p>Temperatura média: </p>
             <p>Temperatura máxima: </p>
           </div>
-          <div className="coluna-info">
+          <div className="col-info">
             <p>Duração da torra: </p>
             <p>Pressão média: </p>
             <p>Velocidade média do tambor: </p>
@@ -43,4 +43,4 @@ const RevisaoResultados = () => {
   );
 };
 
-export default RevisaoResultados;
+export default ResultsRevision;

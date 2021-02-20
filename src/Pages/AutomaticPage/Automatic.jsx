@@ -1,36 +1,34 @@
 /* eslint-disable */
 import { React, useState } from 'react';
 import { FaPowerOff } from 'react-icons/fa';
-import Chronometer from '../../components/Chronometer/Chronometer';
+import Chronometer from '../../components/Chronometer/chronometer';
 import BarsGraph from '../../components/BarsGraph/BarsGraph';
 import MainGraph from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 
-
-import './Automatico.css';
+import './Automatic.css';
 
 // <BarsGraph />
-function Automatico() {
-
+function Automatic() {
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-  
+
   return (
-    <div className="telaContainer" >
-      <div className="parteSuperior">
-        <p className="historyGraphTitle">HISTÓRICO DE TEMPERATURA</p>
+    <div className="tela-container">
+      <div className="upper-part">
+        <p className="history-graph-title">HISTÓRICO DE TEMPERATURA</p>
         <MainGraph />
       </div>
-      <div className="parteInferior">
-        <div className="statusBar">
-          <p className="statusTitle">STATUS DA TORRA</p>
+      <div className="lower-part">
+        <div className="status-bar">
+          <p className="status-title">STATUS DA TORRA</p>
           <p>Temperatura: 160°C</p>
           <p>Pressão: 7,4atm </p>
           <p>ROR: 20</p>
         </div>
-        <div className="controlButtons">
-          <p className="buttonsTitle">CONTROLES</p>
-          <div className="botoes">
+        <div className="control-buttons">
+          <p className="buttons-title">CONTROLES</p>
+          <div className="buttons">
             <div className="button1">
               <p>Mexedor</p>
               <ButtonController1 />
@@ -41,12 +39,12 @@ function Automatico() {
             </div>
           </div>
         </div>
-        <div className="timeChronometer">
-          <p className="timeTitle">TEMPO DE TORRA</p>
+        <div className="time-chronometer">
+          <p className="time-title">TEMPO DE TORRA</p>
           <Chronometer />
         </div>
         <div className="informations">
-          <p className="informationsTitle">OUTRAS INFORMAÇÕES</p>
+          <p className="informations-title">OUTRAS INFORMAÇÕES</p>
           <p>Pressão: 7,4 atm </p>
           <p>Umidade: 30% </p>
           <p>Massa de Grãos: 470g </p>
@@ -56,4 +54,4 @@ function Automatico() {
   );
 }
 
-export default Automatico;
+export default Automatic;

@@ -1,11 +1,11 @@
 /*eslint-disable*/
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import RevisaoResultados from './Pages/RevisaoResultados';
+import ResultsRevision from './Pages/ResultsRevision';
 import Teste from './components/theme';
-import TemplateWithDrawer from './templates/index';
-import Automatico from './Pages/TelaAutomatico/Automatico';
-import manual from './Pages/Telamanual/manual';
+import TemplateWithDrawer from './Templates/index';
+import Automatic from './Pages/AutomaticPage/Automatic';
+import Manual from './Pages/ManualPage/manual';
 
 const valuesInfo = {
   pressao: 8.9,
@@ -22,17 +22,18 @@ const RouterComponent = ({ data }) => {
             <h1>Página Home</h1>
             <Link to="/teste">Ir para teste</Link>
             <br />
-            <Link to="/revisaoresult">Ir para Revisão de Resultados</Link>
+            <Link to="/ResultsRevision">Ir para Revisão de Resultados</Link>
             <br />
-            <Link to="/automatico">Ir para Tela Automático</Link>
-            <Link to="/manual">Ir para Tela Manual</Link>
+            <Link to="/Automatic">Ir para Tela Automático</Link>
+            <br />
+            <Link to="/Manual">Ir para Tela Manual</Link>
           </Route>
 
-          <Route path="/automatico">
-            <Automatico data={data} />
+          <Route path="/automatic">
+            <Automatic data={data} />
           </Route>
 
-          <Route path="/revisaoresult" component={RevisaoResultados} />
+          <Route path="/ResultsRevision" component={ResultsRevision} />
 
           <Route path="/teste">
             <Teste />

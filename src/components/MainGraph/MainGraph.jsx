@@ -1,9 +1,9 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import addData from '../Functions/addData';
 import { socket } from '../../index';
 import { Update } from '@material-ui/icons';
+import jquery from 'jquery';
 
 let dataArray = [
   {
@@ -29,15 +29,8 @@ function dataArr(data) {
     : ((dataArray = [...dataArray, data]), (counter = 0));
 }
 
-// function addData_(chartData, label, data) {
-//   chartData.labels.push(label);
-//   chartData.data.datasets.forEach((dataset) => {
-//     dataset.data.push(data);
-//   });
-//   chartData.update();
-// }
-
 const MainGraph = () => {
+  //var ctx = document.getElementById('main-graph').getContext('2d');
   const [chartData, setChartData] = useState({});
   const chart = () => {
     setChartData({
@@ -53,9 +46,9 @@ const MainGraph = () => {
     });
   };
   useEffect(() => {
-    // socket.on('newData', (_data) => {
-    //   dataArr(_data);
-    // });
+    socket.on('newData', (_data) => {
+      dataArr(_data);
+    });
     // setInterval(() => {
     //   numErrTime.push(numErr);
     // }, 15 * 100);
@@ -65,14 +58,14 @@ const MainGraph = () => {
     // }, 15 * 60 * 1000);
     // chart.update();
     //addData_(chart, 'a', 2);
-    setInterval(() => {
-      chartData.labels.push('a');
-    }, 1 * 1000);
+
+    chart();
   }, []);
 
   return (
     <div style={{ height: '50%', width: '80%' }}>
       <Line
+        id="main-graph"
         data={chartData}
         options={{
           responsive: true,

@@ -5,13 +5,13 @@
 }
 
 /* Campo para salvar nome */
-.salvar-nome {
+.save-name {
   height: 40px;
 
   display: flex;
   gap: 30px;
 }
-.salvar-nome input {
+.save-name input {
   padding: 10px;
   flex-grow: 2;
   height: 100%;
@@ -38,29 +38,29 @@
 }
 
 /* Grafico */
-.grafico {
+.graph {
   margin-top: 20px;
   height: 400px;
 }
 
 /* Informações */
-.informacoes {
+.informations {
   margin-top: 20px;
   height: 200px;
 
   display: flex;
   flex-direction: column;
 }
-.informacoes h1 {
+.informations h1 {
   font-size: 22px;
   line-height: 0;
 }
-.colunas-info {
+.cols-info {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.coluna-info {
+.col-info {
   width: 30%;
   color: var(--colorFont);
   font-size: 18px;

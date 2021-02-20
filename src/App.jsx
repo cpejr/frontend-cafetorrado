@@ -1,6 +1,6 @@
 /* eslint-disable*/
 import React, { useState } from 'react';
-import ThemeContextProvider from './Context/ThemeContext';
+import ThemeContextProvider from './Context/themeContext';
 import './App.css';
 import RouterComponent from './routes';
 

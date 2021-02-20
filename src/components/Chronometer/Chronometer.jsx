@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 
-import './Chronometer.css';
+import './chronometer.css';
 
 function Chronometer() {
-  const [time, setTime] = useState({ minuto: 0, segundo: 0 });
+  const [time, setTime] = useState({ minute: 0, second: 0 });
 
   function addSecond() {
-    var meuSegundo = time.segundo;
-    var meuMinuto = time.minuto;
+    var mySecond = time.second;
+    var myMinute = time.minute;
 
-    meuSegundo++;
-    if (meuSegundo > 59) {
-      meuMinuto++;
-      meuSegundo = 0;
+    mySecond++;
+    if (mySecond > 59) {
+      myMinute++;
+      mySecond = 0;
     }
-    setTime({ minuto: meuMinuto, segundo: meuSegundo });
+    setTime({ minute: myMinute, second: mySecond });
   }
 
-  function StartChronometer() {
+  function startChronometer() {
     setInterval(addSecond, 1000);
   }
 
   return (
-    <div className="chronometerContainer">
+    <div className="chronometer-container">
       <div id="buttons">
         <button id="change" type="button">
           Start / Stop
@@ -36,7 +36,7 @@ function Chronometer() {
         <span>:</span>
         <span id="seconds">00</span>
         <span>:</span>
-        <span id="thousandths">0.00</span>
+        <span id="thousands">0.00</span>
       </div>
       <table id="log" />
     </div>

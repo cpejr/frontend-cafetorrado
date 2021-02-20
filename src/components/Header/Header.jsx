@@ -8,7 +8,7 @@ import './Header.css';
 
 function Header() {
   return (
-    <div className="headerContainer">
+    <div className="header-container">
       <p className="date">
         {format(new Date(), 'MMM dd, hh:mm', { locale: ptBR })}
       </p>

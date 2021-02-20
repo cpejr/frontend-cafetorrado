@@ -1,13 +1,13 @@
 /* eslint-disable */
-import { React, useState } from 'react';
-import { FaPowerOff } from 'react-icons/fa';
-import Chronometer from '../../components/Chronometer/Chronometer';
-import BarsGraph from '../../components/BarsGraph/BarsGraph';
-import MainGraph from '../../components/MainGraph/MainGraph';
-import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
-import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
+import { React, useState } from "react";
+import { FaPowerOff } from "react-icons/fa";
+import Chronometer from "../../components/Chronometer/Chronometer";
+import BarsGraph from "../../components/BarsGraph/BarsGraph";
+import MainGraph from "../../components/MainGraph/MainGraph";
+import ButtonController1 from "../../components/Buttons/ButtonsControllers/ButtonController1";
+import ButtonController2 from "../../components/Buttons/ButtonsControllers/ButtonController2";
 
-import './Automatic.css';
+import "./Automatic.css";
 
 // <BarsGraph />
 function Automatic() {

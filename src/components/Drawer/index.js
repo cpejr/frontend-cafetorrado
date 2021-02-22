@@ -52,9 +52,9 @@ const DrawerComponent = ({ open, toggle, valuesInfo }) => (
                   <input
                     type="radio"
                     onClick={() => {
-                      history.push('/automatico');
+                      history.push('/automatic');
                     }}
-                    name="automatico"
+                    name="automatic"
                   />
                 )}
               />

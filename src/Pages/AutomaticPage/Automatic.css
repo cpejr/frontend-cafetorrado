@@ -43,7 +43,7 @@
   color: var(--fontColor);
   font-size: 18px;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -112,14 +112,14 @@
   font-weight: 300;
   color: var(--fontColor);
   font-size: 18px;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
+  margin: 0;
 }
 .informations-title {
   width: 100%;
   font-size: 18px;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }

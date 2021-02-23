@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { MdBrightness6 } from 'react-icons/md';
+import Brightness6Icon from '@material-ui/icons/Brightness6';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  FormControl,
+  FormControlLabel,
+  RadioGroup,
+} from '@material-ui/core';
 import './ThemeContext.css';
 
 const themes = {
@@ -103,19 +112,20 @@ function ThemeContextProvider({ children }) {
 
   function ThemeSwitch() {
     return (
-      <button
-        className="buttonTheme"
-        type="button"
+      <ListItem
+        button
         onClick={toggleTheme}
         checked={themeName === 'technologic'}
       >
-        <MdBrightness6
-          checkedIcon={false}
-          uncheckedIcon={false}
-          color="#E0E0E0"
-        />
-        <span>Temas</span>
-      </button>
+        <ListItemIcon>
+          <Brightness6Icon
+            checkedIcon={false}
+            uncheckedIcon={false}
+            className="button-theme"
+          />
+        </ListItemIcon>
+        <ListItemText>Temas</ListItemText>
+      </ListItem>
     );
   }
 

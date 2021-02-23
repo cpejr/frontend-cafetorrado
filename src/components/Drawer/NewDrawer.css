@@ -1,0 +1,85 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    
+  }
+ 
+  
+  .MuiDrawer-paperAnchorDockedLeft {
+    border: none;
+    
+  }
+  
+  .header {
+    background-color: #233643;
+    justify-content: center;
+    color: white;
+    
+  }
+  
+  .menu-bar {
+    background-color: #1b2126;
+    height: 100%;
+    
+  }
+  
+  .top-divider {
+    color: #1b2126;
+    background-color: #1b2126;
+  }
+  
+  .menu-icon {
+    color: white;
+  }
+  
+  .menu-icon svg {
+    color: white;
+  }
+  
+  .menu-text {
+    color: white;
+  }
+  
+  .menu-monitoramento-radio {
+    color: white;
+    
+  }
+  .menu-monitoramento-radio.closed{
+    display: none !important;
+    
+  }
+  
+  .content {
+    color: white;
+    background-color: #0e1317;
+    height: 100vh;
+    border: none;
+  
+  }
+  
+  .drawer {
+    border: none !important;
+    
+  }
+  
+  .outras-info {
+    color: white;
+    background-color: #1b2126;
+    padding: 1rem;
+  }
+  .outras-info h1 {
+    font-size: 16px;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  
+  .outras-info p {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .outras-info p strong {
+    font-weight: 300;
+    color: #cacaca;
+  }
+  

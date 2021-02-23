@@ -7,6 +7,7 @@ import TemplateWithDrawer from './Templates/index';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
 
+
 const valuesInfo = {
   pressao: 8.9,
   umidade: 79,
@@ -25,12 +26,12 @@ const RouterComponent = ({ data }) => {
             <br />
             <Link to="/ResultsRevision">Ir para Revisão de Resultados</Link>
             <br />
-            <Link to="/Automatic">Ir para Tela Automático</Link>
+            <Link to="/automatic">Ir para Tela Automático</Link>
             <br />
             <Link to="/Manual">Ir para Tela Manual</Link>
           </Route>
 
-          <Route path="/Automatic">
+          <Route path="/automatic">
             <Automatic data={data} />
           </Route>
 

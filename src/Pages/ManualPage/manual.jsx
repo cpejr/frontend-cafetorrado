@@ -13,7 +13,7 @@ function Manual() {
     <div className="tela-container">
       <div className="upper-part">
         <p className="history-graph-title">HISTÓRICO DE TEMPERATURA</p>
-        <MainGraph />
+        <MainGraph />        
       </div>
       <div className="lower-part">
         <div className="status-bar">

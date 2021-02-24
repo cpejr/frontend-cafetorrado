@@ -38,7 +38,7 @@ const INITALLDATA = {
       label: 'waterTemp',
       data: [],
       borderColor: '',
-      borderWidth: 2,
+      borderWidth: 3,
       pointRadius: 0,
     },
 
@@ -47,7 +47,7 @@ const INITALLDATA = {
       label: 'ROR',
       data: [],
       borderColor:'',
-      borderWidth:2,
+      borderWidth:3,
       pointRadius: 0,
     },
 
@@ -56,7 +56,7 @@ const INITALLDATA = {
       label: 'fireTemp',
       data: [],
       borderColor:'',
-      borderWidth:2,
+      borderWidth:3,
       pointRadius: 0,
     },
 
@@ -65,7 +65,7 @@ const INITALLDATA = {
       label: 'pressure',
       data: [],
       borderColor:'',
-      borderWidth:2,
+      borderWidth:3,
       pointRadius: 0,
     },
 
@@ -74,7 +74,7 @@ const INITALLDATA = {
       label: 'speed',
       data: [],
       borderColor:'',
-      borderWidth:2,
+      borderWidth:3,
       pointRadius: 0,
     },
 
@@ -83,7 +83,7 @@ const INITALLDATA = {
       label: 'grainyness',
       data: [],
       borderColor:'',
-      borderWidth:2,
+      borderWidth:3,
       pointRadius: 0,
     }
 
@@ -93,16 +93,21 @@ const INITALLDATA = {
 const MainGraph = () => {
   const mainGraph = useRef();
   const { themeName } = useContext(ThemeContext);
-
+  
   useEffect(() => {
-    const color = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');
+    const color1 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');
+    const color2 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor2');
+    const color3 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor3');
+    const color4 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor4');
+    const color5 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor5');
+    const color6 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor6');
     (!mainGraph.current.chartInstance) ? false :      
-    (mainGraph.current.chartInstance.data.datasets[0].borderColor = 'blue', 
-      mainGraph.current.chartInstance.data.datasets[1].borderColor = 'red', 
-      mainGraph.current.chartInstance.data.datasets[2].borderColor = 'green', 
-      mainGraph.current.chartInstance.data.datasets[3].borderColor = 'yellow', 
-      mainGraph.current.chartInstance.data.datasets[4].borderColor = 'purple', 
-      mainGraph.current.chartInstance.data.datasets[5].borderColor = 'brown', 
+    ( mainGraph.current.chartInstance.data.datasets[0].borderColor = color1, 
+      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2, 
+      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3, 
+      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4, 
+      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5, 
+      mainGraph.current.chartInstance.data.datasets[5].borderColor = color6, 
       mainGraph.current.chartInstance.update())
   }, [themeName])
 
@@ -121,8 +126,11 @@ const MainGraph = () => {
   }, []);
 
   return (
-    <div style={{paddingLeft: '3vw', height: '40%', width: '85%' }}>
+    <div>
       <Line
+      height = '35'
+      width = '100'
+      padding = '0'
         id="main-graph"
         data={INITALLDATA}
         ref={mainGraph}

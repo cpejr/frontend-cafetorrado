@@ -9,7 +9,7 @@ const themes = {
     headerBackground: '#091929',
     dashboardBackground: '#091929',
     componentsBackgroud: '#0E1317',
-    graphColor1: 'yellow',
+    graphColor1: 'blue',
     graphColor2: '#C6DBEF',
     graphColor3: '#9ECAE1',
     graphColor4: '#4292C6',

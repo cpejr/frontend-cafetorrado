@@ -1,7 +1,7 @@
 /* eslint-disable*/
 import React, { Component, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import TemplateWithDrawer from './templates';
+import TemplateWithDrawer from './Templates';
 import App from './App';
 import './index.css';
 const io = require('socket.io-client');

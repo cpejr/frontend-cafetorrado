@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ResultsRevision from './Pages/ResultsRevision';
 import Teste from './components/theme';
-import TemplateWithDrawer from './templates/index';
+import TemplateWithDrawer from './Templates/index';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/manual';
 

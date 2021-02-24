@@ -1,18 +1,20 @@
 /* eslint-disable */
-import { React, useState } from "react";
+import { React, useEffect, useState, useRef } from "react";
 import { FaPowerOff } from "react-icons/fa";
 import Chronometer from "../../components/Chronometer/Chronometer";
 import BarsGraph from "../../components/BarsGraph/BarsGraph";
 import MainGraph from "../../components/MainGraph/MainGraph";
 import ButtonController1 from "../../components/Buttons/ButtonsControllers/ButtonController1";
 import ButtonController2 from "../../components/Buttons/ButtonsControllers/ButtonController2";
-
+import { socket } from '../../index';
 import "./Automatic.css";
-
 // <BarsGraph />
 function Automatic() {
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-
+  const [counter, setCounter] = useState(0);  
+  useEffect(()=>{
+    socket.emit('manualData', (counter))
+  },[counter] )  
   return (
     <div className="tela-container">
       <div className="upper-part">
@@ -44,11 +46,13 @@ function Automatic() {
           <Chronometer />
         </div>
         <div className="informations">
-          <p className="informations-title">OUTRAS INFORMAÇÕES</p>
-          <p>Pressão: 7,4 atm </p>
+          <p className="informations-title">OUTRAS INFORMAÇÕES</p>  
+
+          <p>Pressão: {counter} atm </p>
           <p>Umidade: 30% </p>
           <p>Massa de Grãos: 470g </p>
-        </div>
+          
+        </div>  
       </div>
     </div>
   );

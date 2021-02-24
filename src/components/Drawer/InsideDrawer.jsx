@@ -93,6 +93,9 @@ const history= useHistory();
           <FormControlLabel
             value="manual"
             control={<StyledRadio />}
+            onClick={() => {
+              history.push('/manual');
+            }}
             label="Manual"
           />
         </RadioGroup>

@@ -63,7 +63,7 @@
   }
   
   .outras-info {
-    color: white;
+    color: var(--fontColorComponents);
     background-color: var(--headerBackground);;
     padding: 1rem;
   }
@@ -80,6 +80,6 @@
   
   .outras-info p strong {
     font-weight: 300;
-    color: #cacaca;
+    color: var(--fontColorComponents);
   }
   

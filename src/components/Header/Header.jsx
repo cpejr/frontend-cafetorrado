@@ -14,11 +14,11 @@ function Header() {
       </p>
       <div className="buttons">
         <button className="crack" type="button">
-          <BiPlayCircle size={23} color="#E0E0E0" />
+          <BiPlayCircle size={23} color="var(--fontColorComponents)" />
         </button>
 
         <button className="power" type="button">
-          <FiPower size={23} color="#E0E0E0" />
+          <FiPower size={23} color="var(--fontColorComponents)" />
         </button>
       </div>
     </div>

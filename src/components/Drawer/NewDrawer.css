@@ -11,37 +11,37 @@
   }
   
   .header {
-    background-color: #233643;
+    background-color: var(--headerMenuBackground);
     justify-content: center;
-    color: white;
+    color: var(--fontColorComponents);
     
   }
   
   .menu-bar {
-    background-color: #1b2126;
+    background-color: var(--headerBackground);;
     height: 100%;
     
   }
   
   .top-divider {
-    color: #1b2126;
-    background-color: #1b2126;
+    color: var(--headerBackground);;
+    background-color: var(--headerBackground);;
   }
   
   .menu-icon {
-    color: white;
+    color: var(--fontColorComponents);
   }
   
   .menu-icon svg {
-    color: white;
+    color: var(--fontColorComponents);
   }
   
   .menu-text {
-    color: white;
+    color: var(--fontColorComponents);
   }
   
   .menu-monitoramento-radio {
-    color: white;
+    color: var(--fontColorComponents);
     
   }
   .menu-monitoramento-radio.closed{
@@ -50,7 +50,7 @@
   }
   
   .content {
-    color: white;
+    color: var(--fontColorComponents);
     background-color: #0e1317;
     height: 100vh;
     border: none;
@@ -64,7 +64,7 @@
   
   .outras-info {
     color: white;
-    background-color: #1b2126;
+    background-color: var(--headerBackground);;
     padding: 1rem;
   }
   .outras-info h1 {

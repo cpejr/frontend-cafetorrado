@@ -2,29 +2,42 @@
 import { React, useState }  from "react";
 import { render } from "react-dom";
 import { Knob, Value } from "react-rotary-knob";
-import { UseDebounce } from "../../Debounce/UseDebounce"
 import * as skins from 'react-rotary-knob-skin-pack';
-import { debounce } from "lodash-es";
 import { socket } from '../../../index'
 
 
 function ButtonAdjustment(){
-  const [state, setState] = useState({value: 0})
+  const [buttonValue, setButtonValue] = useState(0)
+  const [skinButton, setSkinButton] = useState(skins.s11)
+  const knobstyle = {
+    width: "80px",
+    height: "80px"
+  };
+        // const maxDistance = 200;
+        // let distance = Math.abs(val - this.state.value);
+        // if (distance > maxDistance) {
+        //   return;
+        // } else {
+        //   this.setState({ value: val });
+        // }
+  function sendData(){socket.emit('dataFromButton', (buttonValue))}
   function changeValue(val) {
-    setState({ value:val })
+    setButtonValue(val)
   }
-  const debouncedFunction = UseDebounce(value => {
-    console.log(value)
-    changeValue.bind(this)
-  }, 300);
     return(
     <div>
-      {state.value}
+      {buttonValue}
       <Knob id = "myKnob" 
-      onChange={ev => debouncedFunction(ev.bind.value)} 
-      min={0} max={1000} 
-      value={state.value} 
-      skin={skins.s12}/>
+      onChange={changeValue}
+      style = {knobstyle} 
+      rotateDegrees = {-135}
+      clampMin = {0}
+      clampMax = {270}
+      onEnd= {sendData}
+      min={0} max={1} 
+      value={buttonValue} 
+      preciseMode = {true}
+      skin={skinButton}/>
     </div>
     )
   }

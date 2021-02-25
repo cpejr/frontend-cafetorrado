@@ -3,12 +3,14 @@ import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext'
+import data from '../RevisionGraph/data';
 
 let counter = 0;
 let numErr = 0;
 var numErrTime = [];
 
 function updateData(mainGraph, data) {
+  if(!(mainGraph?.current?.chartInstance)) return 
   mainGraph.current.chartInstance.data.labels.push(data.time);
   mainGraph.current.chartInstance.data.datasets[0].data.push(data.waterTemp);
   mainGraph.current.chartInstance.data.datasets[1].data.push(data.ROR);
@@ -90,8 +92,7 @@ const INITALLDATA = {
 
 const MainGraph = () => {
   const mainGraph = useRef();
-  const { themeName } = useContext(ThemeContext);
-  
+  const { theme } = useContext(ThemeContext);
   useEffect(() => {
     const color1 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');
     const color2 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor2');
@@ -107,7 +108,7 @@ const MainGraph = () => {
       mainGraph.current.chartInstance.data.datasets[4].borderColor = color5, 
       mainGraph.current.chartInstance.data.datasets[5].borderColor = color6, 
       mainGraph.current.chartInstance.update())
-  }, [themeName])
+  }, [theme])
 
   useEffect(() => {
 
@@ -126,15 +127,27 @@ const MainGraph = () => {
   return (
     <div>
       <Line
-      height = '35'
+      height = '40'
       width = '100'
       padding = '0'
         id="main-graph"
         data={INITALLDATA}
         ref={mainGraph}
         options={{
+          legend: {
+            position: 'top',
+            labels: {
+              //padding: 20,
+              //fontSize: 20,
+            },
+          },
           responsive: true,
           title: { text: ' Tempo de torra ', display: true },
+          elements: {
+            line: {
+                tension: 0
+            }
+        },
           scales: {
             yAxes: [
               {
@@ -153,7 +166,7 @@ const MainGraph = () => {
                 gridLines: { display: false },
                 ticks: {
                   autoSkip: true,
-                  maxTicksLimit: 100,
+                  maxTicksLimit:5,
                   beginAtZero: true,
                 },
               },

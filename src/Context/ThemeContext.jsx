@@ -60,9 +60,14 @@ export const ThemeContext = React.createContext({});
 
 function ThemeContextProvider({ children }) {
   const [themeName, setThemeName] = useState('technologic');
-  const [theme, setTheme] = useState(themes[themeName]);
+  const [theme, setTheme] = useState();
 
-  const setCSSVariables = (themeAux) => {
+  useEffect(() => {
+    setCSSVariables(themes[themeName]);
+    setTheme(themes[themeName]);
+  }, []);
+
+  function setCSSVariables(themeAux) {
     for (const value in themeAux) {
       if (themeAux[value]) {
         document.documentElement.style.setProperty(
@@ -71,7 +76,7 @@ function ThemeContextProvider({ children }) {
         );
       }
     }
-  };
+  }
 
   const toggleTheme = () => {
     if (themeName === 'technologic') {
@@ -97,8 +102,10 @@ function ThemeContextProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    setCSSVariables(theme);
-    localStorage.setItem('my-theme', themeName);
+    if (theme) {
+      setCSSVariables(theme);
+      localStorage.setItem('my-theme', themeName);
+    }
   }, [theme]);
 
   function ThemeSwitch() {
@@ -120,7 +127,10 @@ function ThemeContextProvider({ children }) {
   }
 
   return (
-    <ThemeContext.Provider value={{ toggleTheme, themeName, ThemeSwitch }}>
+    <ThemeContext.Provider value={{
+      toggleTheme, themeName, ThemeSwitch, theme,
+    }}
+    >
       {children}
     </ThemeContext.Provider>
   );

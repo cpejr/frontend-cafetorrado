@@ -1,4 +1,4 @@
-/*eslint-disable*/
+/*eslint-disable*/  
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
@@ -20,12 +20,12 @@ function updateData(mainGraph, data) {
   mainGraph.current.chartInstance.data.datasets[5].data.push(data.grainyness);
   mainGraph.current.chartInstance.update();
 
-  const position = mainGraph.current.chartInstance.data.labels.length - 1;
-  const _position = mainGraph.current.chartInstance.data.datasets[0].data.length - 1
-  let isError = (mainGraph.current.chartInstance.data.labels[position] !== data.time)
-  let _isError = (mainGraph.current.chartInstance.data.datasets[0].data[_position] !== data.waterTemp)
-  isError || _isError ? (counter++) : (numErr = counter),(counter = 0);
-  //console.log(counter)
+  // const position = mainGraph.current.chartInstance.data.labels.length - 1;
+  // const _position = mainGraph.current.chartInstance.data.datasets[0].data.length - 1
+  // let isError = (mainGraph.current.chartInstance.data.labels[position] !== data.time)
+  // let _isError = (mainGraph.current.chartInstance.data.datasets[0].data[_position] !== data.waterTemp)
+  // isError || _isError ? (counter++) : (numErr = counter),(counter = 0);
+  // //console.log(counter)
 }
 
 
@@ -44,7 +44,7 @@ const INITALLDATA = {
 
     {
       fill: false,
-      label: 'ROR',
+      label: 'ROR' + ' ' + counter,
       data: [],
       borderColor:'',
       borderWidth:3,
@@ -128,7 +128,7 @@ const MainGraph = () => {
     <div>
       <Line
       height = '40'
-      width = '100'
+      width = '99'
       padding = '0'
         id="main-graph"
         data={INITALLDATA}

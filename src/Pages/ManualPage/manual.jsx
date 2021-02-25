@@ -1,29 +1,39 @@
-/* eslint-disable */
+/*eslint-disable*/
 import { React, useState } from 'react';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import MainGraph from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
-import { socket } from '../../index'
+import { socket } from '../../index';
 import './Manual.css';
 
 function Manual() {
-  socket.on('buttonData', (data) => {
-    console.log(data)
-  })
+  const [graphData, setGraphData] = useState({
+    waterTemp: 0,
+    ROR: 0,
+    fireTemp: 0,
+    pressure: 0,
+    speed: 0,
+    grainyness: 0,
+  });
+  socket.on('newData', (data) => { setGraphData(data) });
+
+  // socket.on('buttonData', (data) => {
+  //   console.log(data);
+  // });
   return (
     <div className="tela-container">
       <div className="upper-part">
         <p className="history-graph-title">HISTÓRICO DE TEMPERATURA</p>
-        <MainGraph />        
+        <MainGraph />
       </div>
       <div className="lower-part">
         <div className="status-bar">
           <p className="status-title">STATUS DA TORRA</p>
-          <p>Temperatura: 160 °C</p>
-          <p>Pressão: 7,4atm</p>
-          <p>ROR: 20</p>
+          <p>Tmperatura da água:{graphData.waterTemp}</p>
+          <p>Granulosidade: {graphData.grainyness}</p>
+          <p>ROR: {graphData.ROR}</p>
         </div>
         <div className="control-buttons">
           <p className="buttons-title">CONTROLES</p>
@@ -44,7 +54,7 @@ function Manual() {
         </div>
         <div className="adjustments">
           <p className="adjustments-title">AJUSTES</p>
-          <div className="adjustments-buttons">  
+          <div className="adjustments-buttons">
             <div className="rotation">
               <ButtonAdjustment />
               <p>Rotação do Tambor</p>

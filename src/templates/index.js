@@ -1,5 +1,5 @@
 import React from 'react';
-import DrawerComponent from '../components/Drawer';
+import DrawerComponent from '../components/Drawer/NewDrawer';
 import { useToggle } from '../Hooks';
 import Header from '../components/Header/Header';
 import './styles.css';

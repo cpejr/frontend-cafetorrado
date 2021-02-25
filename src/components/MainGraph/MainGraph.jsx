@@ -23,9 +23,7 @@ function updateData(mainGraph, data) {
   let isError = (mainGraph.current.chartInstance.data.labels[position] !== data.time)
   let _isError = (mainGraph.current.chartInstance.data.datasets[0].data[_position] !== data.waterTemp)
   isError || _isError ? (counter++) : (numErr = counter),(counter = 0);
-  console.log(counter)
-
-
+  //console.log(counter)
 }
 
 

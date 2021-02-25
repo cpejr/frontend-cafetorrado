@@ -5,10 +5,13 @@ import MainGraph from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
-
-import './manual.css';
+import { socket } from '../../index'
+import './Manual.css';
 
 function Manual() {
+  socket.on('buttonData', (data) => {
+    console.log(data)
+  })
   return (
     <div className="tela-container">
       <div className="upper-part">

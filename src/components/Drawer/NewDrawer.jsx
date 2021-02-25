@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MiniDrawer({ children, valuesInfo }) {
   const classes = useStyles();
-  const [open, drawerToggle] = useToggle(true);
+  const [open, drawerToggle] = useToggle(false);
 
   return (
     <div className={classes.root}>

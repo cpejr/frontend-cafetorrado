@@ -25,6 +25,7 @@
 }
 
 .lower-part {
+  padding-top: 3vh;
   height: 30%;
   display: flex;
   flex-direction: row;
@@ -122,17 +123,10 @@
   display: flex;
   flex-direction: row;
 }
-.rotation {
-  width: 33.3%;
-  font-size: 12px;
-  text-align: center;
-}
-.air {
-  width: 33.3%;
-  font-size: 12px;
-  text-align: center;
-}
-.flame {
+.rotation, .air, .flame {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
   width: 33.3%;
   font-size: 12px;
   text-align: center;

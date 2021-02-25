@@ -6,7 +6,7 @@ import Teste from './components/theme';
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import TemplateWithDrawer from './Templates/index';
 import Automatic from './Pages/AutomaticPage/Automatic';
-import Manual from './Pages/ManualPage/manual';
+import Manual from './Pages/ManualPage/Manual';
 import '../src/components/Animations/Animations.css'
 import { StylesProvider } from '@material-ui/core';
 

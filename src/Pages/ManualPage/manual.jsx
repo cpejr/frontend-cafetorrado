@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import MainGraph from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
@@ -17,26 +17,22 @@ function Manual() {
     speed: 0,
     grainyness: 0,
   });
-  socket.on('newData', (data) => { setGraphData(data) });
 
-  // socket.on('buttonData', (data) => {
-  //   console.log(data);
-  // });
+  useEffect(()=>{
+    socket.on('newData', (data) => { setGraphData(data) });
+  }, [])
   return (
     <div className="tela-container">
       <div className="upper-part">
-        <p className="history-graph-title">HISTÓRICO DE TEMPERATURA</p>
         <MainGraph />
       </div>
       <div className="lower-part">
-        <div className="status-bar">
-          <p className="status-title">STATUS DA TORRA</p>
+        <div className="status-bar">  
           <p>Tmperatura da água:{graphData.waterTemp}</p>
           <p>Granulosidade: {graphData.grainyness}</p>
           <p>ROR: {graphData.ROR}</p>
         </div>
         <div className="control-buttons">
-          <p className="buttons-title">CONTROLES</p>
           <div className="buttons">
             <div className="button1">
               <p>Mexedor</p>
@@ -49,11 +45,9 @@ function Manual() {
           </div>
         </div>
         <div className="time-chronometer">
-          <p className="time-title">TEMPO DE TORRA</p>
           <Chronometer />
         </div>
         <div className="adjustments">
-          <p className="adjustments-title">AJUSTES</p>
           <div className="adjustments-buttons">
             <div className="rotation">
               <ButtonAdjustment />

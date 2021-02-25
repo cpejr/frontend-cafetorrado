@@ -127,9 +127,9 @@ const MainGraph = () => {
   return (
     <div>
       <Line
-      height = '40'
-      width = '99'
-      padding = '0'
+        height = '500'
+        width = '1200'
+        padding = '0'
         id="main-graph"
         data={INITALLDATA}
         ref={mainGraph}
@@ -141,7 +141,8 @@ const MainGraph = () => {
               //fontSize: 20,
             },
           },
-          responsive: true,
+          maintainAspectRatio: false,
+          
           title: { text: ' Tempo de torra ', display: true },
           elements: {
             line: {
@@ -166,7 +167,7 @@ const MainGraph = () => {
                 gridLines: { display: false },
                 ticks: {
                   autoSkip: true,
-                  maxTicksLimit:5,
+                  maxTicksLimit:20,
                   beginAtZero: true,
                 },
               },

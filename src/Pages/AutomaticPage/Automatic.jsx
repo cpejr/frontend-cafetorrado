@@ -9,27 +9,34 @@ import ButtonController2 from "../../components/Buttons/ButtonsControllers/Butto
 import { socket } from '../../index';
 import "./Automatic.css";
 // <BarsGraph />
+
 function Automatic() {
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-  const [counter, setCounter] = useState(0);  
-  useEffect(()=>{
-    socket.emit('manualData', (counter))
-  },[counter] )  
+  const [graphData, setGraphData] = useState({
+    waterTemp: 0,
+    ROR: 0,
+    fireTemp: 0,
+    pressure: 0,
+    speed: 0,
+    grainyness: 0,
+  });
+  useEffect(() =>{
+    socket.on('newData', (data) => {setGraphData(data)})  
+  },[])
   return (
     <div className="tela-container">
       <div className="upper-part">
-        <p className="history-graph-title">HISTÓRICO DE TEMPERATURA</p>
         <MainGraph />        
       </div>
       <div className="lower-part">
         <div className="status-bar">
-          <p className="status-title">STATUS DA TORRA</p>
+          
           <p>Temperatura: 160°C</p>
           <p>Pressão: 7,4atm </p>
           <p>ROR: 20</p>
         </div>
         <div className="control-buttons">
-          <p className="buttons-title">CONTROLES</p>
+          
           <div className="buttons">
             <div className="button1">
               <p>Mexedor</p>
@@ -42,15 +49,12 @@ function Automatic() {
           </div>
         </div>
         <div className="time-chronometer">
-          <p className="time-title">TEMPO DE TORRA</p>
           <Chronometer />
         </div>
         <div className="informations">
-          <p className="informations-title">OUTRAS INFORMAÇÕES</p>  
-
-          <p>Pressão: {counter} atm </p>
-          <p>Umidade: 30% </p>
-          <p>Massa de Grãos: 470g </p>
+          <p>Pressão:{graphData.waterTemp}</p>
+          <p>Temperatura: {graphData.grainyness}</p>
+          <p>ROR: {graphData.ROR}</p>
           
         </div>  
       </div>

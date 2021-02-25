@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { MdBrightness6 } from 'react-icons/md';
+import Brightness6Icon from '@material-ui/icons/Brightness6';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  FormControl,
+  FormControlLabel,
+  RadioGroup,
+} from '@material-ui/core';
 import './ThemeContext.css';
 
 const themes = {
   technologic: {
     backgroundColor: '#0B1E40',
     fontColor: '#FFFFFF',
+    headerMenuBackground: '#00193E',
     headerBackground: '#091929',
     dashboardBackground: '#091929',
     componentsBackgroud: '#0E1317',
-    graphColor1: '#DEEBF7',
+    fontColorComponents: '#FFFFFF',
+    graphColor1: 'blue',
     graphColor2: '#C6DBEF',
     graphColor3: '#9ECAE1',
     graphColor4: '#4292C6',
@@ -19,10 +30,12 @@ const themes = {
   grey: {
     backgroundColor: '#F3EFEF',
     fontColor: '#0E1317',
-    headerBackground: '#091929',
-    dashboardBackground: '#091929',
+    headerMenuBackground: '#858080',
+    headerBackground: '#9F9C9C',
+    dashboardBackground: '#9F9C9C',
     componentsBackgroud: '#0E1317',
-    graphColor1: '#DEEBF7',
+    fontColorComponents: '#0E1317',
+    graphColor1: 'red',
     graphColor2: '#C6DBEF',
     graphColor3: '#9ECAE1',
     graphColor4: '#4292C6',
@@ -32,10 +45,12 @@ const themes = {
   white: {
     backgroundColor: '#FFFFFF',
     fontColor: '#0E1317',
-    headerBackground: '#091929',
-    dashboardBackground: '#091929',
+    headerMenuBackground: '#858080',
+    headerBackground: '#9F9C9C',
+    dashboardBackground: '#9F9C9C',
     componentsBackgroud: '#0E1317',
-    graphColor1: '#DEEBF7',
+    fontColorComponents: '#0E1317',
+    graphColor1: 'blue',
     graphColor2: '#C6DBEF',
     graphColor3: '#9ECAE1',
     graphColor4: '#4292C6',
@@ -45,9 +60,11 @@ const themes = {
   dark: {
     backgroundColor: '#0E1317',
     fontColor: '#FFFFFF',
-    headerBackground: '#091929',
-    dashboardBackground: '#091929',
+    headerMenuBackground: '#233643',
+    headerBackground: '#1b2126',
+    dashboardBackground: '#1b2126',
     componentsBackgroud: '#0E1317',
+    fontColorComponents: '#FFFFFF',
     graphColor1: '#DEEBF7',
     graphColor2: '#C6DBEF',
     graphColor3: '#9ECAE1',
@@ -60,9 +77,14 @@ export const ThemeContext = React.createContext({});
 
 function ThemeContextProvider({ children }) {
   const [themeName, setThemeName] = useState('technologic');
-  const [theme, setTheme] = useState(themes[themeName]);
+  const [theme, setTheme] = useState();
 
-  const setCSSVariables = (themeAux) => {
+  useEffect(() => {
+    setCSSVariables(themes[themeName]);
+    setTheme(themes[themeName]);
+  }, []);
+
+  function setCSSVariables(themeAux) {
     for (const value in themeAux) {
       if (themeAux[value]) {
         document.documentElement.style.setProperty(
@@ -71,7 +93,7 @@ function ThemeContextProvider({ children }) {
         );
       }
     }
-  };
+  }
 
   const toggleTheme = () => {
     if (themeName === 'technologic') {
@@ -97,30 +119,36 @@ function ThemeContextProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    setCSSVariables(theme);
-    localStorage.setItem('my-theme', themeName);
+    if (theme) {
+      setCSSVariables(theme);
+      localStorage.setItem('my-theme', themeName);
+    }
   }, [theme]);
 
   function ThemeSwitch() {
     return (
-      <button
-        className="buttonTheme"
-        type="button"
+      <ListItem
+        button
         onClick={toggleTheme}
         checked={themeName === 'technologic'}
       >
-        <MdBrightness6
-          checkedIcon={false}
-          uncheckedIcon={false}
-          color="#E0E0E0"
-        />
-        <span>Temas</span>
-      </button>
+        <ListItemIcon>
+          <Brightness6Icon
+            checkedIcon={false}
+            uncheckedIcon={false}
+            className="button-theme"
+          />
+        </ListItemIcon>
+        <ListItemText>Temas</ListItemText>
+      </ListItem>
     );
   }
 
   return (
-    <ThemeContext.Provider value={{ toggleTheme, themeName, ThemeSwitch }}>
+    <ThemeContext.Provider value={{
+      toggleTheme, themeName, ThemeSwitch, theme,
+    }}
+    >
       {children}
     </ThemeContext.Provider>
   );

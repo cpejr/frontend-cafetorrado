@@ -1,0 +1,85 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    
+  }
+ 
+  
+  .MuiDrawer-paperAnchorDockedLeft {
+    border: none;
+    
+  }
+  
+  .header {
+    background-color: var(--headerMenuBackground);
+    justify-content: center;
+    color: var(--fontColorComponents);
+    
+  }
+  
+  .menu-bar {
+    background-color: var(--headerBackground);;
+    height: 100%;
+    
+  }
+  
+  .top-divider {
+    color: var(--headerBackground);;
+    background-color: var(--headerBackground);;
+  }
+  
+  .menu-icon {
+    color: var(--fontColorComponents);
+  }
+  
+  .menu-icon svg {
+    color: var(--fontColorComponents);
+  }
+  
+  .menu-text {
+    color: var(--fontColorComponents);
+  }
+  
+  .menu-monitoramento-radio {
+    color: var(--fontColorComponents);
+    
+  }
+  .menu-monitoramento-radio.closed{
+    display: none !important;
+    
+  }
+  
+  .content {
+    color: var(--fontColorComponents);
+    background-color: #0e1317;
+    height: 100vh;
+    border: none;
+  
+  }
+  
+  .drawer {
+    border: none !important;
+    
+  }
+  
+  .outras-info {
+    color: var(--fontColorComponents);
+    background-color: var(--headerBackground);;
+    padding: 1rem;
+  }
+  .outras-info h1 {
+    font-size: 16px;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  
+  .outras-info p {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .outras-info p strong {
+    font-weight: 300;
+    color: var(--fontColorComponents);
+  }
+  

@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MiniDrawer({ children, valuesInfo }) {
+export default function NewDrawer({ children, valuesInfo }) {
   const classes = useStyles();
   const [open, drawerToggle] = useToggle(false);
 

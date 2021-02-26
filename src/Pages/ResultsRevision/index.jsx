@@ -3,7 +3,11 @@ import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
 import RevisionGraph from '../../components/RevisionGraph';
-import fakeData from '../../components/RevisionGraph/dataManager';
+import {
+  fakeData,
+  pointFormatter,
+  filterData,
+} from '../../components/RevisionGraph/dataManager';
 
 const ResultsRevision = () => {
   const [loading, setLoading] = useState(true);
@@ -17,9 +21,9 @@ const ResultsRevision = () => {
 
   useEffect(() => {
     fakeData
-      .get({ number: 50 })
+      .get({ samples: 2000 })
       .then((data) => {
-        setDataChart(data);
+        setDataChart(filterData(data, { maxData: 150 }));
         setLoading(false);
       })
       .catch((err) => console.log(err));

@@ -5,7 +5,6 @@ import './styles.css';
 const RevisionGraph = ({ dataChart }) => (
   <Line
     data={{
-      labels: dataChart.temperature.map((_item, index) => index),
       datasets: [
         {
           label: 'Temperatura',
@@ -46,6 +45,13 @@ const RevisionGraph = ({ dataChart }) => (
     }}
     height="400"
     width="1120"
+    options={{
+      elements: {
+        point: {
+          radius: 0,
+        },
+      },
+    }}
   />
 );
 

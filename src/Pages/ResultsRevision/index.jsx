@@ -6,7 +6,7 @@ import revisionGraph from '../../components/RevisionGraph';
 
 const ResultsRevision = () => (
   <div className="content">
-    <div className="save-nome">
+    <div className="save-name">
       <input type="text" name="name" />
       <button type="button">
         <AddToPhotosIcon />
@@ -21,7 +21,7 @@ const ResultsRevision = () => (
     <div className="graph">
       <revisionGraph />
     </div>
-    <div className="informations">
+    <div className="informations-revision">
       <h1>Informações</h1>
       <div className="cols-info">
         <div className="col-info">

@@ -1,6 +1,6 @@
 const generateValues = () => Math.random() * (50 - 0);
 
-const randomDatas = (manyTimes) => {
+const randomDatas = (manyTimes = 5) => {
   var data = [];
   for (let i = 0; i < manyTimes; i++) {
     data.push(generateValues());
@@ -15,7 +15,7 @@ const data = {
       label: 'Temperatura',
       backgroundColor: 'blue',
       borderColor: 'blue',
-      data: randomDatas(5),
+      data: randomDatas(),
       fill: false,
     },
     {
@@ -23,28 +23,28 @@ const data = {
       fill: false,
       backgroundColor: 'lightblue',
       borderColor: 'lightblue',
-      data: randomDatas(5),
+      data: randomDatas(),
     },
     {
       label: 'RoR',
       fill: false,
       backgroundColor: 'gray',
       borderColor: 'gray',
-      data: randomDatas(5),
+      data: randomDatas(),
     },
     {
       label: 'Umidade',
       fill: false,
       backgroundColor: 'red',
       borderColor: 'red',
-      data: randomDatas(5),
+      data: randomDatas(),
     },
     {
       label: 'Pressão',
       fill: false,
       backgroundColor: 'white',
       borderColor: 'white',
-      data: randomDatas(5),
+      data: randomDatas(),
     },
   ],
 };

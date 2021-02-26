@@ -20,7 +20,7 @@
 
   font-size: 18px;
 }
-.salvar-nome button {
+.save-name button {
   padding: 10px;
   width: 120px;
   height: 100%;
@@ -44,14 +44,15 @@
 }
 
 /* Informações */
-.informations {
+.informations-revision {
   margin-top: 20px;
   height: 200px;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
 }
-.informations h1 {
+.informations-revision h1 {
   font-size: 22px;
   line-height: 0;
 }

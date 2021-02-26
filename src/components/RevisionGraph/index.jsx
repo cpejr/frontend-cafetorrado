@@ -6,35 +6,32 @@ import './styles.css';
 const revisionGraph = () => {
   const [dataChart, setDataChart] = useState(data);
   return (
-    <div className="chart">
-      <Line
-        data={dataChart}
-        height={null}
-        width={null}
-        options={{
-          responsive: true,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 100,
-                  beginAtZero: true,
-                },
-                gridLines: {
-                  display: false,
-                },
+    <Line
+      data={data}
+      height="1120"
+      width="400"
+      options={{
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                autoSkip: true,
+                maxTicksLimit: 100,
+                beginAtZero: true,
               },
-            ],
-            xAxes: [
-              {
-                gridLines: { display: false },
+              gridLines: {
+                display: false,
               },
-            ],
-          },
-        }}
-      />
-    </div>
+            },
+          ],
+          xAxes: [
+            {
+              gridLines: { display: false },
+            },
+          ],
+        },
+      }}
+    />
   );
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import './styles.css';
 
 const RevisionGraph = ({ dataChart }) => (
   <Line
@@ -46,9 +45,21 @@ const RevisionGraph = ({ dataChart }) => (
     height="400"
     width="1120"
     options={{
+      scales: {
+        xAxes: [
+          {
+            type: 'linear',
+            position: 'bottom',
+          },
+        ],
+      },
       elements: {
         point: {
           radius: 0,
+        },
+        line: {
+          borderWidth: 1,
+          tension: 0,
         },
       },
     }}

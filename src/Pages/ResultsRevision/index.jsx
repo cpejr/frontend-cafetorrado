@@ -5,7 +5,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import RevisionGraph from '../../components/RevisionGraph';
 import {
   fakeData,
-  pointFormatter,
   filterData,
 } from '../../components/RevisionGraph/dataManager';
 
@@ -21,9 +20,9 @@ const ResultsRevision = () => {
 
   useEffect(() => {
     fakeData
-      .get({ samples: 2000 })
+      .get({ samples: 1500 })
       .then((data) => {
-        setDataChart(filterData(data, { maxData: 150 }));
+        setDataChart(filterData(data, { maxData: 500 }));
         setLoading(false);
       })
       .catch((err) => console.log(err));

@@ -6,8 +6,8 @@ import Teste from './components/theme';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import TemplateWithDrawer from './templates/index';
 import Automatic from './Pages/AutomaticPage/Automatic';
-import Manual from './Pages/ManualPage/Manual';
-import '../src/components/Animations/Animations.css';
+import Manual from './Pages/ManualPage/manual';
+import '../src/components/Animations/Animations.css'
 import { StylesProvider } from '@material-ui/core';
 
 const valuesInfo = {

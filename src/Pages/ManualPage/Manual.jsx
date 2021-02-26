@@ -6,7 +6,7 @@ import ButtonController1 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import { socket } from '../../index';
-import './Manual.css';
+import './manual.css';
 
 function Manual() {
   const [graphData, setGraphData] = useState({

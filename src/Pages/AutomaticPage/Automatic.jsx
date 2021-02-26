@@ -8,7 +8,6 @@ import ButtonController1 from "../../components/Buttons/ButtonsControllers/Butto
 import ButtonController2 from "../../components/Buttons/ButtonsControllers/ButtonController2";
 import { socket } from '../../index';
 import "./Automatic.css";
-// <BarsGraph />
 
 function Automatic() {
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
@@ -53,7 +52,8 @@ function Automatic() {
         </div>
         <div className="informations">
           <p>Pressão:{graphData.waterTemp}</p>
-          <p>Temperatura: {graphData.grainyness}</p>
+          <p>Temperatura do Grão: {graphData.grainyness}</p>
+          <p>Temperatura do Ar: {graphData.fireTemp}</p>
           <p>ROR: {graphData.ROR}</p>
           
         </div>  

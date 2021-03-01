@@ -13,7 +13,7 @@
 }
 
 .upper-part {
-  height: 65%;
+  height: 70% !important;
 }
 .history-graph-title {
   text-align: center;
@@ -39,7 +39,7 @@
 }*/
 
 .status-bar {
-  width: 25%;
+  width: 25% !important;
   font-family: Rubik, sans-serif;
   font-weight: 300;
   color: var(--fontColor);
@@ -119,7 +119,7 @@
   flex-direction: column;
   text-align: center;
   margin: 0;
-  line-height: 5px;
+  line-height: 20px;
   
 
 }

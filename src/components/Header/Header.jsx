@@ -28,7 +28,7 @@ function Header() {
         {format(new Date(), 'MMM dd, hh:mm', { locale: ptBR })}
       </p>
       <div className="buttons">
-        <button className="crack" type="button">
+        <button className="play" type="button">
           <BiPlayCircle size={23} color={color} onClick={changeColor} />
         </button>
 

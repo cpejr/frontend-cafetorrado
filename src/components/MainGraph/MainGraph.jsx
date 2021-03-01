@@ -1,9 +1,11 @@
 /*eslint-disable*/  
 import React, { useEffect, useRef, useState, useContext } from 'react';
-import { Line } from 'react-chartjs-2';
+import { Chart,Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext'
 import data from '../RevisionGraph/data';
+import 'chartjs-plugin-annotation';
+
 
 let counter = 0;
 let numErr = 0;
@@ -18,6 +20,7 @@ function updateData(mainGraph, data) {
   mainGraph.current.chartInstance.data.datasets[3].data.push(data.pressure);
   mainGraph.current.chartInstance.data.datasets[4].data.push(data.speed);
   mainGraph.current.chartInstance.data.datasets[5].data.push(data.grainyness);
+
   mainGraph.current.chartInstance.update();
 
   // const position = mainGraph.current.chartInstance.data.labels.length - 1;
@@ -57,7 +60,7 @@ const INITALLDATA = {
       data: [],
       borderColor:'',
       borderWidth:3,
-      pointRadius: 0,
+      pointRadius:0,
     },
 
     {
@@ -85,12 +88,16 @@ const INITALLDATA = {
       borderColor:'',
       borderWidth:3,
       pointRadius: 0,
-    }
+    },
+    
 
   ]
   }
 
+
+
 const MainGraph = () => {
+  const [crackTime, setCrackTime] = useState(0);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
   useEffect(() => {
@@ -100,15 +107,51 @@ const MainGraph = () => {
     const color4 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor4');
     const color5 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor5');
     const color6 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor6');
+    
     (!mainGraph.current.chartInstance) ? false :      
     ( mainGraph.current.chartInstance.data.datasets[0].borderColor = color1, 
       mainGraph.current.chartInstance.data.datasets[1].borderColor = color2, 
       mainGraph.current.chartInstance.data.datasets[2].borderColor = color3, 
       mainGraph.current.chartInstance.data.datasets[3].borderColor = color4, 
       mainGraph.current.chartInstance.data.datasets[4].borderColor = color5, 
-      mainGraph.current.chartInstance.data.datasets[5].borderColor = color6, 
+      mainGraph.current.chartInstance.data.datasets[5].borderColor = color6,
+      
       mainGraph.current.chartInstance.update())
   }, [theme])
+// useEffect(() =>{
+//   const verticalLinePlugin = {
+//     getLinePosition: function (chart, pointIndex) {
+//         const meta = chart.getDatasetMeta(0); // first dataset is used to discover X coordinate of a point
+//         const data = meta.data;
+//         return data[pointIndex]._model.x;
+//     },
+//     renderVerticalLine: function (chartInstance, pointIndex) {
+//         const lineLeftOffset = this.getLinePosition(chartInstance, pointIndex);
+//         const scale = chartInstance.scales['y-axis-0'];
+//         const context = chartInstance.chart.ctx;
+  
+//         // render vertical line
+//         context.beginPath();
+//         context.strokeStyle = '#ff0000';
+//         context.moveTo(lineLeftOffset, scale.top);
+//         context.lineTo(lineLeftOffset, scale.bottom);
+//         context.stroke();
+  
+//         // write label
+//         context.fillStyle = "#ff0000";
+//         context.textAlign = 'center';
+//         context.fillText('MY TEXT', lineLeftOffset, (scale.bottom - scale.top) / 2 + scale.top);
+//     },
+  
+//     afterDatasetsDraw: function (chart, easing) {
+//         if (chart.config.lineAtIndex) {
+//             chart.config.lineAtIndex.forEach(pointIndex => this.renderVerticalLine(chart, pointIndex));
+//         }
+//     }
+//     };
+//     console.log(Chart)
+//     Chart.plugins.register(verticalLinePlugin);
+// },[])
 
   useEffect(() => {
 
@@ -124,6 +167,18 @@ const MainGraph = () => {
     // },  60 * 1000);
   }, []);
 
+  function crackIt() {
+    if(!crackTime && mainGraph.current){
+      console.log('CRACK ', crackTime);
+      setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+    }
+    }
+
+  useEffect(() => {
+    window.crackIt = crackIt;
+  }, [crackTime])
+  
+
   return (
     <div>
       <Line
@@ -134,6 +189,26 @@ const MainGraph = () => {
         data={INITALLDATA}
         ref={mainGraph}
         options={{
+            
+          annotation : crackTime &&{
+            annotations:[
+              {
+                drawTime: "afterDatasetsDraw",
+                type: "line",
+                mode: "vertical",
+                scaleID: "x-axis-0",
+                value: crackTime,
+                borderWidth: 5,
+                borderColor: "darkorange",
+                label: {
+                  content: "CRACK",
+                  enabled: true,
+                  position: "top"
+                }
+              }
+
+            ]
+          },
           legend: {
             position: 'top',
             labels: {
@@ -177,6 +252,5 @@ const MainGraph = () => {
       />
     </div>
   );
-};
-
+}
 export default MainGraph;

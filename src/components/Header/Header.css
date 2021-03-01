@@ -24,12 +24,12 @@ margin-left: 45%;
    margin-right: 1%; 
 }
 
-.crack{
+.play{
     background-color:var(--headerBackground);;
     border: none;
     outline: none;
 }
-.crack:hover {
+.play:hover {
   opacity: 0.8;
 }
 

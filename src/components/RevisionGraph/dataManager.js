@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import { ASAP } from 'downsample';
 
 class FakeData {
@@ -24,7 +25,7 @@ class FakeData {
           ror: this.randomDatas(samples, 30),
           humidity: this.randomDatas(samples, 80),
           pressure: this.randomDatas(samples, 1000),
-        });
+         });
       }, 1500);
     });
   }
@@ -39,7 +40,7 @@ const filterData = (data, { maxData }) => {
     velocity: downsample(data.velocity),
     ror: downsample(data.ror),
     humidity: downsample(data.humidity),
-    pressure: downsample(data.pressure),
+    pressure: downsample(data.pressure),  
   };
   console.log(data, samplingData);
 

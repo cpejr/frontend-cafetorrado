@@ -46,6 +46,7 @@ const data = {
       borderColor: 'white',
       data: randomDatas(),
     },
+
   ],
 };
 

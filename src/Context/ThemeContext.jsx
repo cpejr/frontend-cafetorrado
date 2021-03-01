@@ -26,6 +26,7 @@ const themes = {
     graphColor4: '#4292C6',
     graphColor5: '#2171B5',
     graphColor6: '#08306B',
+    graphColor7: '#ff8c00',
   },
   grey: {
     backgroundColor: '#F3EFEF',
@@ -41,6 +42,7 @@ const themes = {
     graphColor4: '#4292C6',
     graphColor5: '#2171B5',
     graphColor6: '#08306B',
+    graphColor7: '#ff8c00',
   },
   white: {
     backgroundColor: '#FFFFFF',
@@ -56,6 +58,7 @@ const themes = {
     graphColor4: '#4292C6',
     graphColor5: '#2171B5',
     graphColor6: '#08306B',
+    graphColor7: '#ff8c00',
   },
   dark: {
     backgroundColor: '#0E1317',
@@ -71,6 +74,7 @@ const themes = {
     graphColor4: '#4292C6',
     graphColor5: '#2171B5',
     graphColor6: '#08306B',
+    graphColor7: '#ff8c00',
   },
 };
 export const ThemeContext = React.createContext({});

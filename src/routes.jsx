@@ -10,7 +10,7 @@ import Manual from './Pages/ManualPage/Manual';
 import '../src/components/Animations/Animations.css'
 import { StylesProvider } from '@material-ui/core';
 "use strict";
-const RouterComponent = () => {
+const RouterComponent = ( { data }) => {
   return (
     <Router>
       <TemplateWithDrawer>
@@ -51,9 +51,9 @@ const RouterComponent = () => {
                       <Automatic  />
                     </Route>
 
-                    {/* <Route path="/ResultsRevision" component={ResultsRevision}>
+                    <Route path="/ResultsRevision" component={ResultsRevision}>
                       <ResultsRevision data={data} />
-                    </Route> */}
+                    </Route>
 
                     <Route path="/teste">
                       <Teste />

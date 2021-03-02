@@ -4,10 +4,18 @@ import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext'
 import data from '../RevisionGraph/data';
+import { ChromeReaderModeOutlined } from '@material-ui/icons';
+import { forEach } from 'lodash';
 
 let counter = 0;
 let numErr = 0;
 var numErrTime = [];
+
+function txtFileReader(mainGraph, data){
+  for(let i = 0; i < data.length; i++)
+    mainGraph.current.chartInstance.data.datasets[2].data.push(data[i]);
+    mainGraph.current.chartInstance.update();
+}
 
 function updateData(mainGraph, data) {
   if(!(mainGraph?.current?.chartInstance)) return 
@@ -125,6 +133,17 @@ const MainGraph = () => {
       updateData(mainGraph, _data); 
       socket.emit('cleanList')
     }); 
+
+    socket.on('txtFile', (data) => {
+      let dataTemp = [data];
+      let res = dataTemp[0].split("\n");
+      for(let i = 0; i < res.length; i++){
+        res[i] = parseFloat(res[i]);
+      }
+      txtFileReader(mainGraph, res);
+      console.log(res)
+    });
+
     return () =>
       socket.off('newData');
     // setInterval(() => {

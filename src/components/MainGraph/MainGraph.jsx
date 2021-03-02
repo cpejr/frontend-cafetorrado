@@ -1,5 +1,5 @@
 /*eslint-disable*/  
-import React, { useEffect, useRef, useState, useContext } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext'
@@ -123,10 +123,10 @@ const MainGraph = () => {
   useEffect(() => {
     socket.on('newData', (_data) => {
       updateData(mainGraph, _data); 
+      socket.emit('cleanList')
     }); 
     return () =>
       socket.off('newData');
-
     // setInterval(() => {
     //   numErrTime.push(numErr);
     // }, 15 * 100);

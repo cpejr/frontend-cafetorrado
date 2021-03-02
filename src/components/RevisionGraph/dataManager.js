@@ -1,4 +1,4 @@
-import { ASAP } from 'downsample';
+import { ASAP } from 'downsample/methods/ASAP';
 
 class FakeData {
   random = Math.random;

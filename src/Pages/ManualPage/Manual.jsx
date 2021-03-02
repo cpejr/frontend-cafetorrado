@@ -9,18 +9,18 @@ import { socket } from '../../index';
 import './Manual.css';
 
 function Manual() {
-  const [graphData, setGraphData] = useState({
-    waterTemp: 0,
-    ROR: 0,
-    fireTemp: 0,
-    pressure: 0,
-    speed: 0,
-    grainyness: 0,
-  });
+  // const [graphData, setGraphData] = useState({
+  //   waterTemp: 0,
+  //   ROR: 0,
+  //   fireTemp: 0,
+  //   pressure: 0,
+  //   speed: 0,
+  //   grainyness: 0,
+  // });
 
-  useEffect(()=>{
-    socket.on('newData', (data) => { setGraphData(data) });
-  }, [])
+  // useEffect(()=>{
+  //   socket.on('newData', (data) => { setGraphData(data) });
+  // }, [])
   return (
     <div className="tela-container">
       <div className="upper-part">
@@ -28,9 +28,9 @@ function Manual() {
       </div>
       <div className="lower-part">
         <div className="status-bar">  
-          <p>Tmperatura da água:{graphData.waterTemp}</p>
+          {/* <p>Tmperatura da água:{graphData.waterTemp}</p>
           <p>Granulosidade: {graphData.grainyness}</p>
-          <p>ROR: {graphData.ROR}</p>
+          <p>ROR: {graphData.ROR}</p> */}
         </div>
         <div className="control-buttons">
           <div className="buttons">

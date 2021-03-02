@@ -9,17 +9,11 @@ import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
 import '../src/components/Animations/Animations.css'
 import { StylesProvider } from '@material-ui/core';
-
-const valuesInfo = {
-  pressao: 8.9,
-  umidade: 79,
-  massaGraos: 2468,
-};
-
-const RouterComponent = ({ data }) => {
+"use strict";
+const RouterComponent = () => {
   return (
     <Router>
-      <TemplateWithDrawer valuesInfo={valuesInfo}>
+      <TemplateWithDrawer>
         <Route
           render={({ location }) => (
             <div>
@@ -45,7 +39,7 @@ const RouterComponent = ({ data }) => {
                     </Route>
 
                     <Route path="/Manual">
-                      <Manual data={data} />
+                      <Manual />
                     </Route>
 
                     <Route
@@ -54,15 +48,12 @@ const RouterComponent = ({ data }) => {
                     />
 
                     <Route path="/automatic">
-                      <Automatic data={data} />
-                    </Route>
-                    <Route path="/manual">
-                      <Manual data={data} />
+                      <Automatic  />
                     </Route>
 
-                    <Route path="/ResultsRevision" component={ResultsRevision}>
+                    {/* <Route path="/ResultsRevision" component={ResultsRevision}>
                       <ResultsRevision data={data} />
-                    </Route>
+                    </Route> */}
 
                     <Route path="/teste">
                       <Teste />

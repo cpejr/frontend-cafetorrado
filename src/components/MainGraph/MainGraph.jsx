@@ -119,12 +119,14 @@ const MainGraph = () => {
       mainGraph.current.chartInstance.data.datasets[5].borderColor = color6, 
       mainGraph.current.chartInstance.update())
   }, [theme])
-
+  console.log("a");
   useEffect(() => {
-
     socket.on('newData', (_data) => {
       updateData(mainGraph, _data); 
     }); 
+    return () =>
+      socket.off('newData');
+
     // setInterval(() => {
     //   numErrTime.push(numErr);
     // }, 15 * 100);

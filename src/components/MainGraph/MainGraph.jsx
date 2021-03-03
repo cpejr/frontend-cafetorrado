@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Chart,Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext'
-import data from '../RevisionGraph/data';
+//import data from '../RevisionGraph/data';
 import 'chartjs-plugin-annotation';
 
 
@@ -131,14 +131,14 @@ const MainGraph = () => {
     //         const scale = chartInstance.scales['y-axis-0'];
     //         const context = chartInstance.chart.ctx;
       
-    //         // render vertical line
+    //         render vertical line
     //         context.beginPath();
     //         context.strokeStyle = '#ff0000';
     //         context.moveTo(lineLeftOffset, scale.top);
     //         context.lineTo(lineLeftOffset, scale.bottom);
     //         context.stroke();
       
-    //         // write label
+    //         write label
     //         context.fillStyle = "#ff0000";
     //         context.textAlign = 'center';
     //         context.fillText('MY TEXT', lineLeftOffset, (scale.bottom - scale.top) / 2 + scale.top);

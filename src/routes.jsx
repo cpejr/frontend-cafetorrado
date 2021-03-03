@@ -4,22 +4,20 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ResultsRevision from './Pages/ResultsRevision';
 import Teste from './components/theme';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import TemplateWithDrawer from './Templates/index';
+import TemplateWithDrawer from './Templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
 import '../src/components/Animations/Animations.css'
 import { StylesProvider } from '@material-ui/core';
-
 const valuesInfo = {
-  pressao: 8.9,
+  pressão: 8.9,
   umidade: 79,
   massaGraos: 2468,
-};
-
-const RouterComponent = ({ data }) => {
+}
+const RouterComponent = () => {
   return (
     <Router>
-      <TemplateWithDrawer valuesInfo={valuesInfo}>
+      <TemplateWithDrawer valuesInfo = {valuesInfo}>
         <Route
           render={({ location }) => (
             <div>
@@ -45,7 +43,7 @@ const RouterComponent = ({ data }) => {
                     </Route>
 
                     <Route path="/Manual">
-                      <Manual data={data} />
+                      <Manual />
                     </Route>
 
                     <Route
@@ -54,14 +52,11 @@ const RouterComponent = ({ data }) => {
                     />
 
                     <Route path="/automatic">
-                      <Automatic data={data} />
-                    </Route>
-                    <Route path="/manual">
-                      <Manual data={data} />
+                      <Automatic  />
                     </Route>
 
                     <Route path="/ResultsRevision" component={ResultsRevision}>
-                      <ResultsRevision data={data} />
+                      <ResultsRevision />
                     </Route>
 
                     <Route path="/teste">

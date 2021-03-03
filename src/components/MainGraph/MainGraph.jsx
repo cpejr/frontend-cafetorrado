@@ -6,21 +6,27 @@ import { ThemeContext } from '../../Context/ThemeContext'
 //import data from '../RevisionGraph/data';
 import 'chartjs-plugin-annotation';
 
+// let counter = 0;
+// let numErr = 0;
+// var numErrTime = [];
 
-let counter = 0;
-let numErr = 0;
-var numErrTime = [];
+const txtFileReader = (mainGraph, data) =>{
+  if(!(mainGraph?.current?.chartInstance)) return 
+  for(let i = 0; i < data.length; i++)
+    mainGraph.current.chartInstance.data.datasets[2].data.push(data[i]);
+    mainGraph.current.chartInstance.update();
+}
 
 function updateData(mainGraph, data) {
   if(!(mainGraph?.current?.chartInstance)) return 
   mainGraph.current.chartInstance.data.labels.push(data.time);
   mainGraph.current.chartInstance.data.datasets[0].data.push(data.waterTemp);
-  mainGraph.current.chartInstance.data.datasets[1].data.push(data.ROR);
-  mainGraph.current.chartInstance.data.datasets[2].data.push(data.fireTemp);
-  mainGraph.current.chartInstance.data.datasets[3].data.push(data.pressure);
-  mainGraph.current.chartInstance.data.datasets[4].data.push(data.speed);
-  mainGraph.current.chartInstance.data.datasets[5].data.push(data.grainyness);
-
+  mainGraph.current.chartInstance.data.datasets[1].data.push(data.waterTemp*50);
+  mainGraph.current.chartInstance.data.datasets[2].data.push(data.ROR);
+  mainGraph.current.chartInstance.data.datasets[3].data.push(data.fireTemp);
+  mainGraph.current.chartInstance.data.datasets[4].data.push(data.pressure);
+  mainGraph.current.chartInstance.data.datasets[5].data.push(data.speed);
+  mainGraph.current.chartInstance.data.datasets[6].data.push(data.grainyness);
   mainGraph.current.chartInstance.update();
 
   // const position = mainGraph.current.chartInstance.data.labels.length - 1;
@@ -40,14 +46,23 @@ const INITALLDATA = {
       fill: false,
       label: 'waterTemp',
       data: [],
+      label:'left',
+      yAxisID:'left',
       borderColor: '',
       borderWidth: 3,
       pointRadius: 0,
     },
-
+    {
+      label: 'One more data',
+      yAxisID: 'right',
+      data:[],
+      borderColor: '',
+      borderWidth: 3,
+      pointRadius: 0,
+    },
     {
       fill: false,
-      label: 'ROR' + ' ' + counter,
+      label: 'ROR',
       data: [],
       borderColor:'',
       borderWidth:3,
@@ -178,7 +193,34 @@ const MainGraph = () => {
     }
     }
 
+  console.log("a");
   useEffect(() => {
+    socket.on('newData', (_data) => {
+      updateData(mainGraph, _data); 
+      socket.emit('cleanList')
+    }); 
+
+    socket.on('txtFile', (data) => {
+      let dataTemp = [data];
+      let res = dataTemp[0].split("\n");
+      for(let i = 0; i < res.length; i++){
+        res[i] = parseFloat(res[i]);
+      }
+      txtFileReader(mainGraph, res);
+      //console.log(res)
+    });
+
+    return () =>
+      socket.off('newData');
+    // setInterval(() => {
+    //   numErrTime.push(numErr);
+    // }, 15 * 100);
+    // setTimeout(() => {
+    //   socket.off('newData');
+    //   console.log(numErr, numErrTime);
+    // },  60 * 1000);
+  }, []);
+
     window.crackIt = crackIt;
   }, [crackTime])
   
@@ -189,8 +231,8 @@ const MainGraph = () => {
       {/* <button onClick={beginTorra}>play</button>
       <button onClick={endTorra}>end</button> */}
       <Line
-        height = '500'
-        width = '1200'
+        height = '400'
+        width = '1000'
         padding = '0'
         id="main-graph"
         data={INITALLDATA}
@@ -219,12 +261,12 @@ const MainGraph = () => {
           legend: {
             position: 'top',
             labels: {
-              //padding: 20,
-              //fontSize: 20,
+              padding: 20,
+              fontSize: 16,
             },
           },
           maintainAspectRatio: false,
-          
+          fontSize: 100,
           title: { text: ' Tempo de torra ', display: true },
           elements: {
             line: {
@@ -232,21 +274,24 @@ const MainGraph = () => {
             }
         },
           scales: {
-            yAxes: [
-              {
-                ticks: {
-                  autoSkip: true,
-                  maxTicksLimit: 100,
-                  beginAtZero: true,
-                },
-                gridLines: {
-                  display: false,
-                },
-              },
-            ],
+            scaleLabel: { fontSize: 100 },
+            yAxes: [{
+                  id: 'left',
+                  type:'linear',
+                  position:'left',
+                  },{
+                    id:'right',
+                    type: 'linear',
+                    position:'right',
+                    ticks:{
+                      max: 100,
+                      min: 0,
+                    }
+                  }
+              ],
             xAxes: [
               {
-                gridLines: { display: false },
+                gridLines: { display: true },
                 ticks: {
                   autoSkip: true,
                   maxTicksLimit:20,

@@ -7,20 +7,23 @@ import ButtonController2 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import { socket } from '../../index';
+import $ from 'jquery';
 import './Manual.css';
 
 function Manual() {
-  const [graphData, setGraphData] = useState({
+  const graphData = {
     waterTemp: 0,
     ROR: 0,
     fireTemp: 0,
     pressure: 0,
     speed: 0,
     grainyness: 0,
-  });
+  };
 
   useEffect(()=>{
-    socket.on('newData', (data) => { setGraphData(data) });
+    socket.on('newData', (data) => { 
+      $.extend(graphData, data);
+     });
   }, [])
   return (
     <div className="tela-container">
@@ -29,7 +32,7 @@ function Manual() {
       </div>
       <div className="lower-part">
         <div className="status-bar">  
-          <p>Tmperatura da água:{graphData.waterTemp}</p>
+          <p>Temperatura da água:{graphData.waterTemp}</p>
           <p>Granulosidade: {graphData.grainyness}</p>
           <p>ROR: {graphData.ROR}</p>
         </div>

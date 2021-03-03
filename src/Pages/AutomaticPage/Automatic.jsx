@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { React } from "react";
+import { React, useEffect } from "react";
 // import { FaPowerOff } from "react-icons/fa";
 import Chronometer from "../../components/Chronometer/Chronometer";
 // import BarsGraph from "../../components/BarsGraph/BarsGraph";
@@ -8,23 +8,24 @@ import ButtonController1 from "../../components/Buttons/ButtonsControllers/Butto
 import ButtonController2 from "../../components/Buttons/ButtonsControllers/ButtonController2";
 import ButtonController3 from "../../components/Buttons/ButtonsControllers/ButtonController3";
 import { socket } from '../../index';
+import $ from 'jquery'
 import "./Automatic.css";
 
 function Automatic() {
 
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-  // const graphData = {
-  //   waterTemp: 0,
-  //   ROR: 0,
-  //   fireTemp: 0,
-  //   pressure: 0,
-  //   speed: 0,
-  //   grainyness: 0,
-  // };
-  // useEffect(() =>{
-  //   socket.on('newData', (data) => { $.extend(graphData, data)  })  
-  // },[])
- //  console.log('x');
+  const graphData = {
+    waterTemp: 0,
+    ROR: 0,
+    fireTemp: 0,
+    pressure: 0,
+    speed: 0,
+    grainyness: 0,
+  };
+  useEffect(() =>{
+    socket.on('newData', (data) => { $.extend(graphData, data)  })  
+  },[])
+  console.log('x');
   return (
     <div className="tela-container">
       <div className="upper-part">
@@ -58,10 +59,10 @@ function Automatic() {
           <Chronometer />
         </div>
         <div className="informations">
-          {/*<p>Pressão:{graphData.waterTemp}</p>
+          <p>Pressão:{graphData.waterTemp}</p>
           <p>Temperatura do Grão: {graphData.grainyness}</p>
           <p>Temperatura do Ar: {graphData.fireTemp}</p>
-          <p>ROR: {graphData.ROR}</p> */}
+          <p>ROR: {graphData.ROR}</p>
           
         </div>  
       </div>

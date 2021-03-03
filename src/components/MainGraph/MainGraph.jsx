@@ -37,13 +37,6 @@ function updateData(mainGraph, data) {
   // //console.log(counter)
 }
 
-// function crackIt() {
-//   if(!crackTime && mainGraph.current){
-//     console.log('CRACK ', crackTime);
-//     setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
-//   }
-// }
-
 const INITALLDATA = {
   type: 'line',
   labels:[],

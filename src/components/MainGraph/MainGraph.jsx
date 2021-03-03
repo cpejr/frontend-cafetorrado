@@ -98,6 +98,7 @@ const INITALLDATA = {
 
 const MainGraph = () => {
   const [crackTime, setCrackTime] = useState(0);
+  const [torra,setTorra] = useState(0);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
   useEffect(() => {
@@ -118,54 +119,57 @@ const MainGraph = () => {
       
       mainGraph.current.chartInstance.update())
   }, [theme])
-// useEffect(() =>{
-//   const verticalLinePlugin = {
-//     getLinePosition: function (chart, pointIndex) {
-//         const meta = chart.getDatasetMeta(0); // first dataset is used to discover X coordinate of a point
-//         const data = meta.data;
-//         return data[pointIndex]._model.x;
-//     },
-//     renderVerticalLine: function (chartInstance, pointIndex) {
-//         const lineLeftOffset = this.getLinePosition(chartInstance, pointIndex);
-//         const scale = chartInstance.scales['y-axis-0'];
-//         const context = chartInstance.chart.ctx;
-  
-//         // render vertical line
-//         context.beginPath();
-//         context.strokeStyle = '#ff0000';
-//         context.moveTo(lineLeftOffset, scale.top);
-//         context.lineTo(lineLeftOffset, scale.bottom);
-//         context.stroke();
-  
-//         // write label
-//         context.fillStyle = "#ff0000";
-//         context.textAlign = 'center';
-//         context.fillText('MY TEXT', lineLeftOffset, (scale.bottom - scale.top) / 2 + scale.top);
-//     },
-  
-//     afterDatasetsDraw: function (chart, easing) {
-//         if (chart.config.lineAtIndex) {
-//             chart.config.lineAtIndex.forEach(pointIndex => this.renderVerticalLine(chart, pointIndex));
-//         }
-//     }
-//     };
-//     console.log(Chart)
-//     Chart.plugins.register(verticalLinePlugin);
-// },[])
+    // useEffect(() =>{
+    //   const verticalLinePlugin = {
+    //     getLinePosition: function (chart, pointIndex) {
+    //         const meta = chart.getDatasetMeta(0); // first dataset is used to discover X coordinate of a point
+    //         const data = meta.data;
+    //         return data[pointIndex]._model.x;
+    //     },
+    //     renderVerticalLine: function (chartInstance, pointIndex) {
+    //         const lineLeftOffset = this.getLinePosition(chartInstance, pointIndex);
+    //         const scale = chartInstance.scales['y-axis-0'];
+    //         const context = chartInstance.chart.ctx;
+      
+    //         // render vertical line
+    //         context.beginPath();
+    //         context.strokeStyle = '#ff0000';
+    //         context.moveTo(lineLeftOffset, scale.top);
+    //         context.lineTo(lineLeftOffset, scale.bottom);
+    //         context.stroke();
+      
+    //         // write label
+    //         context.fillStyle = "#ff0000";
+    //         context.textAlign = 'center';
+    //         context.fillText('MY TEXT', lineLeftOffset, (scale.bottom - scale.top) / 2 + scale.top);
+    //     },
+      
+    //     afterDatasetsDraw: function (chart, easing) {
+    //         if (chart.config.lineAtIndex) {
+    //             chart.config.lineAtIndex.forEach(pointIndex => this.renderVerticalLine(chart, pointIndex));
+    //         }
+    //     }
+    //     };
+    //     console.log(Chart)
+    //     Chart.plugins.register(verticalLinePlugin);
+    // },[])
 
-  useEffect(() => {
+      useEffect(() => {
 
-    socket.on('newData', (_data) => {
-      updateData(mainGraph, _data); 
-    }); 
-    // setInterval(() => {
-    //   numErrTime.push(numErr);
-    // }, 15 * 100);
-    // setTimeout(() => {
-    //   socket.off('newData');
-    //   console.log(numErr, numErrTime);
-    // },  60 * 1000);
-  }, []);
+        socket.on('newData', (_data) => {
+          updateData(mainGraph, _data); 
+        }); 
+        // setInterval(() => {
+        //   numErrTime.push(numErr);
+        // }, 15 * 100);
+        // setTimeout(() => {
+        //   socket.off('newData');
+        //   console.log(numErr, numErrTime);
+        // },  60 * 1000);
+        return () =>{
+          socket.off('newData');
+        }
+      }, []);
 
   function crackIt() {
     if(!crackTime && mainGraph.current){
@@ -179,8 +183,11 @@ const MainGraph = () => {
   }, [crackTime])
   
 
+  
   return (
     <div>
+      {/* <button onClick={beginTorra}>play</button>
+      <button onClick={endTorra}>end</button> */}
       <Line
         height = '500'
         width = '1200'

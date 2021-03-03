@@ -1,8 +1,8 @@
 /* eslint-disable */
-import { React, useEffect, useState, useRef } from "react";
-import { FaPowerOff } from "react-icons/fa";
+import { React } from "react";
+// import { FaPowerOff } from "react-icons/fa";
 import Chronometer from "../../components/Chronometer/Chronometer";
-import BarsGraph from "../../components/BarsGraph/BarsGraph";
+// import BarsGraph from "../../components/BarsGraph/BarsGraph";
 import MainGraph from "../../components/MainGraph/MainGraph";
 import ButtonController1 from "../../components/Buttons/ButtonsControllers/ButtonController1";
 import ButtonController2 from "../../components/Buttons/ButtonsControllers/ButtonController2";
@@ -11,19 +11,20 @@ import { socket } from '../../index';
 import "./Automatic.css";
 
 function Automatic() {
+
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-  const graphData = {
-    waterTemp: 0,
-    ROR: 0,
-    fireTemp: 0,
-    pressure: 0,
-    speed: 0,
-    grainyness: 0,
-  };
-  useEffect(() =>{
-    socket.on('newData', (data) => { $.extend(graphData, data)  })  
-  },[])
-  console.log('x');
+  // const graphData = {
+  //   waterTemp: 0,
+  //   ROR: 0,
+  //   fireTemp: 0,
+  //   pressure: 0,
+  //   speed: 0,
+  //   grainyness: 0,
+  // };
+  // useEffect(() =>{
+  //   socket.on('newData', (data) => { $.extend(graphData, data)  })  
+  // },[])
+ //  console.log('x');
   return (
     <div className="tela-container">
       <div className="upper-part">
@@ -57,7 +58,7 @@ function Automatic() {
           <Chronometer />
         </div>
         <div className="informations">
-          {/* <p>Pressão:{graphData.waterTemp}</p>
+          {/*<p>Pressão:{graphData.waterTemp}</p>
           <p>Temperatura do Grão: {graphData.grainyness}</p>
           <p>Temperatura do Ar: {graphData.fireTemp}</p>
           <p>ROR: {graphData.ROR}</p> */}

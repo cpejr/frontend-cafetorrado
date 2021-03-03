@@ -37,6 +37,12 @@ function updateData(mainGraph, data) {
   // //console.log(counter)
 }
 
+// function crackIt() {
+//   if(!crackTime && mainGraph.current){
+//     console.log('CRACK ', crackTime);
+//     setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+//   }
+// }
 
 const INITALLDATA = {
   type: 'line',
@@ -169,29 +175,6 @@ const MainGraph = () => {
     //     Chart.plugins.register(verticalLinePlugin);
     // },[])
 
-      useEffect(() => {
-
-        socket.on('newData', (_data) => {
-          updateData(mainGraph, _data); 
-        }); 
-        // setInterval(() => {
-        //   numErrTime.push(numErr);
-        // }, 15 * 100);
-        // setTimeout(() => {
-        //   socket.off('newData');
-        //   console.log(numErr, numErrTime);
-        // },  60 * 1000);
-        return () =>{
-          socket.off('newData');
-        }
-      }, []);
-
-  function crackIt() {
-    if(!crackTime && mainGraph.current){
-      console.log('CRACK ', crackTime);
-      setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
-    }
-    }
 
   console.log("a");
   useEffect(() => {
@@ -209,9 +192,6 @@ const MainGraph = () => {
       txtFileReader(mainGraph, res);
       //console.log(res)
     });
-
-    return () =>
-      socket.off('newData');
     // setInterval(() => {
     //   numErrTime.push(numErr);
     // }, 15 * 100);
@@ -219,12 +199,22 @@ const MainGraph = () => {
     //   socket.off('newData');
     //   console.log(numErr, numErrTime);
     // },  60 * 1000);
+    // return () =>
+    //   socket.off('newData');
+
   }, []);
 
+  
+  function crackIt() {
+    if(!crackTime && mainGraph.current){
+      console.log('CRACK ', crackTime);
+      setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+    }
+    }
+
+  useEffect(() => {
     window.crackIt = crackIt;
   }, [crackTime])
-  
-
   
   return (
     <div>

@@ -47,10 +47,7 @@ function Chronometer() {
         Start
         </button>
         <button id="change" type="button" onClick={endTorra}>
-         Stop
-        </button>
-        <button id="init" type="button">
-          Reset
+         Finish
         </button>
       </div>
       <div id="chronometer">

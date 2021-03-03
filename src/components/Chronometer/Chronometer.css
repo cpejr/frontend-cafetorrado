@@ -19,7 +19,6 @@
 #buttons button {
   font-family: 'Rubik', sans-serif;
   margin: 4px;
-  margin-bottom:0;
   background-color: var(--background);
   box-shadow: 0px 0px 10px 1px rgba(23, 140, 140, 0.2) inset;
   border-radius: 6px;

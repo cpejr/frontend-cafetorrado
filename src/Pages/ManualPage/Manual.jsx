@@ -4,9 +4,10 @@ import Chronometer from '../../components/Chronometer/Chronometer';
 import MainGraph from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
+import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import { socket } from '../../index';
-import './manual.css';
+import './Manual.css';
 
 function Manual() {
   const [graphData, setGraphData] = useState({
@@ -41,6 +42,10 @@ function Manual() {
             <div className="button2">
               <p>Resfriador</p>
               <ButtonController2 />
+            </div>
+            <div className="button3">
+              <p>Crack</p>
+              <ButtonController3 />
             </div>
           </div>
         </div>

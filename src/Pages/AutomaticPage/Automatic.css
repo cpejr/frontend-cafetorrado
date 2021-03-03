@@ -13,7 +13,7 @@
 }
 
 .upper-part {
-  height: 65%;
+  height: 70% !important;
 }
 .history-graph-title {
   text-align: center;
@@ -39,7 +39,7 @@
 }*/
 
 .status-bar {
-  width: 25%;
+  width: 15% !important;
   font-family: Rubik, sans-serif;
   font-weight: 300;
   color: var(--fontColor);
@@ -62,7 +62,7 @@
 }
 
 .control-buttons {
-  width: 25%;
+  width: 35% !important;
   font-family: Rubik, sans-serif;
   font-weight: 300;
   color: var(--fontColor);
@@ -75,11 +75,15 @@
 }
 
 .button1 {
-  width: 50%;
+  width: 33% !important;
   flex-direction: column;
 }
 .button2 {
-  width: 50%;
+  width: 33% !important;
+  flex-direction: column;
+}
+.button3 {
+  width: 33% !important;
   flex-direction: column;
 }
 
@@ -119,7 +123,8 @@
   flex-direction: column;
   text-align: center;
   margin: 0;
-  line-height: 5px;
+  line-height: 15px;
+  
   
 
 }

@@ -24,15 +24,6 @@ margin-left: 45%;
    margin-right: 1%; 
 }
 
-.crack{
-    background-color:var(--headerBackground);;
-    border: none;
-    outline: none;
-}
-.crack:hover {
-  opacity: 0.8;
-}
-
 .power {
   background-color: var(--headerBackground);;
   border: none;

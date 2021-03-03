@@ -67,11 +67,15 @@
 }
 
 .button1 {
-  width: 50%;
+  width: 33% !important;
   flex-direction: column;
 }
 .button2 {
-  width: 50%;
+  width: 33% !important;
+  flex-direction: column;
+}
+.button2 {
+  width: 33% !important;
   flex-direction: column;
 }
 

@@ -121,19 +121,19 @@ const OutrasInformacoes = ({ drawerOpen, valuesInfo }) => {
           <h1>Outras Informações</h1>
           <p>
             <strong>Pressão: </strong>
-            {valuesInfo.pressao}
+            {/*{valuesInfo.pressao}*/}
             {' '}
             ATM
           </p>
           <p>
             <strong>Umidade: </strong>
-            {valuesInfo.umidade}
+            {/*{valuesInfo.umidade}*/}
             {' '}
             %
           </p>
           <p>
             <strong>Massa de Grãos: </strong>
-            {valuesInfo.massaGraos}
+            {/*{valuesInfo.massaGraos}*/}
             {' '}
             g
           </p>

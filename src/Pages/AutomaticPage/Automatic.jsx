@@ -11,17 +11,17 @@ import "./Automatic.css";
 
 function Automatic() {
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-  // const [graphData, setGraphData] = useState({
-  //   waterTemp: 0,
-  //   ROR: 0,
-  //   fireTemp: 0,
-  //   pressure: 0,
-  //   speed: 0,
-  //   grainyness: 0,
-  // });
-  // useEffect(() =>{
-  //   socket.on('newData', (data) => {setGraphData(data)})  
-  // },[])
+  const graphData = {
+    waterTemp: 0,
+    ROR: 0,
+    fireTemp: 0,
+    pressure: 0,
+    speed: 0,
+    grainyness: 0,
+  };
+  useEffect(() =>{
+    socket.on('newData', (data) => { $.extend(graphData, data)  })  
+  },[])
   console.log('x');
   return (
     <div className="tela-container">

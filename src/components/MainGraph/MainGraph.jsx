@@ -3,15 +3,16 @@ import React, { useEffect, useRef, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext'
-import data from '../RevisionGraph/data';
-import { ChromeReaderModeOutlined } from '@material-ui/icons';
-import { forEach } from 'lodash';
+// import data from '../RevisionGraph/data';
+// import { ChromeReaderModeOutlined } from '@material-ui/icons';
+// import { forEach } from 'lodash';
 
-let counter = 0;
-let numErr = 0;
-var numErrTime = [];
+// let counter = 0;
+// let numErr = 0;
+// var numErrTime = [];
 
-function txtFileReader(mainGraph, data){
+const txtFileReader = (mainGraph, data) =>{
+  if(!(mainGraph?.current?.chartInstance)) return 
   for(let i = 0; i < data.length; i++)
     mainGraph.current.chartInstance.data.datasets[2].data.push(data[i]);
     mainGraph.current.chartInstance.update();
@@ -141,7 +142,7 @@ const MainGraph = () => {
         res[i] = parseFloat(res[i]);
       }
       txtFileReader(mainGraph, res);
-      console.log(res)
+      //console.log(res)
     });
 
     return () =>

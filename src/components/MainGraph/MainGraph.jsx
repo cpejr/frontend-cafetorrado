@@ -185,23 +185,19 @@ const MainGraph = () => {
       txtFileReader(mainGraph, res);
       //console.log(res)
     });
-
-    return () =>
-      socket.off('newData');
     // setInterval(() => {
     //   numErrTime.push(numErr);
     // }, 15 * 100);
     // setTimeout(() => {
     //   socket.off('newData');
-  //   // setInterval(() => {
-  //   //   numErrTime.push(numErr);
-  //   // }, 15 * 100);
-  //   // setTimeout(() => {
-  //   //   socket.off('newData');
-  //   //   console.log(numErr, numErrTime);
-  //   // },  60 * 1000);
-  // }, []);
+    //   console.log(numErr, numErrTime);
+    // },  60 * 1000);
+    // return () =>
+    //   socket.off('newData');
 
+  }, []);
+
+  
   function crackIt() {
     if(!crackTime && mainGraph.current){
       console.log('CRACK ', crackTime);
@@ -215,6 +211,8 @@ const MainGraph = () => {
   
   return (
     <div>
+      {/* <button onClick={beginTorra}>play</button>
+      <button onClick={endTorra}>end</button> */}
       <Line
         height = '400'
         width = '1000'
@@ -289,9 +287,5 @@ const MainGraph = () => {
       />
     </div>
   );
-
-})
 }
-
-
 export default MainGraph;

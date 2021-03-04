@@ -16,7 +16,7 @@ function ButtonController1() {
 
   return (
     <div>
-      <button className="power-1" type="button" onClick={ window.crackIt }>
+      <button className="power-1" type="button" onClick={ () => window.crackIt() }>
         <GiCoffeeBeans size={35} color={colorMixer} />
       </button>
     </div>

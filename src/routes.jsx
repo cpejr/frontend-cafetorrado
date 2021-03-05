@@ -6,9 +6,10 @@ import Teste from './components/theme';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import TemplateWithDrawer from './templates/index';
 import Automatic from './Pages/AutomaticPage/Automatic';
-import Manual from './Pages/ManualPage/manual';
+import Manual from './Pages/ManualPage/Manual';
 import '../src/components/Animations/Animations.css'
 import { StylesProvider } from '@material-ui/core';
+import ResultsSelection from './Pages/RevenueSelection/Selection.jsx';
 
 const valuesInfo = {
   pressao: 8.9,
@@ -42,6 +43,12 @@ const RouterComponent = ({ data }) => {
                       <Link to="/automatic">Ir para Tela Automático</Link>
                       <br />
                       <Link to="/Manual">Ir para Tela Manual</Link>
+                      <br />
+                      <Link to="/RevenueSelection">Ir para Seleção de Receita</Link>
+                    </Route>
+                   
+                      
+                    <Route path="/RevenueSelection" component={ResultsSelection}>
                     </Route>
 
                     <Route path="/Manual">
@@ -56,7 +63,7 @@ const RouterComponent = ({ data }) => {
                     <Route path="/automatic">
                       <Automatic data={data} />
                     </Route>
-                    <Route path="/manual">
+                    <Route path="/Manual">
                       <Manual data={data} />
                     </Route>
 

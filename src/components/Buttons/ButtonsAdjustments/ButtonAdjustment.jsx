@@ -6,21 +6,17 @@ import * as skins from 'react-rotary-knob-skin-pack';
 import { socket } from '../../../index'
 
 
-function ButtonAdjustment(){
-  const [buttonValue, setButtonValue] = useState(0)
-  const [skinButton, setSkinButton] = useState(skins.s12)
+function ButtonAdjustment({buttonValue, setButtonValue, skinButton, setSkinButton, emitName, changeValue, maxValue=1000}){
+
 
   const knobstyle = {
     width: "120px",
     height: "120px"
   };
   function sendData(){
-    socket.emit('dataFromButton', (Math.round(buttonValue*100/1000)/100))
+    socket.emit(emitName, (Math.round(buttonValue*100/1000)/100))
   }
-  function changeValue(val) {
-    if(Math.abs(val-buttonValue) < 200)
-      setButtonValue(val)
-  }
+
     return(
     <div>
       <Knob id = "myKnob" 
@@ -30,7 +26,7 @@ function ButtonAdjustment(){
       clampMin = {0}
       clampMax = {270}
       onEnd= {sendData}
-      min={0} max={1000} 
+      min={0} max={maxValue} 
       value={buttonValue} 
       preciseMode = {false}
       skin={skinButton}/>

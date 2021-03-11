@@ -6,11 +6,16 @@ import BarsGraph from "../../components/BarsGraph/BarsGraph";
 import MainGraph from "../../components/MainGraph/MainGraph";
 import ButtonController1 from "../../components/Buttons/ButtonsControllers/ButtonController1";
 import ButtonController2 from "../../components/Buttons/ButtonsControllers/ButtonController2";
+import ButtonRouter from "../../components/Buttons/ButtonsRouter/ButtonRouter";
 import { socket } from '../../index';
 import "./Automatic.css";
-
+import { useHistory } from 'react-router-dom';
+function Teste(){
+  alert("alguma")
+}
 function Automatic() {
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
+  const history= useHistory()
   const [graphData, setGraphData] = useState({
     waterTemp: 0,
     ROR: 0,
@@ -33,7 +38,12 @@ function Automatic() {
           <p>Temperatura: 160°C</p>
           <p>Pressão: 7,4atm </p>
           <p>ROR: 20</p>
+          
+          <ButtonRouter >
+          </ButtonRouter>
+         
         </div>
+
         <div className="control-buttons">
           
           <div className="buttons">

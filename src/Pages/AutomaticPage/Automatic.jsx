@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 // import { FaPowerOff } from "react-icons/fa";
 import Chronometer from "../../components/Chronometer/Chronometer";
 // import BarsGraph from "../../components/BarsGraph/BarsGraph";
@@ -18,7 +18,7 @@ function Teste(){
 function Automatic() {
 
   //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-  const history= useHistory()
+  const history= useHistory();
   const [graphData, setGraphData] = useState({
     waterTemp: 0,
     ROR: 0,
@@ -26,7 +26,7 @@ function Automatic() {
     pressure: 0,
     speed: 0,
     grainyness: 0,
-  };
+  });
   useEffect(() =>{
     socket.on('newData', (data) => { $.extend(graphData, data)  })  
   },[])

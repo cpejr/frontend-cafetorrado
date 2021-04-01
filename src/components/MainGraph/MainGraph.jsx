@@ -1,6 +1,6 @@
 /*eslint-disable*/  
 import React, { useEffect, useRef, useState, useContext } from 'react';
-import { Chart,Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext'
 //import data from '../RevisionGraph/data';
@@ -10,23 +10,17 @@ import 'chartjs-plugin-annotation';
 // let numErr = 0;
 // var numErrTime = [];
 
-const txtFileReader = (mainGraph, data) =>{
-  if(!(mainGraph?.current?.chartInstance)) return 
-  for(let i = 0; i < data.length; i++)
-    mainGraph.current.chartInstance.data.datasets[2].data.push(data[i]);
-    mainGraph.current.chartInstance.update();
-}
 
 function updateData(mainGraph, data) {
   if(!(mainGraph?.current?.chartInstance)) return 
-  mainGraph.current.chartInstance.data.labels.push(data.time);
-  mainGraph.current.chartInstance.data.datasets[0].data.push(data.waterTemp);
-  mainGraph.current.chartInstance.data.datasets[1].data.push(data.waterTemp*50);
-  mainGraph.current.chartInstance.data.datasets[2].data.push(data.ROR);
-  mainGraph.current.chartInstance.data.datasets[3].data.push(data.fireTemp);
-  mainGraph.current.chartInstance.data.datasets[4].data.push(data.pressure);
-  mainGraph.current.chartInstance.data.datasets[5].data.push(data.speed);
-  mainGraph.current.chartInstance.data.datasets[6].data.push(data.grainyness);
+  mainGraph.current.chartInstance.data.labels.push(data.fields.MdlRunCnt);
+  mainGraph.current.chartInstance.data.datasets[0].data.push(data.fields.MdlAirScl);
+  // mainGraph.current.chartInstance.data.datasets[1].data.push(data.waterTemp*50);
+  // mainGraph.current.chartInstance.data.datasets[2].data.push(data.ROR);
+  // mainGraph.current.chartInstance.data.datasets[3].data.push(data.fireTemp);
+  // mainGraph.current.chartInstance.data.datasets[4].data.push(data.pressure);
+  // mainGraph.current.chartInstance.data.datasets[5].data.push(data.speed);
+  // mainGraph.current.chartInstance.data.datasets[6].data.push(data.grainyness);
   mainGraph.current.chartInstance.update();
 
   // const position = mainGraph.current.chartInstance.data.labels.length - 1;
@@ -133,6 +127,7 @@ const MainGraph = () => {
       
       mainGraph.current.chartInstance.update())
   }, [theme])
+
     // useEffect(() =>{
     //   const verticalLinePlugin = {
     //     getLinePosition: function (chart, pointIndex) {
@@ -168,23 +163,11 @@ const MainGraph = () => {
     //     Chart.plugins.register(verticalLinePlugin);
     // },[])
 
-
-  console.log("a");
-  useEffect(() => {
-    socket.on('newData', (_data) => {
-      updateData(mainGraph, _data); 
-      socket.emit('cleanList')
+    socket.on('realData', (data) => {
+      updateData(mainGraph, data)
+      console.log(data)
     }); 
 
-    socket.on('txtFile', (data) => {
-      let dataTemp = [data];
-      let res = dataTemp[0].split("\n");
-      for(let i = 0; i < res.length; i++){
-        res[i] = parseFloat(res[i]);
-      }
-      txtFileReader(mainGraph, res);
-      //console.log(res)
-    });
     // setInterval(() => {
     //   numErrTime.push(numErr);
     // }, 15 * 100);
@@ -194,8 +177,6 @@ const MainGraph = () => {
     // },  60 * 1000);
     // return () =>
     //   socket.off('newData');
-
-  }, []);
 
   
   function crackIt() {
@@ -238,7 +219,6 @@ const MainGraph = () => {
                   position: "top"
                 }
               }
-
             ]
           },
           legend: {

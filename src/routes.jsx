@@ -62,9 +62,6 @@ const RouterComponent = () => {
                     <Route path="/automatic">
                       <Automatic  />
                     </Route>
-                    <Route path="/Manual">
-                      <Manual data={data} />
-                    </Route>
 
                     <Route path="/ResultsRevision" component={ResultsRevision}>
                       <ResultsRevision />

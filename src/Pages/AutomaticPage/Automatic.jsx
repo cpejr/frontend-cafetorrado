@@ -1,52 +1,31 @@
 /* eslint-disable */
-import { React, useEffect, useState } from "react";
-// import { FaPowerOff } from "react-icons/fa";
+import { React } from "react";
 import Chronometer from "../../components/Chronometer/Chronometer";
-// import BarsGraph from "../../components/BarsGraph/BarsGraph";
 import MainGraph from "../../components/MainGraph/MainGraph";
 import ButtonController1 from "../../components/Buttons/ButtonsControllers/ButtonController1";
 import ButtonController2 from "../../components/Buttons/ButtonsControllers/ButtonController2";
 import ButtonController3 from "../../components/Buttons/ButtonsControllers/ButtonController3";
 import ButtonRouter from "../../components/Buttons/ButtonsRouter/ButtonRouter";
 import { socket } from '../../index';
-import $ from 'jquery'
 import "./Automatic.css";
+import RealData from '../../DataHandler/DataHandler'
 import { useHistory } from 'react-router-dom';
-function Teste(){
-  alert("alguma")
-}
-function Automatic() {
 
-  //<div className={state? 'telaContainer' : 'telaContainerLarge'} >
-  const history= useHistory();
-  const [graphData, setGraphData] = useState({
-    waterTemp: 0,
-    ROR: 0,
-    fireTemp: 0,
-    pressure: 0,
-    speed: 0,
-    grainyness: 0,
-  });
-  useEffect(() =>{
-    socket.on('newData', (data) => { $.extend(graphData, data)  })  
-  },[])
-  console.log('x');
+function Automatic() {
+  console.log('x')
   return (
-    <div className="tela-container">
+    <div className="tela-container" >
       <div className="upper-part">
         <MainGraph />        
       </div>
       <div className="lower-part">
-        <div className="status-bar">
+        {/* <div className="status-bar">
           
           <p>Temperatura: 160°C</p>
           <p>Pressão: 7,4atm </p>
           <p>ROR: 20</p>
-          
-          <ButtonRouter >
-          </ButtonRouter>
          
-        </div>
+        </div> */}
 
         <div className="control-buttons">
           
@@ -68,13 +47,9 @@ function Automatic() {
         <div className="time-chronometer">
           <Chronometer />
         </div>
-        <div className="informations">
-          <p>Pressão:{graphData.waterTemp}</p>
-          <p>Temperatura do Grão: {graphData.grainyness}</p>
-          <p>Temperatura do Ar: {graphData.fireTemp}</p>
-          <p>ROR: {graphData.ROR}</p>
-          
-        </div>  
+        <div className = 'informations'>
+          <RealData />
+        </div>
       </div>
     </div>
   );

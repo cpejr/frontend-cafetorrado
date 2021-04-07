@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React, { useState } from 'react';
-import { socket } from '../../index';
+import { getServerData, disconnectData } from '../RequestHandler/RequestHandler'
 
 import './Chronometer.css';
 
@@ -24,31 +24,15 @@ function Chronometer() {
     setInterval(addSecond, 1000);
   }
   
-
-  const beginTorra = () => {
-    socket.emit('start');  
-
-}
-  const endTorra = () => {
-    socket.emit('stop');
-}
-// const [playPause,setPlayPause] = useState(0);
-
-//   const begin =() =>{
-//     if(playPause != beginTorra){
-//       setPlayPause(beginTorra);
-//     }else(setPlayPause(endTorra))
-//   }
-
   return (
     <div className="chronometer-container">
       <div id="buttons">
-        <button id="change" type="button" onClick={beginTorra}>
+        <button id="change" type="button" onClick={getServerData}>
         Start
         </button>
-        <button id="change" type="button" onClick={endTorra}>
+        <button id="change" type="button" onClick={disconnectData}>
          Finish
-        </button>
+        </button> 
       </div>
       <div id="chronometer">
         <span id="minutes">00</span>

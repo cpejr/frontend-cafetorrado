@@ -5,13 +5,6 @@ import './App.css';
 import RouterComponent from './routes';
 
 function App() {
-  //return (
-  //   <ThemeContextProvider>
-  //     <TemplateWithDrawer valuesInfo={valuesInfo}>
-  //       <Automatico newData={newData} />
-  //     </TemplateWithDrawer>
-  //   </ThemeContextProvider>
-  // );
   return (
     <ThemeContextProvider>
       <RouterComponent />

@@ -1,11 +1,9 @@
-/*eslint-disable*/  
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
-import { socket } from '../../index';
+import { socket } from '../../index'
 import { ThemeContext } from '../../Context/ThemeContext'
-//import data from '../RevisionGraph/data';
 import 'chartjs-plugin-annotation';
-require('typeface-quicksand')
+
 
 // let done = false;
 // function parseTime(mainGraph, data){

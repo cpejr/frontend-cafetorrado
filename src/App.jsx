@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import React, { useState } from 'react';
 import ThemeContextProvider from './Context/ThemeContext';
 import './App.css';

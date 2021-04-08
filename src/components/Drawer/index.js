@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -46,6 +45,7 @@ const DrawerComponent = ({ open, toggle, valuesInfo }) => (
       <div className="monitoring-options">
         <form>
           <div className="radio-group">
+            {/* eslint-disable-next-line */}
             <label>
               <Route
                 render={({ history }) => (
@@ -65,6 +65,7 @@ const DrawerComponent = ({ open, toggle, valuesInfo }) => (
           <br />
 
           <div className="radio-group">
+            {/* eslint-disable-next-line */}
             <label>
               <input type="radio" name="manual" />
               Manual

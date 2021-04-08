@@ -1,12 +1,10 @@
-/*eslint-disable*/
 import React, { useState } from 'react';
-import { getServerData, disconnectData } from '../RequestHandler/RequestHandler'
+import { getServerData, disconnectData } from '../RequestHandler/RequestHandler';
 
 import './Chronometer.css';
 
 function Chronometer() {
   const [time, setTime] = useState({ minute: 0, second: 0 });
-   
 
   function addSecond() {
     var mySecond = time.second;
@@ -23,16 +21,16 @@ function Chronometer() {
   function startChronometer() {
     setInterval(addSecond, 1000);
   }
-  
+
   return (
     <div className="chronometer-container">
       <div id="buttons">
         <button id="change" type="button" onClick={getServerData}>
-        Start
+          Start
         </button>
         <button id="change" type="button" onClick={disconnectData}>
-         Finish
-        </button> 
+          Finish
+        </button>
       </div>
       <div id="chronometer">
         <span id="minutes">00</span>

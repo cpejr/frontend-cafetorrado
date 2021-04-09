@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { socket } from '../../index';
 
+const api = axios.create({ baseURL: 'http://localhost:8080' });
+
 const URL_GETDATA = 'http://localhost:8080/connectData';
 const URL_DISCONNECTDATA = 'http://localhost:8080/disconnectData';
 const URL_CONNECTWIFI = 'http://localhost:8080/connectWifi';
@@ -27,20 +29,15 @@ const connectWifi = () => {
 
 const setChartParams = async (RoastName) => {
   const parameters = {
-    name: `${RoastName}`,
-    description: 'cors',
+    name: RoastName,
+    description: 'Uma descrição legal',
   };
-  const parser = JSON.stringify(parameters);
-  fetch(URL_SETCHARTPARAMS, {
-    method: 'POST',
-    // eslint-disable-next-line
-    body: { parser },
-    mode: 'cors',
-  });
+  const result = await axios.post(URL_SETCHARTPARAMS, parameters);
+  return result.data;
 };
 
 const deleteLastRoast = () => {
-  axios.delete(URL_DELETELASTROAST);
+  api.delete('/deleteLastRoast');
 };
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,

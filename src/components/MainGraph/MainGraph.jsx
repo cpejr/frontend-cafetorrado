@@ -6,6 +6,7 @@ import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
 import 'chartjs-plugin-annotation';
 
+require('typeface-quicksand');
 // let done = false;
 // function parseTime(mainGraph, data){
 //   let time = 0;
@@ -152,7 +153,6 @@ const MainGraph = () => {
           legend: {
             position: 'top',
             labels: {
-              padding: 20,
               fontFamily: 'Quicksand',
               fontColor: 'white',
               fontSize: 16,
@@ -201,6 +201,7 @@ const MainGraph = () => {
               {
                 ticks: {
                   autoSkip: true,
+                  sampleSize: false,
                   fontColor: 'smokewhite',
                   maxTicksLimit: 20,
                   beginAtZero: true,

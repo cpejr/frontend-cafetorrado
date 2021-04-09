@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { getServerData, disconnectData } from '../RequestHandler/RequestHandler';
 
 import './Chronometer.css';
 
 function Chronometer() {
+  const history = useHistory();
   const [time, setTime] = useState({ minute: 0, second: 0 });
 
   function addSecond() {
@@ -28,7 +30,7 @@ function Chronometer() {
         <button id="change" type="button" onClick={getServerData}>
           Start
         </button>
-        <button id="change" type="button" onClick={disconnectData}>
+        <button id="change" type="button" onClick={() => { disconnectData(); history.push('/ResultsRevision'); }}>
           Finish
         </button>
       </div>

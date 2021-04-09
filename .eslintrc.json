@@ -1,4 +1,7 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "extends": ["airbnb"],
   "env": {
     "browser": true,
@@ -28,7 +31,7 @@
     "max-len": [
       "warn",
       {
-        "code": 80,
+        "code": 100,
         "tabWidth": 2,
         "comments": 100,
         "ignoreComments": false,

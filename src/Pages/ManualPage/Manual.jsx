@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from 'react';
 import * as skins from 'react-rotary-knob-skin-pack';
-import $ from 'jquery';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import MainGraph from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';

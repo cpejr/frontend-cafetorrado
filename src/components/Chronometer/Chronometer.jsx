@@ -1,12 +1,12 @@
-/*eslint-disable*/
 import React, { useState } from 'react';
-import { socket } from '../../index';
+import { useHistory } from 'react-router-dom';
+import { getServerData, disconnectData } from '../RequestHandler/RequestHandler';
 
 import './Chronometer.css';
 
 function Chronometer() {
+  const history = useHistory();
   const [time, setTime] = useState({ minute: 0, second: 0 });
-   
 
   function addSecond() {
     var mySecond = time.second;
@@ -23,31 +23,15 @@ function Chronometer() {
   function startChronometer() {
     setInterval(addSecond, 1000);
   }
-  
-
-  const beginTorra = () => {
-    socket.emit('start');  
-
-}
-  const endTorra = () => {
-    socket.emit('stop');
-}
-// const [playPause,setPlayPause] = useState(0);
-
-//   const begin =() =>{
-//     if(playPause != beginTorra){
-//       setPlayPause(beginTorra);
-//     }else(setPlayPause(endTorra))
-//   }
 
   return (
     <div className="chronometer-container">
       <div id="buttons">
-        <button id="change" type="button" onClick={beginTorra}>
-        Start
+        <button id="change" type="button" onClick={getServerData}>
+          Start
         </button>
-        <button id="change" type="button" onClick={endTorra}>
-         Finish
+        <button id="change" type="button" onClick={() => { disconnectData(); history.push('/ResultsRevision'); }}>
+          Finish
         </button>
       </div>
       <div id="chronometer">

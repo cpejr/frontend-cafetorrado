@@ -1,5 +1,4 @@
-/*eslint-disable*/
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import {
   List,
   ListItem,
@@ -10,19 +9,18 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useLocation, Route,useHistory } from 'react-router-dom';
+import { useLocation, Route, useHistory } from 'react-router-dom';
 import Brightness6Icon from '@material-ui/icons/Brightness6';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
-import {ThemeContext} from "../../Context/ThemeContext"
 import clsx from 'clsx';
+import { Namespace } from 'socket.io';
+import { ThemeContext } from '../../Context/ThemeContext';
 import Theme from '../theme';
 
 import StyledRadio from './StyledRadio';
-import { Namespace } from 'socket.io';
-
 
 const useStyles = makeStyles((theme) => ({
   nested: {
@@ -58,9 +56,9 @@ const DrawerMenu = ({ drawerOpen }) => {
     },
 
   ];
-  const {toggleTheme} = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
-const history= useHistory();
+  const history = useHistory();
   return (
     <List className="menu-bar">
       {menuItens.map(({ title, icon }) => (
@@ -77,7 +75,7 @@ const history= useHistory();
         </ListItemIcon>
         <ListItemText className="menu-text" primary="Monitoramento" />
       </ListItem>
-      <FormControl className={`${classes.nested} menu-monitoramento-radio ${drawerOpen? '': 'closed'}`}>
+      <FormControl className={`${classes.nested} menu-monitoramento-radio ${drawerOpen ? '' : 'closed'}`}>
         <RadioGroup
           defaultValue=""
           className={clsx({ [classes.hide]: !drawerOpen })}
@@ -86,9 +84,9 @@ const history= useHistory();
             value="automatic"
             control={<StyledRadio />}
             onClick={() => {
-                history.push('/automatic');
-              }}
-            label ="Automático"       
+              history.push('/automatic');
+            }}
+            label="Automático"
           />
           <FormControlLabel
             value="manual"
@@ -100,12 +98,12 @@ const history= useHistory();
           />
         </RadioGroup>
       </FormControl>
-      
-        <ListItem button onClick={toggleTheme}>
-          <ListItemIcon className="menu-icon"><Brightness6Icon/></ListItemIcon>
-          <ListItemText className="menu-text" primary="Temas" />
-        </ListItem>
-     
+
+      <ListItem button onClick={toggleTheme}>
+        <ListItemIcon className="menu-icon"><Brightness6Icon /></ListItemIcon>
+        <ListItemText className="menu-text" primary="Temas" />
+      </ListItem>
+
     </List>
 
   );

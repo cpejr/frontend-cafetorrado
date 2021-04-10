@@ -1,17 +1,15 @@
-/*eslint-disable*/
 import { React, useState } from 'react';
 import { BiPlayCircle } from 'react-icons/bi';
 import { FiPower } from 'react-icons/fi';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import data from '../RevisionGraph/data';
-import MainGraph from '../MainGraph/MainGraph'
+import MainGraph from '../MainGraph/MainGraph';
 
 import './Header.css';
 
 function Header() {
-const [colorPower, setColorPower] = useState('var(--fontColorComponents)');
-
+  const [colorPower, setColorPower] = useState('var(--fontColorComponents)');
 
   const changeColorPower = () => {
     if (colorPower === 'var(--fontColorComponents)') {

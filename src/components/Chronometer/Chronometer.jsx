@@ -30,7 +30,7 @@ function Chronometer() {
         <button id="change" type="button" onClick={getServerData}>
           Start
         </button>
-        <button id="change" type="button" onClick={() => { disconnectData(); history.push('/ResultsRevision'); }}>
+        <button id="change" type="button" onClick={() => { disconnectData; history.push('/ResultsRevision'); }}>
           Finish
         </button>
       </div>

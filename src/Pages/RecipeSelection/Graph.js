@@ -8,8 +8,8 @@ const INITALLDATA = {
       data: [],
       yAxisID: 'left',
       borderColor: 'white',
-      borderWidth: 3,
-      pointRadius: 1,
+      borderWidth: 1,
+      pointRadius: 0,
     },
     {
       fill: false,
@@ -17,8 +17,8 @@ const INITALLDATA = {
       yAxisID: 'left',
       data: [],
       borderColor: 'pink',
-      borderWidth: 3,
-      pointRadius: 1,
+      borderWidth: 1,
+      pointRadius: 0,
     },
     {
       fill: false,
@@ -26,8 +26,8 @@ const INITALLDATA = {
       data: [],
       yAxisID: 'right',
       borderColor: 'red',
-      borderWidth: 3,
-      pointRadius: 1,
+      borderWidth: 1,
+      pointRadius: 0,
     },
 
     {
@@ -36,8 +36,8 @@ const INITALLDATA = {
       yAxisID: 'right',
       data: [],
       borderColor: 'blue',
-      borderWidth: 3,
-      pointRadius: 1,
+      borderWidth: 1,
+      pointRadius: 0,
     },
 
     {
@@ -46,8 +46,8 @@ const INITALLDATA = {
       yAxisID: 'right',
       data: [],
       borderColor: 'yellow',
-      borderWidth: 3,
-      pointRadius: 1,
+      borderWidth: 1,
+      pointRadius: 0,
     },
 
   ],

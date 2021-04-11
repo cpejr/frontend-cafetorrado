@@ -3,14 +3,13 @@ import {
   BrowserRouter as Router, Route, Switch, Link,
 } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { StylesProvider } from '@material-ui/core';
 import ResultsRevision from './Pages/ResultsRevision';
 import Teste from './components/theme';
 import TemplateWithDrawer from './Templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
+import RecipeSelection from './Pages/RecipeSelection/RecipeSelection';
 import './components/Animations/Animations.css';
-import ResultsSelection from './Pages/RevenueSelection/Selection';
 
 const valuesInfo = {
   pressão: 8.9,
@@ -46,7 +45,7 @@ const RouterComponent = () => (
                     <Link to="/RevenueSelection">Ir para Seleção de Receita</Link>
                   </Route>
 
-                  <Route path="/RevenueSelection" component={ResultsSelection} />
+                  <Route path="/RecipeSelection" component={RecipeSelection} />
 
                   <Route path="/Manual">
                     <Manual />
@@ -59,10 +58,6 @@ const RouterComponent = () => (
 
                   <Route path="/automatic">
                     <Automatic />
-                  </Route>
-
-                  <Route path="/ResultsRevision" component={ResultsRevision}>
-                    <ResultsRevision />
                   </Route>
 
                   <Route path="/teste">

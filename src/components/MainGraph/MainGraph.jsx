@@ -32,7 +32,7 @@ function updateData(mainGraph, data) {
 
 const INITALLDATA = {
   type: 'line',
-  labels: [0],
+  labels: [],
   datasets: [
     {
       fill: false,
@@ -87,7 +87,6 @@ const INITALLDATA = {
 
 const MainGraph = () => {
   const [crackTime, setCrackTime] = useState(0);
-  const [torra, setTorra] = useState(0);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
   useEffect(() => {
@@ -151,7 +150,7 @@ const MainGraph = () => {
             ],
           },
           legend: {
-            position: 'top',
+            position: 'bottom',
             labels: {
               fontFamily: 'Quicksand',
               fontColor: 'white',
@@ -201,7 +200,6 @@ const MainGraph = () => {
               {
                 ticks: {
                   autoSkip: true,
-                  sampleSize: false,
                   fontColor: 'smokewhite',
                   maxTicksLimit: 20,
                   beginAtZero: true,

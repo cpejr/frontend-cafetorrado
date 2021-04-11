@@ -3,13 +3,16 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
-import { useLocation, Route } from 'react-router-dom';
+import { useLocation, Route, useHistory } from 'react-router-dom';
 import Theme from '../theme';
 import Divider from '../Divider';
 
 import './styles.css';
 
-const DrawerComponent = ({ open, toggle, valuesInfo }) => (
+const DrawerComponent = ({ open, toggle, valuesInfo }) => 
+  const history = useHistory();
+
+  return(
   <div
     className={
         open ? 'drawer-content' : 'drawer-content drawer-content-close'
@@ -24,7 +27,7 @@ const DrawerComponent = ({ open, toggle, valuesInfo }) => (
     <Divider />
 
     <div className="menu">
-      <div className="link-menu" href="/">
+      <div className="link-menu" href="/RecipeSelection">
         <SearchIcon />
         <span>Selecionar Receita</span>
       </div>

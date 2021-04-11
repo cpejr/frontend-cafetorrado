@@ -7,6 +7,11 @@ const getServerData = () => { api.get('/connectData'); };
 
 const disconnectData = () => { api.get('/disconnectData'); };
 
+const getRoasts = () => {
+  const result = api.get('/');
+  return result;
+};
+
 const disconnectWifi = () => { api.get('/disconnectWifi'); };
 
 const connectWifi = () => { api.get('connectWifi'); };
@@ -24,9 +29,9 @@ const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
 
 const getUniqueRoast = async (RoastName) => {
   const result = await api.get(`/getUniqueRoast/${RoastName}`);
-  alert(result.data);
+  return result;
 };
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
-  getUniqueRoast,
+  getUniqueRoast, getRoasts,
 };

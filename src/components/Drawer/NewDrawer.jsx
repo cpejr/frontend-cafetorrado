@@ -6,7 +6,6 @@ import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { DrawerMenu, DrawerHeader, OutrasInformacoes } from './InsideDrawer';
-import { useToggle } from '../../Hooks';
 
 import './NewDrawer.css';
 
@@ -64,9 +63,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewDrawer({ children, valuesInfo }) {
+export default function NewDrawer({
+  children, valuesInfo, open, toggle,
+}) {
   const classes = useStyles();
-  const [open, drawerToggle] = useToggle(false);
 
   return (
     <div className={classes.root}>
@@ -92,7 +92,7 @@ export default function NewDrawer({ children, valuesInfo }) {
           }),
         }}
       >
-        <DrawerHeader drawerToggle={drawerToggle} />
+        <DrawerHeader drawerToggle={toggle} />
         <DrawerMenu drawerOpen={open} />
         <OutrasInformacoes drawerOpen={open} valuesInfo={valuesInfo} />
       </Drawer>

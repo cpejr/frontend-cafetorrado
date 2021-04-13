@@ -87,6 +87,7 @@ const INITALLDATA = {
 
 const MainGraph = () => {
   const [crackTime, setCrackTime] = useState(0);
+  const [graphWidth, setGraphWidth] = useState(1220);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
   useEffect(() => {
@@ -120,13 +121,29 @@ const MainGraph = () => {
     window.crackIt = crackIt;
   }, [crackTime]);
 
+  useEffect(() => {
+    function listener() {
+      if (window.drawerIsOpen) {
+        setGraphWidth(1040);
+      } else {
+        setGraphWidth(1220);
+      }
+    }
+
+    window.addEventListener('drawer-toggle', listener);
+
+    return () => { window.removeEventListener('drawer-toggle', listener); };
+  }, [window.drawerIsOpen]);
+
+  useEffect(() => {
+    mainGraph.current.chartInstance.update();
+  }, [graphWidth]);
+
   return (
-    <div>
+    <div style={{ width: graphWidth, height: 400, position: 'relative' }}>
       <Line
         padding="0"
         id="main-graph"
-        width="1000"
-        height="400"
         data={INITALLDATA}
         ref={mainGraph}
         options={{
@@ -154,10 +171,10 @@ const MainGraph = () => {
             labels: {
               fontFamily: 'Quicksand',
               fontColor: 'white',
-              fontSize: 16,
+              fontSize: 14,
             },
           },
-          responsive: true,
+          /*  responsive: true, */
           maintainAspectRatio: false,
 
           title: {

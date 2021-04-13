@@ -196,8 +196,8 @@ const MainGraph = () => {
               type: 'linear',
               position: 'left',
               ticks: {
-                min: 130,
-                max: 200,
+                min: -100,
+                max: 100,
                 stepSize: 10,
                 fontColor: 'white',
               },

@@ -31,8 +31,8 @@ const RealData = () => {
         <p>Percentual do Ar:</p>
       </div>
       <div style={{ paddingLeft: '30px' }}>
-        <p>{uppData.fields.MdlAirScl}</p>
-        <p>{uppData.fields.MdlGraScl}</p>
+        <p>{(uppData.fields.MdlAirScl).toFixed(2)}</p>
+        <p>{(uppData.fields.MdlGraScl).toFixed(2)}</p>
         <p>
           {uppData.fields.MdlInjOut}
           %
@@ -42,7 +42,7 @@ const RealData = () => {
           %
         </p>
         <p>
-          {uppData.fields.MdlAirOut}
+          {(uppData.fields.MdlAirOut).toFixed(2)}
           %
         </p>
       </div>

@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React, { useState, useEffect, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import { socket } from '../..';
@@ -19,14 +18,15 @@ async function updateData(mainGraph, data) {
   const result = await clearData(mainGraph);
   if (!(mainGraph?.current?.chartInstance)) return;
   data.forEach((elem) => {
-    if (elem.fields.MdlRunCnt === 0) return;
-    mainGraph.current.chartInstance.data.labels.push((elem.fields.MdlRunCnt * 0.2).toFixed(2));
-    mainGraph.current.chartInstance.data.datasets[0].data.push(elem.fields.MdlAirScl);
-    mainGraph.current.chartInstance.data.datasets[1].data.push(elem.fields.MdlGraScl);
-    mainGraph.current.chartInstance.data.datasets[2].data.push(elem.fields.MdlInjOut);
-    mainGraph.current.chartInstance.data.datasets[3].data.push(elem.fields.MdlDruOut);
-    mainGraph.current.chartInstance.data.datasets[4].data.push(elem.fields.MdlAirOut);
-    mainGraph.current.chartInstance.update();
+    if (elem.fields.MdlRunCnt < 10000) {
+      mainGraph.current.chartInstance.data.labels.push((elem.fields.MdlRunCnt * 0.2).toFixed(2));
+      mainGraph.current.chartInstance.data.datasets[0].data.push(elem.fields.MdlAirScl);
+      mainGraph.current.chartInstance.data.datasets[1].data.push(elem.fields.MdlGraScl);
+      mainGraph.current.chartInstance.data.datasets[2].data.push(elem.fields.MdlInjOut);
+      mainGraph.current.chartInstance.data.datasets[3].data.push(elem.fields.MdlDruOut);
+      mainGraph.current.chartInstance.data.datasets[4].data.push(elem.fields.MdlAirOut);
+      mainGraph.current.chartInstance.update();
+    }
   });
 }
 let dataToRender = [];
@@ -99,8 +99,6 @@ export default function RecipeSelection() {
                     type: 'linear',
                     position: 'left',
                     ticks: {
-                      min: 130,
-                      max: 200,
                       stepSize: 10,
                       fontColor: 'white',
                     },
@@ -109,8 +107,6 @@ export default function RecipeSelection() {
                     type: 'linear',
                     position: 'right',
                     ticks: {
-                      min: 0,
-                      max: 100,
                       stepSize: 10,
                       fontColor: 'white',
                     },
@@ -119,6 +115,8 @@ export default function RecipeSelection() {
                   xAxes: [
                     {
                       ticks: {
+                        min: 0,
+                        max: 100,
                         autoSkip: true,
                         fontColor: 'smokewhite',
                         maxTicksLimit: 20,

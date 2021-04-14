@@ -1,3 +1,9 @@
-.container{
-    background-color: white;
+.roast-list {
+    padding-top: 10px;
+    align-items: center;
+    padding: 10px 0 10px 0;
+}
+
+hr {
+    opacity: 0.4;
 }

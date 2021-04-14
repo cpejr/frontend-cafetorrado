@@ -27,11 +27,11 @@ const setChartParams = async (RoastName) => {
 
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
 
-const getUniqueRoast = async (RoastName) => {
-  const result = await api.get(`/getUniqueRoast/${RoastName}`);
+const getUniqueRoastData = async (roast_id) => {
+  const result = await api.get(`/getUniqueRoastData/${roast_id}`);
   return result;
 };
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
-  getUniqueRoast, getRoasts,
+  getUniqueRoastData, getRoasts,
 };

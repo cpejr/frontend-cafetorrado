@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-import { getRoasts, getUniqueRoast } from '../../components/RequestHandler/RequestHandler';
+import { getRoasts, getUniqueRoastData } from '../../components/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
 let dataToRender = [];
@@ -31,8 +31,8 @@ function RecipeSelection() {
                 className="roast-list"
                 onClick={async (event) => {
                   event.preventDefault();
-                  dataToRender = await (await (getUniqueRoast(elem.name))).data;
-                  updateData(graphRef, dataToRender.data);
+                  dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
+                  updateData(graphRef, dataToRender);
                 }}
               >
                 {elem.name}

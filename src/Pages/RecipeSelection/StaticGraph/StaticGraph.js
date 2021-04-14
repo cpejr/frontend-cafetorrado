@@ -2,7 +2,22 @@ import React, { useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import { INITALLDATA } from './chartData';
 
+let airOut = []; let airScl = []; let disErr = []; let druOut = []; let graScl = [];
+let injOut = []; let runCnt = [];
+function desestructData(data) {
+  for (let i = 0; i < data.length; i += 1) {
+    runCnt.push(data[i].MdlRunCnt);
+    injOut.push(data[i].MdlInjOut);
+    graScl.push(data[i].MdlGraScl);
+    druOut.push(data[i].MdlDruOut);
+    disErr.push(data[i].MdlDisErr);
+    airScl.push(data[i].MdlAirScl);
+    airOut.push(data[i].MdlAirOut);
+  }
+}
 function clearData(refGraph) {
+  airOut = []; airScl = []; disErr = []; druOut = []; graScl = [];
+  injOut = []; runCnt = [];
   if (!(refGraph?.current?.chartInstance)) return;
   refGraph.current.chartInstance.data.labels = [];
   refGraph.current.chartInstance.data.datasets[0].data = [];
@@ -13,19 +28,17 @@ function clearData(refGraph) {
   refGraph.current.chartInstance.update();
 }
 
-async function updateData(refGraph, data) {
-  if (!(refGraph?.current?.chartInstance)) return;
+function updateData(refGraph, data) {
   clearData(refGraph);
-  data.forEach((elem) => {
-    if (!(elem.fields.MdlRunCnt < 100000)) return;
-    refGraph.current.chartInstance.data.labels.push((elem.fields.MdlRunCnt * 0.2).toFixed(2));
-    refGraph.current.chartInstance.data.datasets[0].data.push(elem.fields.MdlAirScl);
-    refGraph.current.chartInstance.data.datasets[1].data.push(elem.fields.MdlGraScl);
-    refGraph.current.chartInstance.data.datasets[2].data.push(elem.fields.MdlInjOut);
-    refGraph.current.chartInstance.data.datasets[3].data.push(elem.fields.MdlDruOut);
-    refGraph.current.chartInstance.data.datasets[4].data.push(elem.fields.MdlAirOut);
-    refGraph.current.chartInstance.update();
-  });
+  desestructData(data);
+  if (!(refGraph?.current?.chartInstance)) return;
+  refGraph.current.chartInstance.data.labels.push(...runCnt);
+  refGraph.current.chartInstance.data.datasets[0].data.push(...airScl);
+  refGraph.current.chartInstance.data.datasets[1].data.push(...graScl);
+  refGraph.current.chartInstance.data.datasets[2].data.push(...injOut);
+  refGraph.current.chartInstance.data.datasets[3].data.push(...druOut);
+  refGraph.current.chartInstance.data.datasets[4].data.push(...airOut);
+  refGraph.current.chartInstance.update();
 }
 
 const StaticRefGraph = React.forwardRef((props, ref) => (

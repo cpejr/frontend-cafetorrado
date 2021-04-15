@@ -21,14 +21,11 @@ function RecipeSelection() {
         </div>
       )
       : (
-        <div style={{
-          display: 'flex', flexDirection: 'row', justifyContent: 'space-around', height: '100vh',
-        }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className="container">
+          <div className="list">
             {roastData.map((elem) => (
               <list
-                className="roast-list"
+                className="roast-items"
                 onClick={async (event) => {
                   event.preventDefault();
                   dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
@@ -42,12 +39,8 @@ function RecipeSelection() {
           </div>
           <div style={{ marginTop: '120px', display: 'flex', flexDirection: 'column' }}>
             <StaticRefGraph ref={graphRef} />
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <h4>Descrição da torra:</h4>
-            </div>
           </div>
         </div>
-
       )
   );
 }

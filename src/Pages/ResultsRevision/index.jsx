@@ -3,7 +3,7 @@ import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
 import MainGraph from '../../components/MainGraph/MainGraph';
-import { deleteLastRoast } from '../../components/RequestHandler/RequestHandler';
+import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
 import getChartParams from '../../components/Functions/getChartParams';
 
 const ResultsRevision = () => (

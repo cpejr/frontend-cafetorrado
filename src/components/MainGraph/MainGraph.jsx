@@ -41,7 +41,7 @@ const INITALLDATA = {
       yAxisID: 'left',
       borderColor: '',
       borderWidth: 3,
-      pointRadius: 1,
+      pointRadius: 0,
     },
     {
       fill: false,
@@ -50,7 +50,7 @@ const INITALLDATA = {
       data: [],
       borderColor: '',
       borderWidth: 3,
-      pointRadius: 1,
+      pointRadius: 0,
     },
     {
       fill: false,
@@ -59,7 +59,7 @@ const INITALLDATA = {
       yAxisID: 'right',
       borderColor: '',
       borderWidth: 3,
-      pointRadius: 1,
+      pointRadius: 0,
     },
 
     {
@@ -69,7 +69,7 @@ const INITALLDATA = {
       data: [],
       borderColor: '',
       borderWidth: 3,
-      pointRadius: 1,
+      pointRadius: 0,
     },
 
     {
@@ -79,7 +79,7 @@ const INITALLDATA = {
       data: [],
       borderColor: '',
       borderWidth: 3,
-      pointRadius: 1,
+      pointRadius: 0,
     },
 
   ],
@@ -196,8 +196,6 @@ const MainGraph = () => {
               type: 'linear',
               position: 'left',
               ticks: {
-                min: -100,
-                max: 100,
                 stepSize: 10,
                 fontColor: 'white',
               },

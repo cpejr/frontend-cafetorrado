@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { socket } from '../../index';
 
 const api = axios.create({ baseURL: 'http://localhost:8080' });
 
@@ -31,7 +30,16 @@ const getUniqueRoastData = async (roast_id) => {
   const result = await api.get(`/getUniqueRoastData/${roast_id}`);
   return result;
 };
+
+const sendESPData = (parameters) => {
+  for (const key in parameters) {
+    if (parameters[key]) {
+      api.post('/sendData', parameters);
+    }
+  }
+};
+
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
-  getUniqueRoastData, getRoasts,
+  getUniqueRoastData, getRoasts, sendESPData,
 };

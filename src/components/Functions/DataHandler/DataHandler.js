@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { socket } from '../index';
+import { socket } from '../../../index';
 
 const RealData = () => {
   const [uppData, setUppData] = useState({

@@ -8,7 +8,7 @@ import ButtonController3 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonRouter from '../../components/Buttons/ButtonsRouter/ButtonRouter';
 import { socket } from '../../index';
 import './Automatic.css';
-import RealData from '../../DataHandler/DataHandler';
+import RealData from '../../components/Functions/DataHandler/DataHandler';
 
 function Automatic() {
   console.log('x');

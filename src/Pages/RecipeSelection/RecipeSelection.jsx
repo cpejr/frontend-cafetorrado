@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-import { getRoasts, getUniqueRoastData } from '../../components/RequestHandler/RequestHandler';
+import { getRoasts, getUniqueRoastData } from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
 let dataToRender = [];

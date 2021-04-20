@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getServerData, disconnectData } from '../RequestHandler/RequestHandler';
+import { getServerData, disconnectData } from '../Functions/RequestHandler/RequestHandler';
 
 import './Chronometer.css';
 

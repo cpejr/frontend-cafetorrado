@@ -1,38 +1,42 @@
 import { React, useEffect, useState } from 'react';
-import { render } from 'react-dom';
 // eslint-disable-next-line
 import { Knob, Value } from 'react-rotary-knob';
 import * as skins from 'react-rotary-knob-skin-pack';
-import { socket } from '../../../index';
+import useDebounce from '../../Functions/useDebounce';
+import { sendESPData } from '../../Functions/RequestHandler/RequestHandler';
 
-function ButtonAdjustment({
-  // eslint-disable-next-line
-  buttonValue, setButtonValue, skinButton, setSkinButton, emitName, changeValue, maxValue = 1000,
-}) {
+function ButtonAdjustment({ name }) {
+  const [buttonValue, setButtonValue] = useState(0);
+  const debouncedButtonValue = useDebounce(buttonValue, 200);
+  useEffect(() => {
+    sendESPData({ [name]: debouncedButtonValue });
+  }, [debouncedButtonValue]);
+
+  function changeValue(val) {
+    if (Math.abs(val - buttonValue) < 40) { setButtonValue(Math.round(val)); }
+  }
+
   const knobstyle = {
     width: '120px',
     height: '120px',
   };
-  function sendData() {
-    // eslint-disable-next-line
-    socket.emit(emitName, (Math.round(buttonValue * 100 / 1000) / 100));
-  }
 
   return (
     <div>
       <Knob
-        id="myKnob"
+        id={name}
         onChange={changeValue}
+        debounceTimeout={200}
+        value={buttonValue}
         style={knobstyle}
         rotateDegrees={-135}
         clampMin={0}
         clampMax={270}
-        onEnd={sendData}
         min={0}
-        max={maxValue}
-        value={buttonValue}
-        preciseMode={false}
-        skin={skinButton}
+        max={100}
+        precisionMode
+        unlockDistance={80}
+        skin={skins.s12}
       />
     </div>
   );

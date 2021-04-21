@@ -1,3 +1,19 @@
-.container{
-    background-color: white;
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
+    overflow: hidden;
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.roast-items {
+    padding: 10px 0 10px 0;
+}
+    
+hr {
+    opacity: 0.4;
 }

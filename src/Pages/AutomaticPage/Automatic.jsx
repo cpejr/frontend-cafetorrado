@@ -1,14 +1,14 @@
 import { React } from 'react';
 import { useHistory } from 'react-router-dom';
 import Chronometer from '../../components/Chronometer/Chronometer';
-import MainGraph from '../../components/MainGraph/MainGraph';
+import { MainGraph } from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
 import ButtonRouter from '../../components/Buttons/ButtonsRouter/ButtonRouter';
 import { socket } from '../../index';
 import './Automatic.css';
-import RealData from '../../DataHandler/DataHandler';
+import RealData from '../../components/Functions/DataHandler/DataHandler';
 
 function Automatic() {
   console.log('x');

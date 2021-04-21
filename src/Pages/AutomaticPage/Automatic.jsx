@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { useHistory } from 'react-router-dom';
 import Chronometer from '../../components/Chronometer/Chronometer';
-import MainGraph from '../../components/MainGraph/MainGraph';
+import { MainGraph } from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';

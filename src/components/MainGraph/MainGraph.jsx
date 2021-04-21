@@ -7,6 +7,8 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import 'chartjs-plugin-annotation';
 
 require('typeface-quicksand');
+
+let time = 0;
 // let done = false;
 // function parseTime(mainGraph, data){
 //   let time = 0;
@@ -28,6 +30,7 @@ function updateData(mainGraph, data) {
   mainGraph.current.chartInstance.data.datasets[4].data.push(data.fields.MdlAirOut);
 
   mainGraph.current.chartInstance.update();
+  time = data.fields.MdlRunCnt;
 }
 
 const INITALLDATA = {
@@ -85,7 +88,8 @@ const INITALLDATA = {
   ],
 };
 
-const MainGraph = () => {
+export const MainGraph = () => {
+  console.log('s');
   const [crackTime, setCrackTime] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1220);
   const mainGraph = useRef();
@@ -140,7 +144,7 @@ const MainGraph = () => {
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 400, position: 'relative' }}>
+    <div style={{ width: graphWidth, height: 550, position: 'relative' }}>
       <Line
         padding="0"
         id="main-graph"
@@ -227,4 +231,3 @@ const MainGraph = () => {
     </div>
   );
 };
-export default MainGraph;

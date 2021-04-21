@@ -28,6 +28,7 @@
   padding-top: 3vh;
   height: 30%;
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
 }
 
@@ -92,7 +93,7 @@
 
 .time-chronometer {
   flex-direction: column;
-  width: 25%;
+  width: 20%;
 }
 .time-title {
   width: 100%;

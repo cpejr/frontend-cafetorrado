@@ -1,0 +1,182 @@
+@mixin align($direction){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.start-hidden{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    backdrop-filter: blur(10px) brightness(70%);
+    height: 100vh;
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        width: 50%;
+        height: 70%;
+        position: relative;
+        background-color: var(--backgroundColor);
+      }
+      p{ 
+        font-size: 25px; 
+        }
+      hr{
+          width: 90%;
+          background-color: white;
+      }
+      .icon-close{
+          position: absolute;
+          right: 15px;
+          top: 15px
+      }
+
+      form{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 90%;
+          p{
+            align-self: flex-start;
+            padding: 0px 0 20px 20px;
+            height: 1%;
+            color:rgba(255,255,255, 0.7);
+            font-size: 17px;
+          }
+          .wifi-name{
+           @include align(row)
+          label{
+              font-size: 20px;
+          }
+          input{
+              font-size: 20px;
+              border: none;
+              margin-left: 10px;
+              border-radius: 4px;
+              height: 100%;
+              width: 50%;
+          }
+        }
+          
+          .wifi-password{
+            @include align(row);
+            label{
+                font-size: 20px;
+            }
+            input{
+                font-size: 20px;
+                border: none;
+                margin-left: 80px;
+                border-radius: 4px;
+                height: 100%;
+                width: 50%;
+            }
+              
+          }
+          .wifi-password-confirmation{ 
+            @include align(row);
+            padding-top: 20px;
+            label{
+                font-size: 20px;
+            }
+            input{
+                font-size: 20px;
+                border: none;
+                margin-left: 54px;
+                border-radius: 4px;
+                height: 105%;
+                width: 50%;
+            }
+          }
+          .checkbox{
+              display: flex;
+              flex-direction: row;
+              justify-content:center;
+              width: 95%;
+              margin-top: 10px;
+              height: 30%;
+
+              p{
+                  padding: 10px 0 0 20px;
+                  font-size:20px;
+                  width: 100%;
+                  color: var(--fontColorComponents);
+                  padding-bottom: 30px;
+              }
+              div{
+                display: flex;
+                justify-content: end;
+                align-items: flex-end;
+                align-self: flex-end;
+              }
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 48px;
+                height: 20px;
+                input {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+              }
+            }
+              
+              .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .1s;
+                transition: .1s;
+              
+              &::before {
+                position: absolute;
+                content: "";
+                height: 14px;
+                width: 14px;
+                left: 4px;
+                bottom: 3px;
+                background-color: white;
+                -webkit-transition: .1s;
+                transition: .1s;
+                }
+                }
+              
+              input:checked + .slider {
+                background-color: green;
+              }
+              
+              input:focus + .slider {
+                box-shadow: 0 0 1px green;
+              }
+              
+              input:checked + .slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+              }
+              
+              .slider.round {
+                border-radius: 40px;
+              }
+              
+              .slider.round:before {
+                border-radius: 50%;
+              }
+          }
+          #text-wifi-hidden{
+            margin-top: -30px;
+            color: var(--fontColorComponents);
+            opacity: 0.7;
+          }
+      }
+}

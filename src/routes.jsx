@@ -8,6 +8,7 @@ import Teste from './components/theme';
 import TemplateWithDrawer from './Templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
+import Home from './Pages/Home/Home';
 import RecipeSelection from './Pages/RecipeSelection/RecipeSelection';
 import './components/Animations/Animations.css';
 
@@ -29,42 +30,11 @@ const RouterComponent = () => (
                 classNames="fade"
               >
                 <Switch location={location}>
-                  <Route path="/" exact>
-                    <h1>Página Home</h1>
-                    <Link to="/teste">Ir para teste</Link>
-
-                    <br />
-                    <Link to="/ResultsRevision">
-                      Ir para Revisão de Resultados
-                    </Link>
-                    <br />
-                    <Link to="/automatic">Ir para Tela Automático</Link>
-                    <br />
-                    <Link to="/Manual">Ir para Tela Manual</Link>
-                    <br />
-                    <Link to="/RevenueSelection">Ir para Seleção de Receita</Link>
-                  </Route>
-
+                  <Route path="/" exact component={Home} />
                   <Route path="/RecipeSelection" component={RecipeSelection} />
-
-                  <Route path="/Manual">
-                    <Manual />
-                  </Route>
-
-                  <Route
-                    path="/ResultsRevision"
-                    component={ResultsRevision}
-                  />
-
-                  <Route path="/automatic">
-                    <Automatic />
-                  </Route>
-
-                  <Route path="/teste">
-                    <Teste />
-                    <h1>Página de testes</h1>
-                    <Link to="/">Ir para Home</Link>
-                  </Route>
+                  <Route path="/Manual" component={Manual} />
+                  <Route path="/ResultsRevision" component={ResultsRevision} />
+                  <Route path="/automatic" component={Automatic} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

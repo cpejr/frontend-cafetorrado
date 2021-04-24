@@ -39,7 +39,12 @@ const sendESPData = (parameters) => {
   }
 };
 
+const getWifiData = () => {
+  const result = api.get('/connectWifi');
+  return result;
+};
+
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
-  getUniqueRoastData, getRoasts, sendESPData,
+  getUniqueRoastData, getRoasts, sendESPData, getWifiData,
 };

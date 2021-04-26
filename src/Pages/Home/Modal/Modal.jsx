@@ -58,7 +58,7 @@ export const Modal = ({ open, setOpen }) => {
 
   return (
   /* eslint-disable */
-  <div className="start-hidden" style={{display: open? 'flex' : 'none'}} onClick = {() => {setOpen(false)}}>
+  <div className={`${open ? 'start-hidden':'close-hidden'}`} onClick = {() => {setOpen(false)}}>
 
         <div className = 'modal-content'onClick={e => { e.stopPropagation();}}>
         <p> Configurações do wi-fi</p>

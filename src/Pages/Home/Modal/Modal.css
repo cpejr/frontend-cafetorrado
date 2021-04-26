@@ -1,5 +1,7 @@
 .start-hidden {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -8,9 +10,11 @@
           align-items: center;
   position: absolute;
   width: 100vw;
-  -webkit-backdrop-filter: blur(10px) brightness(70%);
-          backdrop-filter: blur(10px) brightness(70%);
   height: 100vh;
+  -webkit-animation: blur 1s backwards, blur-background 1s backwards;
+          animation: blur 1s backwards, blur-background 1s backwards;
+  -webkit-backdrop-filter: blur(10px) brightness(50%);
+          backdrop-filter: blur(10px) brightness(50%);
 }
 
 .start-hidden div {
@@ -261,5 +265,370 @@
   margin-top: -30px;
   color: var(--fontColorComponents);
   opacity: 0.7;
+}
+
+.close-hidden {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(0px) brightness(100%);
+          backdrop-filter: blur(0px) brightness(100%);
+  -webkit-animation: blur-background-out 1s backwards, blur-out 0.5 backwards;
+          animation: blur-background-out 1s backwards, blur-out 0.5 backwards;
+}
+
+.close-hidden div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  width: 50%;
+  height: 70%;
+  position: relative;
+  background-color: var(--backgroundColor);
+}
+
+.close-hidden p {
+  font-size: 25px;
+}
+
+.close-hidden hr {
+  width: 90%;
+  background-color: white;
+}
+
+.close-hidden .icon-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.close-hidden form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 90%;
+}
+
+.close-hidden form p {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 0px 0 20px 20px;
+  height: 1%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+}
+
+.close-hidden form .wifi-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.close-hidden form .wifi-name label {
+  font-size: 20px;
+}
+
+.close-hidden form .wifi-name input {
+  font-size: 20px;
+  border: none;
+  margin-left: 10px;
+  border-radius: 4px;
+  height: 100%;
+  width: 50%;
+}
+
+.close-hidden form .wifi-password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.close-hidden form .wifi-password label {
+  font-size: 20px;
+}
+
+.close-hidden form .wifi-password input {
+  font-size: 20px;
+  border: none;
+  margin-left: 80px;
+  border-radius: 4px;
+  height: 100%;
+  width: 50%;
+}
+
+.close-hidden form .wifi-password-confirmation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.close-hidden form .wifi-password-confirmation label {
+  font-size: 20px;
+}
+
+.close-hidden form .wifi-password-confirmation input {
+  font-size: 20px;
+  border: none;
+  margin-left: 54px;
+  border-radius: 4px;
+  height: 105%;
+  width: 50%;
+}
+
+.close-hidden form .checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95%;
+  margin-top: 10px;
+  height: 30%;
+}
+
+.close-hidden form .checkbox p {
+  padding: 10px 0 0 20px;
+  font-size: 20px;
+  width: 100%;
+  color: var(--fontColorComponents);
+  padding-bottom: 30px;
+}
+
+.close-hidden form .checkbox div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.close-hidden form .checkbox .switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 20px;
+}
+
+.close-hidden form .checkbox .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.close-hidden form .checkbox .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.close-hidden form .checkbox .slider::before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.close-hidden form .checkbox input:checked + .slider {
+  background-color: green;
+}
+
+.close-hidden form .checkbox input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px green;
+          box-shadow: 0 0 1px green;
+}
+
+.close-hidden form .checkbox input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.close-hidden form .checkbox .slider.round {
+  border-radius: 40px;
+}
+
+.close-hidden form .checkbox .slider.round:before {
+  border-radius: 50%;
+}
+
+.close-hidden form #text-wifi-hidden {
+  margin-top: -30px;
+  color: var(--fontColorComponents);
+  opacity: 0.7;
+}
+
+.close-hidden div {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+  pointer-events: none;
+}
+
+@-webkit-keyframes blur {
+  0%, 50% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@keyframes blur {
+  0%, 50% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes blur-out {
+  0%, 50% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+}
+
+@keyframes blur-out {
+  0%, 50% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+}
+
+@-webkit-keyframes blur-background {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+}
+
+@keyframes blur-background {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+}
+
+@-webkit-keyframes blur-background-out {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
+}
+
+@keyframes blur-background-out {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
 }
 /*# sourceMappingURL=Modal.css.map */

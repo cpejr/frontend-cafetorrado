@@ -7,7 +7,9 @@ const wifiName = 'o nome vai aqui';
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
+    /* eslint-disable-next-line */
     <div className="container">
+
       <div className="base">
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">

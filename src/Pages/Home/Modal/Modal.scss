@@ -5,15 +5,17 @@
     align-items: center;
     width: 100%;
 }
-
-.start-hidden{
-    display: none;
+@mixin base(){
+    display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     width: 100vw;
-    backdrop-filter: blur(10px) brightness(70%);
     height: 100vh;
+}
+
+@mixin hidden(){
+    @include base();
     div{
         display: flex;
         flex-direction: column;
@@ -179,4 +181,40 @@
             opacity: 0.7;
           }
       }
+}
+.start-hidden{
+  @include hidden();
+  animation: blur 1s backwards, blur-background 1s backwards;
+  backdrop-filter: blur(10px) brightness(50%);
+}
+.close-hidden {
+  @include hidden();
+  pointer-events: none;
+  backdrop-filter: blur(0px) brightness(100%);
+  animation: blur-background-out 1s backwards, blur-out 0.5 backwards;
+  div{
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    pointer-events: none;
+  }
+}
+@keyframes blur {
+  0%, 50%{ 
+    filter: blur(10px); 
+  }
+  50%, 100% {
+    filter: blur(0px); 
+  }
+}
+@keyframes blur-out{
+  0%, 50% { filter: blur(0px);}
+  50%, 100%{ filter: blur(10px);}
+}
+@keyframes blur-background{
+  0%,50%{backdrop-filter: blur(0px) brightness(100%);}
+  50%, 100%{backdrop-filter: blur(10px) brightness(50%);}
+}
+@keyframes blur-background-out{
+  0%,50%{backdrop-filter: blur(10px) brightness(50%);}
+  50%, 100%{backdrop-filter: blur(0px) brightness(100%);}
 }

@@ -10,19 +10,24 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
 }
 
 @mixin hidden(){
     @include base();
+    background-color: inherit;
     div{
         display: flex;
         flex-direction: column;
         align-items: center;
         border-radius: 10px;
         width: 50%;
-        height: 70%;
+        height: 65%;
         position: relative;
         background-color: var(--backgroundColor);
       }
@@ -182,21 +187,32 @@
           }
       }
 }
-.start-hidden{
+.modal-open {
   @include hidden();
   animation: blur 1s backwards, blur-background 1s backwards;
   backdrop-filter: blur(10px) brightness(50%);
 }
-.close-hidden {
+.modal-close {
   @include hidden();
   pointer-events: none;
   backdrop-filter: blur(0px) brightness(100%);
   animation: blur-background-out 1s backwards, blur-out 0.5 backwards;
   div{
+    animation: blur-out 0.5s backwards;
     opacity: 0;
     transition: opacity 0.5s ease-out;
     pointer-events: none;
   }
+}
+.submit-button{
+  font-size: 25px;
+  align-self: center;
+  border: none;
+  color: white;
+  background-color: var(--buttonColor);
+  border-radius: 8px;
+  width: auto;
+  padding: 10px 10px 10px 10px;
 }
 @keyframes blur {
   0%, 50%{ 

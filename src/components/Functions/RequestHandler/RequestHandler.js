@@ -44,7 +44,12 @@ const getWifiData = () => {
   return result;
 };
 
+const setWifiData = ({ wifiNewName, password, hidden }) => {
+  const result = api.post('/changeWifi', { wifiName: wifiNewName, password, hidden });
+  return result;
+};
+
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
-  getUniqueRoastData, getRoasts, sendESPData, getWifiData,
+  getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData,
 };

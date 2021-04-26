@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import '@fontsource/roboto';
+
 import ThemeContextProvider from './Context/ThemeContext';
-import './App.css';
 import RouterComponent from './routes';
+import './App.css';
 
 function App() {
   return (

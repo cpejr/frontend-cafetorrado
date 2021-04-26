@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0;
   left: 0;
   right: 0;
@@ -12,6 +12,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: var(--backgroundColor);
 }
 
 .container h4 {
@@ -65,6 +66,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   border-radius: 10px;
   background-color: rgba(44, 51, 151, 0.3);
   width: 35vw;
@@ -81,9 +86,10 @@
 
 .automatic-section button {
   color: aliceblue;
-  font-size: 20px;
+  font-size: 30px;
   background-color: rgba(0, 0, 0, 0);
-  height: 15%;
+  height: 100%;
+  width: 100%;
   border-radius: 10px;
   border-width: 0;
 }
@@ -97,6 +103,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   border-radius: 10px;
   background-color: rgba(44, 51, 151, 0.3);
   width: 35vw;
@@ -113,9 +123,10 @@
 
 .manual-section button {
   color: aliceblue;
-  font-size: 20px;
+  font-size: 30px;
   background-color: rgba(0, 0, 0, 0);
-  height: 15%;
+  height: 100%;
+  width: 100%;
   border-radius: 10px;
   border-width: 0;
 }
@@ -129,6 +140,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   border-radius: 10px;
   background-color: rgba(44, 51, 151, 0.3);
   width: 35vw;
@@ -145,9 +160,10 @@
 
 .wifi-section button {
   color: aliceblue;
-  font-size: 20px;
+  font-size: 30px;
   background-color: rgba(0, 0, 0, 0);
-  height: 15%;
+  height: 100%;
+  width: 100%;
   border-radius: 10px;
   border-width: 0;
 }
@@ -161,6 +177,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   border-radius: 10px;
   background-color: rgba(44, 51, 151, 0.3);
   width: 35vw;
@@ -177,9 +197,10 @@
 
 .section button {
   color: aliceblue;
-  font-size: 20px;
+  font-size: 30px;
   background-color: rgba(0, 0, 0, 0);
-  height: 15%;
+  height: 100%;
+  width: 100%;
   border-radius: 10px;
   border-width: 0;
 }

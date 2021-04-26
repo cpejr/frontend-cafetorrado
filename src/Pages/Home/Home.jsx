@@ -1,4 +1,10 @@
 import React, { useRef, useState } from 'react';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import { MdFlashAuto } from 'react-icons/md';
+import { GiHand } from 'react-icons/gi';
+import { FaHome } from 'react-icons/fa';
+
 import { Modal } from './Modal/Modal';
 import './home.css';
 
@@ -14,6 +20,7 @@ const Home = () => {
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">
           <div className="automatic-section">
+            <MdFlashAuto />
             <button type="button">Torra automática</button>
           </div>
           <div className="manual-section">

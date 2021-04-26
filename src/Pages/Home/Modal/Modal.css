@@ -1,4 +1,4 @@
-.start-hidden {
+.modal-open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,15 +9,20 @@
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
   -webkit-animation: blur 1s backwards, blur-background 1s backwards;
           animation: blur 1s backwards, blur-background 1s backwards;
   -webkit-backdrop-filter: blur(10px) brightness(50%);
           backdrop-filter: blur(10px) brightness(50%);
 }
 
-.start-hidden div {
+.modal-open div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,27 +35,27 @@
           align-items: center;
   border-radius: 10px;
   width: 50%;
-  height: 70%;
+  height: 65%;
   position: relative;
   background-color: var(--backgroundColor);
 }
 
-.start-hidden p {
+.modal-open p {
   font-size: 25px;
 }
 
-.start-hidden hr {
+.modal-open hr {
   width: 90%;
   background-color: white;
 }
 
-.start-hidden .icon-close {
+.modal-open .icon-close {
   position: absolute;
   right: 15px;
   top: 15px;
 }
 
-.start-hidden form {
+.modal-open form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,7 +69,7 @@
   width: 90%;
 }
 
-.start-hidden form p {
+.modal-open form p {
   -ms-flex-item-align: start;
       align-self: flex-start;
   padding: 0px 0 20px 20px;
@@ -73,7 +78,7 @@
   font-size: 17px;
 }
 
-.start-hidden form .wifi-name {
+.modal-open form .wifi-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,11 +95,11 @@
   width: 100%;
 }
 
-.start-hidden form .wifi-name label {
+.modal-open form .wifi-name label {
   font-size: 20px;
 }
 
-.start-hidden form .wifi-name input {
+.modal-open form .wifi-name input {
   font-size: 20px;
   border: none;
   margin-left: 10px;
@@ -103,7 +108,7 @@
   width: 50%;
 }
 
-.start-hidden form .wifi-password {
+.modal-open form .wifi-password {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,11 +125,11 @@
   width: 100%;
 }
 
-.start-hidden form .wifi-password label {
+.modal-open form .wifi-password label {
   font-size: 20px;
 }
 
-.start-hidden form .wifi-password input {
+.modal-open form .wifi-password input {
   font-size: 20px;
   border: none;
   margin-left: 80px;
@@ -133,7 +138,7 @@
   width: 50%;
 }
 
-.start-hidden form .wifi-password-confirmation {
+.modal-open form .wifi-password-confirmation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,11 +156,11 @@
   padding-top: 20px;
 }
 
-.start-hidden form .wifi-password-confirmation label {
+.modal-open form .wifi-password-confirmation label {
   font-size: 20px;
 }
 
-.start-hidden form .wifi-password-confirmation input {
+.modal-open form .wifi-password-confirmation input {
   font-size: 20px;
   border: none;
   margin-left: 54px;
@@ -164,7 +169,7 @@
   width: 50%;
 }
 
-.start-hidden form .checkbox {
+.modal-open form .checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -180,7 +185,7 @@
   height: 30%;
 }
 
-.start-hidden form .checkbox p {
+.modal-open form .checkbox p {
   padding: 10px 0 0 20px;
   font-size: 20px;
   width: 100%;
@@ -188,7 +193,7 @@
   padding-bottom: 30px;
 }
 
-.start-hidden form .checkbox div {
+.modal-open form .checkbox div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -202,20 +207,20 @@
       align-self: flex-end;
 }
 
-.start-hidden form .checkbox .switch {
+.modal-open form .checkbox .switch {
   position: relative;
   display: inline-block;
   width: 48px;
   height: 20px;
 }
 
-.start-hidden form .checkbox .switch input {
+.modal-open form .checkbox .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.start-hidden form .checkbox .slider {
+.modal-open form .checkbox .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -227,7 +232,7 @@
   transition: .1s;
 }
 
-.start-hidden form .checkbox .slider::before {
+.modal-open form .checkbox .slider::before {
   position: absolute;
   content: "";
   height: 14px;
@@ -239,35 +244,35 @@
   transition: .1s;
 }
 
-.start-hidden form .checkbox input:checked + .slider {
+.modal-open form .checkbox input:checked + .slider {
   background-color: green;
 }
 
-.start-hidden form .checkbox input:focus + .slider {
+.modal-open form .checkbox input:focus + .slider {
   -webkit-box-shadow: 0 0 1px green;
           box-shadow: 0 0 1px green;
 }
 
-.start-hidden form .checkbox input:checked + .slider:before {
+.modal-open form .checkbox input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   transform: translateX(26px);
 }
 
-.start-hidden form .checkbox .slider.round {
+.modal-open form .checkbox .slider.round {
   border-radius: 40px;
 }
 
-.start-hidden form .checkbox .slider.round:before {
+.modal-open form .checkbox .slider.round:before {
   border-radius: 50%;
 }
 
-.start-hidden form #text-wifi-hidden {
+.modal-open form #text-wifi-hidden {
   margin-top: -30px;
   color: var(--fontColorComponents);
   opacity: 0.7;
 }
 
-.close-hidden {
+.modal-close {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -278,8 +283,13 @@
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
   pointer-events: none;
   -webkit-backdrop-filter: blur(0px) brightness(100%);
           backdrop-filter: blur(0px) brightness(100%);
@@ -287,7 +297,7 @@
           animation: blur-background-out 1s backwards, blur-out 0.5 backwards;
 }
 
-.close-hidden div {
+.modal-close div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -300,27 +310,27 @@
           align-items: center;
   border-radius: 10px;
   width: 50%;
-  height: 70%;
+  height: 65%;
   position: relative;
   background-color: var(--backgroundColor);
 }
 
-.close-hidden p {
+.modal-close p {
   font-size: 25px;
 }
 
-.close-hidden hr {
+.modal-close hr {
   width: 90%;
   background-color: white;
 }
 
-.close-hidden .icon-close {
+.modal-close .icon-close {
   position: absolute;
   right: 15px;
   top: 15px;
 }
 
-.close-hidden form {
+.modal-close form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -334,7 +344,7 @@
   width: 90%;
 }
 
-.close-hidden form p {
+.modal-close form p {
   -ms-flex-item-align: start;
       align-self: flex-start;
   padding: 0px 0 20px 20px;
@@ -343,7 +353,7 @@
   font-size: 17px;
 }
 
-.close-hidden form .wifi-name {
+.modal-close form .wifi-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -360,11 +370,11 @@
   width: 100%;
 }
 
-.close-hidden form .wifi-name label {
+.modal-close form .wifi-name label {
   font-size: 20px;
 }
 
-.close-hidden form .wifi-name input {
+.modal-close form .wifi-name input {
   font-size: 20px;
   border: none;
   margin-left: 10px;
@@ -373,7 +383,7 @@
   width: 50%;
 }
 
-.close-hidden form .wifi-password {
+.modal-close form .wifi-password {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -390,11 +400,11 @@
   width: 100%;
 }
 
-.close-hidden form .wifi-password label {
+.modal-close form .wifi-password label {
   font-size: 20px;
 }
 
-.close-hidden form .wifi-password input {
+.modal-close form .wifi-password input {
   font-size: 20px;
   border: none;
   margin-left: 80px;
@@ -403,7 +413,7 @@
   width: 50%;
 }
 
-.close-hidden form .wifi-password-confirmation {
+.modal-close form .wifi-password-confirmation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -421,11 +431,11 @@
   padding-top: 20px;
 }
 
-.close-hidden form .wifi-password-confirmation label {
+.modal-close form .wifi-password-confirmation label {
   font-size: 20px;
 }
 
-.close-hidden form .wifi-password-confirmation input {
+.modal-close form .wifi-password-confirmation input {
   font-size: 20px;
   border: none;
   margin-left: 54px;
@@ -434,7 +444,7 @@
   width: 50%;
 }
 
-.close-hidden form .checkbox {
+.modal-close form .checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -450,7 +460,7 @@
   height: 30%;
 }
 
-.close-hidden form .checkbox p {
+.modal-close form .checkbox p {
   padding: 10px 0 0 20px;
   font-size: 20px;
   width: 100%;
@@ -458,7 +468,7 @@
   padding-bottom: 30px;
 }
 
-.close-hidden form .checkbox div {
+.modal-close form .checkbox div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -472,20 +482,20 @@
       align-self: flex-end;
 }
 
-.close-hidden form .checkbox .switch {
+.modal-close form .checkbox .switch {
   position: relative;
   display: inline-block;
   width: 48px;
   height: 20px;
 }
 
-.close-hidden form .checkbox .switch input {
+.modal-close form .checkbox .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.close-hidden form .checkbox .slider {
+.modal-close form .checkbox .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -497,7 +507,7 @@
   transition: .1s;
 }
 
-.close-hidden form .checkbox .slider::before {
+.modal-close form .checkbox .slider::before {
   position: absolute;
   content: "";
   height: 14px;
@@ -509,39 +519,54 @@
   transition: .1s;
 }
 
-.close-hidden form .checkbox input:checked + .slider {
+.modal-close form .checkbox input:checked + .slider {
   background-color: green;
 }
 
-.close-hidden form .checkbox input:focus + .slider {
+.modal-close form .checkbox input:focus + .slider {
   -webkit-box-shadow: 0 0 1px green;
           box-shadow: 0 0 1px green;
 }
 
-.close-hidden form .checkbox input:checked + .slider:before {
+.modal-close form .checkbox input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   transform: translateX(26px);
 }
 
-.close-hidden form .checkbox .slider.round {
+.modal-close form .checkbox .slider.round {
   border-radius: 40px;
 }
 
-.close-hidden form .checkbox .slider.round:before {
+.modal-close form .checkbox .slider.round:before {
   border-radius: 50%;
 }
 
-.close-hidden form #text-wifi-hidden {
+.modal-close form #text-wifi-hidden {
   margin-top: -30px;
   color: var(--fontColorComponents);
   opacity: 0.7;
 }
 
-.close-hidden div {
+.modal-close div {
+  -webkit-animation: blur-out 0.5s backwards;
+          animation: blur-out 0.5s backwards;
   opacity: 0;
   -webkit-transition: opacity 0.5s ease-out;
   transition: opacity 0.5s ease-out;
   pointer-events: none;
+}
+
+.submit-button {
+  font-size: 25px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  color: white;
+  background-color: var(--buttonColor);
+  border-radius: 8px;
+  width: auto;
+  padding: 10px 10px 10px 10px;
 }
 
 @-webkit-keyframes blur {

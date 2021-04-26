@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './Modal.css';
 import { VscChromeClose } from 'react-icons/vsc';
-import { getWifiData } from '../../../components/Functions/RequestHandler/RequestHandler';
+import { getWifiData, setWifiData } from '../../../components/Functions/RequestHandler/RequestHandler';
 
 export const Modal = ({ open, setOpen }) => {
   const [done, isDone] = useState(false);
@@ -31,7 +31,7 @@ export const Modal = ({ open, setOpen }) => {
       ? ((clearOutline([passRef, passConfRef])), setWrongPassword(false))
       : (outlineInput([passRef, passConfRef]), setWrongPassword(true));
 
-    (wifiNewName.length > 6)
+    (wifiNewName.length >= 6)
       ? (clearOutline([wifiNNRef]), setWrongName(false))
       : (outlineInput([wifiNNRef]), setWrongName(true));
 
@@ -53,12 +53,12 @@ export const Modal = ({ open, setOpen }) => {
   const changeWifi = async (event) => {
     event.preventDefault();
     if (!checkIntegrity()) return;
-    console.log(wifiNewName, password, hidden);
+    setWifiData({ wifiNewName, password, hidden });
   };
 
   return (
   /* eslint-disable */
-  <div className={`${open ? 'start-hidden':'close-hidden'}`} onClick = {() => {setOpen(false)}}>
+  <div className={`${open ? 'modal-open':'modal-close'}`} onClick = {() => {setOpen(false)}}>
 
         <div className = 'modal-content'onClick={e => { e.stopPropagation();}}>
         <p> Configurações do wi-fi</p>
@@ -85,7 +85,7 @@ export const Modal = ({ open, setOpen }) => {
                 <label htmlFor="wifipasswordconfirmation"> Confirme a nova senha:</label>
                 <input type="password" id="wifipassword" name="wifipasswordconfirmation" ref = {passConfRef} value={passwordConfirmation} onChange={(e) => {setPasswordConfirmation(e.target.value)}} />
             </div>
-            <div style={{display: wrongName ? 'block' : 'none', height: '10px', marginBottom: '20px'}}>
+            <div style={{display: wrongPassword ? 'block' : 'none', height: '10px', marginBottom: '20px'}}>
                 <p style={{color: 'red'}}>As senhas não são iguais e/ou precisam ter pelo menos 8 dígitos</p>
             </div>
             <div className="checkbox">
@@ -101,7 +101,7 @@ export const Modal = ({ open, setOpen }) => {
             Isto fará com que seu wi-fi fique invisível á todos, sendo necessário insirir a rede
             manualmente em seu Tablet.
             </p>
-            <button type='submit'> Confirmar </button>
+            <button className = 'submit-button'type='submit'> Confirmar </button>
 
         </form>
         </div>

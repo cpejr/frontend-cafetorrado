@@ -6,8 +6,6 @@ import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
 import 'chartjs-plugin-annotation';
 
-require('typeface-quicksand');
-
 let time = 0;
 // let done = false;
 // function parseTime(mainGraph, data){

@@ -1,0 +1,659 @@
+.modal-open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  -webkit-animation: blur 1s backwards, blur-background 1s backwards;
+          animation: blur 1s backwards, blur-background 1s backwards;
+  -webkit-backdrop-filter: blur(10px) brightness(50%);
+          backdrop-filter: blur(10px) brightness(50%);
+}
+
+.modal-open div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  width: 50%;
+  height: 65%;
+  position: relative;
+  background-color: var(--backgroundColor);
+}
+
+.modal-open p {
+  font-size: 25px;
+}
+
+.modal-open hr {
+  width: 90%;
+  background-color: white;
+}
+
+.modal-open .icon-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.modal-open form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 90%;
+}
+
+.modal-open form p {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 0px 0 20px 20px;
+  height: 1%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+}
+
+.modal-open form .wifi-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.modal-open form .wifi-name label {
+  font-size: 20px;
+}
+
+.modal-open form .wifi-name input {
+  font-size: 20px;
+  border: none;
+  margin-left: 10px;
+  border-radius: 4px;
+  height: 100%;
+  width: 50%;
+}
+
+.modal-open form .wifi-password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.modal-open form .wifi-password label {
+  font-size: 20px;
+}
+
+.modal-open form .wifi-password input {
+  font-size: 20px;
+  border: none;
+  margin-left: 80px;
+  border-radius: 4px;
+  height: 100%;
+  width: 50%;
+}
+
+.modal-open form .wifi-password-confirmation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.modal-open form .wifi-password-confirmation label {
+  font-size: 20px;
+}
+
+.modal-open form .wifi-password-confirmation input {
+  font-size: 20px;
+  border: none;
+  margin-left: 54px;
+  border-radius: 4px;
+  height: 105%;
+  width: 50%;
+}
+
+.modal-open form .checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95%;
+  margin-top: 10px;
+  height: 30%;
+}
+
+.modal-open form .checkbox p {
+  padding: 10px 0 0 20px;
+  font-size: 20px;
+  width: 100%;
+  color: var(--fontColorComponents);
+  padding-bottom: 30px;
+}
+
+.modal-open form .checkbox div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.modal-open form .checkbox .switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 20px;
+}
+
+.modal-open form .checkbox .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.modal-open form .checkbox .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.modal-open form .checkbox .slider::before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.modal-open form .checkbox input:checked + .slider {
+  background-color: green;
+}
+
+.modal-open form .checkbox input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px green;
+          box-shadow: 0 0 1px green;
+}
+
+.modal-open form .checkbox input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.modal-open form .checkbox .slider.round {
+  border-radius: 40px;
+}
+
+.modal-open form .checkbox .slider.round:before {
+  border-radius: 50%;
+}
+
+.modal-open form #text-wifi-hidden {
+  margin-top: -30px;
+  color: var(--fontColorComponents);
+  opacity: 0.7;
+}
+
+.modal-close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(0px) brightness(100%);
+          backdrop-filter: blur(0px) brightness(100%);
+  -webkit-animation: blur-background-out 1s backwards, blur-out 0.5 backwards;
+          animation: blur-background-out 1s backwards, blur-out 0.5 backwards;
+}
+
+.modal-close div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  width: 50%;
+  height: 65%;
+  position: relative;
+  background-color: var(--backgroundColor);
+}
+
+.modal-close p {
+  font-size: 25px;
+}
+
+.modal-close hr {
+  width: 90%;
+  background-color: white;
+}
+
+.modal-close .icon-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.modal-close form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 90%;
+}
+
+.modal-close form p {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 0px 0 20px 20px;
+  height: 1%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+}
+
+.modal-close form .wifi-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.modal-close form .wifi-name label {
+  font-size: 20px;
+}
+
+.modal-close form .wifi-name input {
+  font-size: 20px;
+  border: none;
+  margin-left: 10px;
+  border-radius: 4px;
+  height: 100%;
+  width: 50%;
+}
+
+.modal-close form .wifi-password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.modal-close form .wifi-password label {
+  font-size: 20px;
+}
+
+.modal-close form .wifi-password input {
+  font-size: 20px;
+  border: none;
+  margin-left: 80px;
+  border-radius: 4px;
+  height: 100%;
+  width: 50%;
+}
+
+.modal-close form .wifi-password-confirmation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.modal-close form .wifi-password-confirmation label {
+  font-size: 20px;
+}
+
+.modal-close form .wifi-password-confirmation input {
+  font-size: 20px;
+  border: none;
+  margin-left: 54px;
+  border-radius: 4px;
+  height: 105%;
+  width: 50%;
+}
+
+.modal-close form .checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95%;
+  margin-top: 10px;
+  height: 30%;
+}
+
+.modal-close form .checkbox p {
+  padding: 10px 0 0 20px;
+  font-size: 20px;
+  width: 100%;
+  color: var(--fontColorComponents);
+  padding-bottom: 30px;
+}
+
+.modal-close form .checkbox div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.modal-close form .checkbox .switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 20px;
+}
+
+.modal-close form .checkbox .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.modal-close form .checkbox .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.modal-close form .checkbox .slider::before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.modal-close form .checkbox input:checked + .slider {
+  background-color: green;
+}
+
+.modal-close form .checkbox input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px green;
+          box-shadow: 0 0 1px green;
+}
+
+.modal-close form .checkbox input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.modal-close form .checkbox .slider.round {
+  border-radius: 40px;
+}
+
+.modal-close form .checkbox .slider.round:before {
+  border-radius: 50%;
+}
+
+.modal-close form #text-wifi-hidden {
+  margin-top: -30px;
+  color: var(--fontColorComponents);
+  opacity: 0.7;
+}
+
+.modal-close div {
+  -webkit-animation: blur-out 0.5s backwards;
+          animation: blur-out 0.5s backwards;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+  pointer-events: none;
+}
+
+.submit-button {
+  font-size: 25px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  color: white;
+  background-color: var(--buttonColor);
+  border-radius: 8px;
+  width: auto;
+  padding: 10px 10px 10px 10px;
+}
+
+@-webkit-keyframes blur {
+  0%, 50% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@keyframes blur {
+  0%, 50% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+}
+
+@-webkit-keyframes blur-out {
+  0%, 50% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+}
+
+@keyframes blur-out {
+  0%, 50% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+  }
+  50%, 100% {
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+  }
+}
+
+@-webkit-keyframes blur-background {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+}
+
+@keyframes blur-background {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+}
+
+@-webkit-keyframes blur-background-out {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
+}
+
+@keyframes blur-background-out {
+  0%, 50% {
+    -webkit-backdrop-filter: blur(10px) brightness(50%);
+            backdrop-filter: blur(10px) brightness(50%);
+  }
+  50%, 100% {
+    -webkit-backdrop-filter: blur(0px) brightness(100%);
+            backdrop-filter: blur(0px) brightness(100%);
+  }
+}
+/*# sourceMappingURL=Modal.css.map */

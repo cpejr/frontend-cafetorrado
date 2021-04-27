@@ -8,6 +8,7 @@ let dataToRender = [];
 function RecipeSelection() {
   const [roastData, setRoastData] = useState([{}]);
   const graphRef = useRef();
+
   useEffect(async () => {
     const data = await getRoasts();
     setRoastData(data.data);

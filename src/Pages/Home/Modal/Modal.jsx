@@ -85,9 +85,11 @@ export const Modal = ({ open, setOpen }) => {
                 <label htmlFor="wifipasswordconfirmation"> Confirme a nova senha:</label>
                 <input type="password" id="wifipassword" name="wifipasswordconfirmation" ref = {passConfRef} value={passwordConfirmation} onChange={(e) => {setPasswordConfirmation(e.target.value)}} />
             </div>
+
             <div style={{display: wrongPassword ? 'block' : 'none', height: '10px', marginBottom: '20px'}}>
                 <p style={{color: 'red'}}>As senhas não são iguais e/ou precisam ter pelo menos 8 dígitos</p>
             </div>
+            
             <div className="checkbox">
                 <p>Deseja esconder seu wi-fi? </p>
                 <div>

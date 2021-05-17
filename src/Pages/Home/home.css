@@ -93,7 +93,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  color: aliceblue;
+  color: var(--fontColor);
   font-size: 35px;
   background-color: rgba(0, 0, 0, 0);
   height: 100%;
@@ -152,7 +152,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  color: aliceblue;
+  color: var(--fontColor);
   font-size: 35px;
   background-color: rgba(0, 0, 0, 0);
   height: 100%;
@@ -211,7 +211,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  color: aliceblue;
+  color: var(--fontColor);
   font-size: 35px;
   background-color: rgba(0, 0, 0, 0);
   height: 100%;
@@ -270,7 +270,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  color: aliceblue;
+  color: var(--fontColor);
   font-size: 35px;
   background-color: rgba(0, 0, 0, 0);
   height: 100%;

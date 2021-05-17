@@ -105,6 +105,7 @@
 .automatic-section .upper-button:focus {
   outline: none;
   background-color: #12153f;
+  color: #FFFFFF;
 }
 
 .automatic-section .upper-button p {
@@ -164,6 +165,7 @@
 .manual-section .upper-button:focus {
   outline: none;
   background-color: #12153f;
+  color: #FFFFFF;
 }
 
 .manual-section .upper-button p {
@@ -223,6 +225,7 @@
 .wifi-section .upper-button:focus {
   outline: none;
   background-color: #12153f;
+  color: #FFFFFF;
 }
 
 .wifi-section .upper-button p {
@@ -282,6 +285,7 @@
 .section .upper-button:focus {
   outline: none;
   background-color: #12153f;
+  color: #FFFFFF;
 }
 
 .section .upper-button p {

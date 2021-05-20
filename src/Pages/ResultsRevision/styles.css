@@ -2,6 +2,7 @@
   padding: 20px 50px;
   display: flex;
   flex-direction: column;
+  background-color: var(--backgroundColor) !important;
 }
 
 /* Campo para salvar nome */
@@ -10,6 +11,7 @@
 
   display: flex;
   gap: 30px;
+  background-color: var(--backgroundColor) !important;
 }
 .save-name input {
   padding: 10px;
@@ -17,8 +19,8 @@
   height: 100%;
   border: none;
   box-sizing: border-box;
-
   font-size: 18px;
+  background-color: var(--headerBackground);
 }
 .save-name button {
   padding: 10px;
@@ -33,24 +35,23 @@
   justify-content: center;
   gap: 10px;
 
-  color: #e0e0e0;
-  background-color: var(--componentsBackgroud);
+  color: var(--fontColor);
+  background-color: var(--backgroundColor) !important;
 }
 
 /* Grafico */
 .graph {
-  margin-top: 20px;
-  height: 400px;
+  height: 400px !important;
 }
 
 /* Informações */
 .informations-revision {
-  margin-top: 20px;
+  margin-top: 50px;
   height: 200px;
   width: 100%;
-
   display: flex;
   flex-direction: column;
+  color: var(--fontColor);
 }
 .informations-revision h1 {
   font-size: 22px;
@@ -63,6 +64,6 @@
 }
 .col-info {
   width: 30%;
-  color: var(--colorFont);
+  color: var(--fontColor);
   font-size: 18px;
 }

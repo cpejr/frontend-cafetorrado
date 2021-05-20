@@ -92,6 +92,7 @@ export const MainGraph = () => {
   const [graphWidth, setGraphWidth] = useState(1220);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
+
   useEffect(() => {
     socket.on('realData', (data) => { updateData(mainGraph, data); });
   }, []);
@@ -142,7 +143,7 @@ export const MainGraph = () => {
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 550, position: 'relative' }}>
+    <div style={{ width: graphWidth, height: 480, position: 'relative' }}>
       <Line
         padding="0"
         id="main-graph"
@@ -172,7 +173,7 @@ export const MainGraph = () => {
             position: 'bottom',
             labels: {
               fontFamily: 'Quicksand',
-              fontColor: 'white',
+              fontColor: theme.fontColor,
               fontSize: 14,
             },
           },
@@ -183,7 +184,7 @@ export const MainGraph = () => {
             text: ' Tempo de torra ',
             fontFamily: 'Quicksand',
             fontSize: 26,
-            fontColor: 'smokewhite',
+            fontColor: theme.fontColor,
             display: true,
           },
 
@@ -199,7 +200,7 @@ export const MainGraph = () => {
               position: 'left',
               ticks: {
                 stepSize: 10,
-                fontColor: 'white',
+                fontColor: theme.fontColor,
               },
             }, {
               id: 'right',
@@ -209,7 +210,7 @@ export const MainGraph = () => {
                 min: 0,
                 max: 100,
                 stepSize: 10,
-                fontColor: 'white',
+                fontColor: theme.fontColor,
               },
             },
             ],
@@ -217,7 +218,7 @@ export const MainGraph = () => {
               {
                 ticks: {
                   autoSkip: true,
-                  fontColor: 'smokewhite',
+                  fontColor: theme.fontColor,
                   maxTicksLimit: 20,
                   beginAtZero: true,
                 },

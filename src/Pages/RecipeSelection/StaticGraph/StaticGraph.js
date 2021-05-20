@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { INITALLDATA } from './chartData';
+import { ThemeContext } from '../../../Context/ThemeContext';
 
 let airOut = []; let airScl = []; let disErr = []; let druOut = []; let graScl = [];
 let injOut = []; let runCnt = [];
@@ -41,63 +42,66 @@ function updateData(refGraph, data) {
   refGraph.current.chartInstance.update();
 }
 
-const StaticRefGraph = React.forwardRef((props, ref) => (
-  <Line
-    height="400"
-    width="750"
-    id="StaticGraph"
-    ref={ref}
-    data={INITALLDATA}
-    options={{
-      legend: {
-        position: 'bottom',
-        labels: {
-          fontFamily: 'Quicksand',
-          fontColor: 'white',
-          fontSize: 16,
-        },
-      },
-      responsive: false,
-      maintainAspectRatio: false,
-      elements: {
-        line: {
-          tension: 0,
-        },
-      },
-      scales: {
-        yAxes: [{
-          id: 'left',
-          type: 'linear',
-          position: 'left',
-          ticks: {
-            stepSize: 10,
-            fontColor: 'white',
-          },
-        }, {
-          id: 'right',
-          type: 'linear',
-          position: 'right',
-          ticks: {
-            stepSize: 10,
-            fontColor: 'white',
+const StaticRefGraph = React.forwardRef((props, ref) => {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <Line
+      height="400"
+      width="750"
+      id="StaticGraph"
+      ref={ref}
+      data={INITALLDATA}
+      options={{
+        legend: {
+          position: 'bottom',
+          labels: {
+            fontFamily: 'Quicksand',
+            fontColor: theme.fontColor,
+            fontSize: 16,
           },
         },
-        ],
-        xAxes: [
-          {
+        responsive: false,
+        maintainAspectRatio: false,
+        elements: {
+          line: {
+            tension: 0,
+          },
+        },
+        scales: {
+          yAxes: [{
+            id: 'left',
+            type: 'linear',
+            position: 'left',
             ticks: {
-              min: 0,
-              max: 100,
-              autoSkip: true,
-              fontColor: 'smokewhite',
-              maxTicksLimit: 20,
-              beginAtZero: true,
+              stepSize: 10,
+              fontColor: theme.fontColor,
+            },
+          }, {
+            id: 'right',
+            type: 'linear',
+            position: 'right',
+            ticks: {
+              stepSize: 10,
+              fontColor: theme.fontColor,
             },
           },
-        ],
-      },
-    }}
-  />
-));
+          ],
+          xAxes: [
+            {
+              ticks: {
+                min: 0,
+                max: 100,
+                autoSkip: true,
+                fontColor: theme.fontColor,
+                maxTicksLimit: 20,
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      }}
+    />
+  );
+});
 
 export { StaticRefGraph, updateData };

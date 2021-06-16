@@ -1,0 +1,32 @@
+.overlay-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.overlay-content{
+    position: absolute;
+    background-color: var(--buttonColor);
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+}
+hr{
+    rotate: 90deg;
+    width: 90%;
+}
+p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button-wifi{
+    border: none;
+    padding: 5px 15px 5px 15px;
+    position: relative;
+    float: inline-end;
+}

@@ -23,7 +23,7 @@ const valuesInfo = {
 const RouterComponent = () => {
   useEffect(() => {
     socket.on('wifiStatus', (state) => {
-      setWifiState(!!state);
+      setWifiState(state);
     });
   }, []);
 

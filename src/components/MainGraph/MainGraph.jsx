@@ -173,7 +173,7 @@ export const MainGraph = () => {
             position: 'bottom',
             labels: {
               fontFamily: 'Quicksand',
-              fontColor: theme.fontColor,
+              fontColor: theme?.fontColor || 'black',
               fontSize: 14,
             },
           },
@@ -184,7 +184,7 @@ export const MainGraph = () => {
             text: ' Tempo de torra ',
             fontFamily: 'Quicksand',
             fontSize: 26,
-            fontColor: theme.fontColor,
+            fontColor: theme?.fontColor || 'black',
             display: true,
           },
 
@@ -200,7 +200,7 @@ export const MainGraph = () => {
               position: 'left',
               ticks: {
                 stepSize: 10,
-                fontColor: theme.fontColor,
+                fontColor: theme?.fontColor || 'black',
               },
             }, {
               id: 'right',
@@ -210,7 +210,7 @@ export const MainGraph = () => {
                 min: 0,
                 max: 100,
                 stepSize: 10,
-                fontColor: theme.fontColor,
+                fontColor: theme?.fontColor || 'black',
               },
             },
             ],
@@ -218,7 +218,7 @@ export const MainGraph = () => {
               {
                 ticks: {
                   autoSkip: true,
-                  fontColor: theme.fontColor,
+                  fontColor: theme?.fontColor || 'black',
                   maxTicksLimit: 20,
                   beginAtZero: true,
                 },

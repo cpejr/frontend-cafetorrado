@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
@@ -9,12 +9,13 @@ import ButtonRouter from '../../components/Buttons/ButtonsRouter/ButtonRouter';
 import { socket } from '../../index';
 import './Automatic.css';
 import RealData from '../../components/Functions/DataHandler/DataHandler';
+import Loader from '../../components/Loader/loader';
 
 function Automatic() {
-  console.log('x');
   return (
     <div className="tela-container">
       <div className="upper-part">
+        <Loader />
         <MainGraph />
       </div>
       <div className="lower-part">

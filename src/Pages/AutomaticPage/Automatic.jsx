@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
@@ -6,25 +6,19 @@ import ButtonController1 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
 import ButtonRouter from '../../components/Buttons/ButtonsRouter/ButtonRouter';
-import { socket } from '../../index';
 import './Automatic.css';
 import RealData from '../../components/Functions/DataHandler/DataHandler';
+import Loader from '../../components/Loader/loader';
 
 function Automatic() {
-  console.log('x');
+  const [loaderStatus, setLoaderStatus] = useState(false);
   return (
     <div className="tela-container">
       <div className="upper-part">
-        <MainGraph />
+        <Loader status={loaderStatus} />
+        <MainGraph setter={setLoaderStatus} />
       </div>
       <div className="lower-part">
-        {/* <div className="status-bar">
-
-          <p>Temperatura: 160°C</p>
-          <p>Pressão: 7,4atm </p>
-          <p>ROR: 20</p>
-
-        </div> */}
 
         <div className="control-buttons">
 
@@ -44,7 +38,7 @@ function Automatic() {
           </div>
         </div>
         <div className="time-chronometer">
-          <Chronometer />
+          <Chronometer setter={setLoaderStatus} />
         </div>
         <div className="informations">
           <RealData />

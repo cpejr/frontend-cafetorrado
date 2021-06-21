@@ -5,15 +5,17 @@ import ButtonController1 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
+import Loader from '../../components/Loader/loader';
 // import RealData from '../../components/Functions/DataHandler/DataHandler';
 import './Manual.css';
 
 function Manual() {
-  console.log('manual');
+  const [loaderStatus, setLoaderStatus] = useState(false);
   return (
     <div className="tela-container">
       <div className="upper-part">
-        <MainGraph />
+        <Loader status={loaderStatus} />
+        <MainGraph setter={setLoaderStatus} />
       </div>
       <div className="lower-part">
         {/* } <RealData /> */}
@@ -34,7 +36,7 @@ function Manual() {
           </div>
         </div>
         <div className="time-chronometer">
-          <Chronometer />
+          <Chronometer setter={setLoaderStatus} />
         </div>
         <div className="adjustments">
           <div className="adjustments-buttons">

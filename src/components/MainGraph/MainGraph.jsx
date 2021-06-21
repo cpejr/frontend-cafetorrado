@@ -86,15 +86,14 @@ const INITALLDATA = {
   ],
 };
 
-export const MainGraph = () => {
-  console.log('s');
+export const MainGraph = ({ setter }) => {
   const [crackTime, setCrackTime] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1220);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    socket.on('realData', (data) => { updateData(mainGraph, data); });
+    socket.on('realData', (data) => { updateData(mainGraph, data); setter(false); });
   }, []);
   useEffect(() => {
     const color1 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');

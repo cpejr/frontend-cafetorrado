@@ -4,7 +4,7 @@ import { getServerData, disconnectData } from '../Functions/RequestHandler/Reque
 import { socket } from '../../index';
 import './Chronometer.css';
 
-function Chronometer() {
+function Chronometer({ setter }) {
   const history = useHistory();
   const [second, setSecond] = useState(0);
   const [minute, setMinute] = useState(0);
@@ -16,7 +16,7 @@ function Chronometer() {
   return (
     <div className="chronometer-container">
       <div id="buttons">
-        <button id="change" type="button" onClick={() => { getServerData(); }}>
+        <button id="change" type="button" onClick={() => { getServerData(); setter(true); }}>
           Start
         </button>
         <button id="change" type="button" onClick={() => { disconnectData(); history.push('/ResultsRevision'); }}>

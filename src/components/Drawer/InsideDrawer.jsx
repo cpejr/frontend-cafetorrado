@@ -84,37 +84,4 @@ const DrawerMenu = ({ drawerOpen }) => {
   );
 };
 
-const OutrasInformacoes = ({ drawerOpen, valuesInfo }) => {
-  const classes = useStyles();
-  return (
-
-    <div className={`outras-info ${clsx({ [classes.hide]: !drawerOpen })}`}>
-      {!(useLocation().pathname === '/automatic') && drawerOpen && (
-        <div className="other-infos">
-          <h1>Outras Informações</h1>
-          <p>
-            <strong>Pressão: </strong>
-            {valuesInfo.pressao}
-            {' '}
-            ATM
-          </p>
-          <p>
-            <strong>Umidade: </strong>
-            {valuesInfo.umidade}
-            {' '}
-            %
-          </p>
-          <p>
-            <strong>Massa de Grãos: </strong>
-            {valuesInfo.massaGraos}
-            {' '}
-            g
-          </p>
-        </div>
-      )}
-
-    </div>
-  );
-};
-
-export { DrawerMenu, DrawerHeader, OutrasInformacoes };
+export { DrawerMenu, DrawerHeader };

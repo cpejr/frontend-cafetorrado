@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { DrawerMenu, DrawerHeader, OutrasInformacoes } from './InsideDrawer';
+import { DrawerMenu, DrawerHeader } from './InsideDrawer';
 
 import './NewDrawer.css';
 
@@ -94,7 +94,6 @@ export default function NewDrawer({
       >
         <DrawerHeader drawerToggle={toggle} />
         <DrawerMenu drawerOpen={open} />
-        <OutrasInformacoes drawerOpen={open} valuesInfo={valuesInfo} />
       </Drawer>
 
       <main className={`${classes.content} content`}>{children}</main>

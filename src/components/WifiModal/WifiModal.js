@@ -25,7 +25,7 @@ const WifiModal = () => {
           {' '}
           <br />
           Coffee Roaster
-          Controller perdeu sua conexão à sua máquina
+          Controller perdeu conexão à sua máquina
           {' '}
         </p>
         <div className="button-div">

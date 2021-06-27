@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
+    overflow-y: hidden!important;
+}
+.list{
+    user-select: none;
+    margin: 3%;
+    color: var(--fontColorContrast);
+    display: flex;
+    overflow-y: scroll;
+    width: 25vw;
+    flex-direction: column;
+}
+.roast-items {
+    margin-top: 15px;
+    padding: 20px 0 0 30px;
+    user-select: none;
+    background-color: var(--buttonAlternative);
+    border-radius: 20px;
+}
+    
+hr {
+    opacity: 0.4;
+}
+@mixin button-base($color) {
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            color: white;
+            background-color: $color;
+            align-self: flex-end;
+            margin: 10px;
+            height: 50px;
+            width: 210px;
+            border-radius: 10px;
+            p{
+                font-size: 18px;
+                width: 100%;
+                padding: 0 25px 0 30px;
+            }
+}
+.graph{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    div{
+        display: flex;
+        justify-content: flex-end;
+        padding: 30px 0 0 0;
+        .edit-button{
+           @include button-base(var(--buttonColor))
+        }
+        .delete-button{
+            @include button-base(rgba(255,0,0,1))
+        }
+    }
+}

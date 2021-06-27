@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { FiEdit2 } from 'react-icons/fi';
+import { TiDelete } from 'react-icons/ti';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
 import { getRoasts, getUniqueRoastData } from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
@@ -11,18 +13,26 @@ function RecipeSelection() {
 
   useEffect(async () => {
     const data = await getRoasts();
+    console.log(data.data);
     setRoastData(data.data);
   }, []);
-
+  const roastDate = (roast) => {
+    const date = new Date(roast.timestamp * 1000);
+    const day = date.getDate();
+    const formated = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    console.log(formated);
+    return <h6>{formated}</h6>;
+  };
   return (
     (!roastData)
       ? (
         <div style={{ backgroundColor: 'smokewhite', color: 'blue' }}>
-          Rendering
+          Rendering info...
         </div>
       )
       : (
         <div className="container">
+          <h3 style={{ position: 'absolute' }}>Selecione a torra desejada</h3>
           <div className="list">
             {roastData.map((elem) => (
               <list
@@ -34,12 +44,22 @@ function RecipeSelection() {
                 }}
               >
                 {elem.name}
-                <hr />
+                {roastDate(elem)}
               </list>
             ))}
           </div>
-          <div style={{ marginTop: '120px', display: 'flex', flexDirection: 'column' }}>
+          <div className="graph">
             <StaticRefGraph ref={graphRef} />
+            <div>
+              <button type="button" className="edit-button">
+                <p>Editar torra</p>
+                <FiEdit2 size={30} />
+              </button>
+              <button type="button" className="delete-button">
+                <p>Apagar torra</p>
+                <TiDelete size={45} />
+              </button>
+            </div>
           </div>
         </div>
       )

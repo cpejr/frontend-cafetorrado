@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { MdFlashAuto } from 'react-icons/md';
@@ -12,6 +13,7 @@ const wifiName = 'o nome vai aqui';
 
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const history = useHistory();
   return (
     <div className="container">
 
@@ -19,13 +21,13 @@ const Home = () => {
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">
           <div className="automatic-section">
-            <button type="button" className="upper-button">
+            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection'); }}>
               <MdFlashAuto />
               <p>Torra automática</p>
             </button>
           </div>
           <div className="manual-section">
-            <button type="button" className="upper-button">
+            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection'); }}>
               <GiHand />
               <p>Torra manual</p>
             </button>
@@ -40,9 +42,9 @@ const Home = () => {
           </div>
 
           <div className="section">
-            <button type="button" className="upper-button">
+            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection'); }}>
               <FiBook />
-              <p>Selecionar receita</p>
+              <p>Visualizar receitas</p>
             </button>
           </div>
 

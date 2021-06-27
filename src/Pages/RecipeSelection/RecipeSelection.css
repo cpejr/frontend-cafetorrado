@@ -1,19 +1,122 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    justify-content: space-around;
-    overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100vw;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  overflow-y: hidden !important;
 }
-.list{
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
+
+.list {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin: 3%;
+  color: var(--fontColorContrast);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: scroll;
+  width: 25vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 .roast-items {
-    padding: 10px 0 10px 0;
+  margin-top: 15px;
+  padding: 20px 0 0 30px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: var(--buttonAlternative);
+  border-radius: 20px;
 }
-    
+
 hr {
-    opacity: 0.4;
+  opacity: 0.4;
 }
+
+.graph {
+  margin-top: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.graph div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 30px 0 0 0;
+}
+
+.graph div .edit-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  color: white;
+  background-color: var(--buttonColor);
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 10px;
+  height: 50px;
+  width: 210px;
+  border-radius: 10px;
+}
+
+.graph div .edit-button p {
+  font-size: 18px;
+  width: 100%;
+  padding: 0 25px 0 30px;
+}
+
+.graph div .delete-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  color: white;
+  background-color: red;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 10px;
+  height: 50px;
+  width: 210px;
+  border-radius: 10px;
+}
+
+.graph div .delete-button p {
+  font-size: 18px;
+  width: 100%;
+  padding: 0 25px 0 30px;
+}
+/*# sourceMappingURL=RecipeSelection.css.map */

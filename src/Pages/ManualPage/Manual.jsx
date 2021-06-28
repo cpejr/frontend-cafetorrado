@@ -6,7 +6,7 @@ import ButtonController2 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import Loader from '../../components/Loader/loader';
-// import RealData from '../../components/Functions/DataHandler/DataHandler';
+import { socket } from '../../index';
 import './Manual.css';
 
 function Manual() {
@@ -15,7 +15,7 @@ function Manual() {
     <div className="tela-container">
       <div className="upper-part">
         <Loader status={loaderStatus} />
-        <MainGraph setter={setLoaderStatus} />
+        <MainGraph />
       </div>
       <div className="lower-part">
         {/* } <RealData /> */}

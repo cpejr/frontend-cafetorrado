@@ -23,9 +23,9 @@ function updateData(mainGraph, data) {
   mainGraph.current.chartInstance.data.labels.push((data.fields.MdlRunCnt * 0.2).toFixed(2));
   mainGraph.current.chartInstance.data.datasets[0].data.push(data.fields.MdlAirScl);
   mainGraph.current.chartInstance.data.datasets[1].data.push(data.fields.MdlGraScl);
-  mainGraph.current.chartInstance.data.datasets[2].data.push(data.fields.MdlInjOut);
-  mainGraph.current.chartInstance.data.datasets[3].data.push(data.fields.MdlDruOut);
-  mainGraph.current.chartInstance.data.datasets[4].data.push(data.fields.MdlAirOut);
+  mainGraph.current.chartInstance.data.datasets[2].data.push(data.fields.MdlManInj);
+  mainGraph.current.chartInstance.data.datasets[3].data.push(data.fields.MdlManCdr);
+  mainGraph.current.chartInstance.data.datasets[4].data.push(data.fields.MdlManCar);
 
   mainGraph.current.chartInstance.update();
   time = data.fields.MdlRunCnt;
@@ -86,14 +86,14 @@ const INITALLDATA = {
   ],
 };
 
-export const MainGraph = ({ setter }) => {
+export const MainGraph = () => {
   const [crackTime, setCrackTime] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1220);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    socket.on('realData', (data) => { updateData(mainGraph, data); setter(false); });
+    socket.on('realData', (data) => { updateData(mainGraph, data); console.log(data.fields.MdlManInj); });
   }, []);
   useEffect(() => {
     const color1 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');
@@ -198,6 +198,8 @@ export const MainGraph = ({ setter }) => {
               type: 'linear',
               position: 'left',
               ticks: {
+                min: 0,
+                max: 100,
                 stepSize: 10,
                 fontColor: theme?.fontColor || 'black',
               },

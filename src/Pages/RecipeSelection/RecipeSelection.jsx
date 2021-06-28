@@ -12,9 +12,9 @@ function RecipeSelection() {
   const graphRef = useRef();
 
   useEffect(async () => {
-    const data = await getRoasts();
-    console.log(data.data);
-    setRoastData(data.data);
+    const { data } = await getRoasts();
+    console.log(data);
+    setRoastData(data);
   }, []);
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1000);

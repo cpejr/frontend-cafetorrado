@@ -1,13 +1,8 @@
 import React from 'react';
-import { DraggableRefGraph } from './DraggableGraph/DraggableGraph';
-import 'chartjs-plugin-dragdata';
+import DraggableGraph from './DraggableGraph/DraggableGraph';
 
 const EditRoast = () => (
-  // eslint-disable-next-line
-  <div onClick={(e) => { e.stopPropagation(); }}>
-    <DraggableRefGraph />
-  </div>
-
+  <DraggableGraph />
 );
 
 export default EditRoast;

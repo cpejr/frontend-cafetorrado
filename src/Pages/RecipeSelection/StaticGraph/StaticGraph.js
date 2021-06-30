@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { INITALLDATA } from './chartData';
 import { ThemeContext } from '../../../Context/ThemeContext';

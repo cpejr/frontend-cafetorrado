@@ -1,4 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState, useEffect, useRef,
+} from 'react';
+import { useHistory } from 'react-router-dom';
 import { FiEdit2 } from 'react-icons/fi';
 import { TiDelete } from 'react-icons/ti';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
@@ -8,20 +11,20 @@ import './RecipeSelection.css';
 let dataToRender = [];
 
 function RecipeSelection() {
+  const a = 'a';
+  const history = useHistory();
   const [roastData, setRoastData] = useState([{}]);
   const graphRef = useRef();
 
   useEffect(async () => {
     const { data } = await getRoasts();
-    console.log(data);
     setRoastData(data);
   }, []);
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1000);
     const day = date.getDate();
-    const formated = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    console.log(formated);
-    return <h6>{formated}</h6>;
+    const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    return <h6>{dataformatted}</h6>;
   };
   return (
     (!roastData)
@@ -51,7 +54,7 @@ function RecipeSelection() {
           <div className="graph">
             <StaticRefGraph ref={graphRef} />
             <div>
-              <button type="button" className="edit-button">
+              <button type="button" className="edit-button" onClick={() => { history.push('/editroast', dataToRender); }}>
                 <p>Editar torra</p>
                 <FiEdit2 size={30} />
               </button>

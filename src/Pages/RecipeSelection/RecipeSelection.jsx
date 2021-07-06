@@ -8,11 +8,12 @@ import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
 import { getRoasts, getUniqueRoastData } from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
-let dataToRender = [];
+let dataToRender = null;
 
 function RecipeSelection() {
   const a = 'a';
   const history = useHistory();
+  const buttonRefAnimation = useRef();
   const [roastData, setRoastData] = useState([{}]);
   const graphRef = useRef();
 
@@ -22,7 +23,6 @@ function RecipeSelection() {
   }, []);
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1000);
-    const day = date.getDate();
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     return <h6>{dataformatted}</h6>;
   };
@@ -54,7 +54,7 @@ function RecipeSelection() {
           <div className="graph">
             <StaticRefGraph ref={graphRef} />
             <div>
-              <button type="button" className="edit-button" onClick={() => { history.push('/editroast', dataToRender); }}>
+              <button type="button" className="edit-button" onClick={() => { dataToRender ? (history.push('/editRoast', dataToRender)) : (alert('A')); }}>
                 <p>Editar torra</p>
                 <FiEdit2 size={30} />
               </button>

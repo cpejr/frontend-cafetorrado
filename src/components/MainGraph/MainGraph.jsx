@@ -87,9 +87,6 @@ const INITALLDATA = {
 };
 
 export const MainGraph = ({ setter }) => {
-  useEffect(() => {
-    console.log(setter);
-  });
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1850);

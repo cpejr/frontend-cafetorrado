@@ -33,7 +33,7 @@ const RouterComponent = () => {
       <TemplateWithDrawer valuesInfo={valuesInfo}>
         <Route
           render={({ location }) => (
-            wifiState ? (
+            false ? (
               <div>
                 <TransitionGroup>
                   <CSSTransition

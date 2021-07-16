@@ -28,7 +28,7 @@ const themes = {
     graphColor5: '#2171B5',
     graphColor6: '#08306B',
     graphColor7: '#ff8c00',
-    buttonColor: '#638d20',
+    buttonColor: 'rgba(100,0,255,0.4)',
     buttonAlternative: '#0000009d',
   },
   grey: {

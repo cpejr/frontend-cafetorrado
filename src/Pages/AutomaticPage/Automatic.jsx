@@ -12,13 +12,13 @@ import Loader from '../../components/Loader/loader';
 import { socket } from '../../index';
 
 function Automatic() {
-  console.log('a');
   const [loaderStatus, setLoaderStatus] = useState(false);
+  const [status, setStatus] = useState(false);
   return (
     <div className="tela-container">
       <div className="upper-part">
         <Loader status={loaderStatus} />
-        <MainGraph />
+        <MainGraph setter={setLoaderStatus} />
       </div>
       <div className="lower-part">
 

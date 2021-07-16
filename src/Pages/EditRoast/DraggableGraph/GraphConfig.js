@@ -54,9 +54,9 @@ const INITDATA = {
       yAxisID: 'right',
       data: [54, 74, 3],
       borderColor: 'yellow',
-      borderWidth: 1,
-      pointRadius: 1,
-      pointHitRadius: 25,
+      borderWidth: 2,
+      pointRadius: 2,
+      pointHitRadius: 30,
       dragData: true,
     },
 

@@ -6,7 +6,7 @@ import ButtonController2 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import Loader from '../../components/Loader/loader';
-import { socket } from '../../index';
+import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler';
 import './Manual.css';
 
 function Manual() {

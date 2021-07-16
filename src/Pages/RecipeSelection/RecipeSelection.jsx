@@ -11,10 +11,13 @@ import './RecipeSelection.css';
 let dataToRender = null;
 
 function RecipeSelection() {
-  const a = 'a';
+  function animateButton() {
+    setWrongData(false);
+    setTimeout(() => { setWrongData(true); }, 500);
+  }
   const history = useHistory();
-  const buttonRefAnimation = useRef();
   const [roastData, setRoastData] = useState([{}]);
+  const [wrongData, setWrongData] = useState(true);
   const graphRef = useRef();
 
   useEffect(async () => {
@@ -54,7 +57,7 @@ function RecipeSelection() {
           <div className="graph">
             <StaticRefGraph ref={graphRef} />
             <div>
-              <button type="button" className="edit-button" onClick={() => { dataToRender ? (history.push('/editRoast', dataToRender)) : (alert('A')); }}>
+              <button type="button" className={wrongData ? 'edit-button' : 'edit-button-animation'} onClick={() => { dataToRender ? (history.push('/editRoast', dataToRender)) : (animateButton()); }}>
                 <p>Editar torra</p>
                 <FiEdit2 size={30} />
               </button>

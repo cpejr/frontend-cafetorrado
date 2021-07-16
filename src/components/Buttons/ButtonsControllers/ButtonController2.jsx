@@ -1,10 +1,11 @@
 import { React, useState } from 'react';
 import { FaPowerOff } from 'react-icons/fa';
+import { sendESPData } from '../../Functions/RequestHandler/RequestHandler';
 import './ButtonController2.css';
 
 function ButtonController2() {
   const [colorRefrigerator, setColorRefrigerator] = useState('#202020');
-
+  const [sentData, setSendData] = useState(true);
   const changeColorRefrigerator = () => {
     if (colorRefrigerator === '#202020') {
       setColorRefrigerator('#0029FF');
@@ -15,7 +16,12 @@ function ButtonController2() {
       <button
         className="power-1"
         type="button"
-        onClick={changeColorRefrigerator}
+        onClick={(e) => {
+          e.preventDefault();
+          sendESPData({ MdlIgnAcv: sentData });
+          changeColorRefrigerator();
+          setSendData(!sentData);
+        }}
       >
         <FaPowerOff size={35} color={colorRefrigerator} />
       </button>

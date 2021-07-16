@@ -32,8 +32,11 @@ const getUniqueRoastData = async (roast_id) => {
 };
 
 const sendESPData = (parameters) => {
+  // eslint-disable-next-line
   for (const key in parameters) {
     if (parameters[key]) {
+      api.post('/sendData', parameters);
+    } else if (parameters.MdlIgnAcv !== undefined || parameters.MdlMisAcv !== undefined) {
       api.post('/sendData', parameters);
     }
   }

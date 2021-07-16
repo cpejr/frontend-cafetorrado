@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {
-  BrowserRouter as Router, Route, Switch, Link,
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { io } from 'socket.io-client';
 import ResultsRevision from './Pages/ResultsRevision';
-import Teste from './components/theme';
-import TemplateWithDrawer from './templates';
+import TemplateWithDrawer from './Templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
 import Home from './Pages/Home/Home';
 import RecipeSelection from './Pages/RecipeSelection/RecipeSelection';
 import './components/Animations/Animations.css';
 import WifiModal from './components/WifiModal/WifiModal';
-import { socket } from '.';
+import EditRoast from './Pages/EditRoast/EditRoast';
+import { socket } from './index';
 
 const valuesInfo = {
   pressão: 8.9,
@@ -48,6 +47,7 @@ const RouterComponent = () => {
                       <Route path="/Manual" component={Manual} />
                       <Route path="/ResultsRevision" component={ResultsRevision} />
                       <Route path="/automatic" component={Automatic} />
+                      <Route path="/editRoast" component={EditRoast} />
                     </Switch>
                   </CSSTransition>
                 </TransitionGroup>

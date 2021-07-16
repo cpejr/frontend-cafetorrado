@@ -20,7 +20,7 @@ const ResultsRevision = () => (
         Excluir
       </button>
     </div>
-    <div className="graph">
+    <div className="graph_">
       <MainGraph />
     </div>
     <div className="informations-revision">

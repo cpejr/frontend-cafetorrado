@@ -1,0 +1,72 @@
+const DragData = {
+  type: 'line',
+  labels: [],
+  datasets: [
+    {
+      fill: false,
+      label: 'Temperatura do Ar',
+      data: [],
+      yAxisID: 'left',
+      borderColor: 'red',
+      borderWidth: 1,
+      pointRadius: 0,
+      dragData: false,
+    },
+    {
+      fill: false,
+      label: 'Temperatura do Grão',
+      yAxisID: 'left',
+      data: [],
+      borderColor: '#4292C6',
+      borderWidth: 1,
+      pointRadius: 0,
+      dragData: false,
+    },
+    {
+      fill: false,
+      label: 'Percentual de chama',
+      data: [],
+      yAxisID: 'right',
+      borderColor: '#2171B5',
+      borderWidth: 1,
+      pointRadius: 0,
+      dragData: false,
+    },
+
+    {
+      fill: false,
+      label: 'Percentual do Tambor',
+      yAxisID: 'right',
+      data: [],
+      borderColor: 'blue',
+      borderWidth: 1,
+      pointRadius: 0,
+      dragData: false,
+    },
+
+    {
+      fill: false,
+      label: 'Percentual de ar',
+      yAxisID: 'right',
+      data: [],
+      borderColor: '#ff8c00',
+      borderWidth: 1,
+      pointRadius: 0,
+      dragData: false,
+    },
+    {
+      fill: false,
+      label: 'Carga Manual de café',
+      yAxisID: 'left-2',
+      xAxisID: 'LUTS',
+      data: [0, 12, 65, 98, 100],
+      borderColor: '#ff8c00',
+      borderWidth: 1,
+      pointRadius: 5,
+      pointHitRadius: 100,
+      dragData: true,
+    },
+  ],
+};
+
+export { DragData };

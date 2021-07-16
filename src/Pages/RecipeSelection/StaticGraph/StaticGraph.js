@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { INITALLDATA } from './chartData';
 import { ThemeContext } from '../../../Context/ThemeContext';
@@ -46,8 +46,6 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
   const { theme } = useContext(ThemeContext);
   return (
     <Line
-      height="400"
-      width="750"
       id="StaticGraph"
       ref={ref}
       data={INITALLDATA}
@@ -56,12 +54,12 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
           position: 'bottom',
           labels: {
             fontFamily: 'Quicksand',
-            fontColor: theme.fontColor,
+            fontColor: theme?.fontColor || 'black',
             fontSize: 16,
           },
         },
-        responsive: false,
-        maintainAspectRatio: false,
+        responsive: true,
+        maintainAspectRatio: true,
         elements: {
           line: {
             tension: 0,
@@ -74,7 +72,7 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
             position: 'left',
             ticks: {
               stepSize: 10,
-              fontColor: theme.fontColor,
+              fontColor: theme?.fontColor || 'black',
             },
           }, {
             id: 'right',
@@ -82,7 +80,7 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
             position: 'right',
             ticks: {
               stepSize: 10,
-              fontColor: theme.fontColor,
+              fontColor: theme?.fontColor || 'black',
             },
           },
           ],
@@ -92,7 +90,7 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
                 min: 0,
                 max: 100,
                 autoSkip: true,
-                fontColor: theme.fontColor,
+                fontColor: theme?.fontColor || 'black',
                 maxTicksLimit: 20,
                 beginAtZero: true,
               },

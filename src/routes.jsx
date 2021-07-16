@@ -6,7 +6,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { io } from 'socket.io-client';
 import ResultsRevision from './Pages/ResultsRevision';
 import Teste from './components/theme';
-import TemplateWithDrawer from './Templates';
+import TemplateWithDrawer from './templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
 import Home from './Pages/Home/Home';

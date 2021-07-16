@@ -88,7 +88,7 @@ const INITALLDATA = {
 
 export const MainGraph = () => {
   const [crackTime, setCrackTime] = useState(0);
-  const [graphWidth, setGraphWidth] = useState(1220);
+  const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
@@ -126,9 +126,9 @@ export const MainGraph = () => {
   useEffect(() => {
     function listener() {
       if (window.drawerIsOpen) {
-        setGraphWidth(1040);
+        setGraphWidth(1650);
       } else {
-        setGraphWidth(1220);
+        setGraphWidth(1850);
       }
     }
 
@@ -142,7 +142,7 @@ export const MainGraph = () => {
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 480, position: 'relative' }}>
+    <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
       <Line
         padding="0"
         id="main-graph"

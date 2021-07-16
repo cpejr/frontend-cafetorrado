@@ -46,8 +46,6 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
   const { theme } = useContext(ThemeContext);
   return (
     <Line
-      height="400"
-      width="750"
       id="StaticGraph"
       ref={ref}
       data={INITALLDATA}
@@ -60,8 +58,8 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
             fontSize: 16,
           },
         },
-        responsive: false,
-        maintainAspectRatio: false,
+        responsive: true,
+        maintainAspectRatio: true,
         elements: {
           line: {
             tension: 0,

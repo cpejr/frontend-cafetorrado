@@ -17,11 +17,11 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  margin: 3%;
   color: var(--fontColorContrast);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 50px;
   overflow-y: scroll;
   width: 25vw;
   -webkit-box-orient: vertical;
@@ -46,7 +46,8 @@ hr {
 }
 
 .graph {
-  margin-top: 150px;
+  margin: 250px 0 0 0;
+  width: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -20,6 +20,7 @@
   border: none;
   box-sizing: border-box;
   font-size: 18px;
+  color: white;
   background-color: var(--headerBackground);
 }
 .save-name button {

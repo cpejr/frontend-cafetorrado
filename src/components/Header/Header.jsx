@@ -27,7 +27,7 @@ function Header() {
 
       <div className="buttons">
         <button className="power" type="button">
-          <FiPower size={23} color={colorPower} onClick={changeColorPower} />
+          <FiPower size={60} color={colorPower} onClick={changeColorPower} />
         </button>
       </div>
     </div>

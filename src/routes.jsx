@@ -13,6 +13,7 @@ import './components/Animations/Animations.css';
 import WifiModal from './components/WifiModal/WifiModal';
 import EditRoast from './Pages/EditRoast/EditRoast';
 import { socket } from './index';
+import wakeuptable from './Pages/WakeupTable/wakeuptable';
 
 const valuesInfo = {
   pressão: 8.9,
@@ -48,6 +49,7 @@ const RouterComponent = () => {
                       <Route path="/ResultsRevision" component={ResultsRevision} />
                       <Route path="/automatic" component={Automatic} />
                       <Route path="/editRoast" component={EditRoast} />
+                      <Route path="/wakeuptable" component={wakeuptable} />
                     </Switch>
                   </CSSTransition>
                 </TransitionGroup>

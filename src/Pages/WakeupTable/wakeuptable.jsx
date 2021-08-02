@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from '@material-ui/core/Modal';
+import './wakeuptable.css';
 
 function wakeuptable() {
   const [file, setFile] = useState();
@@ -37,21 +38,27 @@ function wakeuptable() {
 
   return (
     <div className="WakeContainer">
-      <input type="file" onChange={saveFile} />
-      {/* <button type="submit" onClick={handleShow}>Upload</button> */}
-      <button type="button" onClick={handleOpen}>
-        Upload
-      </button>
+      <div className="Input-Button">
+        <input type="file" onChange={saveFile} />
+        {/* <button type="submit" onClick={handleShow}>Upload</button> */}
+        <button type="button" onClick={handleOpen}>
+          Upload
+        </button>
+      </div>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div className="divDoModal">
-          <h1>Confirmação do Envio</h1>
-          <button type="button">Cancelar</button>
-          <button type="submit" onClick={uploadFile}>Confirmar</button>
+        <div className="div-Do-Modal">
+          <div className="tittle-Modal">
+            <h1>Confirmação do Envio</h1>
+          </div>
+          <div className="buttons">
+            <button type="button" onClick={handleClose}>Cancelar</button>
+            <button type="submit" onClick={uploadFile}>Confirmar</button>
+          </div>
         </div>
       </Modal>
     </div>

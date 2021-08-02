@@ -1,74 +1,59 @@
 import React, { useState } from 'react';
-// //   import { useHistory } from 'react-router-dom';
-// //   import { FiEdit2 } from 'react-icons/fi';
-// //   import { TiDelete } from 'react-icons/ti';
-// //   import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-// //   import { getRoasts, getUniqueRoastData } from '../../components/Functions/RequestHandler/RequestHandler';
-// //   import './RecipeSelection.css';
-// // import { useDropzone } from 'react-dropzone';
-// import { MdLink } from 'react-icons/md';
-// import './wakeuptable.css';
-
-// function wakeuptable({ files, fileName, setFiles }) {
-//   const [uploadedFile, setUploadedFile] = useState();
-//   const handleUpload = (file) => {
-//     const uploaded = {
-//       file: file[0],
-//       name: file[0].name,
-//       url: URL.createObjectURL(file[0]),
-//     };
-//     setUploadedFile(uploaded);
-//     setFiles([...files, { file: file[0], name: fileName }]);
-//   };
-//   const {
-//     getRootProps,
-//     getInputProps,
-//     isDragActive,
-//     isDragReject,
-//   } ;
-// //   = useDropzone({
-// //     accept: 'application/pdf',
-// //     maxFiles: 1,
-// //     onDrop: (file) => handleUpload(file),
-// //   })
-
-//   const renderDragMessage = () => {
-//     if (!isDragActive) {
-//       return <p className="uploadMessage">Arraste arquivos aqui...</p>;
-//     }
-//     if (isDragReject) {
-//       return <p className={clsx('uploadMessage', 'error')}>Arquivo não suportado</p>;
-//     }
-//     return <p className={clsx('uploadMessage', 'sucess')}>Solte os arquivos aqui</p>;
-//   };
-
-//   return (
-//     <>
-//       <div {...getRootProps()} className={clsx('dropzone', { dragActive: isDragActive, dragReject: isDragReject })}>
-//         <input {...getInputProps()} />
-//         {renderDragMessage()}
-//       </div>
-//       {uploadedFile && (
-//         <div className="fileInfo">
-//           <a
-//             href={uploadedFile.url}
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="fileInfoLink"
-//           >
-//             <MdLink style={{ marginRight: 8, minHeight: 18, minWidth: 18 }} size={18} color="#222" />
-//             <strong>{uploadedFile.name}</strong>
-//           </a>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
+import axios from 'axios';
+import Modal from '@material-ui/core/Modal';
 
 function wakeuptable() {
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const saveFile = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
+
+  const uploadFile = async (e) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('fileName', fileName);
+    try {
+      const res = await axios.post(
+        'http://localhost:8888/upload',
+        formData,
+      );
+      console.log(res);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
   return (
-    <div>
-      <h1>hjdjkfdjfdilfdkjk</h1>
+    <div className="WakeContainer">
+      <input type="file" onChange={saveFile} />
+      {/* <button type="submit" onClick={handleShow}>Upload</button> */}
+      <button type="button" onClick={handleOpen}>
+        Upload
+      </button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <div className="divDoModal">
+          <h1>Confirmação do Envio</h1>
+          <button type="button">Cancelar</button>
+          <button type="submit" onClick={uploadFile}>Confirmar</button>
+        </div>
+      </Modal>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 import './ThemeContext.css';
+import { getLastTheme, updateLastTheme } from '../components/Functions/RequestHandler/RequestHandler';
 
 const themes = {
   technologic: {
@@ -92,13 +93,19 @@ const themes = {
 export const ThemeContext = React.createContext({});
 
 function ThemeContextProvider({ children }) {
-  const [themeName, setThemeName] = useState('technologic');
+  const [themeName, setThemeName] = useState();
   const [theme, setTheme] = useState();
 
-  useEffect(() => {
-    setCSSVariables(themes[themeName]);
-    setTheme(themes[themeName]);
+  useEffect(async () => {
+    const lastTheme = await getLastTheme();
+    setCSSVariables(themes[lastTheme.data.lastTheme]);
+    setTheme(themes[lastTheme.data.lastTheme]);
   }, []);
+
+  // useEffect(() => {
+  //   setCSSVariables(themes[themeName]);
+  //   setTheme(themes[themeName]);
+  // }, []);
 
   function setCSSVariables(themeAux) {
     for (const value in themeAux) {
@@ -113,15 +120,19 @@ function ThemeContextProvider({ children }) {
 
   const toggleTheme = () => {
     if (themeName === 'technologic') {
+      updateLastTheme('grey');
       setTheme(themes.grey);
       setThemeName('grey');
     } else if (themeName === 'grey') {
+      updateLastTheme('dark');
       setTheme(themes.dark);
       setThemeName('dark');
     } else if (themeName === 'dark') {
+      updateLastTheme('white');
       setTheme(themes.white);
       setThemeName('white');
     } else {
+      updateLastTheme('technologic');
       setTheme(themes.technologic);
       setThemeName('technologic');
     }

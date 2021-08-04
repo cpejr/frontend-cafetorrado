@@ -39,10 +39,11 @@ function wakeuptable() {
   return (
     <div className="WakeContainer">
       <div className="Input-Button">
-        <input type="file" onChange={saveFile} />
+        <h1> Envie seu Arquivo </h1>
+        <input className="Input" type="file" onChange={saveFile} />
         {/* <button type="submit" onClick={handleShow}>Upload</button> */}
-        <button type="button" onClick={handleOpen}>
-          Upload
+        <button className="Button" type="button" onClick={handleOpen}>
+          Fazer Upload
         </button>
       </div>
       <Modal
@@ -56,8 +57,8 @@ function wakeuptable() {
             <h1>Confirmação do Envio</h1>
           </div>
           <div className="buttons">
-            <button type="button" onClick={handleClose}>Cancelar</button>
-            <button type="submit" onClick={uploadFile}>Confirmar</button>
+            <button className="B1" type="button" onClick={handleClose}>Cancelar</button>
+            <button className="B2" type="submit" onClick={uploadFile}>Confirmar</button>
           </div>
         </div>
       </Modal>

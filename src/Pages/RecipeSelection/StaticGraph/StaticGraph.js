@@ -30,15 +30,16 @@ function clearData(refGraph) {
   refGraph.current.chartInstance.update();
 }
 
+//Mudar nomes em portugues e tirar primeira linha!!
 const parseCount = (data) => {
-  let arrayCorrigido = [];
+  let correctTime = [];
   data.forEach((data)=>{ 
     const second = (parseInt(((data / 300) % 1) * 60, 10));
     const minute = Math.trunc(data / 300);
-    arrayCorrigido.push(`${minute.toLocaleString(undefined, { minimumIntegerDigits: 2 })}:${second.toLocaleString(undefined, { minimumIntegerDigits: 2 })}`);
+    correctTime.push(`${minute.toLocaleString(undefined, { minimumIntegerDigits: 2 })}:${second.toLocaleString(undefined, { minimumIntegerDigits: 2 })}`);
   });
-  console.log(arrayCorrigido);
-  return arrayCorrigido
+  console.log(correctTime);
+  return correctTime
 };
 
 function updateData(refGraph, data) {

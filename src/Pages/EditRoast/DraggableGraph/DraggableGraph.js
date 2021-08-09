@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useContext, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { DragData } from './dragData';
@@ -18,13 +19,26 @@ function desestructData(data) {
     airOut.push(data[i].MdlAirOut);
   }
 }
+
+const parseCount = (data) => {
+  let correctTime = [];
+  data.forEach((data)=>{ 
+    const second = (parseInt(((data / 300) % 1) * 60, 10));
+    const minute = Math.trunc(data / 300);
+    correctTime.push(`${minute.toLocaleString(undefined, { minimumIntegerDigits: 2 })}:${second.toLocaleString(undefined, { minimumIntegerDigits: 2 })}`);
+  });
+  console.log(correctTime);
+  return correctTime
+};
+
 function updateData(refGraph, data) {
   if (!(refGraph?.current?.chartInstance)) return;
   console.log(refGraph.current.chartInstance);
   clearData(refGraph);
   desestructData(data);
   console.log(runCnt, 'aaaaspdmaspodin');
-  refGraph.current.chartInstance.data.labels.push(...runCnt);
+  const parsed = parseCount(runCnt);
+  refGraph.current.chartInstance.data.labels.push(...parsed);
   refGraph.current.chartInstance.data.datasets[0].data.push(...airScl);
   refGraph.current.chartInstance.data.datasets[1].data.push(...graScl);
   refGraph.current.chartInstance.data.datasets[2].data.push(...injOut);

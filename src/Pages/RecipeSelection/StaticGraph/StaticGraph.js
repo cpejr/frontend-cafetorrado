@@ -55,7 +55,7 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
           labels: {
             fontFamily: 'Quicksand',
             fontColor: theme?.fontColor || 'black',
-            fontSize: 16,
+            fontSize: 25,
           },
         },
         responsive: true,
@@ -73,6 +73,7 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
             ticks: {
               stepSize: 10,
               fontColor: theme?.fontColor || 'black',
+              fontSize: 25,
             },
           }, {
             id: 'right',
@@ -81,6 +82,7 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
             ticks: {
               stepSize: 10,
               fontColor: theme?.fontColor || 'black',
+              fontSize: 25,
             },
           },
           ],
@@ -93,6 +95,7 @@ const StaticRefGraph = React.forwardRef((props, ref) => {
                 fontColor: theme?.fontColor || 'black',
                 maxTicksLimit: 20,
                 beginAtZero: true,
+                fontSize: 25,
               },
             },
           ],

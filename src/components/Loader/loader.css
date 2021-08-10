@@ -54,7 +54,6 @@
     opacity: 0;
   }
 }
-
 .loader-text {
   position: absolute;
   top: 56%;
@@ -79,5 +78,4 @@
   30%, 80% {
     opacity: 1;
   }
-}
-/*# sourceMappingURL=loader.css.map */
+}/*# sourceMappingURL=loader.css.map */

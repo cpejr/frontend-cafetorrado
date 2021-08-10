@@ -25,12 +25,12 @@
 }
 .save-name button {
   padding: 10px;
-  width: 120px;
+  width: 150px;
   height: 100%;
   border: none;
   box-sizing: border-box;
 
-  font-size: 18px;
+  font-size: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +55,7 @@
   color: var(--fontColor);
 }
 .informations-revision h1 {
-  font-size: 22px;
+  font-size: 26px;
   line-height: 0;
 }
 .cols-info {
@@ -65,6 +65,9 @@
 }
 .col-info {
   width: 30%;
+  font-size: 26px;
+}
+
+.col-info p {
   color: var(--fontColor);
-  font-size: 18px;
 }

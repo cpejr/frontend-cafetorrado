@@ -11,6 +11,13 @@ import './Header.css';
 
 function Header() {
   const [colorPower, setColorPower] = useState('var(--fontColorComponents)');
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleClick = () => {
+    changeColorPower();
+    setShowDropdown(!showDropdown);
+  };
+
   const changeColorPower = () => {
     if (colorPower === 'var(--fontColorComponents)') {
       setColorPower('#0029FF');
@@ -25,11 +32,17 @@ function Header() {
 
       <Logo className="logo" />
 
-      <div className="buttons">
-        <button className="power" type="button">
-          <FiPower size={23} color={colorPower} onClick={changeColorPower} />
-        </button>
-      </div>
+      <button className="power" type="button">
+        <FiPower size={23} color={colorPower} onClick={handleClick} />
+      </button>
+      {showDropdown && (
+        <div className="dropdown">
+          <div className="dropdown-child">
+            <a href="http://wwww.seudominio.com/pagina1.html"> Desligar </a>
+            <a href="http://wwww.seudominio.com/pagina1.html"> Wake Up </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

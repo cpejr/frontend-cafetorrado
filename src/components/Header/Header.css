@@ -15,10 +15,6 @@
   margin-left: 3%;
 }
 
-/* .buttons {
-  margin-top: 1px;
-  margin-right: 1%;
-} */
 .logo {
   fill: white;
   color: white;
@@ -54,9 +50,6 @@
   text-decoration: none;
   display: block;
 }
-/* .dropdown:hover .dropdown-child {
-  display: block;
-} */
 
 svg.logo {
   margin-right: 60px;

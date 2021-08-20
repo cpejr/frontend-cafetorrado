@@ -10,12 +10,11 @@ import { useLocation, useHistory } from 'react-router-dom';
 import Brightness6Icon from '@material-ui/icons/Brightness6';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { MdFlashAuto } from 'react-icons/md';
+import { MdFlashAuto, MdInput } from 'react-icons/md';
 import { GiHand } from 'react-icons/gi';
 import { FaHome } from 'react-icons/fa';
 import clsx from 'clsx';
 import { ThemeContext } from '../../Context/ThemeContext';
-
 import './NewDrawer.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +59,11 @@ const DrawerMenu = ({ drawerOpen }) => {
       icon: <GiHand />,
       route: 'manual',
     },
-
+    {
+      title: 'Wake Up Table',
+      icon: <MdInput />,
+      route: 'wakeuptable',
+    },
   ];
   const { toggleTheme } = useContext(ThemeContext);
 

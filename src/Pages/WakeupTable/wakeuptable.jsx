@@ -41,7 +41,6 @@ function wakeuptable() {
       <div className="Input-Button">
         <h1> Envie seu Arquivo </h1>
         <input className="Input" type="file" onChange={saveFile} />
-        {/* <button type="submit" onClick={handleShow}>Upload</button> */}
         <button className="Button" type="button" onClick={handleOpen}>
           Fazer Upload
         </button>

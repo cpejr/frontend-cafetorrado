@@ -26,13 +26,12 @@ function wakeuptable() {
     formData.append('file', file);
     formData.append('fileName', fileName);
     try {
-      const res = await axios.post(
+      await axios.post(
         'http://localhost:8888/upload',
         formData,
       );
-      console.log(res);
     } catch (ex) {
-      console.log(ex);
+      console.error(ex);
     }
   };
 

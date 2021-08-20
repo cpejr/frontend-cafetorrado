@@ -180,7 +180,7 @@
   padding: 10px 10px 10px 10px;
 }
 
-.wifi-section {
+.wakeup-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -197,7 +197,7 @@
   height: 34vh;
 }
 
-.wifi-section .upper-button {
+.wakeup-section .upper-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,16 +220,16 @@
   border-width: 0;
 }
 
-.wifi-section .upper-button:focus {
+.wakeup-section .upper-button:focus {
   outline: none;
   background-color: #12153f;
 }
 
-.wifi-section .upper-button p {
+.wakeup-section .upper-button p {
   padding-left: 25px;
 }
 
-.wifi-section .sub-button {
+.wakeup-section .sub-button {
   top: 200px;
   -webkit-box-align: center;
       -ms-flex-align: center;

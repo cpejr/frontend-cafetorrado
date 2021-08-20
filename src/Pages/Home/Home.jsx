@@ -34,10 +34,10 @@ const Home = () => {
           </div>
         </div>
         <div className="lower-row">
-          <div className="wifi-section">
-            <button type="button" onClick={() => { setModalOpen(true); }} className="upper-button">
+          <div className="wakeup-section">
+            <button type="button" onClick={() => { history.push('/wakeuptable'); }} className="upper-button">
               <FaWifi />
-              <p>Mudar configurações de wifi</p>
+              <p>Importar wake up tables</p>
             </button>
           </div>
 

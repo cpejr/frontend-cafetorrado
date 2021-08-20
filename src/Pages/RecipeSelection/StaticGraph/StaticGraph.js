@@ -29,11 +29,23 @@ function clearData(refGraph) {
   refGraph.current.chartInstance.update();
 }
 
+const parseCount = (datas) => {
+  const correctTime = [];
+  datas.forEach((data) => {
+    const second = (parseInt(((data / 300) % 1) * 60, 10));
+    const minute = Math.trunc(data / 300);
+    correctTime.push(`${minute.toLocaleString(undefined, { minimumIntegerDigits: 2 })}:${second.toLocaleString(undefined, { minimumIntegerDigits: 2 })}`);
+  });
+  console.log(correctTime);
+  return correctTime;
+};
+
 function updateData(refGraph, data) {
   clearData(refGraph);
   desestructData(data);
+  const parsed = parseCount(runCnt);
   if (!(refGraph?.current?.chartInstance)) return;
-  refGraph.current.chartInstance.data.labels.push(...runCnt);
+  refGraph.current.chartInstance.data.labels.push(...parsed);
   refGraph.current.chartInstance.data.datasets[0].data.push(...airScl);
   refGraph.current.chartInstance.data.datasets[1].data.push(...graScl);
   refGraph.current.chartInstance.data.datasets[2].data.push(...injOut);

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { INITALLDATA } from './chartData';
@@ -30,16 +29,15 @@ function clearData(refGraph) {
   refGraph.current.chartInstance.update();
 }
 
-//Mudar nomes em portugues e tirar primeira linha!!
-const parseCount = (data) => {
-  let correctTime = [];
-  data.forEach((data)=>{ 
+const parseCount = (datas) => {
+  const correctTime = [];
+  datas.forEach((data) => {
     const second = (parseInt(((data / 300) % 1) * 60, 10));
     const minute = Math.trunc(data / 300);
     correctTime.push(`${minute.toLocaleString(undefined, { minimumIntegerDigits: 2 })}:${second.toLocaleString(undefined, { minimumIntegerDigits: 2 })}`);
   });
   console.log(correctTime);
-  return correctTime
+  return correctTime;
 };
 
 function updateData(refGraph, data) {

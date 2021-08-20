@@ -22,7 +22,8 @@
 .logo {
   fill: white;
   color: white;
-  width: 150px;
+  width: 250px;
+  
 }
 .power {
   background-color: var(--headerBackground);

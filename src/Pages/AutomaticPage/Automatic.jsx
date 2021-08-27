@@ -49,8 +49,8 @@ function Automatic() {
                 onClick={(e) => {
                   e.preventDefault();
                   changeColorMixer();
-                  // sendESPData({ MdlMisAcv: sentData });
-                  // setSendData(!sentData);
+                  sendESPData({ MdlModReq: sentData });
+                  setSendData(!sentData);
                 }}
               >
                 <GiHand size={35} />

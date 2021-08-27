@@ -14,7 +14,6 @@ import { sendESPData } from '../../components/Functions/RequestHandler/RequestHa
 function Automatic() {
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [colorMixer, setColorMixer] = useState('#202020');
-  const [sentData, setSendData] = useState(true);
   const history = useHistory();
   const changeColorMixer = () => {
     if (colorMixer === '#202020') {
@@ -32,6 +31,21 @@ function Automatic() {
         <div className="control-buttons">
 
           <div className="buttons">
+            <div className="button4">
+              <p>Manual</p>
+              <button
+                className="power-1"
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  changeColorMixer();
+                  sendESPData({ MdlModReq: 1 });
+                  history.push('/Manual');
+                }}
+              >
+                <GiHand size={35} />
+              </button>
+            </div>
             <div className="button1">
               <p>Mexedor</p>
               <ButtonController1 />
@@ -43,22 +57,6 @@ function Automatic() {
             <div className="button3">
               <p>Crack</p>
               <ButtonController3 />
-            </div>
-            <div className="button4">
-              <p>Manual</p>
-              <button
-                className="power-1"
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  changeColorMixer();
-                  sendESPData({ MdlModReq: sentData });
-                  setSendData(!sentData);
-                  history.push('/Manual');
-                }}
-              >
-                <GiHand size={35} />
-              </button>
             </div>
           </div>
         </div>

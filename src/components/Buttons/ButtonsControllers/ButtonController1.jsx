@@ -17,7 +17,6 @@ function ButtonController1() {
         className="power-1"
         type="button"
         onClick={(e) => {
-          console.log('a');
           e.preventDefault();
           changeColorMixer();
           sendESPData({ MdlMisAcv: sentData });

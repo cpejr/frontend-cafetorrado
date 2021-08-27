@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { GiHand } from 'react-icons/gi';
+import { useHistory } from 'react-router-dom';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
@@ -13,6 +14,8 @@ import { sendESPData } from '../../components/Functions/RequestHandler/RequestHa
 function Automatic() {
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [colorMixer, setColorMixer] = useState('#202020');
+  const [sentData, setSendData] = useState(true);
+  const history = useHistory();
   const changeColorMixer = () => {
     if (colorMixer === '#202020') {
       setColorMixer('#0029FF');
@@ -51,6 +54,7 @@ function Automatic() {
                   changeColorMixer();
                   sendESPData({ MdlModReq: sentData });
                   setSendData(!sentData);
+                  history.push('/Manual');
                 }}
               >
                 <GiHand size={35} />

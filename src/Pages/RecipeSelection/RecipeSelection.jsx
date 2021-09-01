@@ -18,12 +18,13 @@ function RecipeSelection() {
   const history = useHistory();
   const [roastData, setRoastData] = useState([{}]);
   const [wrongData, setWrongData] = useState(true);
-  const [DataAtual, setDataAtual] = useState({});
+  const [DataIdSelected, setDataIdSelected] = useState({});
   const graphRef = useRef();
 
   useEffect(async () => {
     const { data } = await getRoasts();
     setRoastData(data);
+    console.log(data, 'opa');
   }, []);
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);
@@ -31,8 +32,8 @@ function RecipeSelection() {
     return <h6>{dataformatted}</h6>;
   };
   const handleDelete = () => {
-    console.log(DataAtual, 'tamo Aqui');
-    deleteSpecificRoast(DataAtual);
+    deleteSpecificRoast(DataIdSelected);
+    window.location.reload();
   };
   return (
     (!roastData)
@@ -51,7 +52,7 @@ function RecipeSelection() {
                 onClick={async (event) => {
                   event.preventDefault();
                   dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
-                  setDataAtual(elem.roast_id);
+                  setDataIdSelected(elem.roast_id);
                   updateData(graphRef, dataToRender);
                 }}
               >

@@ -21,13 +21,13 @@ const Home = () => {
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">
           <div className="automatic-section">
-            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection'); }}>
+            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection', 'automatic'); }}>
               <MdFlashAuto />
               <p>Torra automática</p>
             </button>
           </div>
           <div className="manual-section">
-            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection'); }}>
+            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection', 'manual'); }}>
               <GiHand />
               <p>Torra manual</p>
             </button>

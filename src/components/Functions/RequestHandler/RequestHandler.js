@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { sendMachineParams } from '../../../../../backend-cafetorrado/src/Clients/client_LUTs';
 
 const api = axios.create({ baseURL: 'http://localhost:8080' });
 
@@ -42,6 +43,11 @@ const sendESPData = (parameters) => {
   }
 };
 
+const sendMachineParameters = (parameters) => {
+  const result = api.post('/sendMachineParameters', parameters);
+  return result;
+};
+
 const getWifiData = () => {
   const result = api.get('/connectWifi');
   return result;
@@ -54,5 +60,5 @@ const setWifiData = ({ wifiNewName, password, hidden }) => {
 
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
-  getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData,
+  getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendMachineParameters,
 };

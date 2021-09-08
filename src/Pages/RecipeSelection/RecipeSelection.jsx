@@ -4,9 +4,9 @@ import React, {
 import { useHistory } from 'react-router-dom';
 import { FiEdit2 } from 'react-icons/fi';
 import { TiDelete } from 'react-icons/ti';
-import { GrSelect } from 'react-icons/gr';
+import { AiOutlineSelect } from 'react-icons/ai';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-import { getRoasts, getUniqueRoastData } from '../../components/Functions/RequestHandler/RequestHandler';
+import { getRoasts, getUniqueRoastData, sendStaticParameters } from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
 let dataToRender = null;
@@ -20,7 +20,8 @@ function RecipeSelection(props) {
   const [roastData, setRoastData] = useState([{}]);
   const [wrongData, setWrongData] = useState(true);
   const graphRef = useRef();
-  const [dataAtual, setDataAtual] = useState([]);
+  const [DataIdSelected, setDataIdSelected] = useState({});
+
   useEffect(async () => {
     const { data } = await getRoasts();
     setRoastData(data);
@@ -31,7 +32,7 @@ function RecipeSelection(props) {
     return <h6>{dataformatted}</h6>;
   };
   const handleSelect = () => {
-    console.log(props.location.state);
+    sendStaticParameters(DataIdSelected);
     if (props.location.state === 'manual') {
       history.push('/manual');
     } else {
@@ -55,6 +56,7 @@ function RecipeSelection(props) {
                 onClick={async (event) => {
                   event.preventDefault();
                   dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
+                  setDataIdSelected(elem.roast_id);
                   updateData(graphRef, dataToRender);
                 }}
               >
@@ -68,7 +70,7 @@ function RecipeSelection(props) {
             <div>
               <button type="button" className="select-button" onClick={handleSelect}>
                 <p>Selecionar Torra</p>
-                <GrSelect size={30} />
+                <AiOutlineSelect size={30} />
               </button>
               <button type="button" className={wrongData ? 'edit-button' : 'edit-button-animation'} onClick={() => { dataToRender ? (history.push('/editRoast', dataToRender)) : (animateButton()); }}>
                 <p>Editar torra</p>

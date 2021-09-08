@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { sendMachineParams } from '../../../../../backend-cafetorrado/src/Clients/client_LUTs';
+// import { sendMachineParams } from '../../../../../backend-cafetorrado/src/Clients/client_LUTs';
 
 const api = axios.create({ baseURL: 'http://localhost:8080' });
 
@@ -43,8 +43,8 @@ const sendESPData = (parameters) => {
   }
 };
 
-const sendMachineParameters = (parameters) => {
-  const result = api.post('/sendMachineParameters', parameters);
+const sendStaticParameters = (roast_id) => {
+  const result = api.post(`/sendStaticLUTs/${roast_id}`);
   return result;
 };
 
@@ -60,5 +60,5 @@ const setWifiData = ({ wifiNewName, password, hidden }) => {
 
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
-  getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendMachineParameters,
+  getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
 };

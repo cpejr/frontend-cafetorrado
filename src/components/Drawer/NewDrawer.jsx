@@ -9,7 +9,7 @@ import { DrawerMenu, DrawerHeader } from './InsideDrawer';
 
 import './NewDrawer.css';
 
-const drawerWidth = 240;
+const drawerWidth = 330;
 const closedWidth = 60;
 
 const useStyles = makeStyles((theme) => ({

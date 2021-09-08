@@ -54,7 +54,18 @@ const setWifiData = ({ wifiNewName, password, hidden }) => {
   return result;
 };
 
+const getLastTheme = () => {
+  const lastTheme = api.get('/getLastTheme');
+  return lastTheme;
+};
+
+const updateLastTheme = (themeName) => {
+  const result = api.put('/updateLastTheme', { lastTheme: themeName });
+  return result;
+};
+
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, deleteSpecificRoast,
+  getLastTheme, updateLastTheme,
 };

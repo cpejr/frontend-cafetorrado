@@ -47,15 +47,15 @@ function Automatic() {
               </button>
             </div>
             <div className="button1">
-              <p>Mexedor</p>
+              <p className="fontColor">Mexedor</p>
               <ButtonController1 />
             </div>
             <div className="button2">
-              <p>Resfriador</p>
+              <p className="fontColor">Resfriador</p>
               <ButtonController2 />
             </div>
             <div className="button3">
-              <p>Crack</p>
+              <p className="fontColor">Crack</p>
               <ButtonController3 />
             </div>
           </div>

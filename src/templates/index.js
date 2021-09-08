@@ -13,7 +13,11 @@ const TemplateWithDrawer = ({ children, valuesInfo }) => {
 
   return (
     <div className="body">
-      <NewDrawer valuesInfo={valuesInfo} open={open} toggle={() => setOpen(!open)} />
+      <NewDrawer
+        valuesInfo={valuesInfo}
+        open={open}
+        toggle={() => setOpen(!open)}
+      />
 
       <div className={open ? 'page' : 'page-close page'}>
         <Header />

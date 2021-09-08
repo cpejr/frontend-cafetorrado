@@ -36,7 +36,6 @@ const parseCount = (datas) => {
     const minute = Math.trunc(data / 300);
     correctTime.push(`${minute.toLocaleString(undefined, { minimumIntegerDigits: 2 })}:${second.toLocaleString(undefined, { minimumIntegerDigits: 2 })}`);
   });
-  console.log(correctTime);
   return correctTime;
 };
 

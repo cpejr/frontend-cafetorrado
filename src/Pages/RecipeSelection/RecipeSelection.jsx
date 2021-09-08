@@ -24,7 +24,6 @@ function RecipeSelection() {
   useEffect(async () => {
     const { data } = await getRoasts();
     setRoastData(data);
-    console.log(data, 'opa');
   }, []);
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);

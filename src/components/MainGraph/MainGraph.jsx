@@ -130,7 +130,6 @@ export const MainGraph = ({ setter }) => {
 
   function crackIt() {
     if (!crackTime && mainGraph.current) {
-      console.log('CRACK ', crackTime);
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
   }

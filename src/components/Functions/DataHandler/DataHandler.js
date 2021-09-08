@@ -22,26 +22,26 @@ const RealData = () => {
     socket.on('realData', (data) => { setUppData(data); });
   }, []);
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', fontSize: 25 }}>
       <div>
-        <p>Temperatura do Ar:</p>
-        <p>Temperatura do Grão:</p>
-        <p>Percentual da chama:</p>
-        <p>Percentual do Tambor:</p>
-        <p>Percentual do Ar:</p>
+        <p className="fontColor">Temperatura do Ar:</p>
+        <p className="fontColor">Temperatura do Grão:</p>
+        <p className="fontColor">Percentual da chama:</p>
+        <p className="fontColor">Percentual do Tambor:</p>
+        <p className="fontColor">Percentual do Ar:</p>
       </div>
       <div style={{ paddingLeft: '30px' }}>
-        <p>{(uppData.fields.MdlAirScl)}</p>
-        <p>{(uppData.fields.MdlGraScl)}</p>
-        <p>
+        <p className="fontColor">{(uppData.fields.MdlAirScl)}</p>
+        <p className="fontColor">{(uppData.fields.MdlGraScl)}</p>
+        <p className="fontColor">
           {uppData.fields.MdlInjOut}
           %
         </p>
-        <p>
+        <p className="fontColor">
           {uppData.fields.MdlDruOut}
           %
         </p>
-        <p>
+        <p className="fontColor">
           {(uppData.fields.MdlAirOut)}
           %
         </p>

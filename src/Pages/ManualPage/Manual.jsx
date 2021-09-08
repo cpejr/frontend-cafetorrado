@@ -22,15 +22,15 @@ function Manual() {
         <div className="control-buttons">
           <div className="buttons">
             <div className="button1">
-              <p>Mexedor</p>
+              <p className="fontColor">Mexedor</p>
               <ButtonController1 />
             </div>
             <div className="button2">
-              <p>Resfriador</p>
+              <p className="fontColor">Resfriador</p>
               <ButtonController2 />
             </div>
             <div className="button3">
-              <p>Crack</p>
+              <p className="fontColor">Crack</p>
               <ButtonController3 />
             </div>
           </div>
@@ -42,15 +42,15 @@ function Manual() {
           <div className="adjustments-buttons">
             <div className="rotation">
               <ButtonAdjustment name="MdlManCdr" />
-              <p>Rotação do Tambor</p>
+              <p className="fontColor">Rotação do Tambor</p>
             </div>
             <div className="air">
               <ButtonAdjustment name="MdlManCar" />
-              <p>Velocidade do Ar</p>
+              <p className="fontColor">Velocidade do Ar</p>
             </div>
             <div className="flame">
               <ButtonAdjustment name="MdlManInj" />
-              <p>Intensidade da chama</p>
+              <p className="fontColor">Intensidade da chama</p>
             </div>
           </div>
         </div>

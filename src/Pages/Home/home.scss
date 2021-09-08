@@ -20,7 +20,7 @@
         border-width: 0;
         &:focus{
             outline: none;
-            background-color: rgba(18, 21, 63, 1);
+            background-color: var(--buttonHover);
         }
         p{
             padding-left: 25px;

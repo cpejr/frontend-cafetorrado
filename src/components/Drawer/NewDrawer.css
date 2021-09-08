@@ -17,7 +17,7 @@
 .menu-bar {
   background-color: var(--headerBackground);;
   height: 100%;
-  
+
 }
 
 .top-divider {
@@ -43,7 +43,6 @@
 .menu-text span {
   font-size: 25px;
 }
-/*classe criada para alterar de forma geral as propriedades texto dos elementos da drawer*/
 .MuiListItemText-root span {
   font-size: 1.8rem !important;
 }
@@ -64,7 +63,7 @@
 
 .drawer {
   border: none !important;
-  
+
 }
 
 .outras-info {

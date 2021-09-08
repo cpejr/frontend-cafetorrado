@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { FiEdit2 } from 'react-icons/fi';
 import { TiDelete } from 'react-icons/ti';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-import { getRoasts, getUniqueRoastData } from '../../components/Functions/RequestHandler/RequestHandler';
+import { getRoasts, getUniqueRoastData, deleteSpecificRoast } from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
 let dataToRender = null;
@@ -18,6 +18,7 @@ function RecipeSelection() {
   const history = useHistory();
   const [roastData, setRoastData] = useState([{}]);
   const [wrongData, setWrongData] = useState(true);
+  const [DataIdSelected, setDataIdSelected] = useState({});
   const graphRef = useRef();
 
   useEffect(async () => {
@@ -28,6 +29,10 @@ function RecipeSelection() {
     const date = new Date(roast.timestamp * 1);
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     return <h5>{dataformatted}</h5>;
+  };
+  const handleDelete = () => {
+    deleteSpecificRoast(DataIdSelected);
+    window.location.reload();
   };
   return (
     (!roastData)
@@ -46,6 +51,7 @@ function RecipeSelection() {
                 onClick={async (event) => {
                   event.preventDefault();
                   dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
+                  setDataIdSelected(elem.roast_id);
                   updateData(graphRef, dataToRender);
                 }}
               >
@@ -61,9 +67,9 @@ function RecipeSelection() {
                 <p>Editar torra</p>
                 <FiEdit2 size={30} />
               </button>
-              <button type="button" className="delete-button">
+              <button type="button" className="delete-button" onClick={handleDelete}>
                 <p>Apagar torra</p>
-                <TiDelete size={45} />
+                <TiDelete size={30} />
               </button>
             </div>
           </div>

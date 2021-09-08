@@ -108,11 +108,6 @@ function ThemeContextProvider({ children }) {
     setTheme(themes[lastTheme.data.lastTheme]);
   }, []);
 
-  // useEffect(() => {
-  //   setCSSVariables(themes[themeName]);
-  //   setTheme(themes[themeName]);
-  // }, []);
-
   function setCSSVariables(themeAux) {
     for (const value in themeAux) {
       if (themeAux[value]) {

@@ -25,7 +25,7 @@ function RecipeSelection() {
     setRoastData(data);
   }, []);
   const roastDate = (roast) => {
-    const date = new Date(roast.timestamp * 1000);
+    const date = new Date(roast.timestamp * 1);
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     return <h5>{dataformatted}</h5>;
   };

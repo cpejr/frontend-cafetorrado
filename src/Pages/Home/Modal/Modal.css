@@ -34,14 +34,16 @@
       -ms-flex-align: center;
           align-items: center;
   border-radius: 10px;
-  width: 50%;
-  height: 65%;
+  width: 60%;
+  height: 75%;
   position: relative;
   background-color: var(--backgroundColor);
 }
 
 .modal-open p {
-  font-size: 25px;
+  font-size: 30px;
+  color: rgb(99, 98, 98); 
+  /* // alterado */
 }
 
 .modal-open hr {
@@ -74,8 +76,9 @@
       align-self: flex-start;
   padding: 0px 0 20px 20px;
   height: 1%;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 17px;
+  color: black; 
+  font-size: 25px;
+  /* // alterado */
 }
 
 .modal-open form .wifi-name {
@@ -96,11 +99,11 @@
 }
 
 .modal-open form .wifi-name label {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .modal-open form .wifi-name input {
-  font-size: 20px;
+  font-size: 30px;
   border: none;
   margin-left: 10px;
   border-radius: 4px;
@@ -126,11 +129,12 @@
 }
 
 .modal-open form .wifi-password label {
-  font-size: 20px;
+  font-size: 25px;
+  /* // fonte do campo senha de wifi */
 }
 
 .modal-open form .wifi-password input {
-  font-size: 20px;
+  font-size: 30px;
   border: none;
   margin-left: 80px;
   border-radius: 4px;
@@ -157,11 +161,12 @@
 }
 
 .modal-open form .wifi-password-confirmation label {
-  font-size: 20px;
+  font-size: 25px;
+  /* // fonte do campo de confirmação de senha do wifi */
 }
 
 .modal-open form .wifi-password-confirmation input {
-  font-size: 20px;
+  font-size: 30px;
   border: none;
   margin-left: 54px;
   border-radius: 4px;
@@ -181,13 +186,13 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 95%;
-  margin-top: 10px;
+  margin-top: 30px;
   height: 30%;
 }
 
 .modal-open form .checkbox p {
   padding: 10px 0 0 20px;
-  font-size: 20px;
+  font-size: 25px;
   width: 100%;
   color: var(--fontColorComponents);
   padding-bottom: 30px;
@@ -210,8 +215,8 @@
 .modal-open form .checkbox .switch {
   position: relative;
   display: inline-block;
-  width: 48px;
-  height: 20px;
+  width: 60px;
+  height: 30px;
 }
 
 .modal-open form .checkbox .switch input {
@@ -557,7 +562,7 @@
 }
 
 .submit-button {
-  font-size: 25px;
+  font-size: 30px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -567,6 +572,7 @@
   border-radius: 8px;
   width: auto;
   padding: 10px 10px 10px 10px;
+  margin-top: 10px;
 }
 
 @-webkit-keyframes blur {

@@ -27,7 +27,7 @@ function RecipeSelection() {
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    return <h6>{dataformatted}</h6>;
+    return <h5>{dataformatted}</h5>;
   };
   return (
     (!roastData)
@@ -38,7 +38,7 @@ function RecipeSelection() {
       )
       : (
         <div className="container">
-          <h3 style={{ position: 'absolute' }}>Selecione a torra desejada</h3>
+          <h1 style={{ position: 'absolute' }}>Selecione a torra desejada</h1>
           <div className="list">
             {roastData.map((elem) => (
               <list

@@ -27,13 +27,29 @@ export const Modal = ({ open, setOpen }) => {
   const [wrongName, setWrongName] = useState(false);
 
   const checkIntegrity = () => {
-    (password === passwordConfirmation && password.length > 8)
-      ? ((clearOutline([passRef, passConfRef])), setWrongPassword(false))
-      : (outlineInput([passRef, passConfRef]), setWrongPassword(true));
+    // (password === passwordConfirmation && password.length > 8)
+    //   ? ((clearOutline([passRef, passConfRef])), setWrongPassword(false))
+    //   : (outlineInput([passRef, passConfRef]), setWrongPassword(true));
 
-    (wifiNewName.length >= 6)
-      ? (clearOutline([wifiNNRef]), setWrongName(false))
-      : (outlineInput([wifiNNRef]), setWrongName(true));
+    // (wifiNewName.length >= 6)
+    //   ? (clearOutline([wifiNNRef]), setWrongName(false))
+    //   : (outlineInput([wifiNNRef]), setWrongName(true));
+
+    if (password === passwordConfirmation && password.length > 8) {
+      clearOutline([passRef, passConfRef]);
+      setWrongPassword(false);
+    } else {
+      outlineInput([passRef, passConfRef]);
+      setWrongPassword(true);
+    }
+
+    if (wifiNewName.length >= 6) {
+      clearOutline([wifiNNRef]);
+      setWrongName(false);
+    } else {
+      outlineInput([wifiNNRef]);
+      setWrongName(true);
+    }
 
     return !!((password === passwordConfirmation && password.length > 8 && wifiNewName.length > 6));
   };

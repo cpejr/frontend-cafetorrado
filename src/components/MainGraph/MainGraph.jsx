@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, {
   useEffect, useRef, useState, useContext,
 } from 'react';
@@ -89,6 +90,7 @@ const INITALLDATA = {
 export const MainGraph = ({ setter }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
+  const [markTime, setmarkTime] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
@@ -108,12 +110,12 @@ export const MainGraph = ({ setter }) => {
 
     (!mainGraph.current.chartInstance) ? false
       : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
+        mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
+        mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
+        mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
+        mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
 
-      mainGraph.current.chartInstance.update());
+        mainGraph.current.chartInstance.update());
   }, [theme]);
 
   function crackIt() {
@@ -122,10 +124,20 @@ export const MainGraph = ({ setter }) => {
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
   }
+  function markIt() {
+    if (!markTime && mainGraph.current) {
+      console.log('MARKED ', markTime);
+      setmarkTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+    }
+  }
 
   useEffect(() => {
     window.crackIt = crackIt;
   }, [crackTime]);
+
+  useEffect(() => {
+    window.markIt = markIt;
+  }, [markTime]);
 
   useEffect(() => {
     function listener() {
@@ -166,6 +178,21 @@ export const MainGraph = ({ setter }) => {
                 label: {
                   fontFamily: 'quicksand',
                   content: 'CRACK',
+                  enabled: true,
+                  position: 'bottom',
+                },
+              },
+              {
+                drawTime: 'afterDatasetsDraw',
+                type: 'line',
+                mode: 'vertical',
+                scaleID: 'x-axis-0',
+                value: markTime,
+                borderWidth: 2,
+                borderColor: 'yellow',
+                label: {
+                  fontFamily: 'quicksand',
+                  content: 'MARK',
                   enabled: true,
                   position: 'bottom',
                 },

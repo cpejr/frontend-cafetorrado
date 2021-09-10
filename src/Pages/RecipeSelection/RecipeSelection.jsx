@@ -6,7 +6,9 @@ import { FiEdit2 } from 'react-icons/fi';
 import { TiDelete } from 'react-icons/ti';
 import { AiOutlineSelect } from 'react-icons/ai';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-import { getRoasts, getUniqueRoastData, sendStaticParameters } from '../../components/Functions/RequestHandler/RequestHandler';
+import {
+  getRoasts, getUniqueRoastData, sendStaticParameters, deleteSpecificRoast,
+} from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
 let dataToRender = null;
@@ -19,8 +21,8 @@ function RecipeSelection(props) {
   const history = useHistory();
   const [roastData, setRoastData] = useState([{}]);
   const [wrongData, setWrongData] = useState(true);
-  const graphRef = useRef();
   const [DataIdSelected, setDataIdSelected] = useState({});
+  const graphRef = useRef();
 
   useEffect(async () => {
     const { data } = await getRoasts();
@@ -29,7 +31,11 @@ function RecipeSelection(props) {
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    return <h6>{dataformatted}</h6>;
+    return <h5>{dataformatted}</h5>;
+  };
+  const handleDelete = () => {
+    deleteSpecificRoast(DataIdSelected);
+    window.location.reload();
   };
   const handleSelect = () => {
     sendStaticParameters(DataIdSelected);
@@ -48,7 +54,7 @@ function RecipeSelection(props) {
       )
       : (
         <div className="container">
-          <h3 style={{ position: 'absolute' }}>Selecione a torra desejada</h3>
+          <h1 style={{ position: 'absolute' }}>Selecione a torra desejada</h1>
           <div className="list">
             {roastData.map((elem) => (
               <list
@@ -76,9 +82,9 @@ function RecipeSelection(props) {
                 <p>Editar torra</p>
                 <FiEdit2 size={30} />
               </button>
-              <button type="button" className="delete-button">
+              <button type="button" className="delete-button" onClick={handleDelete}>
                 <p>Apagar torra</p>
-                <TiDelete size={45} />
+                <TiDelete size={30} />
               </button>
             </div>
           </div>

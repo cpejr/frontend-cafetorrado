@@ -18,18 +18,18 @@
 
 #buttons button {
   font-family: 'Rubik', sans-serif;
-  margin: 4px;
+  margin: 20px;
   background-color: var(--background);
   box-shadow: 0px 0px 10px 1px rgba(23, 140, 140, 0.2) inset;
   border-radius: 6px;
-  border: 2px solid #222;
+  border: 3px solid rgb(0, 0, 0);
   display: inline-block;
   color: var(--fontColor);
   font-family: arial;
-  font-size: 15px;
+  font-size: 30px;
   font-weight: bold;
-  line-height: 40px;
-  width: 100px;
+  line-height: 50px;
+  width: 120px;
   text-decoration: none;
   transition: all 0.1s;
 }

@@ -1,13 +1,7 @@
 .overlay-modal {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -15,17 +9,10 @@
 .overlay-content {
   position: absolute;
   background-color: var(--buttonAlternative);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-radius: 10px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 50%;
   height: 50%;
 }
@@ -33,17 +20,10 @@
 .overlay-content-animation {
   position: absolute;
   background-color: var(--buttonAlternative);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-radius: 10px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 50%;
   height: 50%;
   -webkit-animation: shake 0.5s;
@@ -56,15 +36,9 @@ hr {
 }
 
 p {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   color: white;
 }
 
@@ -99,98 +73,73 @@ p {
     background-color: rgba(255, 0, 0, 0.7);
   }
 }
-
 @-webkit-keyframes shake {
   0% {
-    -webkit-transform: translate(1px, 1px) rotate(0deg);
-            transform: translate(1px, 1px) rotate(0deg);
+    transform: translate(1px, 1px) rotate(0deg);
   }
   10% {
-    -webkit-transform: translate(-1px, -2px) rotate(-1deg);
-            transform: translate(-1px, -2px) rotate(-1deg);
+    transform: translate(-1px, -2px) rotate(-1deg);
   }
   20% {
-    -webkit-transform: translate(-30px, 0px) rotate(1deg);
-            transform: translate(-30px, 0px) rotate(1deg);
+    transform: translate(-30px, 0px) rotate(1deg);
   }
   30% {
-    -webkit-transform: translate(3px, 2px) rotate(0deg);
-            transform: translate(3px, 2px) rotate(0deg);
+    transform: translate(3px, 2px) rotate(0deg);
   }
   40% {
-    -webkit-transform: translate(10px, -1px) rotate(1deg);
-            transform: translate(10px, -1px) rotate(1deg);
+    transform: translate(10px, -1px) rotate(1deg);
   }
   50% {
-    -webkit-transform: translate(-1px, 0px) rotate(-1deg);
-            transform: translate(-1px, 0px) rotate(-1deg);
+    transform: translate(-1px, 0px) rotate(-1deg);
   }
   60% {
-    -webkit-transform: translate(-3px, 0px) rotate(0deg);
-            transform: translate(-3px, 0px) rotate(0deg);
+    transform: translate(-3px, 0px) rotate(0deg);
   }
   70% {
-    -webkit-transform: translate(3px, 0px) rotate(-1deg);
-            transform: translate(3px, 0px) rotate(-1deg);
+    transform: translate(3px, 0px) rotate(-1deg);
   }
   80% {
-    -webkit-transform: translate(-1px, -1px) rotate(1deg);
-            transform: translate(-1px, -1px) rotate(1deg);
+    transform: translate(-1px, -1px) rotate(1deg);
   }
   90% {
-    -webkit-transform: translate(1px, 0px) rotate(0deg);
-            transform: translate(1px, 0px) rotate(0deg);
+    transform: translate(1px, 0px) rotate(0deg);
   }
   100% {
-    -webkit-transform: translate(1px, 0px) rotate(-1deg);
-            transform: translate(1px, 0px) rotate(-1deg);
+    transform: translate(1px, 0px) rotate(-1deg);
   }
 }
-
 @keyframes shake {
   0% {
-    -webkit-transform: translate(1px, 1px) rotate(0deg);
-            transform: translate(1px, 1px) rotate(0deg);
+    transform: translate(1px, 1px) rotate(0deg);
   }
   10% {
-    -webkit-transform: translate(-1px, -2px) rotate(-1deg);
-            transform: translate(-1px, -2px) rotate(-1deg);
+    transform: translate(-1px, -2px) rotate(-1deg);
   }
   20% {
-    -webkit-transform: translate(-30px, 0px) rotate(1deg);
-            transform: translate(-30px, 0px) rotate(1deg);
+    transform: translate(-30px, 0px) rotate(1deg);
   }
   30% {
-    -webkit-transform: translate(3px, 2px) rotate(0deg);
-            transform: translate(3px, 2px) rotate(0deg);
+    transform: translate(3px, 2px) rotate(0deg);
   }
   40% {
-    -webkit-transform: translate(10px, -1px) rotate(1deg);
-            transform: translate(10px, -1px) rotate(1deg);
+    transform: translate(10px, -1px) rotate(1deg);
   }
   50% {
-    -webkit-transform: translate(-1px, 0px) rotate(-1deg);
-            transform: translate(-1px, 0px) rotate(-1deg);
+    transform: translate(-1px, 0px) rotate(-1deg);
   }
   60% {
-    -webkit-transform: translate(-3px, 0px) rotate(0deg);
-            transform: translate(-3px, 0px) rotate(0deg);
+    transform: translate(-3px, 0px) rotate(0deg);
   }
   70% {
-    -webkit-transform: translate(3px, 0px) rotate(-1deg);
-            transform: translate(3px, 0px) rotate(-1deg);
+    transform: translate(3px, 0px) rotate(-1deg);
   }
   80% {
-    -webkit-transform: translate(-1px, -1px) rotate(1deg);
-            transform: translate(-1px, -1px) rotate(1deg);
+    transform: translate(-1px, -1px) rotate(1deg);
   }
   90% {
-    -webkit-transform: translate(1px, 0px) rotate(0deg);
-            transform: translate(1px, 0px) rotate(0deg);
+    transform: translate(1px, 0px) rotate(0deg);
   }
   100% {
-    -webkit-transform: translate(1px, 0px) rotate(-1deg);
-            transform: translate(1px, 0px) rotate(-1deg);
+    transform: translate(1px, 0px) rotate(-1deg);
   }
-}
-/*# sourceMappingURL=WifiModal.css.map */
+}/*# sourceMappingURL=WifiModal.css.map */

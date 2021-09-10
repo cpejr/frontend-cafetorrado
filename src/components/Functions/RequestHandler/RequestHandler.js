@@ -27,6 +27,8 @@ const setChartParams = async (RoastName) => {
 
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
 
+const deleteSpecificRoast = (roast_id) => { api.delete(`/deleteSpecificRoast/${roast_id}`); };
+
 const getUniqueRoastData = async (roast_id) => {
   const result = await api.get(`/getUniqueRoastData/${roast_id}`);
   return result;
@@ -58,7 +60,18 @@ const setWifiData = ({ wifiNewName, password, hidden }) => {
   return result;
 };
 
+const getLastTheme = () => {
+  const lastTheme = api.get('/getLastTheme');
+  return lastTheme;
+};
+
+const updateLastTheme = (themeName) => {
+  const result = api.put('/updateLastTheme', { lastTheme: themeName });
+  return result;
+};
+
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
+  deleteSpecificRoast, getLastTheme, updateLastTheme,
 };

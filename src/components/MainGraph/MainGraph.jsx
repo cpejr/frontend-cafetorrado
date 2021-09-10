@@ -46,7 +46,7 @@ const INITALLDATA = {
     },
     {
       fill: false,
-      label: 'Temperatura do Grão',
+      label: 'Temperatura do GrÃ£o',
       yAxisID: 'left',
       data: [],
       borderColor: '',
@@ -106,19 +106,30 @@ export const MainGraph = ({ setter }) => {
     const color4 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor4');
     const color5 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor5');
 
-    (!mainGraph.current.chartInstance) ? false
-      : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
+    if (!mainGraph.current.chartInstance) {
+      mainGraph.current.chartInstance = false;
+    } else {
+      mainGraph.current.chartInstance.data.datasets[0].borderColor = color1;
+      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2;
+      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3;
+      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4;
+      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5;
 
-      mainGraph.current.chartInstance.update());
+      mainGraph.current.chartInstance.update();
+    }
+
+    // (!mainGraph.current.chartInstance) ? false
+    //   : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
+    //   mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
+    //   mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
+    //   mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
+    //   mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
+
+    //   mainGraph.current.chartInstance.update());
   }, [theme]);
 
   function crackIt() {
     if (!crackTime && mainGraph.current) {
-      console.log('CRACK ', crackTime);
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
   }
@@ -177,7 +188,7 @@ export const MainGraph = ({ setter }) => {
             labels: {
               fontFamily: 'Quicksand',
               fontColor: theme?.fontColor || 'black',
-              fontSize: 14,
+              fontSize: 25,
             },
           },
           /*  responsive: true, */
@@ -186,7 +197,7 @@ export const MainGraph = ({ setter }) => {
           title: {
             text: ' Tempo de torra ',
             fontFamily: 'Quicksand',
-            fontSize: 26,
+            fontSize: 30,
             fontColor: theme?.fontColor || 'black',
             display: true,
           },
@@ -206,6 +217,7 @@ export const MainGraph = ({ setter }) => {
                 max: 100,
                 stepSize: 10,
                 fontColor: theme?.fontColor || 'black',
+                fontSize: 25,
               },
             }, {
               id: 'right',
@@ -216,6 +228,7 @@ export const MainGraph = ({ setter }) => {
                 max: 100,
                 stepSize: 10,
                 fontColor: theme?.fontColor || 'black',
+                fontSize: 25,
               },
             },
             ],
@@ -226,6 +239,7 @@ export const MainGraph = ({ setter }) => {
                   fontColor: theme?.fontColor || 'black',
                   maxTicksLimit: 20,
                   beginAtZero: true,
+                  fontSize: 25,
                 },
               },
             ],

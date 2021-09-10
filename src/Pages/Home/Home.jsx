@@ -2,10 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import { MdFlashAuto } from 'react-icons/md';
+import { MdFlashAuto, MdInput } from 'react-icons/md';
 import { GiHand } from 'react-icons/gi';
 import { FiBook } from 'react-icons/fi';
-import { FaHome, FaWifi } from 'react-icons/fa';
 import { Modal } from './Modal/Modal';
 import './home.css';
 
@@ -34,10 +33,10 @@ const Home = () => {
           </div>
         </div>
         <div className="lower-row">
-          <div className="wifi-section">
-            <button type="button" onClick={() => { setModalOpen(true); }} className="upper-button">
-              <FaWifi />
-              <p>Mudar configurações de wifi</p>
+          <div className="wakeup-section">
+            <button type="button" onClick={() => { history.push('/wakeuptable'); }} className="upper-button">
+              <MdInput />
+              <p>Importar wake up tables</p>
             </button>
           </div>
 

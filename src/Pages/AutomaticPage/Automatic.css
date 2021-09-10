@@ -82,6 +82,10 @@
   width: 33% !important;
   flex-direction: column;
 }
+.button4{
+  width: 33% ;
+  flex-direction: column;
+}
 
 .buttons-title {
   width: 100%;
@@ -130,3 +134,6 @@
   margin-bottom: 2%;
 }
 
+.fontColor {
+  color: var(--fontColor);
+}

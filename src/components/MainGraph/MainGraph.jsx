@@ -90,11 +90,8 @@ const INITALLDATA = {
 export const MainGraph = ({ setter }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
-  const [markTime, setmarkTime] = useState(0);
-  const [markTime2, setmarkTime2] = useState(0);
-  const [markTime3, setmarkTime3] = useState(0);
-  const [markTime4, setmarkTime4] = useState(0);
-  const [markTime5, setmarkTime5] = useState(0);
+  const [markTime, setmarkTime] = useState([]);
+  const [index, setIndex] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
@@ -128,34 +125,17 @@ export const MainGraph = ({ setter }) => {
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
   }
-  function markIt() {
-    if (!markTime && mainGraph.current) {
-      console.log('MARKED ', markTime);
-      setmarkTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
-    }
-  }
-  function markIt2() {
-    if (!markTime && mainGraph.current) {
-      console.log('MARKED ', markTime2);
-      setmarkTime2(mainGraph.current.chartInstance.data.datasets[0].data.length);
-    }
-  }
-  function markIt3() {
-    if (!markTime && mainGraph.current) {
-      console.log('MARKED ', markTime3);
-      setmarkTime3(mainGraph.current.chartInstance.data.datasets[0].data.length);
-    }
-  }
-  function markIt4() {
-    if (!markTime && mainGraph.current) {
-      console.log('MARKED ', markTime4);
-      setmarkTime4(mainGraph.current.chartInstance.data.datasets[0].data.length);
-    }
-  }
-  function markIt5() {
-    if (!markTime && mainGraph.current) {
-      console.log('MARKED ', markTime5);
-      setmarkTime5(mainGraph.current.chartInstance.data.datasets[0].data.length);
+
+  function markIt(data) {
+    const aux = 0;
+    if (index <= 15) {
+      if (!markTime && mainGraph.current) {
+        console.log('MARKED ', markTime);
+        setmarkTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+        markTime[index] = mainGraph.current.chartInstance.data.datasets[0].data.length;
+        setIndex(aux);
+        aux++;
+      }
     }
   }
 
@@ -165,23 +145,7 @@ export const MainGraph = ({ setter }) => {
 
   useEffect(() => {
     window.markIt = markIt;
-  }, [markTime]);
-
-  useEffect(() => {
-    window.markIt2 = markIt2;
-  }, [markTime2]);
-
-  useEffect(() => {
-    window.markIt3 = markIt3;
-  }, [markTime3]);
-
-  useEffect(() => {
-    window.markIt4 = markIt4;
-  }, [markTime4]);
-
-  useEffect(() => {
-    window.markIt5 = markIt5;
-  }, [markTime5]);
+  }, [markTime[index]]);
 
   useEffect(() => {
     function listener() {
@@ -221,14 +185,13 @@ export const MainGraph = ({ setter }) => {
                 borderWidth: 2,
                 borderColor: 'darkorange',
                 label: {
-                  color: 'yellow',
                   fontFamily: 'quicksand',
                   content: 'CRACK',
                   enabled: true,
                   position: 'bottom',
                 },
               },
-              markTime &&
+              markTime[index] &&
               {
                 drawTime: 'afterDatasetsDraw',
                 type: 'line',
@@ -236,77 +199,8 @@ export const MainGraph = ({ setter }) => {
                 scaleID: 'x-axis-0',
                 value: markTime,
                 borderWidth: 2,
-                borderColor: 'darkorange',
+                borderColor: 'yellow',
                 label: {
-                  color: 'red',
-                  fontFamily: 'quicksand',
-                  content: 'MARK',
-                  enabled: true,
-                  position: 'bottom',
-                },
-              },
-              markTime2 &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: markTime2,
-                borderWidth: 2,
-                borderColor: 'darkorange',
-                label: {
-                  color: 'red',
-                  fontFamily: 'quicksand',
-                  content: 'MARK',
-                  enabled: true,
-                  position: 'bottom',
-                },
-              },
-              markTime3 &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: markTime3,
-                borderWidth: 2,
-                borderColor: 'darkorange',
-                label: {
-                  color: 'red',
-                  fontFamily: 'quicksand',
-                  content: 'MARK',
-                  enabled: true,
-                  position: 'bottom',
-                },
-              },
-              markTime4 &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: markTime4,
-                borderWidth: 2,
-                borderColor: 'darkorange',
-                label: {
-                  color: 'red',
-                  fontFamily: 'quicksand',
-                  content: 'MARK',
-                  enabled: true,
-                  position: 'bottom',
-                },
-              },
-              markTime5 &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: markTime5,
-                borderWidth: 2,
-                borderColor: 'darkorange',
-                label: {
-                  color: 'red',
                   fontFamily: 'quicksand',
                   content: 'MARK',
                   enabled: true,
@@ -375,7 +269,7 @@ export const MainGraph = ({ setter }) => {
             ],
           },
         }
-        }}
+        }
       />
     </div>
   );

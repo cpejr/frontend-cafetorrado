@@ -7,16 +7,6 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import 'chartjs-plugin-annotation';
 
 let time = 0;
-// let done = false;
-// function parseTime(mainGraph, data){
-//   let time = 0;
-//   if(!done){
-//     mainGraph.current.chartInstance.data.labels[0] = data.fields.MdlRunCnt;
-//     done = true
-//   }
-//   time = (data.fields.MdlRunCnt) - (mainGraph.current.chartInstance.data.labels[0]);
-//   return time;
-// }
 
 function updateData(mainGraph, data) {
   if (!(mainGraph?.current?.chartInstance)) return;
@@ -89,7 +79,9 @@ const INITALLDATA = {
 export const MainGraph = ({ setter }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
+  const [markTime, setMarkTime] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1850);
+
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
@@ -117,15 +109,6 @@ export const MainGraph = ({ setter }) => {
 
       mainGraph.current.chartInstance.update();
     }
-
-    // (!mainGraph.current.chartInstance) ? false
-    //   : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-    //   mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-    //   mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-    //   mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-    //   mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
-
-    //   mainGraph.current.chartInstance.update());
   }, [theme]);
 
   function crackIt() {

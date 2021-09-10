@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, {
   useEffect, useRef, useState, useContext,
 } from 'react';
@@ -5,6 +6,8 @@ import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
 import 'chartjs-plugin-annotation';
+
+const MAX_MARKS = 15;
 
 let time = 0;
 
@@ -79,11 +82,14 @@ const INITALLDATA = {
 export const MainGraph = ({ setter }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
-  const [markTime, setMarkTime] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1850);
-
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
+
+  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
+  const [disable, setDisable] = useState(false); // para habilitar ou não o botão marcador
+
+  const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     socket.on('realData', (data) => {
@@ -91,6 +97,7 @@ export const MainGraph = ({ setter }) => {
       if (setter && !done) { setter(false); done = true; }
     });
   }, []);
+
   useEffect(() => {
     const color1 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');
     const color2 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor2');
@@ -98,28 +105,82 @@ export const MainGraph = ({ setter }) => {
     const color4 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor4');
     const color5 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor5');
 
-    if (!mainGraph.current.chartInstance) {
-      mainGraph.current.chartInstance = false;
-    } else {
-      mainGraph.current.chartInstance.data.datasets[0].borderColor = color1;
-      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2;
-      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3;
-      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4;
-      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5;
+    (!mainGraph.current.chartInstance) ? false
+      : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
+        mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
+        mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
+        mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
+        mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
 
-      mainGraph.current.chartInstance.update();
-    }
+        mainGraph.current.chartInstance.update());
   }, [theme]);
+
 
   function crackIt() {
     if (!crackTime && mainGraph.current) {
+      console.log('CRACK ', crackTime);
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
   }
 
+  function markIt() {
+    if (!markTime && mainGraph.current) {
+      console.log('MARKED ', markTime);
+      markTime.push(mainGraph.current.chartInstance.data.datasets[0].data.length);
+    }
+  }
+   
   useEffect(() => {
     window.crackIt = crackIt;
   }, [crackTime]);
+
+  useEffect(() => {
+    window.markIt = markIt;
+
+    if(markTime.length > MAX_MARKS)
+      setDisable(true);
+
+  }, [markTime]);
+
+  useEffect(() => {
+    const annot = []
+
+    if (crackTime) {
+      annot.append({
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: crackTime,
+        borderWidth: 2,
+        borderColor: 'darkorange',
+        label: {
+          fontFamily: 'quicksand',
+          content: 'CRACK',
+          enabled: true,
+          position: 'bottom',
+        }
+      })
+    }
+
+    markTime.map(mark => {annot.append({
+      drawTime: 'afterDatasetsDraw',
+      type: 'line',
+      mode: 'vertical',
+      scaleID: 'x-axis-0',
+      value: markTime,
+      borderWidth: 2,
+      borderColor: 'yellow',
+      label: {
+        fontFamily: 'quicksand',
+        content: 'MARK',
+        enabled: true,
+        position: 'bottom',
+      },
+    })})
+
+    setAnnotations(annot);
+  }, [markTime, crackTime])
 
   useEffect(() => {
     function listener() {
@@ -147,8 +208,10 @@ export const MainGraph = ({ setter }) => {
         data={INITALLDATA}
         ref={mainGraph}
         options={{
-          annotation: crackTime && {
-            annotations: [
+          annotation: {
+            annotations: annotations
+            /* [
+              crackTime &&
               {
                 drawTime: 'afterDatasetsDraw',
                 type: 'line',
@@ -164,14 +227,30 @@ export const MainGraph = ({ setter }) => {
                   position: 'bottom',
                 },
               },
-            ],
+              markTime &&
+              {
+                drawTime: 'afterDatasetsDraw',
+                type: 'line',
+                mode: 'vertical',
+                scaleID: 'x-axis-0',
+                value: markTime,
+                borderWidth: 2,
+                borderColor: 'yellow',
+                label: {
+                  fontFamily: 'quicksand',
+                  content: 'MARK',
+                  enabled: true,
+                  position: 'bottom',
+                },
+              },
+            ], */
           },
           legend: {
             position: 'bottom',
             labels: {
               fontFamily: 'Quicksand',
               fontColor: theme?.fontColor || 'black',
-              fontSize: 25,
+              fontSize: 14,
             },
           },
           /*  responsive: true, */
@@ -180,7 +259,7 @@ export const MainGraph = ({ setter }) => {
           title: {
             text: ' Tempo de torra ',
             fontFamily: 'Quicksand',
-            fontSize: 30,
+            fontSize: 26,
             fontColor: theme?.fontColor || 'black',
             display: true,
           },
@@ -200,9 +279,9 @@ export const MainGraph = ({ setter }) => {
                 max: 100,
                 stepSize: 10,
                 fontColor: theme?.fontColor || 'black',
-                fontSize: 25,
               },
-            }, {
+            },
+            {
               id: 'right',
               type: 'linear',
               position: 'right',
@@ -211,7 +290,6 @@ export const MainGraph = ({ setter }) => {
                 max: 100,
                 stepSize: 10,
                 fontColor: theme?.fontColor || 'black',
-                fontSize: 25,
               },
             },
             ],
@@ -222,13 +300,13 @@ export const MainGraph = ({ setter }) => {
                   fontColor: theme?.fontColor || 'black',
                   maxTicksLimit: 20,
                   beginAtZero: true,
-                  fontSize: 25,
                 },
               },
             ],
           },
-        }}
+        }
+        }
       />
     </div>
   );
-};
+}

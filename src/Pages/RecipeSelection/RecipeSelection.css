@@ -103,6 +103,32 @@ hr {
   width: 100%;
   padding: 0 25px 0 30px;
 }
+.graph div .select-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  color: white;
+  background-color: green;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 10px;
+  height: 50px;
+  width: 210px;
+  border-radius: 10px;
+}
+
+.graph div .select-button p {
+  font-size: 18px;
+  width: 100%;
+  padding: 0 25px 0 30px;
+}
 
 @-webkit-keyframes shake {
   0% {

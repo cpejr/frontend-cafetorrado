@@ -4,13 +4,16 @@ import React, {
 import { useHistory } from 'react-router-dom';
 import { FiEdit2 } from 'react-icons/fi';
 import { TiDelete } from 'react-icons/ti';
+import { AiOutlineSelect } from 'react-icons/ai';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-import { getRoasts, getUniqueRoastData, deleteSpecificRoast } from '../../components/Functions/RequestHandler/RequestHandler';
+import {
+  getRoasts, getUniqueRoastData, sendStaticParameters, deleteSpecificRoast,
+} from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
 let dataToRender = null;
 
-function RecipeSelection() {
+function RecipeSelection(props) {
   function animateButton() {
     setWrongData(false);
     setTimeout(() => { setWrongData(true); }, 500);
@@ -33,6 +36,14 @@ function RecipeSelection() {
   const handleDelete = () => {
     deleteSpecificRoast(DataIdSelected);
     window.location.reload();
+  };
+  const handleSelect = () => {
+    sendStaticParameters(DataIdSelected);
+    if (props.location.state === 'manual') {
+      history.push('/manual');
+    } else {
+      history.push('/automatic');
+    }
   };
   return (
     (!roastData)
@@ -63,6 +74,10 @@ function RecipeSelection() {
           <div className="graph">
             <StaticRefGraph ref={graphRef} />
             <div>
+              <button type="button" className="select-button" onClick={handleSelect}>
+                <p>Selecionar Torra</p>
+                <AiOutlineSelect size={30} />
+              </button>
               <button type="button" className={wrongData ? 'edit-button' : 'edit-button-animation'} onClick={() => { dataToRender ? (history.push('/editRoast', dataToRender)) : (animateButton()); }}>
                 <p>Editar torra</p>
                 <FiEdit2 size={30} />

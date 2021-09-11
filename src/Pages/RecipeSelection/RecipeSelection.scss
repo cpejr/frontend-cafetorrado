@@ -62,6 +62,9 @@ hr {
         .delete-button{
             @include button-base(rgba(255,0,0,1))
         }
+        .select-button{
+            @include button-base(rgb(34, 158, 65))
+        }
     }
 }
 @keyframes shake {

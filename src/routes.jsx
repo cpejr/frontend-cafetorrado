@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ResultsRevision from './Pages/ResultsRevision';
-import TemplateWithDrawer from './templates';
+import TemplateWithDrawer from './Templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
 import Home from './Pages/Home/Home';

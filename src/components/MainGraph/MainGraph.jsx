@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, {
   useEffect, useRef, useState, useContext,
 } from 'react';
@@ -107,14 +106,13 @@ export const MainGraph = ({ setter }) => {
 
     (!mainGraph.current.chartInstance) ? false
       : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-        mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-        mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-        mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-        mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
+      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
+      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
+      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
+      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
 
-        mainGraph.current.chartInstance.update());
+      mainGraph.current.chartInstance.update());
   }, [theme]);
-
 
   function crackIt() {
     if (!crackTime && mainGraph.current) {
@@ -129,24 +127,22 @@ export const MainGraph = ({ setter }) => {
       markTime.push(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
   }
-   
-  useEffect(() => {
+
+  useEffect(() => { // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
     window.crackIt = crackIt;
   }, [crackTime]);
 
   useEffect(() => {
     window.markIt = markIt;
 
-    if(markTime.length > MAX_MARKS)
-      setDisable(true);
-
+    if (markTime.length > MAX_MARKS) { setDisable(true); } // desabilita click do botão (ainda não implementado no onClick do marcador)
   }, [markTime]);
 
-  useEffect(() => {
-    const annot = []
+  useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
+    const annot = [];
 
     if (crackTime) {
-      annot.push({
+      annot.push({ // adiciona no vetor caso ocorra click
         drawTime: 'afterDatasetsDraw',
         type: 'line',
         mode: 'vertical',
@@ -159,28 +155,30 @@ export const MainGraph = ({ setter }) => {
           content: 'CRACK',
           enabled: true,
           position: 'bottom',
-        }
-      })
+        },
+      });
     }
+    // eslint-disable-next-line
+    markTime.map((mark) => {
+      annot.push({ // retorna as marcações do markTime
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: markTime,
+        borderWidth: 2,
+        borderColor: 'yellow',
+        label: {
+          fontFamily: 'quicksand',
+          content: 'MARK',
+          enabled: true,
+          position: 'bottom',
+        },
+      });
+    });
 
-    markTime.map(mark => {annot.push({
-      drawTime: 'afterDatasetsDraw',
-      type: 'line',
-      mode: 'vertical',
-      scaleID: 'x-axis-0',
-      value: markTime,
-      borderWidth: 2,
-      borderColor: 'yellow',
-      label: {
-        fontFamily: 'quicksand',
-        content: 'MARK',
-        enabled: true,
-        position: 'bottom',
-      },
-    })})
-
-    setAnnotations(annot);
-  }, [markTime, crackTime])
+    setAnnotations(annot); // guarda os dados de markTime e no vetor anottations
+  }, [markTime, crackTime]);
 
   useEffect(() => {
     function listener() {
@@ -197,7 +195,7 @@ export const MainGraph = ({ setter }) => {
   }, [window.drawerIsOpen]);
 
   useEffect(() => {
-    mainGraph.current.chartInstance.update();
+    mainGraph.current.chartInstance.update(); // a cada mudança atualiza a renderização
   }, [graphWidth]);
 
   return (
@@ -209,8 +207,8 @@ export const MainGraph = ({ setter }) => {
         ref={mainGraph}
         options={{
           annotation: {
-            annotations: annotations
-             [
+            annotations, // recebe o vetor e renderiza a linha
+            /* [
               crackTime &&
               {
                 drawTime: 'afterDatasetsDraw',
@@ -243,7 +241,8 @@ export const MainGraph = ({ setter }) => {
                   position: 'bottom',
                 },
               },
-            ], 
+            ],
+            ], */
           },
           legend: {
             position: 'bottom',
@@ -304,9 +303,8 @@ export const MainGraph = ({ setter }) => {
               },
             ],
           },
-        }
-        }
+        }}
       />
     </div>
   );
-}
+};

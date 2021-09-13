@@ -146,7 +146,7 @@ export const MainGraph = ({ setter }) => {
     const annot = []
 
     if (crackTime) {
-      annot.append({
+      annot.push({
         drawTime: 'afterDatasetsDraw',
         type: 'line',
         mode: 'vertical',
@@ -163,7 +163,7 @@ export const MainGraph = ({ setter }) => {
       })
     }
 
-    markTime.map(mark => {annot.append({
+    markTime.map(mark => {annot.push({
       drawTime: 'afterDatasetsDraw',
       type: 'line',
       mode: 'vertical',
@@ -210,7 +210,7 @@ export const MainGraph = ({ setter }) => {
         options={{
           annotation: {
             annotations: annotations
-            /* [
+             [
               crackTime &&
               {
                 drawTime: 'afterDatasetsDraw',
@@ -243,7 +243,7 @@ export const MainGraph = ({ setter }) => {
                   position: 'bottom',
                 },
               },
-            ], */
+            ], 
           },
           legend: {
             position: 'bottom',

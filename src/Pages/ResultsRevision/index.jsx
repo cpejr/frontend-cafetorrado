@@ -23,8 +23,8 @@ const ResultsRevision = () => (
     <div className="graph_">
       <MainGraph />
     </div>
+    <h1 className="title">Informações</h1>
     <div className="informations-revision">
-      <h1>Informações</h1>
       <div className="cols-info">
         <div className="col-info">
           <p>Temperatura mínima: </p>
@@ -39,6 +39,16 @@ const ResultsRevision = () => (
         <div className="col-info">
           <p>Data: </p>
           <p>Hora: </p>
+        </div>
+        <div>
+          <h2>Marcadores</h2>
+          <div className="Mark">
+            <input placeholder="Marcador 1" type="text" />
+            <input placeholder="Marcador 2" type="text" />
+            <input placeholder="Marcador 3" type="text" />
+            <input placeholder="Marcador 4" type="text" />
+            <input placeholder="Marcador 5" type="text" />
+          </div>
         </div>
       </div>
     </div>

@@ -114,17 +114,13 @@ export const MainGraph = ({ setter }) => {
       mainGraph.current.chartInstance.update());
   }, [theme]);
 
-  function crackIt() {
-    if (!crackTime && mainGraph.current) {
-      console.log('CRACK ', crackTime);
-      setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
-    }
-  }
+  const crackIt = () => setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
 
   function markIt() {
-    if (!markTime && mainGraph.current) {
-      console.log('MARKED ', markTime);
-      markTime.push(mainGraph.current.chartInstance.data.datasets[0].data.length);
+    if (markTime && mainGraph.current) {
+      setMarkTime(
+        (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
+      );
     }
   }
 
@@ -158,26 +154,23 @@ export const MainGraph = ({ setter }) => {
         },
       });
     }
-    // eslint-disable-next-line
-    markTime.map((mark) => {
-      annot.push({ // retorna as marcações do markTime
-        drawTime: 'afterDatasetsDraw',
-        type: 'line',
-        mode: 'vertical',
-        scaleID: 'x-axis-0',
-        value: markTime,
-        borderWidth: 2,
-        borderColor: 'yellow',
-        label: {
-          fontFamily: 'quicksand',
-          content: 'MARK',
-          enabled: true,
-          position: 'bottom',
-        },
-      });
+    annot.push({ // retorna as marcações do markTime
+      drawTime: 'afterDatasetsDraw',
+      type: 'line',
+      mode: 'vertical',
+      scaleID: 'x-axis-0',
+      value: markTime[markTime.length - 1],
+      borderWidth: 2,
+      borderColor: 'yellow',
+      label: {
+        fontFamily: 'quicksand',
+        content: 'MARK',
+        enabled: true,
+        position: 'bottom',
+      },
     });
 
-    setAnnotations(annot); // guarda os dados de markTime e no vetor anottations
+    setAnnotations((prev) => [...prev, ...annot]); // guarda os dados de markTime e no vetor anottations
   }, [markTime, crackTime]);
 
   useEffect(() => {
@@ -208,41 +201,6 @@ export const MainGraph = ({ setter }) => {
         options={{
           annotation: {
             annotations, // recebe o vetor e renderiza a linha
-            /* [
-              crackTime &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: crackTime,
-                borderWidth: 2,
-                borderColor: 'darkorange',
-                label: {
-                  fontFamily: 'quicksand',
-                  content: 'CRACK',
-                  enabled: true,
-                  position: 'bottom',
-                },
-              },
-              markTime &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: markTime,
-                borderWidth: 2,
-                borderColor: 'yellow',
-                label: {
-                  fontFamily: 'quicksand',
-                  content: 'MARK',
-                  enabled: true,
-                  position: 'bottom',
-                },
-              },
-            ],
-            ], */
           },
           legend: {
             position: 'bottom',

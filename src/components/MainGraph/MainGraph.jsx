@@ -134,6 +134,9 @@ export const MainGraph = ({ setter }) => {
     if (markTime.length > MAX_MARKS) { setDisable(true); } // desabilita click do botão (ainda não implementado no onClick do marcador)
   }, [markTime]);
 
+  // eslint-disable-next-line
+  const createLabelForMarkdown = (input) => `${Math.round(input)}` 
+
   useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
     const annot = [];
 
@@ -164,7 +167,7 @@ export const MainGraph = ({ setter }) => {
       borderColor: 'yellow',
       label: {
         fontFamily: 'quicksand',
-        content: 'MARK',
+        content: createLabelForMarkdown(markTime),
         enabled: true,
         position: 'bottom',
       },
@@ -192,77 +195,81 @@ export const MainGraph = ({ setter }) => {
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
-      <Line
-        padding="0"
-        id="main-graph"
-        data={INITALLDATA}
-        ref={mainGraph}
-        options={{
-          annotation: {
-            annotations, // recebe o vetor e renderiza a linha
-          },
-          legend: {
-            position: 'bottom',
-            labels: {
+    <>
+      <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button>
+
+      <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
+        <Line
+          padding="0"
+          id="main-graph"
+          data={INITALLDATA}
+          ref={mainGraph}
+          options={{
+            annotation: {
+              annotations, // recebe o vetor e renderiza a linha
+            },
+            legend: {
+              position: 'bottom',
+              labels: {
+                fontFamily: 'Quicksand',
+                fontColor: theme?.fontColor || 'black',
+                fontSize: 14,
+              },
+            },
+            /*  responsive: true, */
+            maintainAspectRatio: false,
+
+            title: {
+              text: ' Tempo de torra ',
               fontFamily: 'Quicksand',
+              fontSize: 26,
               fontColor: theme?.fontColor || 'black',
-              fontSize: 14,
+              display: true,
             },
-          },
-          /*  responsive: true, */
-          maintainAspectRatio: false,
 
-          title: {
-            text: ' Tempo de torra ',
-            fontFamily: 'Quicksand',
-            fontSize: 26,
-            fontColor: theme?.fontColor || 'black',
-            display: true,
-          },
-
-          elements: {
-            line: {
-              tension: 0,
-            },
-          },
-          scales: {
-            yAxes: [{
-              id: 'left',
-              type: 'linear',
-              position: 'left',
-              ticks: {
-                min: 0,
-                max: 100,
-                stepSize: 10,
-                fontColor: theme?.fontColor || 'black',
+            elements: {
+              line: {
+                tension: 0,
               },
             },
-            {
-              id: 'right',
-              type: 'linear',
-              position: 'right',
-              ticks: {
-                min: 0,
-                max: 100,
-                stepSize: 10,
-                fontColor: theme?.fontColor || 'black',
-              },
-            },
-            ],
-            xAxes: [
-              {
+            scales: {
+              yAxes: [{
+                id: 'left',
+                type: 'linear',
+                position: 'left',
                 ticks: {
-                  autoSkip: true,
+                  min: 0,
+                  max: 100,
+                  stepSize: 10,
                   fontColor: theme?.fontColor || 'black',
-                  maxTicksLimit: 20,
-                  beginAtZero: true,
                 },
               },
-            ],
-          },
-        }}
-      />
-    </div>
+              {
+                id: 'right',
+                type: 'linear',
+                position: 'right',
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  stepSize: 10,
+                  fontColor: theme?.fontColor || 'black',
+                },
+              },
+              ],
+              xAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    fontColor: theme?.fontColor || 'black',
+                    maxTicksLimit: 20,
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          }}
+        />
+      </div>
+    </>
   );
 };

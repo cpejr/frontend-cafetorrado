@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { useState } from 'react';
 import Modal from '@material-ui/core/Modal';
 import './wakeuptable.css';
@@ -6,6 +7,8 @@ function wakeuptable() {
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState('');
   const [open, setOpen] = useState(false);
+
+  const [upload, setUpload] = useState();
 
   const handleOpen = () => {
     if (fileName.split('.').pop() === 'bin') {
@@ -29,6 +32,7 @@ function wakeuptable() {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('fileName', fileName);
+    sendUploadFile(file);
   };
 
   return (

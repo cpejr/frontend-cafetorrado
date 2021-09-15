@@ -70,8 +70,13 @@ const updateLastTheme = (themeName) => {
   return result;
 };
 
+const sendUploadFile = (file) => {
+  const result = api.post('/sendUploadFiles', file);
+  return result;
+};
+
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
-  deleteSpecificRoast, getLastTheme, updateLastTheme,
+  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile,
 };

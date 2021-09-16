@@ -40,18 +40,7 @@ const handleInput = (e) => {
 
   return(
     <div className="content">
-      <div className="save-name">
-        <input type="text" name="name" />
-        <button type="button" onClick={getChartParams}>
-          <AddToPhotosIcon />
-          {' '}
-          Salvar
-        </button>
-        <button type="button" onClick={deleteLastRoast}>
-          <CloseIcon />
-          Excluir
-        </button>
-      </div>
+     
       <div className="graph_">
         <MainGraph />
       </div>
@@ -83,6 +72,18 @@ const handleInput = (e) => {
             </div>
           </div>
         </div>
+        <div className="save-name">
+        {/* <input type="text" name="name" /> */}
+        <button type="button" onClick={getChartParams}>
+          <AddToPhotosIcon />
+          {' '}
+          Salvar
+        </button>
+        <button type="button" onClick={deleteLastRoast}>
+          <CloseIcon />
+          Excluir
+        </button>
+      </div>
       </div>
     </div>
   );

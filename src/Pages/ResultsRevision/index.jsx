@@ -29,18 +29,7 @@ useEffect(()=> console.log(mark), [mark])
 
   return(
     <div className="content">
-      <div className="save-name">
-        <input type="text" name="name" />
-        <button type="button" onClick={getChartParams}>
-          <AddToPhotosIcon />
-          {' '}
-          Salvar
-        </button>
-        <button type="button" onClick={deleteLastRoast}>
-          <CloseIcon />
-          Excluir
-        </button>
-      </div>
+     
       <div className="graph_">
         <MainGraph />
       </div>
@@ -73,6 +62,18 @@ useEffect(()=> console.log(mark), [mark])
               {/* <button style={{display: "flex", flexDirection: "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
           </div>
         </div>
+        <div className="save-name">
+        {/* <input type="text" name="name" /> */}
+        <button type="button" onClick={getChartParams}>
+          <AddToPhotosIcon />
+          {' '}
+          Salvar
+        </button>
+        <button type="button" onClick={deleteLastRoast}>
+          <CloseIcon />
+          Excluir
+        </button>
+      </div>
       </div>
     </div>
   );

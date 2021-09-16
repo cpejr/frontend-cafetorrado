@@ -196,7 +196,7 @@ export const MainGraph = ({ setter }) => {
 
   return (
     <>
-      <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button>
+      {/* <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button> */}
 
       <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
         <Line

@@ -8,38 +8,26 @@ import { deleteLastRoast } from '../../components/Functions/RequestHandler/Reque
 import getChartParams from '../../components/Functions/getChartParams';
 import { set } from 'date-fns/esm';
 
-const MAX_MARKS = 5;
 export const ResultsRevision = () => {
 
-  // Guarda os valores digitados nos inputs
-  const [mark, setMark] = useState([]);
-  const [vector, setVector] = useState([]);
-  const [maxMark, setMaxMark] = useState(false);
-  const [markAnnotation, setMarkAnnotations] = useState([]);
+// Guarda os valores digitados nos inputs
+const MAX_MARKS = 5;
+const [mark, setMark] = useState([]); // strings dos marcadores
 
+const handleInput = (e) => {
+  let annot = mark;
 
-  useEffect(() => {
-    if (mark.length > MAX_MARKS) { setMaxMark(true); }
-    // Mensagem de limite máximo de marcadores atingido
-    if (maxMark === true) { alert("Número máximo de marcadores está limitado em 5"); }
-  }, [mark]);
+  console.log(e.target.name)
+  // requisição do backend
+  if(mark.length <= MAX_MARKS){
+  annot[e.target.name] = e.target.value;
+  setMark([...annot]);
+  }
+};
 
-  useEffect((e) => {
-    const aux = [];
+useEffect(()=> console.log(mark), [mark])
 
-    if (mark) {
-      aux.push(e);
-    }
-    setMarkAnnotations((prev) => [...prev, ...aux]); // guarda as string no vetor markAnnotations
-  }, [mark]);
-
-  const handleInput = (e) => {
-    // requisição do backend
-    setMark(e.target.value)
-    console.log("ksksksksks");
-  };
-
-  return (
+  return(
     <div className="content">
 
       <div className="graph_">
@@ -64,13 +52,14 @@ export const ResultsRevision = () => {
           </div>
           <div>
             <h2>Marcadores</h2>
-            <div className="Mark">
-              <input placeholder="Mark 1" type="text" value={mark[0]} onChange={(e) => handleInput} />
-              <input placeholder="Mark 2" type="text" value={mark[1]} onChange={(e) => handleInput} />
-              <input placeholder="Mark 3" type="text" value={mark[2]} onChange={(e) => handleInput} />
-              <input placeholder="Mark 4" type="text" value={mark[3]} onChange={(e) => handleInput} />
-              <input placeholder="Mark 5" type="text" value={mark[4]} onChange={(e) => handleInput} />
+            <div style={{display: "flex", flexDirection: "column", justifyContent: "center", marginTop: "10px"}}>
+              <input className="Mark" name="0" placeholder="Marcador 1" type="text" value={mark[0]} onChange={handleInput} />
+              <input className="Mark" name="1" placeholder="Marcador 2" type="text" value={mark[1]} onChange={handleInput} />
+              <input className="Mark" name="2" placeholder="Marcador 3" type="text" value={mark[2]} onChange={handleInput} />
+              <input className="Mark" name="3" placeholder="Marcador 4" type="text" value={mark[3]} onChange={handleInput} />
+              <input className="Mark" name="4" placeholder="Marcador 5" type="text" value={mark[4]} onChange={handleInput} />
             </div>
+              {/* <button style={{display: "flex", flexDirection: "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
           </div>
         </div>
         <div className="save-name">

@@ -1,33 +1,31 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
+import { set } from 'date-fns/esm';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
 import getChartParams from '../../components/Functions/getChartParams';
-import { set } from 'date-fns/esm';
 
 export const ResultsRevision = () => {
+  // Guarda os valores digitados nos inputs
+  const MAX_MARKS = 5;
+  const [mark, setMark] = useState([]); // strings dos marcadores
 
-// Guarda os valores digitados nos inputs
-const MAX_MARKS = 5;
-const [mark, setMark] = useState([]); // strings dos marcadores
+  const handleInput = (e) => {
+    const annot = mark;
 
-const handleInput = (e) => {
-  let annot = mark;
+    console.log(e.target.name);
+    // requisição do backend
+    if (mark.length <= MAX_MARKS) {
+      annot[e.target.name] = e.target.value;
+      setMark([...annot]);
+    }
+  };
 
-  console.log(e.target.name)
-  // requisição do backend
-  if(mark.length <= MAX_MARKS){
-  annot[e.target.name] = e.target.value;
-  setMark([...annot]);
-  }
-};
+  useEffect(() => console.log(mark), [mark]);
 
-useEffect(()=> console.log(mark), [mark])
-
-  return(
+  return (
     <div className="content">
 
       <div className="graph_">
@@ -52,19 +50,23 @@ useEffect(()=> console.log(mark), [mark])
           </div>
           <div>
             <h2>Marcadores</h2>
-            <div style={{display: "flex", flexDirection: "column", justifyContent: "center", marginTop: "10px"}}>
+            <div style={{
+              display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '10px',
+            }}
+            >
               <input className="Mark" name="0" placeholder="Marcador 1" type="text" value={mark[0]} onChange={handleInput} />
               <input className="Mark" name="1" placeholder="Marcador 2" type="text" value={mark[1]} onChange={handleInput} />
               <input className="Mark" name="2" placeholder="Marcador 3" type="text" value={mark[2]} onChange={handleInput} />
               <input className="Mark" name="3" placeholder="Marcador 4" type="text" value={mark[3]} onChange={handleInput} />
               <input className="Mark" name="4" placeholder="Marcador 5" type="text" value={mark[4]} onChange={handleInput} />
             </div>
-              {/* <button style={{display: "flex", flexDirection: "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
+            {/* <button style={{display: "flex", flexDirection:
+            "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
           </div>
         </div>
         <div className="save-name">
           {/* <input type="text" name="name" /> */}
-          <button type="button" onClick={getChartParams}>
+          <button type="button" onClick={getChartParams(mark)}>
             <AddToPhotosIcon />
             {' '}
             Salvar
@@ -77,6 +79,6 @@ useEffect(()=> console.log(mark), [mark])
       </div>
     </div>
   );
-}
+};
 
 export default ResultsRevision;

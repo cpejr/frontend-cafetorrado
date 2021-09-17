@@ -17,12 +17,17 @@ const disconnectWifi = () => { api.get('/disconnectWifi'); };
 const connectWifi = () => { api.get('connectWifi'); };
 
 const setChartParams = async (RoastName) => {
-  const parameters = {
-    name: RoastName,
-    description: 'Uma descrição legal',
-  };
-  const result = await api.post('/setChartParams', parameters);
-  return result.data;
+  try {
+    const parameters = {
+      name: RoastName,
+      description: 'Uma descrição legal',
+    };
+    const responseChartPararams = await api.post('/setChartParams', parameters);
+  } catch (error) {
+    console.warn(error);
+    alert(error.message);
+  }
+  return responseChartPararams.data;
 };
 
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };

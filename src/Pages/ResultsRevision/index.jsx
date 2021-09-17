@@ -11,36 +11,37 @@ import { set } from 'date-fns/esm';
 const MAX_MARKS = 5;
 export const ResultsRevision = () => {
 
-// Guarda os valores digitados nos inputs
-const [mark, setMark] = useState([]);
-const [maxMark, setMaxMark] = useState(false);
-const [markAnnotation, setMarkAnnotations] = useState([]);
+  // Guarda os valores digitados nos inputs
+  const [mark, setMark] = useState([]);
+  const [vector, setVector] = useState([]);
+  const [maxMark, setMaxMark] = useState(false);
+  const [markAnnotation, setMarkAnnotations] = useState([]);
 
 
-useEffect(() => {
-  if (mark.length > MAX_MARKS) { setMaxMark(true); } 
-  // Mensagem de limite máximo de marcadores atingido
-  if(maxMark === true) { alert("Número máximo de marcadores está limitado em 5"); }
-}, [mark]);
+  useEffect(() => {
+    if (mark.length > MAX_MARKS) { setMaxMark(true); }
+    // Mensagem de limite máximo de marcadores atingido
+    if (maxMark === true) { alert("Número máximo de marcadores está limitado em 5"); }
+  }, [mark]);
 
-useEffect((e) => { 
-  const aux = [];
+  useEffect((e) => {
+    const aux = [];
 
-  if (mark) {
-    aux.push(e);
-  }
-  setMarkAnnotations((prev) => [...prev, ...aux]); // guarda as string no vetor markAnnotations
-}, [mark]);
+    if (mark) {
+      aux.push(e);
+    }
+    setMarkAnnotations((prev) => [...prev, ...aux]); // guarda as string no vetor markAnnotations
+  }, [mark]);
 
-const handleInput = (e) => {
-  // requisição do backend
-  setMark(e.target.value)
-  console.log("ksksksksks");
-};
+  const handleInput = (e) => {
+    // requisição do backend
+    setMark(e.target.value)
+    console.log("ksksksksks");
+  };
 
-  return(
+  return (
     <div className="content">
-     
+
       <div className="graph_">
         <MainGraph />
       </div>
@@ -64,26 +65,26 @@ const handleInput = (e) => {
           <div>
             <h2>Marcadores</h2>
             <div className="Mark">
-              <input placeholder="Mark 1" type="text" value={ mark[0] } onChange={(e)=>handleInput} />
-              <input placeholder="Mark 2" type="text" value={ mark[1] } onChange={(e)=>handleInput} />
-              <input placeholder="Mark 3" type="text" value={ mark[2] } onChange={(e)=>handleInput} />
-              <input placeholder="Mark 4" type="text" value={ mark[3] } onChange={(e)=>handleInput} />
-              <input placeholder="Mark 5" type="text" value={ mark[4] } onChange={(e)=>handleInput} />
+              <input placeholder="Mark 1" type="text" value={mark[0]} onChange={(e) => handleInput} />
+              <input placeholder="Mark 2" type="text" value={mark[1]} onChange={(e) => handleInput} />
+              <input placeholder="Mark 3" type="text" value={mark[2]} onChange={(e) => handleInput} />
+              <input placeholder="Mark 4" type="text" value={mark[3]} onChange={(e) => handleInput} />
+              <input placeholder="Mark 5" type="text" value={mark[4]} onChange={(e) => handleInput} />
             </div>
           </div>
         </div>
         <div className="save-name">
-        {/* <input type="text" name="name" /> */}
-        <button type="button" onClick={getChartParams}>
-          <AddToPhotosIcon />
-          {' '}
-          Salvar
-        </button>
-        <button type="button" onClick={deleteLastRoast}>
-          <CloseIcon />
-          Excluir
-        </button>
-      </div>
+          {/* <input type="text" name="name" /> */}
+          <button type="button" onClick={getChartParams}>
+            <AddToPhotosIcon />
+            {' '}
+            Salvar
+          </button>
+          <button type="button" onClick={deleteLastRoast}>
+            <CloseIcon />
+            Excluir
+          </button>
+        </div>
       </div>
     </div>
   );

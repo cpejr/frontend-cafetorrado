@@ -50,6 +50,12 @@ const sendStaticParameters = (roast_id) => {
   return result;
 };
 
+// requisição para enviar o modo de torra para o back
+const sendMachineParams = () => {
+  const result = api.post('/sendMachineParameters');
+  return result;
+};
+
 const getWifiData = () => {
   const result = api.get('/connectWifi');
   return result;
@@ -78,5 +84,5 @@ const sendUploadFile = (file) => {
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
-  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile,
+  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, sendMachineParams,
 };

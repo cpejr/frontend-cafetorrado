@@ -66,7 +66,7 @@ export const ResultsRevision = () => {
         </div>
         <div className="save-name">
           {/* <input type="text" name="name" /> */}
-          <button type="button" onClick={getChartParams(mark)}>
+          <button type="button" onClick={(e) => { e.preventDefault(); getChartParams(mark); }}>
             <AddToPhotosIcon />
             {' '}
             Salvar

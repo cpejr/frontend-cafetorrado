@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { MdFlashAuto, MdInput } from 'react-icons/md';
 import { GiHand } from 'react-icons/gi';
 import { FiBook } from 'react-icons/fi';
+import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler';
 import { Modal } from './Modal/Modal';
 import './home.css';
 
@@ -13,6 +14,10 @@ const wifiName = 'o nome vai aqui';
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
+
+  const sendManual = () => history.push('/RecipeSelection', 'manual');
+  const sendAutomatic = () => history.push('/RecipeSelection', 'automatic');
+
   return (
     <div className="container">
 
@@ -20,13 +25,13 @@ const Home = () => {
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">
           <div className="automatic-section">
-            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection', 'automatic'); }}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendManual(); }}>
               <MdFlashAuto />
               <p>Torra automática</p>
             </button>
           </div>
           <div className="manual-section">
-            <button type="button" className="upper-button" onClick={() => { history.push('/recipeSelection', 'manual'); }}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendAutomatic(); }}>
               <GiHand />
               <p>Torra manual</p>
             </button>

@@ -31,7 +31,7 @@ function Automatic() {
         <div className="control-buttons">
 
           <div className="buttons">
-            <div className="button4">
+            <div className="button">
               <p>Manual</p>
               <button
                 className="power-1"
@@ -46,15 +46,15 @@ function Automatic() {
                 <GiHand size={35} />
               </button>
             </div>
-            <div className="button1">
+            <div className="button">
               <p className="fontColor">Mexedor</p>
               <ButtonController1 />
             </div>
-            <div className="button2">
+            <div className="button">
               <p className="fontColor">Resfriador</p>
               <ButtonController2 />
             </div>
-            <div className="button3">
+            <div className="button">
               <p className="fontColor">Crack</p>
               <ButtonController3 />
             </div>

@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { GiHand } from 'react-icons/gi';
 import { useHistory } from 'react-router-dom';
 import Chronometer from '../../components/Chronometer/Chronometer';
@@ -14,17 +14,27 @@ import { sendESPData } from '../../components/Functions/RequestHandler/RequestHa
 function Automatic() {
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [colorMixer, setColorMixer] = useState('#202020');
+  const [arrayAnnotation, setArrayAnnotation] = useState([]);
+
   const history = useHistory();
   const changeColorMixer = () => {
     if (colorMixer === '#202020') {
       setColorMixer('#0029FF');
     } else setColorMixer('#202020');
   };
+
+  useEffect(() => {
+    console.log(arrayAnnotation);
+  }, [arrayAnnotation]);
+
+  window.abacaxi = 'pera';
+  console.log(window.abacaxi);
+
   return (
     <div className="tela-container">
       <div className="upper-part">
         <Loader status={loaderStatus} />
-        <MainGraph setter={setLoaderStatus} />
+        <MainGraph setter={setLoaderStatus} setArrayAnnotation={setArrayAnnotation} />
       </div>
       <div className="lower-part">
 
@@ -61,7 +71,7 @@ function Automatic() {
           </div>
         </div>
         <div className="time-chronometer">
-          <Chronometer setter={setLoaderStatus} />
+          <Chronometer setter={setLoaderStatus} arrayAnnotation={setArrayAnnotation} />
         </div>
         <div className="informations">
           <RealData />

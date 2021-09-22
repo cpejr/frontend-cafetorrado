@@ -25,6 +25,8 @@ export const ResultsRevision = () => {
 
   useEffect(() => console.log(mark), [mark]);
 
+  const { annotations } = window;
+
   return (
     <div className="content">
 

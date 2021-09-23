@@ -86,12 +86,12 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
-
-  // const [markTime, setMarkTime] = useState([]); // para guardar as marcações
-  const { marksGraph: markTime, setter: setMarkTime } = useGlobalContext();
   const [disable, setDisable] = useState(false); // para habilitar ou não o botão marcador
 
-  const [annotations, setAnnotations] = useState(window.annotation ? window.annotation : []);
+  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
+  const { marksGraph: annotations , setter: setAnnotations} = useGlobalContext();
+
+  // const [annotations, setAnnotations] = useState(window.annotation ? window.annotation : []);
 
   useEffect(() => {
     socket.on('realData', (data) => {

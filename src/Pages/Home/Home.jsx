@@ -8,6 +8,7 @@ import { GiHand } from 'react-icons/gi';
 import { FiBook } from 'react-icons/fi';
 import { Modal } from './Modal/Modal';
 import { sendMachineParams } from '../../components/Functions/RequestHandler/RequestHandler.js';
+import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler.js';
 import './home.css';
 
 const wifiName = 'o nome vai aqui';
@@ -16,15 +17,17 @@ const Home = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
 
+  // history.push('/manual',{state: "manual"})
   // Verifica o tipo de requisição
   const VerifyMode = () => {
-    sendMachineParams();
     if (props.location.state === 'manual') {
       history.push('/recipeSelection', 'manual');
-      // requisição para o backend para o modo Automático
-    } else {
+      sendESPData({MdlManChr: 1});
+    } else if(props.location.state === 'automatic'){
       history.push('/recipeSelection', 'automatic');
-      // requisição para o backend para o modo Manual
+      sendESPData({MdlManChr: 2});
+    }else {
+      history.push('/home');
     }
   };
 

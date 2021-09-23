@@ -33,7 +33,6 @@ const getUniqueRoastData = async (roast_id) => {
   const result = await api.get(`/getUniqueRoastData/${roast_id}`);
   return result;
 };
-
 const sendESPData = (parameters) => {
   // eslint-disable-next-line
   for (const key in parameters) {

@@ -29,7 +29,7 @@ useEffect(()=> console.log(mark), [mark])
 
   return(
     <div className="content">
-     
+
       <div className="graph_">
         <MainGraph />
       </div>
@@ -63,17 +63,17 @@ useEffect(()=> console.log(mark), [mark])
           </div>
         </div>
         <div className="save-name">
-        {/* <input type="text" name="name" /> */}
-        <button type="button" onClick={getChartParams}>
-          <AddToPhotosIcon />
-          {' '}
-          Salvar
-        </button>
-        <button type="button" onClick={deleteLastRoast}>
-          <CloseIcon />
-          Excluir
-        </button>
-      </div>
+          {/* <input type="text" name="name" /> */}
+          <button type="button" onClick={getChartParams}>
+            <AddToPhotosIcon />
+            {' '}
+            Salvar
+          </button>
+          <button type="button" onClick={deleteLastRoast}>
+            <CloseIcon />
+            Excluir
+          </button>
+        </div>
       </div>
     </div>
   );

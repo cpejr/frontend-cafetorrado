@@ -5,6 +5,7 @@ import React, {
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
+import { useGlobalContext } from '../../Context/GlobalContext';
 import 'chartjs-plugin-annotation';
 
 const MAX_MARKS = 5;
@@ -86,7 +87,8 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
-  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
+  // const [markTime, setMarkTime] = useState([]); // para guardar as marcações
+  const { marksGraph: markTime, setter: setMarkTime } = useGlobalContext();
   const [disable, setDisable] = useState(false); // para habilitar ou não o botão marcador
 
   const [annotations, setAnnotations] = useState(window.annotation ? window.annotation : []);
@@ -118,13 +120,10 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   const crackIt = () => {
     if (setArrayAnnotation) {
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
-      console.log('aqui');
-      setArrayAnnotation(['abcd', 'casa']);
     }
   }
 
   function markIt() {
-    console.log('aqui makit');
     if (markTime && mainGraph.current) {
       setMarkTime(
         (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],

@@ -6,11 +6,13 @@ import { set } from 'date-fns/esm';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
 import getChartParams from '../../components/Functions/getChartParams';
+import { useGlobalContext } from '../../Context/GlobalContext';
 
 export const ResultsRevision = () => {
   // Guarda os valores digitados nos inputs
   const MAX_MARKS = 5;
   const [mark, setMark] = useState([]); // strings dos marcadores
+  const { marksGraph, setter } = useGlobalContext();
 
   const handleInput = (e) => {
     const annot = mark;
@@ -26,6 +28,8 @@ export const ResultsRevision = () => {
   useEffect(() => console.log(mark), [mark]);
 
   const { annotations } = window;
+
+  useEffect(() => console.log({ annotations }), [{ annotations }]);
 
   return (
     <div className="content">

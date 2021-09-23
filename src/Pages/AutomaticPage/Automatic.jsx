@@ -6,6 +6,7 @@ import { MainGraph } from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
+import ButtonController4 from '../../components/Buttons/ButtonsControllers/ButtonsController4';
 import './Automatic.css';
 import RealData from '../../components/Functions/DataHandler/DataHandler';
 import Loader from '../../components/Loader/loader';
@@ -67,6 +68,10 @@ function Automatic() {
             <div className="button">
               <p className="fontColor">Crack</p>
               <ButtonController3 />
+            </div>
+            <div className="button">
+              <p>Marcador</p>
+              <ButtonController4 />
             </div>
           </div>
         </div>

@@ -22,6 +22,9 @@ function Automatic() {
   };
   return (
     <div className="tela-container">
+      <div className="title">
+        <h1> Modo Automático </h1>
+      </div>
       <div className="upper-part">
         <Loader status={loaderStatus} />
         <MainGraph setter={setLoaderStatus} />

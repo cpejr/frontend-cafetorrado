@@ -195,7 +195,7 @@ export const MainGraph = ({ setter }) => {
           maintainAspectRatio: false,
 
           title: {
-            text: ' Tempo de torra ',
+            // text: ' Tempo de torra ',
             fontFamily: 'Quicksand',
             fontSize: 30,
             fontColor: theme?.fontColor || 'black',

@@ -157,7 +157,7 @@ export const MainGraph = ({ setter }) => {
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
+    <div style={{ width: graphWidth, height: 600, position: 'relative' }}>
       <Line
         padding="0"
         id="main-graph"

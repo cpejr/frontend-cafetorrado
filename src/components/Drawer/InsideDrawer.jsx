@@ -15,6 +15,7 @@ import { GiHand } from 'react-icons/gi';
 import { FaHome } from 'react-icons/fa';
 import clsx from 'clsx';
 import { ThemeContext } from '../../Context/ThemeContext';
+import { sendESPData } from '../Functions/RequestHandler/RequestHandler';
 import './NewDrawer.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -71,7 +72,18 @@ const DrawerMenu = ({ drawerOpen }) => {
   return (
     <List className="menu-bar">
       {menuItens.map(({ title, icon, route }) => (
-        <ListItem button key={title} onClick={() => history.push(`/${route}`)}>
+        <ListItem
+          button
+          key={title}
+          onClick={() => {
+            if (route === 'manual') {
+              sendESPData({ MdlManChr: 1 });
+            } else if (route === 'automatic') {
+              sendESPData({ MdlManChr: 2 });
+            }
+            history.push(`/${route}`);
+          }}
+        >
           <ListItemIcon className="menu-icon">{icon}</ListItemIcon>
           <ListItemText className="menu-text" primary={title} />
         </ListItem>

@@ -14,7 +14,7 @@ function Manual() {
   return (
     <div className="tela-container">
       <div className="title">
-        <p> Modo Manual </p>
+        Modo Manual
       </div>
       <div className="upper-part">
         <Loader status={loaderStatus} />

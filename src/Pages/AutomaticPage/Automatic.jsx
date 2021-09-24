@@ -23,7 +23,7 @@ function Automatic() {
   return (
     <div className="tela-container">
       <div className="title">
-        <p> Modo Automático </p>
+        Modo Automático
       </div>
       <div className="upper-part">
         <Loader status={loaderStatus} />

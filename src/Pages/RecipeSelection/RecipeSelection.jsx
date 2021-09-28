@@ -7,7 +7,7 @@ import { TiDelete } from 'react-icons/ti';
 import { AiOutlineSelect } from 'react-icons/ai';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
 import {
-  getRoasts, getUniqueRoastData, sendStaticParameters, deleteSpecificRoast,
+  getRoasts, getUniqueRoastData, sendStaticParameters, deleteSpecificRoast, sendESPData,
 } from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
@@ -28,6 +28,20 @@ function RecipeSelection(props) {
     const { data } = await getRoasts();
     setRoastData(data);
   }, []);
+
+  useEffect(() => {
+    const { state } = props.location;
+    if (state === 'manual') {
+      sendESPData({ MdlManChr: 1 }); return;
+    }
+    if (state === 'automatic') {
+      sendESPData({ MdlManChr: 2 });
+      return;
+    }
+
+    history.push('/home');
+  }, []);
+
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;

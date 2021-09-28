@@ -67,22 +67,12 @@
   text-align: center;
 }
 
-.button1 {
-  width: 25% !important;
+.button {
+  font-size: 30px;
+  width: 33% !important;
   flex-direction: column;
 }
-.button2 {
-  width: 25% !important;
-  flex-direction: column;
-}
-.button3 {
-  width: 25% !important;
-  flex-direction: column;
-}
-.button4 {
-  width: 25% !important;
-  flex-direction: column;
-}
+
 
 .buttons-title {
   width: 100%;

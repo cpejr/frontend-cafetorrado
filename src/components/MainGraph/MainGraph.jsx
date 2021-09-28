@@ -79,7 +79,7 @@ const INITALLDATA = {
   ],
 };
 
-export const MainGraph = ({ setter }) => {
+export const MainGraph = ({ setter, setArrayAnnotation }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
   const [markTime, setmarkTime] = useState([]);
@@ -91,7 +91,7 @@ export const MainGraph = ({ setter }) => {
   const [markTime, setMarkTime] = useState([]); // para guardar as marcações
   const [disable, setDisable] = useState(false); // para habilitar ou não o botão marcador
 
-  const [annotations, setAnnotations] = useState([]);
+  const [annotations, setAnnotations] = useState(window.annotation ? window.annotation : []);
 
   useEffect(() => {
     socket.on('realData', (data) => {
@@ -117,9 +117,16 @@ export const MainGraph = ({ setter }) => {
         mainGraph.current.chartInstance.update());
   }, [theme]);
 
-  const crackIt = () => setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+  const crackIt = () => {
+    if (setArrayAnnotation) {
+      setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+      console.log('aqui');
+      setArrayAnnotation(['abcd', 'casa']);
+    }
+  }
 
   function markIt() {
+    console.log('aqui makit');
     if (markTime && mainGraph.current) {
       setMarkTime(
         (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
@@ -137,7 +144,7 @@ export const MainGraph = ({ setter }) => {
   }, [markTime]);
 
   // eslint-disable-next-line
-  const createLabelForMarkdown = (input) => `${Math.round(input)}` 
+  const createLabelForMarkdown = (input) => `${Math.round(input)}`
 
   useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
     const annot = [];
@@ -176,7 +183,12 @@ export const MainGraph = ({ setter }) => {
     });
 
     setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
+
   }, [markTime, crackTime]);
+
+  useEffect(() => {
+    window.annotations = annotations;
+  }, [annotations]);
 
   useEffect(() => {
     function listener() {

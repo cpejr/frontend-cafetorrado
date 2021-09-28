@@ -23,19 +23,19 @@ function Manual() {
         {/* } <RealData /> */}
         <div className="control-buttons">
           <div className="buttons">
-            <div className="button1">
+            <div className="button">
               <p>Mexedor</p>
               <ButtonController1 />
             </div>
-            <div className="button2">
+            <div className="button">
               <p>Resfriador</p>
               <ButtonController2 />
             </div>
-            <div className="button3">
+            <div className="button">
               <p>Crack</p>
               <ButtonController3 />
             </div>
-            <div className="button4">
+            <div className="button">
               <p>Marcador</p>
               <ButtonController4 />
             </div>

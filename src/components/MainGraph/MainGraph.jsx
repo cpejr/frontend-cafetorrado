@@ -91,6 +91,15 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   const [markTime, setMarkTime] = useState([]); // para guardar as marcações
   const { marksGraph: annotations , setter: setAnnotations} = useGlobalContext();
 
+  const MAX_MARKS = {
+    cracks: 1,
+    marks: 5
+  }
+  let index = {
+    cracks: 0,
+    marks: 0
+  }
+
   // const [annotations, setAnnotations] = useState(window.annotation ? window.annotation : []);
 
   useEffect(() => {
@@ -145,8 +154,9 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
 
   useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
     const annot = [];
-
+  
     if (crackTime) {
+      if(index.cracks >= 1) {return;}
       annot.push({ // adiciona no vetor caso ocorra click
         drawTime: 'afterDatasetsDraw',
         type: 'line',
@@ -162,22 +172,27 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
           position: 'bottom',
         },
       });
+      index.cracks++
+
+    } else {
+      if(index.marks >= 5) {return;}
+      annot.push({ // retorna as marcações do markTime
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: markTime[markTime.length - 1],
+        borderWidth: 2,
+        borderColor: 'yellow',
+        label: {
+          fontFamily: 'quicksand',
+          content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
+          enabled: true,
+          position: 'bottom',
+        },
+      });
+      index.marks++
     }
-    annot.push({ // retorna as marcações do markTime
-      drawTime: 'afterDatasetsDraw',
-      type: 'line',
-      mode: 'vertical',
-      scaleID: 'x-axis-0',
-      value: markTime[markTime.length - 1],
-      borderWidth: 2,
-      borderColor: 'yellow',
-      label: {
-        fontFamily: 'quicksand',
-        content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
-        enabled: true,
-        position: 'bottom',
-      },
-    });
 
     setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
 

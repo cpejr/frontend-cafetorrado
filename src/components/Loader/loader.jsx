@@ -10,7 +10,7 @@ const Loader = ({ status }) => (
         <div />
       </div>
       <div className="loader-text">
-        <h3>Estabelecendo Conexão...</h3>
+        <h1>Estabelecendo Conexão...</h1>
       </div>
     </div>
   ) : (

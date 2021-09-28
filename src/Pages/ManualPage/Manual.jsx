@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { React, useEffect, useState } from 'react';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import { MainGraph } from '../../components/MainGraph/MainGraph';

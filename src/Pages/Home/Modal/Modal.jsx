@@ -3,6 +3,8 @@ import './Modal.css';
 import { VscChromeClose } from 'react-icons/vsc';
 import { getWifiData, setWifiData } from '../../../components/Functions/RequestHandler/RequestHandler';
 
+/* eslint-disable */
+ 
 export const Modal = ({ open, setOpen }) => {
   const [done, isDone] = useState(false);
   const [oldName, setOldName] = useState('');

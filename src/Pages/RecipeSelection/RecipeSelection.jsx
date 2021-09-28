@@ -4,13 +4,16 @@ import React, {
 import { useHistory } from 'react-router-dom';
 import { FiEdit2 } from 'react-icons/fi';
 import { TiDelete } from 'react-icons/ti';
+import { AiOutlineSelect } from 'react-icons/ai';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
-import { getRoasts, getUniqueRoastData } from '../../components/Functions/RequestHandler/RequestHandler';
+import {
+  getRoasts, getUniqueRoastData, sendStaticParameters, deleteSpecificRoast,
+} from '../../components/Functions/RequestHandler/RequestHandler';
 import './RecipeSelection.css';
 
 let dataToRender = null;
 
-function RecipeSelection() {
+function RecipeSelection(props) {
   function animateButton() {
     setWrongData(false);
     setTimeout(() => { setWrongData(true); }, 500);
@@ -18,6 +21,7 @@ function RecipeSelection() {
   const history = useHistory();
   const [roastData, setRoastData] = useState([{}]);
   const [wrongData, setWrongData] = useState(true);
+  const [DataIdSelected, setDataIdSelected] = useState({});
   const graphRef = useRef();
 
   useEffect(async () => {
@@ -27,7 +31,19 @@ function RecipeSelection() {
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-    return <h6>{dataformatted}</h6>;
+    return <h5>{dataformatted}</h5>;
+  };
+  const handleDelete = () => {
+    deleteSpecificRoast(DataIdSelected);
+    window.location.reload();
+  };
+  const handleSelect = () => {
+    sendStaticParameters(DataIdSelected);
+    if (props.location.state === 'manual') {
+      history.push('/manual');
+    } else {
+      history.push('/automatic');
+    }
   };
   return (
     (!roastData)
@@ -38,7 +54,7 @@ function RecipeSelection() {
       )
       : (
         <div className="container">
-          <h3 style={{ position: 'absolute' }}>Selecione a torra desejada</h3>
+          <h1 style={{ position: 'absolute' }}>Selecione a torra desejada</h1>
           <div className="list">
             {roastData.map((elem) => (
               <list
@@ -46,6 +62,7 @@ function RecipeSelection() {
                 onClick={async (event) => {
                   event.preventDefault();
                   dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
+                  setDataIdSelected(elem.roast_id);
                   updateData(graphRef, dataToRender);
                 }}
               >
@@ -57,13 +74,17 @@ function RecipeSelection() {
           <div className="graph">
             <StaticRefGraph ref={graphRef} />
             <div>
+              <button type="button" className="select-button" onClick={handleSelect}>
+                <p>Selecionar Torra</p>
+                <AiOutlineSelect size={30} />
+              </button>
               <button type="button" className={wrongData ? 'edit-button' : 'edit-button-animation'} onClick={() => { dataToRender ? (history.push('/editRoast', dataToRender)) : (animateButton()); }}>
                 <p>Editar torra</p>
                 <FiEdit2 size={30} />
               </button>
-              <button type="button" className="delete-button">
+              <button type="button" className="delete-button" onClick={handleDelete}>
                 <p>Apagar torra</p>
-                <TiDelete size={45} />
+                <TiDelete size={30} />
               </button>
             </div>
           </div>

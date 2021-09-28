@@ -7,17 +7,9 @@ import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
 import 'chartjs-plugin-annotation';
 
+const MAX_MARKS = 15;
+
 let time = 0;
-// let done = false;
-// function parseTime(mainGraph, data){
-//   let time = 0;
-//   if(!done){
-//     mainGraph.current.chartInstance.data.labels[0] = data.fields.MdlRunCnt;
-//     done = true
-//   }
-//   time = (data.fields.MdlRunCnt) - (mainGraph.current.chartInstance.data.labels[0]);
-//   return time;
-// }
 
 function updateData(mainGraph, data) {
   if (!(mainGraph?.current?.chartInstance)) return;
@@ -47,7 +39,7 @@ const INITALLDATA = {
     },
     {
       fill: false,
-      label: 'Temperatura do Grão',
+      label: 'Temperatura do GrÃ£o',
       yAxisID: 'left',
       data: [],
       borderColor: '',
@@ -96,12 +88,18 @@ export const MainGraph = ({ setter }) => {
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
+  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
+  const [disable, setDisable] = useState(false); // para habilitar ou não o botão marcador
+
+  const [annotations, setAnnotations] = useState([]);
+
   useEffect(() => {
     socket.on('realData', (data) => {
       updateData(mainGraph, data);
       if (setter && !done) { setter(false); done = true; }
     });
   }, []);
+
   useEffect(() => {
     const color1 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');
     const color2 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor2');
@@ -119,33 +117,67 @@ export const MainGraph = ({ setter }) => {
         mainGraph.current.chartInstance.update());
   }, [theme]);
 
-  function crackIt() {
-    if (!crackTime && mainGraph.current) {
-      console.log('CRACK ', crackTime);
-      setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+  const crackIt = () => setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+
+  function markIt() {
+    if (markTime && mainGraph.current) {
+      setMarkTime(
+        (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
+      );
     }
   }
 
-  function markIt(data) {
-    const aux = 0;
-    if (index <= 15) {
-      if (!markTime && mainGraph.current) {
-        console.log('MARKED ', markTime);
-        setmarkTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
-        markTime[index] = mainGraph.current.chartInstance.data.datasets[0].data.length;
-        setIndex(aux);
-        aux++;
-      }
-    }
-  }
-
-  useEffect(() => {
+  useEffect(() => { // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
     window.crackIt = crackIt;
   }, [crackTime]);
 
   useEffect(() => {
     window.markIt = markIt;
-  }, [markTime[index]]);
+
+    if (markTime.length > MAX_MARKS) { setDisable(true); } // desabilita click do botão (ainda não implementado no onClick do marcador)
+  }, [markTime]);
+
+  // eslint-disable-next-line
+  const createLabelForMarkdown = (input) => `${Math.round(input)}` 
+
+  useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
+    const annot = [];
+
+    if (crackTime) {
+      annot.push({ // adiciona no vetor caso ocorra click
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: crackTime,
+        borderWidth: 2,
+        borderColor: 'darkorange',
+        label: {
+          fontFamily: 'quicksand',
+          content: 'CRACK',
+          enabled: true,
+          position: 'bottom',
+        },
+      });
+    }
+    annot.push({ // retorna as marcações do markTime
+      drawTime: 'afterDatasetsDraw',
+      type: 'line',
+      mode: 'vertical',
+      scaleID: 'x-axis-0',
+      value: markTime[markTime.length - 1],
+      borderWidth: 2,
+      borderColor: 'yellow',
+      label: {
+        fontFamily: 'quicksand',
+        content: createLabelForMarkdown(markTime),
+        enabled: true,
+        position: 'bottom',
+      },
+    });
+
+    setAnnotations((prev) => [...prev, ...annot]); // guarda os dados de markTime e no vetor anottations
+  }, [markTime, crackTime]);
 
   useEffect(() => {
     function listener() {
@@ -162,115 +194,85 @@ export const MainGraph = ({ setter }) => {
   }, [window.drawerIsOpen]);
 
   useEffect(() => {
-    mainGraph.current.chartInstance.update();
+    mainGraph.current.chartInstance.update(); // a cada mudança atualiza a renderização
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
-      <Line
-        padding="0"
-        id="main-graph"
-        data={INITALLDATA}
-        ref={mainGraph}
-        options={{
-          annotation: {
-            annotations: [
-              crackTime &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: crackTime,
-                borderWidth: 2,
-                borderColor: 'darkorange',
-                label: {
-                  fontFamily: 'quicksand',
-                  content: 'CRACK',
-                  enabled: true,
-                  position: 'bottom',
-                },
+    <>
+      <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button>
+
+      <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
+        <Line
+          padding="0"
+          id="main-graph"
+          data={INITALLDATA}
+          ref={mainGraph}
+          options={{
+            annotation: {
+              annotations, // recebe o vetor e renderiza a linha
+            },
+            legend: {
+              position: 'bottom',
+              labels: {
+                fontFamily: 'Quicksand',
+                fontColor: theme?.fontColor || 'black',
+                fontSize: 14,
               },
-              markTime[index] &&
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: markTime,
-                borderWidth: 2,
-                borderColor: 'yellow',
-                label: {
-                  fontFamily: 'quicksand',
-                  content: 'MARK',
-                  enabled: true,
-                  position: 'bottom',
-                },
-              },
-            ],
-          },
-          legend: {
-            position: 'bottom',
-            labels: {
+            },
+            /*  responsive: true, */
+            maintainAspectRatio: false,
+
+            title: {
+              text: ' Tempo de torra ',
               fontFamily: 'Quicksand',
+              fontSize: 26,
               fontColor: theme?.fontColor || 'black',
-              fontSize: 14,
+              display: true,
             },
-          },
-          /*  responsive: true, */
-          maintainAspectRatio: false,
 
-          title: {
-            text: ' Tempo de torra ',
-            fontFamily: 'Quicksand',
-            fontSize: 26,
-            fontColor: theme?.fontColor || 'black',
-            display: true,
-          },
-
-          elements: {
-            line: {
-              tension: 0,
-            },
-          },
-          scales: {
-            yAxes: [{
-              id: 'left',
-              type: 'linear',
-              position: 'left',
-              ticks: {
-                min: 0,
-                max: 100,
-                stepSize: 10,
-                fontColor: theme?.fontColor || 'black',
+            elements: {
+              line: {
+                tension: 0,
               },
             },
-            {
-              id: 'right',
-              type: 'linear',
-              position: 'right',
-              ticks: {
-                min: 0,
-                max: 100,
-                stepSize: 10,
-                fontColor: theme?.fontColor || 'black',
-              },
-            },
-            ],
-            xAxes: [
-              {
+            scales: {
+              yAxes: [{
+                id: 'left',
+                type: 'linear',
+                position: 'left',
                 ticks: {
-                  autoSkip: true,
+                  min: 0,
+                  max: 100,
+                  stepSize: 10,
                   fontColor: theme?.fontColor || 'black',
-                  maxTicksLimit: 20,
-                  beginAtZero: true,
                 },
               },
-            ],
-          },
-        }
-        }
-      />
-    </div>
+              {
+                id: 'right',
+                type: 'linear',
+                position: 'right',
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  stepSize: 10,
+                  fontColor: theme?.fontColor || 'black',
+                },
+              },
+              ],
+              xAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    fontColor: theme?.fontColor || 'black',
+                    maxTicksLimit: 20,
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          }}
+        />
+      </div>
+    </>
   );
 }

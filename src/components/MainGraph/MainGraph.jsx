@@ -1,4 +1,4 @@
-/*eslint-disable*/
+/* eslint-disable */
 import React, {
   useEffect, useRef, useState, useContext,
 } from 'react';
@@ -7,7 +7,7 @@ import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
 import 'chartjs-plugin-annotation';
 
-const MAX_MARKS = 15;
+const MAX_MARKS = 5;
 
 let time = 0;
 
@@ -126,7 +126,6 @@ export const MainGraph = ({ setter }) => {
       );
     }
   }
-
   useEffect(() => { // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
     window.crackIt = crackIt;
   }, [crackTime]);
@@ -170,13 +169,13 @@ export const MainGraph = ({ setter }) => {
       borderColor: 'yellow',
       label: {
         fontFamily: 'quicksand',
-        content: createLabelForMarkdown(markTime),
+        content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
         enabled: true,
         position: 'bottom',
       },
     });
 
-    setAnnotations((prev) => [...prev, ...annot]); // guarda os dados de markTime e no vetor anottations
+    setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
   }, [markTime, crackTime]);
 
   useEffect(() => {
@@ -199,8 +198,7 @@ export const MainGraph = ({ setter }) => {
 
   return (
     <>
-      <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button>
-
+      {/* <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button> */}
       <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
         <Line
           padding="0"

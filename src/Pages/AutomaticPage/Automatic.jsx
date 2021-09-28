@@ -70,7 +70,7 @@ function Automatic() {
               <p className="fontColor">Crack</p>
               <ButtonController3 />
             </div>
-            <div className="button4">
+            <div className="button">
               <p>Marcador</p>
               <ButtonController4 />
             </div>

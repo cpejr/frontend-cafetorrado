@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getServerData, disconnectData } from '../Functions/RequestHandler/RequestHandler';
 import { socket } from '../../index';
+import { useGlobalContext } from '../../Context/GlobalContext';
 import './Chronometer.css';
 
 function Chronometer({ setter }) {
+  const { marksGraph, setter: setMarks } = useGlobalContext();
   const history = useHistory();
   const [second, setSecond] = useState(0);
   const [minute, setMinute] = useState(0);
@@ -16,7 +18,7 @@ function Chronometer({ setter }) {
   return (
     <div className="chronometer-container">
       <div id="buttons">
-        <button id="change" type="button" onClick={() => { disconnectData(); history.push('/ResultsRevision'); }}>
+        <button id="change" type="button" onClick={() => { disconnectData(); history.push({ pathname: '/ResultsRevision' }); }}>
           Review
         </button>
       </div>

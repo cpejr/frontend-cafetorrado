@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, {
   useEffect, useRef, useState, useContext,
 } from 'react';
@@ -81,6 +82,8 @@ const INITALLDATA = {
 export const MainGraph = ({ setter }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
+  const [markTime, setmarkTime] = useState([]);
+  const [index, setIndex] = useState(0);
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
@@ -106,12 +109,12 @@ export const MainGraph = ({ setter }) => {
 
     (!mainGraph.current.chartInstance) ? false
       : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
+        mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
+        mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
+        mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
+        mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
 
-      mainGraph.current.chartInstance.update());
+        mainGraph.current.chartInstance.update());
   }, [theme]);
 
   const crackIt = () => setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
@@ -272,4 +275,4 @@ export const MainGraph = ({ setter }) => {
       </div>
     </>
   );
-};
+}

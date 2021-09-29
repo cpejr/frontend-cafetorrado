@@ -83,17 +83,12 @@ const INITALLDATA = {
 export const MainGraph = ({ setter, setArrayAnnotation }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
-  const [markTime, setmarkTime] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
-  const [disable, setDisable] = useState(false); // para habilitar ou não o botão marcador
 
-  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
-  const { marksGraph: annotations , setter: setAnnotations} = useGlobalContext();
-
-  // const [annotations, setAnnotations] = useState(window.annotation ? window.annotation : []);
+  const { marksGraph: annotations, setter: setAnnotations } = useGlobalContext();
 
   useEffect(() => {
     socket.on('realData', (data) => {
@@ -123,7 +118,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
     if (setArrayAnnotation) {
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
-  }
+  };
 
   function markIt() {
     if (markTime && mainGraph.current) {
@@ -182,7 +177,6 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
     });
 
     setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
-
   }, [markTime, crackTime]);
 
   useEffect(() => {
@@ -284,4 +278,4 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
       </div>
     </>
   );
-}
+};

@@ -36,10 +36,7 @@ function RecipeSelection(props) {
     }
     if (state === 'automatic') {
       sendESPData({ MdlManChr: 2 });
-      return;
     }
-
-    history.push('/home');
   }, []);
 
   const roastDate = (roast) => {

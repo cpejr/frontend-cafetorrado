@@ -44,7 +44,7 @@ function Automatic() {
 
           <div className="buttons">
             <div className="button">
-              <p>Manual</p>
+              <p className="fontColor">Manual</p>
               <button
                 className="power-1"
                 type="button"
@@ -71,7 +71,7 @@ function Automatic() {
               <ButtonController3 />
             </div>
             <div className="button">
-              <p>Marcador</p>
+              <p className="fontColor">Marcador</p>
               <ButtonController4 />
             </div>
           </div>

@@ -84,6 +84,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
   const [markTime, setMarkTime] = useState([]); // para guardar as marcações
+  const [disable, setDisable] = useState();
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);

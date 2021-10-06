@@ -157,7 +157,7 @@ export const MainGraph = ({ setter }) => {
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
+    <div style={{ width: graphWidth, height: 650, position: 'relative' }}>
       <Line
         padding="0"
         id="main-graph"
@@ -191,11 +191,9 @@ export const MainGraph = ({ setter }) => {
               fontSize: 25,
             },
           },
-          /*  responsive: true, */
           maintainAspectRatio: false,
 
           title: {
-            text: ' Tempo de torra ',
             fontFamily: 'Quicksand',
             fontSize: 30,
             fontColor: theme?.fontColor || 'black',

@@ -177,7 +177,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
       },
     });
 
-    setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
+    (annotations.length <= 6) && setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
   }, [markTime, crackTime]);
 
   useEffect(() => {

@@ -202,6 +202,9 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
     mainGraph.current.chartInstance.update(); // a cada mudança atualiza a renderização
   }, [graphWidth]);
 
+  useEffect(() => {
+   setAnnotations([])
+  }, [])
   return (
     <>
       {/* <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button> */}

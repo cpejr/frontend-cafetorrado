@@ -4,7 +4,6 @@ import saveMarks from './RequestHandler/SaveMarks';
 export default async function getChartParams(marks) {
   const RoastName = prompt('Digite o nome da sua torra');
   const chartParams = await setChartParams(RoastName);
-  console.log(chartParams);
   marks.forEach(async (mark) => {
     await saveMarks(mark, chartParams);
   });

@@ -24,8 +24,8 @@ export const ResultsRevision = () => {
       setMark([...annot]);
     }
   };
-
-  useEffect(() => console.log(mark), [mark]);
+  // CRIAR TORRA, PEGAR ID DA TORRA, SALVAR AS MARCAÇÕES NA TORRA, LIMPAR OS ESTADOS, REDIRECIONAR O USUÁRIO
+  useEffect(() => { console.log(mark); }, [mark]);
 
   const { annotations } = window;
 
@@ -70,7 +70,7 @@ export const ResultsRevision = () => {
             "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
           </div>
         </div>
-        { /*eslint-disable */}
+        { /* eslint-disable */}
         {/* LIMPAR O ANNOTATIONS STATE DO CONTEXT API QUANDO O USUÁRIO SALVAR OU APAGAR A TORRA, IMPEDIR QUE O USUÁRIO MUDE DE TELA */}
         <div className="save-name">
           {/* <input type="text" name="name" /> */}

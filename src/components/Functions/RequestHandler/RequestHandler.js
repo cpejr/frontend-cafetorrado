@@ -17,17 +17,16 @@ const disconnectWifi = () => { api.get('/disconnectWifi'); };
 const connectWifi = () => { api.get('connectWifi'); };
 
 const setChartParams = async (RoastName) => {
+  // eslint-disable-next-line no-useless-catch
   try {
     const parameters = {
       name: RoastName,
       description: 'Uma descrição legal',
     };
-    const responseChartPararams = await api.post('/setChartParams', parameters);
+    return await api.post('/setChartParams', parameters);
   } catch (error) {
-    console.warn(error);
-    alert(error.message);
+    throw error;
   }
-  return responseChartPararams.data;
 };
 
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };

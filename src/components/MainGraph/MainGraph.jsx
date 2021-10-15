@@ -143,7 +143,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
 
   useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
     const annot = [];
-
+    /* VERIFICAR SE O CRACK JÁ EXISTE ANTES DE EMPURRAR PARA O VETOR*/
     if (crackTime) {
       annot.push({ // adiciona no vetor caso ocorra click
         drawTime: 'afterDatasetsDraw',
@@ -177,7 +177,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
       },
     });
 
-    (annotations.length <= 6) && setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
+    (annotations.length <= 5) && setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
   }, [markTime, crackTime]);
 
   useEffect(() => {
@@ -202,9 +202,6 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
     mainGraph.current.chartInstance.update(); // a cada mudança atualiza a renderização
   }, [graphWidth]);
 
-  useEffect(() => {
-   setAnnotations([])
-  }, [])
   return (
     <>
       {/* <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button> */}

@@ -70,6 +70,8 @@ export const ResultsRevision = () => {
             "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
           </div>
         </div>
+        { /*eslint-disable */}
+        {/* LIMPAR O ANNOTATIONS STATE DO CONTEXT API QUANDO O USUÁRIO SALVAR OU APAGAR A TORRA, IMPEDIR QUE O USUÁRIO MUDE DE TELA */}
         <div className="save-name">
           {/* <input type="text" name="name" /> */}
           <button type="button" onClick={(e) => { e.preventDefault(); getChartParams(mark); }}>

@@ -29,6 +29,21 @@ const setChartParams = async (RoastName) => {
   }
 };
 
+const saveMarks = async (mark, chartParams) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    // O amoras nao conseguiu entrar nessa função pra usar esse console.log
+    console.log(chartParams, 'aaaaaaaa');
+    // se der bao a gnt pega o roast_id e pronto, ta salvando beleza. AMEM!!!
+    const markParams = {
+      mark_name: mark,
+    };
+    return await api.post(`/saveMark/${roast_id}`, markParams);
+  } catch (error) {
+    throw error;
+  }
+};
+
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
 
 const deleteSpecificRoast = (roast_id) => { api.delete(`/deleteSpecificRoast/${roast_id}`); };
@@ -82,5 +97,5 @@ const sendUploadFile = (file) => {
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
-  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile,
+  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, saveMarks,
 };

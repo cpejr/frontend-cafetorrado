@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
 import { set } from 'date-fns/esm';
+import { Prompt } from 'react-router';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
 import getChartParams from '../../components/Functions/getChartParams';
 import { useGlobalContext } from '../../Context/GlobalContext';
 
 export const ResultsRevision = () => {
+  const history = useHistory();
+  const [isNull, setIsNull] = useState([]);
   // Guarda os valores digitados nos inputs
   const MAX_MARKS = 5;
   const [mark, setMark] = useState([]); // strings dos marcadores
@@ -25,7 +29,9 @@ export const ResultsRevision = () => {
     }
   };
   // CRIAR TORRA, PEGAR ID DA TORRA, SALVAR AS MARCAÇÕES NA TORRA, LIMPAR OS ESTADOS, REDIRECIONAR O USUÁRIO
-  useEffect(() => { console.log(mark); }, [mark]);
+  useEffect(() => {
+    console.log(mark);
+  }, [mark]);
 
   const { annotations } = window;
 
@@ -73,13 +79,19 @@ export const ResultsRevision = () => {
         { /* eslint-disable */}
         {/* LIMPAR O ANNOTATIONS STATE DO CONTEXT API QUANDO O USUÁRIO SALVAR OU APAGAR A TORRA, IMPEDIR QUE O USUÁRIO MUDE DE TELA */}
         <div className="save-name">
+          {/* em teoria o Prompt vai verificar se isNull!='NAO' é verdadeiro - ou seja, não clicou em salvar ou 
+          excluir ainda - se for true, vai exibir a mensagem antes de sair da página, NAO SEI SE FUNCIONA AINDA */}
+          <Prompt
+            when={isNull!='NAO'}
+            message='Voce não salvou a torra, se não salvar ela será excluida, tem certeza que quer sair?'
+          />
           {/* <input type="text" name="name" /> */}
-          <button type="button" onClick={(e) => { e.preventDefault(); getChartParams(mark); }}>
+          <button type="button" onClick={(e) => { e.preventDefault(); setIsNull='NAO'; getChartParams(mark); history.push('/RecipeSelection')}}>
             <AddToPhotosIcon />
             {' '}
             Salvar
           </button>
-          <button type="button" onClick={deleteLastRoast}>
+          <button type="button" onClick={() => {deleteLastRoast; setIsNull='NAO'; history.push('/Home')}}>
             <CloseIcon />
             Excluir
           </button>

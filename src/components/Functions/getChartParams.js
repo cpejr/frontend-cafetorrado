@@ -7,10 +7,10 @@ export default async function getChartParams(marks) {
     // podemos criar um input para o nome da torra antes, para tirar esse prompt q o amoras nao gostou (nem eu)
     const RoastName = prompt('Digite o nome da sua torra');
     // temos q ver oq tem no chartParams pra poder pegar o id da torra criada agora com o setChartParams
-    const chartParams = await setChartParams(RoastName);
-    cosole.log(chartParams, 'eeeeiiiitaaaaaaa choooorooooooo');
+    const roastId = await setChartParams(RoastName);
+    console.log(roastId, 'eeeeiiiitaaaaaaa choooorooooooo');
     marks.forEach(async (mark) => {
-      await saveMarks(mark, chartParams);
+      await saveMarks(mark, roastId);
     });
     /* OS ESTADOS GLOBAIS DEVEM SER LIMPOS E O USUARIO DEVE SER REDIRECIONADO PARA A PÁGINA HOME */
   } catch (error) {

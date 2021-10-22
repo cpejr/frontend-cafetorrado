@@ -23,22 +23,22 @@ const setChartParams = async (RoastName) => {
       name: RoastName,
       description: 'Uma descrição legal',
     };
-    return await api.post('/setChartParams', parameters);
+    const result = await api.post('/setChartParams', parameters);
+    console.log(result);
+    // const { roast_id } = result.data;
+    return (result);
   } catch (error) {
     throw error;
   }
 };
 
-const saveMarks = async (mark, chartParams) => {
+const saveMarks = async (mark, roastId) => {
   // eslint-disable-next-line no-useless-catch
   try {
-    // O amoras nao conseguiu entrar nessa função pra usar esse console.log
-    console.log(chartParams, 'aaaaaaaa');
-    // se der bao a gnt pega o roast_id e pronto, ta salvando beleza. AMEM!!!
     const markParams = {
       mark_name: mark,
     };
-    return await api.post(`/saveMark/${roast_id}`, markParams);
+    return await api.post(`/saveMark/${roastId}`, markParams);
   } catch (error) {
     throw error;
   }

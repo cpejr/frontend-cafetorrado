@@ -4,6 +4,7 @@ import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
 import { set } from 'date-fns/esm';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Prompt } from 'react-router';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
@@ -81,17 +82,17 @@ export const ResultsRevision = () => {
         <div className="save-name">
           {/* em teoria o Prompt vai verificar se isNull!='NAO' é verdadeiro - ou seja, não clicou em salvar ou 
           excluir ainda - se for true, vai exibir a mensagem antes de sair da página, NAO SEI SE FUNCIONA AINDA */}
-          <Prompt
-            when={isNull!='NAO'}
+          {/* <Prompt
+            when={isNull != 'NAO'}
             message='Voce não salvou a torra, se não salvar ela será excluida, tem certeza que quer sair?'
-          />
+          /> */}
           {/* <input type="text" name="name" /> */}
-          <button type="button" onClick={(e) => { e.preventDefault(); setIsNull='NAO'; getChartParams(mark); history.push('/RecipeSelection')}}>
+          <button type="button" onClick={(e) => { e.preventDefault(); getChartParams(mark) }}>
             <AddToPhotosIcon />
             {' '}
             Salvar
           </button>
-          <button type="button" onClick={() => {deleteLastRoast; setIsNull='NAO'; history.push('/Home')}}>
+          <button type="button" onClick={() => { deleteLastRoast; setIsNull = 'NAO'; history.push('/Home') }}>
             <CloseIcon />
             Excluir
           </button>

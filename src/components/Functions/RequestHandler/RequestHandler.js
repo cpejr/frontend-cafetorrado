@@ -24,9 +24,7 @@ const setChartParams = async (RoastName) => {
       description: 'Uma descrição legal',
     };
     const result = await api.post('/setChartParams', parameters);
-    console.log(result);
-    // const { roast_id } = result.data;
-    return (result);
+    return result.data;
   } catch (error) {
     throw error;
   }

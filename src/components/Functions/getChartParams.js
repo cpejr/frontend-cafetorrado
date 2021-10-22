@@ -12,9 +12,12 @@ export default async function getChartParams(marks) {
     marks.forEach(async (mark) => {
       await saveMarks(mark, roastId);
     });
+
+    return true;
     /* OS ESTADOS GLOBAIS DEVEM SER LIMPOS E O USUARIO DEVE SER REDIRECIONADO PARA A PÁGINA HOME */
   } catch (error) {
-    throw error;
+    // throw error;
+    return false;
   }
 }
 

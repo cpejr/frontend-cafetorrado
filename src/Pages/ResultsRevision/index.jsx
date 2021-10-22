@@ -80,19 +80,36 @@ export const ResultsRevision = () => {
         { /* eslint-disable */}
         {/* LIMPAR O ANNOTATIONS STATE DO CONTEXT API QUANDO O USUÁRIO SALVAR OU APAGAR A TORRA, IMPEDIR QUE O USUÁRIO MUDE DE TELA */}
         <div className="save-name">
-          {/* em teoria o Prompt vai verificar se isNull!='NAO' é verdadeiro - ou seja, não clicou em salvar ou 
+          {/* em teoria o Prompt vai verificar se isNull!='NAO' é verdadeiro - ou seja, não clicou em salvar ou
           excluir ainda - se for true, vai exibir a mensagem antes de sair da página, NAO SEI SE FUNCIONA AINDA */}
           {/* <Prompt
             when={isNull != 'NAO'}
             message='Voce não salvou a torra, se não salvar ela será excluida, tem certeza que quer sair?'
           /> */}
           {/* <input type="text" name="name" /> */}
-          <button type="button" onClick={(e) => { e.preventDefault(); getChartParams(mark) }}>
+          <button type="button" onClick={async (e) => {
+            e.preventDefault();
+
+            const isOk = await getChartParams(mark);
+
+            setTimeout(() => {
+              if (isOk) {
+                alert("Salvo com sucesso!");
+
+              } else alert("Ocorreu um erro!");
+            }, 1000);
+
+            if (isOk) {
+              setter([]);
+              history.push("/RecipeSelection");
+            }
+
+          }}>
             <AddToPhotosIcon />
             {' '}
             Salvar
           </button>
-          <button type="button" onClick={() => { deleteLastRoast; setIsNull = 'NAO'; history.push('/Home') }}>
+          <button type="button" onClick={() => { deleteLastRoast(); setter([]); history.push('/') }}>
             <CloseIcon />
             Excluir
           </button>

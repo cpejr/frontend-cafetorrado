@@ -69,33 +69,34 @@ const DrawerMenu = ({ drawerOpen }) => {
   ];
   const { toggleTheme } = useContext(ThemeContext);
 
-  const VerifyModeDrawer = () => {
-    if ( === 'manual') {
-      history.push('/manual');
-      sendESPData({ MdlManChr: 1 });
-    } else {
-      history.push('/automatic');
-      sendESPData({ MdlManChr: 2 });
-    }
-  };
-
   const history = useHistory();
   return (
     <List className="menu-bar">
       {menuItens.map(({ title, icon, route }) => (
-        <ListItem button key={title} onClick={VerifyModeDrawer}>
+        <ListItem
+          button
+          key={title}
+          onClick={() => {
+            if (route === 'manual') {
+              sendESPData({ MdlManChr: 1 });
+            } else if (route === 'automatic') {
+              sendESPData({ MdlManChr: 2 });
+            }
+            history.push(`/${route}`);
+          }}
+        >
           <ListItemIcon className="menu-icon">{icon}</ListItemIcon>
           <ListItemText className="menu-text" primary={title} />
         </ListItem>
       ))}
 
       <ListItem button onClick={toggleTheme}>
-        <ListItemIcon className="menu-icon"><Brightness6Icon /></ListItemIcon>
+        <ListItemIcon className="menu-icon">
+          <Brightness6Icon />
+        </ListItemIcon>
         <ListItemText className="menu-text" primary="Temas" />
       </ListItem>
-
     </List>
-
   );
 };
 

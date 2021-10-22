@@ -17,19 +17,8 @@ const Home = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
 
-  // history.push('/manual',{state: "manual"})
-  // Verifica o tipo de requisição
-  const VerifyMode = () => {
-    if (props.location.state === 'manual') {
-      history.push('/recipeSelection', 'manual');
-      sendESPData({MdlManChr: 1});
-    } else if(props.location.state === 'automatic'){
-      history.push('/recipeSelection', 'automatic');
-      sendESPData({MdlManChr: 2});
-    }else {
-      history.push('/home');
-    }
-  };
+  const sendManual = () => history.push('/RecipeSelection', 'manual');
+  const sendAutomatic = () => history.push('/RecipeSelection', 'automatic');
 
   return (
     <div className="container">
@@ -37,13 +26,13 @@ const Home = (props) => {
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">
           <div className="automatic-section">
-            <button type="button" className="upper-button" onClick={VerifyMode}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendAutomatic(); }}>
               <MdFlashAuto />
               <p>Torra automática</p>
             </button>
           </div>
           <div className="manual-section">
-            <button type="button" className="upper-button" onClick={VerifyMode}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendManual(); }}>
               <GiHand />
               <p>Torra manual</p>
             </button>
@@ -65,8 +54,8 @@ const Home = (props) => {
           </div>
 
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

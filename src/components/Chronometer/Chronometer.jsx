@@ -18,9 +18,9 @@ function Chronometer({ setter }) {
   return (
     <div className="chronometer-container">
       <div id="buttons">
-        <button id="change" type="button" onClick={() => { getServerData(); setter(true); }}>
+        {/* <button id="change" type="button" onClick={() => { getServerData(); setter(true); }}>
           Iniciar
-        </button>
+        </button> */}
         <button id="change" type="button" onClick={() => { disconnectData(); history.push({ pathname: '/ResultsRevision' }); }}>
           Review
         </button>

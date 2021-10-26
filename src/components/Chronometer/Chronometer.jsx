@@ -6,7 +6,7 @@ import { useGlobalContext } from '../../Context/GlobalContext';
 import './Chronometer.css';
 
 function Chronometer({ setter }) {
-  const { marksGraph, setter: setMarks } = useGlobalContext();
+  const { marksGraph, setter: setMarks, setClickedCrack } = useGlobalContext();
   const history = useHistory();
   const [second, setSecond] = useState(0);
   const [minute, setMinute] = useState(0);
@@ -21,7 +21,7 @@ function Chronometer({ setter }) {
         <button id="change" type="button" onClick={() => { getServerData(); setter(true); }}>
           Iniciar
         </button>
-        <button id="change" type="button" onClick={() => { disconnectData(); history.push({ pathname: '/ResultsRevision' }); }}>
+        <button id="change" type="button" onClick={() => { disconnectData(); setClickedCrack(false); history.push({ pathname: '/ResultsRevision' }); }}>
           Review
         </button>
       </div>

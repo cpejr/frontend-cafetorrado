@@ -22,21 +22,14 @@ export const ResultsRevision = () => {
   const handleInput = (e) => {
     const annot = mark;
 
-    console.log(e.target.name);
     // requisição do backend
     if (mark.length <= MAX_MARKS) {
       annot[e.target.name] = e.target.value;
       setMark([...annot]);
     }
   };
-  // CRIAR TORRA, PEGAR ID DA TORRA, SALVAR AS MARCAÇÕES NA TORRA, LIMPAR OS ESTADOS, REDIRECIONAR O USUÁRIO
-  useEffect(() => {
-    console.log(mark);
-  }, [mark]);
 
   const { annotations } = window;
-
-  useEffect(() => console.log({ annotations }), [{ annotations }]);
 
   return (
     <div className="content">

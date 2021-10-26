@@ -25,13 +25,6 @@ function Automatic() {
     } else setColorMixer('#202020');
   };
 
-  useEffect(() => {
-    console.log(arrayAnnotation);
-  }, [arrayAnnotation]);
-
-  window.abacaxi = 'pera';
-  console.log(window.abacaxi);
-
   return (
     <div className="tela-container">
       <div className="upper-part">

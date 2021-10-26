@@ -89,7 +89,11 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
-  const { marksGraph: annotations, setter: setAnnotations } = useGlobalContext();
+  const {
+    marksGraph: annotations,
+    setter: setAnnotations,
+    setClickedCrack,
+  } = useGlobalContext();
 
   useEffect(() => {
     socket.on('realData', (data) => {
@@ -121,31 +125,22 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
     }
   };
 
-  function markIt() {
+  const markIt = () => {
     if (markTime && mainGraph.current) {
       setMarkTime(
         (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
       );
     }
   }
-  useEffect(() => { // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
-    window.crackIt = crackIt;
-  }, [crackTime]);
 
+  // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
   useEffect(() => {
-    window.markIt = markIt;
+    window.crackIt = crackIt;
 
-    if (markTime.length > MAX_MARKS) { setDisable(true); } // desabilita click do botão (ainda não implementado no onClick do marcador)
-  }, [markTime]);
+    let auxArray = [];
 
-  // eslint-disable-next-line
-  const createLabelForMarkdown = (input) => `${Math.round(input)}`
-
-  useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
-    const annot = [];
-    /* VERIFICAR SE O CRACK JÁ EXISTE ANTES DE EMPURRAR PARA O VETOR*/
     if (crackTime) {
-      annot.push({ // adiciona no vetor caso ocorra click
+      auxArray.push({ // adiciona no vetor caso ocorra click
         drawTime: 'afterDatasetsDraw',
         type: 'line',
         mode: 'vertical',
@@ -160,25 +155,52 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
           position: 'bottom',
         },
       });
-    }
-    annot.push({ // retorna as marcações do markTime
-      drawTime: 'afterDatasetsDraw',
-      type: 'line',
-      mode: 'vertical',
-      scaleID: 'x-axis-0',
-      value: markTime[markTime.length - 1],
-      borderWidth: 2,
-      borderColor: 'yellow',
-      label: {
-        fontFamily: 'quicksand',
-        content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
-        enabled: true,
-        position: 'bottom',
-      },
-    });
 
-    (annotations.length <= 5) && setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
-  }, [markTime, crackTime]);
+      setCrackTime(0);
+      setClickedCrack(true); // disabilita botão crack
+
+      // guarda os dados do vetor annot e no vetor anottations
+      if (annotations.length < 6 && auxArray.length > 0) {
+        setAnnotations((prev) => [...prev, ...auxArray]);
+      }
+    }
+  }, [crackTime]);
+
+  useEffect(() => {
+    window.markIt = markIt;
+
+    let auxArray = [];
+
+    if (markTime.length > 0) {
+      auxArray.push({ // retorna as marcações do markTime
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: markTime[markTime.length - 1],
+        borderWidth: 2,
+        borderColor: 'yellow',
+        label: {
+          fontFamily: 'quicksand',
+          content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
+          enabled: true,
+          position: 'bottom',
+        },
+      });
+
+      // guarda os dados do vetor annot e no vetor anottations
+      if (
+        annotations.length < 6 && // maximo 6 no total
+        auxArray.length > 0 &&
+        markTime.length <= 5 // maximo 5 mark it
+      ) {
+        setAnnotations((prev) => [...prev, ...auxArray]);
+      }
+    }
+  }, [markTime]);
+
+  // eslint-disable-next-line
+  const createLabelForMarkdown = (input) => `${Math.round(input)}`
 
   useEffect(() => {
     window.annotations = annotations;

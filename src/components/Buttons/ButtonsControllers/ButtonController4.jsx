@@ -14,13 +14,16 @@ function ButtonController1() {
         } else setColorMixer('#202020');
     };
 
+    const disabled = marksGraph.filter((mark) => !mark.isCrack).length >= 5;
+
     return (
         <div>
             <button
-              disabled={marksGraph.length >= 6}
+              disabled={disabled}
               className="power-1"
               type="button"
               onClick={() => window.markIt()}
+              style={{ backgroundColor: disabled ? '#FF000077' : undefined }}
             >
                 <BiCurrentLocation size={35} color={colorMixer} />
             </button>

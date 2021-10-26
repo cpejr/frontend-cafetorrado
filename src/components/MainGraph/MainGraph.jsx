@@ -92,7 +92,6 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   const {
     marksGraph: annotations,
     setter: setAnnotations,
-    setClickedCrack,
   } = useGlobalContext();
 
   useEffect(() => {
@@ -154,10 +153,10 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
           enabled: true,
           position: 'bottom',
         },
+        isCrack: true,
       });
 
       setCrackTime(0);
-      setClickedCrack(true); // disabilita botão crack
 
       // guarda os dados do vetor annot e no vetor anottations
       if (annotations.length < 6 && auxArray.length > 0) {
@@ -186,6 +185,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
           enabled: true,
           position: 'bottom',
         },
+        isCrack: false,
       });
 
       // guarda os dados do vetor annot e no vetor anottations

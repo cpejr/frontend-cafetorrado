@@ -16,16 +16,16 @@ export const ResultsRevision = () => {
   const [isNull, setIsNull] = useState([]);
   // Guarda os valores digitados nos inputs
   const MAX_MARKS = 5;
-  const [mark, setMark] = useState([]); // strings dos marcadores
+  const [markNames, setMarkNames] = useState([]); // strings dos marcadores
   const { marksGraph, setter } = useGlobalContext();
 
   const handleInput = (e) => {
-    const annot = mark;
+    const annot = markNames;
 
     // requisição do backend
-    if (mark.length <= MAX_MARKS) {
+    if (markNames.length <= MAX_MARKS) {
       annot[e.target.name] = e.target.value;
-      setMark([...annot]);
+      setMarkNames([...annot]);
     }
   };
 
@@ -60,11 +60,11 @@ export const ResultsRevision = () => {
               display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '10px',
             }}
             >
-              <input className="Mark" name="0" placeholder="Marcador 1" type="text" value={mark[0]} onChange={handleInput} />
-              <input className="Mark" name="1" placeholder="Marcador 2" type="text" value={mark[1]} onChange={handleInput} />
-              <input className="Mark" name="2" placeholder="Marcador 3" type="text" value={mark[2]} onChange={handleInput} />
-              <input className="Mark" name="3" placeholder="Marcador 4" type="text" value={mark[3]} onChange={handleInput} />
-              <input className="Mark" name="4" placeholder="Marcador 5" type="text" value={mark[4]} onChange={handleInput} />
+              <input className="Mark" name="0" placeholder="Marcador 1" type="text" value={markNames[0]} onChange={handleInput} />
+              <input className="Mark" name="1" placeholder="Marcador 2" type="text" value={markNames[1]} onChange={handleInput} />
+              <input className="Mark" name="2" placeholder="Marcador 3" type="text" value={markNames[2]} onChange={handleInput} />
+              <input className="Mark" name="3" placeholder="Marcador 4" type="text" value={markNames[3]} onChange={handleInput} />
+              <input className="Mark" name="4" placeholder="Marcador 5" type="text" value={markNames[4]} onChange={handleInput} />
             </div>
             {/* <button style={{display: "flex", flexDirection:
             "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
@@ -82,8 +82,16 @@ export const ResultsRevision = () => {
           {/* <input type="text" name="name" /> */}
           <button type="button" onClick={async (e) => {
             e.preventDefault();
+            let aux=[];
+            marksGraph.forEach((mark, index) => {
+              aux.push({
+                mark_name: markNames[index],
+                mark_value: mark.value,
+                is_crack: mark.isCrack,
+              });
+            });
 
-            const isOk = await getChartParams(mark);
+            const isOk = await getChartParams(aux);
 
             setTimeout(() => {
               if (isOk) {

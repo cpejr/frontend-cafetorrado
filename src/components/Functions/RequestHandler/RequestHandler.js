@@ -33,10 +33,12 @@ const setChartParams = async (RoastName) => {
 const saveMarks = async (mark, roastId) => {
   // eslint-disable-next-line no-useless-catch
   try {
-    const markParams = {
-      mark_name: mark,
-    };
-    return await api.post(`/saveMark/${roastId}`, markParams);
+    // const markParams = {
+    //   mark_name: mark,
+    //   mark_value: value,
+    //   is_crack: isCrack,
+    // };
+    return await api.post(`/saveMark/${roastId}`, mark);
   } catch (error) {
     throw error;
   }

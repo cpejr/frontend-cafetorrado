@@ -1,5 +1,4 @@
 import { setChartParams, saveMarks } from './RequestHandler/RequestHandler';
-
 // trocar getChartParams por setMarksParams
 export default async function getChartParams(marks) {
   // eslint-disable-next-line no-useless-catch

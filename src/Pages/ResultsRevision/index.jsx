@@ -29,6 +29,43 @@ export const ResultsRevision = () => {
     }
   };
 
+  const handleSave = async (e) => {
+    e.preventDefault();
+    const marksToSave = [];
+    // filtra o crack fora
+    const marksWithoutCrack = marksGraph.filter((mark) => {
+      if (mark.isCrack) {
+        marksToSave.push({
+          mark_name: 'CRACK',
+          mark_value: mark.value,
+          is_crack: mark.isCrack,
+        });
+      }
+      return !mark.isCrack;
+    });
+
+    marksWithoutCrack.forEach((mark, index) => {
+      marksToSave.push({
+        mark_name: markNames[index] ?? `marcador ${index + 1}`,
+        mark_value: mark.value,
+        is_crack: mark.isCrack,
+      });
+    });
+
+    const isOk = await getChartParams(marksToSave);
+
+    setTimeout(() => {
+      if (isOk) {
+        alert('Salvo com sucesso!');
+      } else alert('Ocorreu um erro!');
+    }, 1000);
+
+    if (isOk) {
+      setter([]);
+      history.push('/RecipeSelection');
+    }
+  };
+
   const { annotations } = window;
 
   return (
@@ -80,42 +117,7 @@ export const ResultsRevision = () => {
             message='Voce não salvou a torra, se não salvar ela será excluida, tem certeza que quer sair?'
           /> */}
           {/* <input type="text" name="name" /> */}
-          <button type="button" onClick={async (e) => {
-            e.preventDefault();
-            let aux = [];
-            const marksWithout = marksGraph.filter((mark) => {
-              if (mark.isCrack) {
-                aux.push({
-                  mark_name: "CRACK",
-                  mark_value: mark.value,
-                  is_crack: mark.isCrack,
-                });
-              }
-              return !mark.isCrack
-            })
-            marksWithout.forEach((mark, index) => {
-              aux.push({
-                mark_name: markNames[index] ?? `marcador ${index + 1}`,
-                mark_value: mark.value,
-                is_crack: mark.isCrack,
-              });
-            });
-
-            const isOk = await getChartParams(aux);
-
-            setTimeout(() => {
-              if (isOk) {
-                alert("Salvo com sucesso!");
-
-              } else alert("Ocorreu um erro!");
-            }, 1000);
-
-            if (isOk) {
-              setter([]);
-              history.push("/RecipeSelection");
-            }
-
-          }}>
+          <button type="button" onClick={handleSave}>
             <AddToPhotosIcon />
             {' '}
             Salvar

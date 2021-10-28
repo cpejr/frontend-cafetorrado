@@ -44,6 +44,16 @@ const saveMarks = async (mark, roastId) => {
   }
 };
 
+const getMarksByRoastId = async (roastId) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await api.get(`/marks/${roastId}`);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
 
 const deleteSpecificRoast = (roast_id) => { api.delete(`/deleteSpecificRoast/${roast_id}`); };
@@ -97,5 +107,5 @@ const sendUploadFile = (file) => {
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
-  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, saveMarks,
+  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, saveMarks, getMarksByRoastId,
 };

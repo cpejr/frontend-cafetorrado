@@ -82,10 +82,20 @@ export const ResultsRevision = () => {
           {/* <input type="text" name="name" /> */}
           <button type="button" onClick={async (e) => {
             e.preventDefault();
-            let aux=[];
-            marksGraph.forEach((mark, index) => {
+            let aux = [];
+            const marksWithout = marksGraph.filter((mark) => {
+              if (mark.isCrack) {
+                aux.push({
+                  mark_name: "CRACK",
+                  mark_value: mark.value,
+                  is_crack: mark.isCrack,
+                });
+              }
+              return !mark.isCrack
+            })
+            marksWithout.forEach((mark, index) => {
               aux.push({
-                mark_name: markNames[index],
+                mark_name: markNames[index] ?? `marcador ${index + 1}`,
                 mark_value: mark.value,
                 is_crack: mark.isCrack,
               });

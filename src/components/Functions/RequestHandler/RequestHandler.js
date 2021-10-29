@@ -62,7 +62,6 @@ const getUniqueRoastData = async (roast_id) => {
   const result = await api.get(`/getUniqueRoastData/${roast_id}`);
   return result;
 };
-
 const sendESPData = (parameters) => {
   // eslint-disable-next-line
   for (const key in parameters) {
@@ -76,6 +75,12 @@ const sendESPData = (parameters) => {
 
 const sendStaticParameters = (roast_id) => {
   const result = api.post(`/sendStaticLUTs/${roast_id}`);
+  return result;
+};
+
+// requisição para enviar o modo de torra para o back
+const sendMachineParams = () => {
+  const result = api.post('/sendMachineParameters');
   return result;
 };
 

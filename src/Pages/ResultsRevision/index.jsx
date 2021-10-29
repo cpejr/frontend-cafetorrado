@@ -16,9 +16,6 @@ const [mark, setMark] = useState([]); // strings dos marcadores
 
 const handleInput = (e) => {
   let annot = mark;
-
-  console.log(e.target.name)
-  // requisição do backend
   if(mark.length <= MAX_MARKS){
   annot[e.target.name] = e.target.value;
   setMark([...annot]);

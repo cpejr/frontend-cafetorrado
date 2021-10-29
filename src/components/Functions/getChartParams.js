@@ -7,7 +7,6 @@ export default async function getChartParams(marks) {
     marks.forEach(async (mark) => {
       await saveMarks(mark, roastId);
     });
-
     return true;
   } catch (error) {
     return false;

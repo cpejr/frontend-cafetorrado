@@ -13,6 +13,9 @@ function Manual() {
   const [loaderStatus, setLoaderStatus] = useState(false);
   return (
     <div className="tela-container">
+      <div className="title">
+        Modo Manual
+      </div>
       <div className="upper-part">
         <Loader status={loaderStatus} />
         <MainGraph />

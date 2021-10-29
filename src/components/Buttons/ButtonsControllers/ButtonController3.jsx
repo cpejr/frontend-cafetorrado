@@ -1,11 +1,9 @@
 import { React, useState } from 'react';
 import { GiCoffeeBeans } from 'react-icons/gi';
-import { useGlobalContext } from '../../../Context/GlobalContext';
 import './ButtonController1.css';
 
 function ButtonController1() {
   const [colorMixer, setColorMixer] = useState('#202020');
-  const { marksGraph } = useGlobalContext();
 
   const changeColorMixer = () => {
     if (colorMixer === '#202020') {
@@ -13,17 +11,9 @@ function ButtonController1() {
     } else setColorMixer('#202020');
   };
 
-  const disabled = marksGraph.filter((mark) => mark.isCrack).length >= 1;
-
   return (
     <div>
-      <button
-        disabled={disabled}
-        className="power-1"
-        type="button"
-        onClick={() => window.crackIt()}
-        style={{ backgroundColor: disabled ? '#FF000077' : undefined }}
-      >
+      <button className="power-1" type="button" onClick={() => window.crackIt()}>
         <GiCoffeeBeans size={35} color={colorMixer} />
       </button>
     </div>

@@ -70,8 +70,20 @@
   text-align: center;
 }
 
-.button {
+.button1 {
   width: 33% !important;
+  flex-direction: column;
+}
+.button2 {
+  width: 33% !important;
+  flex-direction: column;
+}
+.button3 {
+  width: 33% !important;
+  flex-direction: column;
+}
+.button4{
+  width: 33% ;
   flex-direction: column;
 }
 

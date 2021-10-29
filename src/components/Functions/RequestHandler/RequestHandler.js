@@ -17,41 +17,12 @@ const disconnectWifi = () => { api.get('/disconnectWifi'); };
 const connectWifi = () => { api.get('connectWifi'); };
 
 const setChartParams = async (RoastName) => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const parameters = {
-      name: RoastName,
-      description: 'Uma descrição legal',
-    };
-    const result = await api.post('/setChartParams', parameters);
-    return result.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-const saveMarks = async (mark, roastId) => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    // const markParams = {
-    //   mark_name: mark,
-    //   mark_value: value,
-    //   is_crack: isCrack,
-    // };
-    return await api.post(`/saveMark/${roastId}`, mark);
-  } catch (error) {
-    throw error;
-  }
-};
-
-const getMarksByRoastId = async (roastId) => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const response = await api.get(`/marks/${roastId}`);
-    return response.data;
-  } catch (err) {
-    throw err;
-  }
+  const parameters = {
+    name: RoastName,
+    description: 'Uma descrição legal',
+  };
+  const result = await api.post('/setChartParams', parameters);
+  return result.data;
 };
 
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
@@ -62,7 +33,6 @@ const getUniqueRoastData = async (roast_id) => {
   const result = await api.get(`/getUniqueRoastData/${roast_id}`);
   return result;
 };
-
 const sendESPData = (parameters) => {
   // eslint-disable-next-line
   for (const key in parameters) {
@@ -76,6 +46,12 @@ const sendESPData = (parameters) => {
 
 const sendStaticParameters = (roast_id) => {
   const result = api.post(`/sendStaticLUTs/${roast_id}`);
+  return result;
+};
+
+// requisição para enviar o modo de torra para o back
+const sendMachineParams = () => {
+  const result = api.post('/sendMachineParameters');
   return result;
 };
 
@@ -107,5 +83,5 @@ const sendUploadFile = (file) => {
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
-  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, saveMarks, getMarksByRoastId,
+  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, sendMachineParams,
 };

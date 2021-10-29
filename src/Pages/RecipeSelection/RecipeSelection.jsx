@@ -7,15 +7,8 @@ import { TiDelete } from 'react-icons/ti';
 import { AiOutlineSelect } from 'react-icons/ai';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
 import {
-  getRoasts,
-  getUniqueRoastData,
-  sendStaticParameters,
-  deleteSpecificRoast,
-  sendESPData,
-  getMarksByRoastId,
+  getRoasts, getUniqueRoastData, sendStaticParameters, deleteSpecificRoast, sendESPData,
 } from '../../components/Functions/RequestHandler/RequestHandler';
-import { MainGraph } from '../../components/MainGraph/MainGraph';
-import { useGlobalContext } from '../../Context/GlobalContext';
 import './RecipeSelection.css';
 
 let dataToRender = null;
@@ -30,8 +23,6 @@ function RecipeSelection(props) {
   const [wrongData, setWrongData] = useState(true);
   const [DataIdSelected, setDataIdSelected] = useState({});
   const graphRef = useRef();
-
-  const { setter } = useGlobalContext();
 
   useEffect(async () => {
     const { data } = await getRoasts();
@@ -57,41 +48,14 @@ function RecipeSelection(props) {
     deleteSpecificRoast(DataIdSelected);
     window.location.reload();
   };
-  const handleSelect = async () => {
+  const handleSelect = () => {
     sendStaticParameters(DataIdSelected);
-
     if (props.location.state === 'manual') {
       history.push('/manual');
     } else {
       history.push('/automatic');
     }
   };
-
-  const renderMarksForRoast = async (roastId) => {
-    const marks = await getMarksByRoastId(roastId);
-
-    // formata para o gráfico
-    marks.forEach((mark, index) => {
-      const formattedMark = {
-        drawTime: 'afterDatasetsDraw',
-        type: 'line',
-        mode: 'vertical',
-        scaleID: 'x-axis-0',
-        borderWidth: 2,
-        borderColor: mark.is_crack ? 'darkorange' : 'yellow',
-        value: mark.mark_value,
-        label: {
-          fontFamily: 'quicksand',
-          content: mark.mark_name,
-          enabled: true,
-          position: 'bottom',
-        },
-      };
-      marks[index] = formattedMark;
-    });
-    setter(marks);
-  };
-
   return (
     (!roastData)
       ? (
@@ -111,7 +75,6 @@ function RecipeSelection(props) {
                   dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
                   setDataIdSelected(elem.roast_id);
                   updateData(graphRef, dataToRender);
-                  await renderMarksForRoast(elem.roast_id);
                 }}
               >
                 {elem.name}
@@ -120,7 +83,7 @@ function RecipeSelection(props) {
             ))}
           </div>
           <div className="graph">
-            <MainGraph />
+            <StaticRefGraph ref={graphRef} />
             <div>
               <button type="button" className="select-button" onClick={handleSelect}>
                 <p>Selecionar Torra</p>

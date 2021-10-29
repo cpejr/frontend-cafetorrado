@@ -67,12 +67,21 @@
   text-align: center;
 }
 
-.button {
+.button1 {
   font-size: 30px;
   width: 33% !important;
   flex-direction: column;
 }
-
+.button2 {
+  font-size: 30px;
+  width: 33% !important;
+  flex-direction: column;
+}
+.button3 {
+  font-size: 30px;
+  width: 33% !important;
+  flex-direction: column;
+}
 
 .buttons-title {
   width: 100%;

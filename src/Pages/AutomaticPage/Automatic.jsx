@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 import { GiHand } from 'react-icons/gi';
 import { useHistory } from 'react-router-dom';
 import Chronometer from '../../components/Chronometer/Chronometer';
@@ -6,8 +6,6 @@ import { MainGraph } from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
-import ButtonController4 from '../../components/Buttons/ButtonsControllers/ButtonController4';
-import ButtonRouter from '../../components/Buttons/ButtonsRouter/ButtonRouter';
 import './Automatic.css';
 import RealData from '../../components/Functions/DataHandler/DataHandler';
 import Loader from '../../components/Loader/loader';
@@ -16,28 +14,25 @@ import { sendESPData } from '../../components/Functions/RequestHandler/RequestHa
 function Automatic() {
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [colorMixer, setColorMixer] = useState('#202020');
-  const [arrayAnnotation, setArrayAnnotation] = useState([]);
-
   const history = useHistory();
   const changeColorMixer = () => {
     if (colorMixer === '#202020') {
       setColorMixer('#0029FF');
     } else setColorMixer('#202020');
   };
-
   return (
     <div className="tela-container">
       <div className="upper-part">
         <Loader status={loaderStatus} />
-        <MainGraph setter={setLoaderStatus} setArrayAnnotation={setArrayAnnotation} />
+        <MainGraph setter={setLoaderStatus} />
       </div>
       <div className="lower-part">
 
         <div className="control-buttons">
 
           <div className="buttons">
-            <div className="button">
-              <p className="fontColor">Manual</p>
+            <div className="button4">
+              <p>Manual</p>
               <button
                 className="power-1"
                 type="button"
@@ -51,26 +46,22 @@ function Automatic() {
                 <GiHand size={35} />
               </button>
             </div>
-            <div className="button">
+            <div className="button1">
               <p className="fontColor">Mexedor</p>
               <ButtonController1 />
             </div>
-            <div className="button">
+            <div className="button2">
               <p className="fontColor">Resfriador</p>
               <ButtonController2 />
             </div>
-            <div className="button">
+            <div className="button3">
               <p className="fontColor">Crack</p>
               <ButtonController3 />
-            </div>
-            <div className="button">
-              <p className="fontColor">Marcador</p>
-              <ButtonController4 />
             </div>
           </div>
         </div>
         <div className="time-chronometer">
-          <Chronometer setter={setLoaderStatus} arrayAnnotation={setArrayAnnotation} />
+          <Chronometer setter={setLoaderStatus} />
         </div>
         <div className="informations">
           <RealData />

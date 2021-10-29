@@ -14,6 +14,8 @@ import { MdFlashAuto, MdInput } from 'react-icons/md';
 import { GiHand } from 'react-icons/gi';
 import { FaHome } from 'react-icons/fa';
 import clsx from 'clsx';
+import { propTypes } from 'react-bootstrap/esm/Image';
+import { sendESPData } from '../Functions/RequestHandler/RequestHandler';
 import { ThemeContext } from '../../Context/ThemeContext';
 import './NewDrawer.css';
 
@@ -71,19 +73,30 @@ const DrawerMenu = ({ drawerOpen }) => {
   return (
     <List className="menu-bar">
       {menuItens.map(({ title, icon, route }) => (
-        <ListItem button key={title} onClick={() => history.push(`/${route}`)}>
+        <ListItem
+          button
+          key={title}
+          onClick={() => {
+            if (route === 'manual') {
+              sendESPData({ MdlManChr: 1 });
+            } else if (route === 'automatic') {
+              sendESPData({ MdlManChr: 2 });
+            }
+            history.push(`/${route}`);
+          }}
+        >
           <ListItemIcon className="menu-icon">{icon}</ListItemIcon>
           <ListItemText className="menu-text" primary={title} />
         </ListItem>
       ))}
 
       <ListItem button onClick={toggleTheme}>
-        <ListItemIcon className="menu-icon"><Brightness6Icon /></ListItemIcon>
+        <ListItemIcon className="menu-icon">
+          <Brightness6Icon />
+        </ListItemIcon>
         <ListItemText className="menu-text" primary="Temas" />
       </ListItem>
-
     </List>
-
   );
 };
 

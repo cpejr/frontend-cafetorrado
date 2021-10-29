@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -6,14 +5,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import { MdFlashAuto, MdInput } from 'react-icons/md';
 import { GiHand } from 'react-icons/gi';
 import { FiBook } from 'react-icons/fi';
+import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler';
 import { Modal } from './Modal/Modal';
-import { sendMachineParams } from '../../components/Functions/RequestHandler/RequestHandler.js';
-import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler.js';
 import './home.css';
 
 const wifiName = 'o nome vai aqui';
 
-const Home = (props) => {
+const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
 
@@ -22,17 +20,18 @@ const Home = (props) => {
 
   return (
     <div className="container">
+
       <div className="base">
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">
           <div className="automatic-section">
-            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendAutomatic(); }}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendManual(); }}>
               <MdFlashAuto />
               <p>Torra automática</p>
             </button>
           </div>
           <div className="manual-section">
-            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendManual(); }}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendAutomatic(); }}>
               <GiHand />
               <p>Torra manual</p>
             </button>
@@ -54,8 +53,8 @@ const Home = (props) => {
           </div>
 
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

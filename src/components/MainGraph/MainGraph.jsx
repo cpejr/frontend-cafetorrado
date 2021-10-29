@@ -5,6 +5,7 @@ import React, {
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
+import { useGlobalContext } from '../../Context/GlobalContext';
 import 'chartjs-plugin-annotation';
 
 const MAX_MARKS = 5;
@@ -79,17 +80,18 @@ const INITALLDATA = {
   ],
 };
 
-export const MainGraph = ({ setter }) => {
+export const MainGraph = ({ setter, setArrayAnnotation }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
+  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
-  const [markTime, setMarkTime] = useState([]); // para guardar as marcações
-  const [disable, setDisable] = useState(false); // para habilitar ou não o botão marcador
-
-  const [annotations, setAnnotations] = useState([]);
+  const {
+    marksGraph: annotations,
+    setter: setAnnotations,
+  } = useGlobalContext();
 
   useEffect(() => {
     socket.on('realData', (data) => {
@@ -107,41 +109,36 @@ export const MainGraph = ({ setter }) => {
 
     (!mainGraph.current.chartInstance) ? false
       : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
+        mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
+        mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
+        mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
+        mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
 
-      mainGraph.current.chartInstance.update());
+        mainGraph.current.chartInstance.update());
   }, [theme]);
 
-  const crackIt = () => setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+  const crackIt = () => {
+    if (setArrayAnnotation) {
+      setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
+    }
+  };
 
-  function markIt() {
+  const markIt = () => {
     if (markTime && mainGraph.current) {
       setMarkTime(
         (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
       );
     }
   }
-  useEffect(() => { // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
-    window.crackIt = crackIt;
-  }, [crackTime]);
 
+  // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
   useEffect(() => {
-    window.markIt = markIt;
+    window.crackIt = crackIt;
 
-    if (markTime.length > MAX_MARKS) { setDisable(true); } // desabilita click do botão (ainda não implementado no onClick do marcador)
-  }, [markTime]);
-
-  // eslint-disable-next-line
-  const createLabelForMarkdown = (input) => `${Math.round(input)}` 
-
-  useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
-    const annot = [];
+    let auxArray = [];
 
     if (crackTime) {
-      annot.push({ // adiciona no vetor caso ocorra click
+      auxArray.push({ // adiciona no vetor caso ocorra click
         drawTime: 'afterDatasetsDraw',
         type: 'line',
         mode: 'vertical',
@@ -155,26 +152,58 @@ export const MainGraph = ({ setter }) => {
           enabled: true,
           position: 'bottom',
         },
+        isCrack: true,
       });
-    }
-    annot.push({ // retorna as marcações do markTime
-      drawTime: 'afterDatasetsDraw',
-      type: 'line',
-      mode: 'vertical',
-      scaleID: 'x-axis-0',
-      value: markTime[markTime.length - 1],
-      borderWidth: 2,
-      borderColor: 'yellow',
-      label: {
-        fontFamily: 'quicksand',
-        content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
-        enabled: true,
-        position: 'bottom',
-      },
-    });
 
-    setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
-  }, [markTime, crackTime]);
+      setCrackTime(0);
+
+      // guarda os dados do vetor annot e no vetor anottations
+      if (annotations.length < 6 && auxArray.length > 0) {
+        setAnnotations((prev) => [...prev, ...auxArray]);
+      }
+    }
+  }, [crackTime]);
+
+  useEffect(() => {
+    window.markIt = markIt;
+
+    let auxArray = [];
+
+    if (markTime.length > 0) {
+      auxArray.push({ // retorna as marcações do markTime
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: markTime[markTime.length - 1],
+        borderWidth: 2,
+        borderColor: 'yellow',
+        label: {
+          fontFamily: 'quicksand',
+          content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
+          enabled: true,
+          position: 'bottom',
+        },
+        isCrack: false,
+      });
+
+      // guarda os dados do vetor annot e no vetor anottations
+      if (
+        annotations.length < 6 && // maximo 6 no total
+        auxArray.length > 0 &&
+        markTime.length <= 5 // maximo 5 mark it
+      ) {
+        setAnnotations((prev) => [...prev, ...auxArray]);
+      }
+    }
+  }, [markTime]);
+
+  // eslint-disable-next-line
+  const createLabelForMarkdown = (input) => `${Math.round(input)}`
+
+  useEffect(() => {
+    window.annotations = annotations;
+  }, [annotations]);
 
   useEffect(() => {
     function listener() {

@@ -5,7 +5,7 @@ import { MainGraph } from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
 import ButtonController2 from '../../components/Buttons/ButtonsControllers/ButtonController2';
 import ButtonController3 from '../../components/Buttons/ButtonsControllers/ButtonController3';
-import ButtonController4 from '../../components/Buttons/ButtonsControllers/ButtonsController4';
+import ButtonController4 from '../../components/Buttons/ButtonsControllers/ButtonController4';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import Loader from '../../components/Loader/loader';
 import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler';
@@ -23,19 +23,19 @@ function Manual() {
         {/* } <RealData /> */}
         <div className="control-buttons">
           <div className="buttons">
-            <div className="button1">
+            <div className="button">
               <p>Mexedor</p>
               <ButtonController1 />
             </div>
-            <div className="button2">
+            <div className="button">
               <p>Resfriador</p>
               <ButtonController2 />
             </div>
-            <div className="button3">
+            <div className="button">
               <p>Crack</p>
               <ButtonController3 />
             </div>
-            <div className="button4">
+            <div className="button">
               <p>Marcador</p>
               <ButtonController4 />
             </div>

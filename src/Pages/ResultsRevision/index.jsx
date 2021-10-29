@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Prompt } from 'react-router-dom';
 import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
-import { set } from 'date-fns/esm';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Prompt } from 'react-router';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
 import getChartParams from '../../components/Functions/getChartParams';
@@ -13,8 +10,6 @@ import { useGlobalContext } from '../../Context/GlobalContext';
 
 export const ResultsRevision = () => {
   const history = useHistory();
-  const [isNull, setIsNull] = useState([]);
-  // Guarda os valores digitados nos inputs
   const MAX_MARKS = 5;
   const [markNames, setMarkNames] = useState([]); // strings dos marcadores
   const { marksGraph, setter } = useGlobalContext();
@@ -103,26 +98,15 @@ export const ResultsRevision = () => {
               <input className="Mark" name="3" placeholder="Marcador 4" type="text" value={markNames[3]} onChange={handleInput} />
               <input className="Mark" name="4" placeholder="Marcador 5" type="text" value={markNames[4]} onChange={handleInput} />
             </div>
-            {/* <button style={{display: "flex", flexDirection:
-            "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
           </div>
         </div>
-        { /* eslint-disable */}
-        {/* LIMPAR O ANNOTATIONS STATE DO CONTEXT API QUANDO O USUÁRIO SALVAR OU APAGAR A TORRA, IMPEDIR QUE O USUÁRIO MUDE DE TELA */}
         <div className="save-name">
-          {/* em teoria o Prompt vai verificar se isNull!='NAO' é verdadeiro - ou seja, não clicou em salvar ou
-          excluir ainda - se for true, vai exibir a mensagem antes de sair da página, NAO SEI SE FUNCIONA AINDA */}
-          {/* <Prompt
-            when={isNull != 'NAO'}
-            message='Voce não salvou a torra, se não salvar ela será excluida, tem certeza que quer sair?'
-          /> */}
-          {/* <input type="text" name="name" /> */}
           <button type="button" onClick={handleSave}>
             <AddToPhotosIcon />
             {' '}
             Salvar
           </button>
-          <button type="button" onClick={() => { deleteLastRoast(); setter([]); history.push('/') }}>
+          <button type="button" onClick={() => { deleteLastRoast(); setter([]); history.push('/'); }}>
             <CloseIcon />
             Excluir
           </button>

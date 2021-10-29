@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from 'react';
-// eslint-disable-next-line
-import { Knob, Value } from 'react-rotary-knob';
+import { Knob } from 'react-rotary-knob-skin-pack';
 import * as skins from 'react-rotary-knob-skin-pack';
 import useDebounce from '../../Functions/useDebounce';
 import { sendESPData } from '../../Functions/RequestHandler/RequestHandler';

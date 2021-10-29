@@ -1,5 +1,4 @@
-/* eslint-disable */
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import Chronometer from '../../components/Chronometer/Chronometer';
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import ButtonController1 from '../../components/Buttons/ButtonsControllers/ButtonController1';
@@ -8,7 +7,6 @@ import ButtonController3 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController4 from '../../components/Buttons/ButtonsControllers/ButtonController4';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import Loader from '../../components/Loader/loader';
-import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler';
 import './Manual.css';
 
 function Manual() {
@@ -20,7 +18,6 @@ function Manual() {
         <MainGraph />
       </div>
       <div className="lower-part">
-        {/* } <RealData /> */}
         <div className="control-buttons">
           <div className="buttons">
             <div className="button">

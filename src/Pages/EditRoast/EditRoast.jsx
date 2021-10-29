@@ -1,11 +1,10 @@
 import React, { useRef } from 'react';
 import DraggableGraph from './DraggableGraph/DraggableGraph';
 
-const EditRoast = (props) => {
+const EditRoast = ({ location }) => {
   const draggGraphRef = useRef();
   return (
-    // eslint-disable-next-line
-    <DraggableGraph data={props.location.state} ref = {draggGraphRef}  />
+    <DraggableGraph data={location.state} ref={draggGraphRef} />
   );
 };
 

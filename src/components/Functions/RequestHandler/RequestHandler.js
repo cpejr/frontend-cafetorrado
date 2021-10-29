@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { sendMachineParams } from '../../../../../backend-cafetorrado/src/Clients/client_LUTs';
 
 const api = axios.create({ baseURL: 'http://localhost:8080' });
 
@@ -25,6 +24,16 @@ const setChartParams = async (RoastName) => {
   return result.data;
 };
 
+const saveMarks = async (mark, roastId) => {
+  const result = await api.post(`/saveMark/${roastId}`, mark);
+  return result;
+};
+
+const getMarksByRoastId = async (roastId) => {
+  const response = await api.get(`/marks/${roastId}`);
+  return response.data;
+};
+
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
 
 const deleteSpecificRoast = (roast_id) => { api.delete(`/deleteSpecificRoast/${roast_id}`); };
@@ -35,7 +44,6 @@ const getUniqueRoastData = async (roast_id) => {
 };
 
 const sendESPData = (parameters) => {
-  // eslint-disable-next-line
   for (const key in parameters) {
     if (parameters[key]) {
       api.post('/sendData', parameters);
@@ -70,8 +78,13 @@ const updateLastTheme = (themeName) => {
   return result;
 };
 
+const sendUploadFile = (file) => {
+  const result = api.post('/sendUploadFiles', file);
+  return result;
+};
+
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
-  deleteSpecificRoast, getLastTheme, updateLastTheme,
+  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, saveMarks, getMarksByRoastId,
 };

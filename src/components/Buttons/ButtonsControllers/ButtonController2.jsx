@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { FaPowerOff } from 'react-icons/fa';
+import { IoIosSnow } from 'react-icons/io';
 import { sendESPData } from '../../Functions/RequestHandler/RequestHandler';
 import './ButtonController2.css';
 
@@ -23,7 +24,7 @@ function ButtonController2() {
           setSendData(!sentData);
         }}
       >
-        <FaPowerOff size={35} color={colorRefrigerator} />
+        <IoIosSnow size={35} color={colorRefrigerator} />
       </button>
     </div>
   );

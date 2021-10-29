@@ -119,13 +119,13 @@ hr {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin: 10px;
-  height: 50px;
-  width: 210px;
+  height: 70px;
+  width: 250px;
   border-radius: 10px;
 }
 
 .graph div .select-button p {
-  font-size: 18px;
+  font-size: 25px;
   width: 100%;
   padding: 0 25px 0 30px;
 }

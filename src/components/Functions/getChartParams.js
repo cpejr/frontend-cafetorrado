@@ -1,6 +1,14 @@
-import { setChartParams } from './RequestHandler/RequestHandler';
+import { setChartParams, saveMarks } from './RequestHandler/RequestHandler';
 
-export default function getChartParams() {
-  const RoastName = prompt('Digite o nome da sua torra');
-  setChartParams(RoastName);
+export default async function getChartParams(marks) {
+  try {
+    const RoastName = prompt('Digite o nome da sua torra');
+    const roastId = await setChartParams(RoastName);
+    marks.forEach(async (mark) => {
+      await saveMarks(mark, roastId);
+    });
+    return true;
+  } catch (error) {
+    return false;
+  }
 }

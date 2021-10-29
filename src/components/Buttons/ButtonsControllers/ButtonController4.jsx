@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { GiCoffeeBeans } from 'react-icons/gi';
+import { BiCurrentLocation } from 'react-icons/bi';
 import { useGlobalContext } from '../../../Context/GlobalContext';
 import './ButtonController1.css';
 
@@ -13,7 +13,7 @@ function ButtonController1() {
     } else setColorMixer('#202020');
   };
 
-  const disabled = marksGraph.filter((mark) => mark.isCrack).length >= 1;
+  const disabled = marksGraph.filter((mark) => !mark.isCrack).length >= 5;
 
   return (
     <div>
@@ -21,10 +21,10 @@ function ButtonController1() {
         disabled={disabled}
         className="power-1"
         type="button"
-        onClick={() => window.crackIt()}
+        onClick={() => window.markIt()}
         style={{ backgroundColor: disabled ? '#FF000077' : undefined }}
       >
-        <GiCoffeeBeans size={35} color={colorMixer} />
+        <BiCurrentLocation size={35} color={colorMixer} />
       </button>
     </div>
   );

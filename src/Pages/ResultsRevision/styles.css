@@ -1,17 +1,20 @@
 .content {
   padding: 0px 0px;
-  display: flex;
-  flex-direction: column;
+  display: flex; 
+  overflow-y: scroll;
+  flex-direction:column;
   background-color: var(--backgroundColor) !important;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Campo para salvar nome */
 .save-name {
   height: 40px;
-
   display: flex;
   gap: 30px;
   background-color: var(--backgroundColor) !important;
+  margin-left:45%;
 }
 .save-name input {
   padding: 10px;
@@ -24,40 +27,55 @@
   background-color: var(--headerBackground);
 }
 .save-name button {
-  padding: 10px;
+  padding: 30px;
   width: 150px;
   height: 100%;
   border: none;
   box-sizing: border-box;
-
   font-size: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
-  color: var(--fontColor);
-  background-color: var(--backgroundColor) !important;
+  color: white;
+  background-color: var(--buttonColor) !important;
+  /* margin-left:30%; */
+  margin-bottom: -20%;
+  margin-top:8%;
 }
 
 /* Grafico */
 .graph_ {
   height: 400px !important;
+  margin-top: 20%;
 }
 
 /* Informações */
 .informations-revision {
-  margin-top: 50px;
   height: 200px;
   width: 100%;
   display: flex;
   flex-direction: column;
   color: var(--fontColor);
+  margin-bottom:20% ;
+  justify-content: space-between;
+  margin-left:-5%;
 }
-.informations-revision h1 {
+/* .informations-revision h1 {
   font-size: 26px;
   line-height: 0;
+  justify-content: center;
+
+} */
+.title{
+  margin-top: 450px;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 0;
+  /* margin-left:48%; */
+  align-items: center;
 }
+
 .cols-info {
   display: flex;
   justify-content: space-between;
@@ -71,3 +89,10 @@
 .col-info p {
   color: var(--fontColor);
 }
+ .Mark{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin : 5px;
+  padding: 5px;
+ }

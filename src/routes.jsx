@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import ResultsRevision from './Pages/ResultsRevision';
+import { ResultsRevision } from './Pages/ResultsRevision';
 import TemplateWithDrawer from './templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';

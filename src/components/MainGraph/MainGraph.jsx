@@ -4,19 +4,12 @@ import React, {
 import { Line } from 'react-chartjs-2';
 import { socket } from '../../index';
 import { ThemeContext } from '../../Context/ThemeContext';
+import { useGlobalContext } from '../../Context/GlobalContext';
 import 'chartjs-plugin-annotation';
 
+const MAX_MARKS = 5;
+
 let time = 0;
-// let done = false;
-// function parseTime(mainGraph, data){
-//   let time = 0;
-//   if(!done){
-//     mainGraph.current.chartInstance.data.labels[0] = data.fields.MdlRunCnt;
-//     done = true
-//   }
-//   time = (data.fields.MdlRunCnt) - (mainGraph.current.chartInstance.data.labels[0]);
-//   return time;
-// }
 
 function updateData(mainGraph, data) {
   if (!(mainGraph?.current?.chartInstance)) return;
@@ -86,12 +79,18 @@ const INITALLDATA = {
   ],
 };
 
-export const MainGraph = ({ setter }) => {
+export const MainGraph = ({ setter, setArrayAnnotation }) => {
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
+  const [markTime, setMarkTime] = useState([]);
   const [graphWidth, setGraphWidth] = useState(1850);
   const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
+
+  const {
+    marksGraph: annotations,
+    setter: setAnnotations,
+  } = useGlobalContext();
 
   useEffect(() => {
     socket.on('realData', (data) => {
@@ -99,6 +98,7 @@ export const MainGraph = ({ setter }) => {
       if (setter && !done) { setter(false); done = true; }
     });
   }, []);
+
   useEffect(() => {
     const color1 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor1');
     const color2 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor2');
@@ -106,37 +106,102 @@ export const MainGraph = ({ setter }) => {
     const color4 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor4');
     const color5 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor5');
 
-    if (!mainGraph.current.chartInstance) {
-      mainGraph.current.chartInstance = false;
-    } else {
-      mainGraph.current.chartInstance.data.datasets[0].borderColor = color1;
-      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2;
-      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3;
-      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4;
-      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5;
+    (!mainGraph.current.chartInstance) ? false
+      : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
+      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
+      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
+      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
+      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
 
-      mainGraph.current.chartInstance.update();
-    }
-
-    // (!mainGraph.current.chartInstance) ? false
-    //   : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-    //   mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-    //   mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-    //   mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-    //   mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
-
-    //   mainGraph.current.chartInstance.update());
+      mainGraph.current.chartInstance.update());
   }, [theme]);
 
-  function crackIt() {
-    if (!crackTime && mainGraph.current) {
+  const crackIt = () => {
+    if (setArrayAnnotation) {
       setCrackTime(mainGraph.current.chartInstance.data.datasets[0].data.length);
     }
-  }
+  };
 
+  const markIt = () => {
+    if (markTime && mainGraph.current) {
+      setMarkTime(
+        (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
+      );
+    }
+  };
+
+  // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
   useEffect(() => {
     window.crackIt = crackIt;
+
+    const auxArray = [];
+
+    if (crackTime) {
+      auxArray.push({ // adiciona no vetor caso ocorra click
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: crackTime,
+        borderWidth: 2,
+        borderColor: 'darkorange',
+        label: {
+          fontFamily: 'quicksand',
+          content: 'CRACK',
+          enabled: true,
+          position: 'bottom',
+        },
+        isCrack: true,
+      });
+
+      setCrackTime(0);
+
+      // guarda os dados do vetor annot e no vetor anottations
+      if (annotations.length < 6 && auxArray.length > 0) {
+        setAnnotations((prev) => [...prev, ...auxArray]);
+      }
+    }
   }, [crackTime]);
+
+  useEffect(() => {
+    window.markIt = markIt;
+
+    const auxArray = [];
+
+    if (markTime.length > 0) {
+      auxArray.push({ // retorna as marcações do markTime
+        drawTime: 'afterDatasetsDraw',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: markTime[markTime.length - 1],
+        borderWidth: 2,
+        borderColor: 'yellow',
+        label: {
+          fontFamily: 'quicksand',
+          content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
+          enabled: true,
+          position: 'bottom',
+        },
+        isCrack: false,
+      });
+
+      // guarda os dados do vetor annot e no vetor anottations
+      if (
+        annotations.length < 6 // maximo 6 no total
+        && auxArray.length > 0
+        && markTime.length <= 5 // maximo 5 mark it
+      ) {
+        setAnnotations((prev) => [...prev, ...auxArray]);
+      }
+    }
+  }, [markTime]);
+
+  const createLabelForMarkdown = (input) => `${Math.round(input)}`;
+
+  useEffect(() => {
+    window.annotations = annotations;
+  }, [annotations]);
 
   useEffect(() => {
     function listener() {
@@ -153,97 +218,82 @@ export const MainGraph = ({ setter }) => {
   }, [window.drawerIsOpen]);
 
   useEffect(() => {
-    mainGraph.current.chartInstance.update();
+    mainGraph.current.chartInstance.update(); // a cada mudança atualiza a renderização
   }, [graphWidth]);
 
   return (
-    <div style={{ width: graphWidth, height: 650, position: 'relative' }}>
-      <Line
-        padding="0"
-        id="main-graph"
-        data={INITALLDATA}
-        ref={mainGraph}
-        options={{
-          annotation: crackTime && {
-            annotations: [
-              {
-                drawTime: 'afterDatasetsDraw',
-                type: 'line',
-                mode: 'vertical',
-                scaleID: 'x-axis-0',
-                value: crackTime,
-                borderWidth: 2,
-                borderColor: 'darkorange',
-                label: {
-                  fontFamily: 'quicksand',
-                  content: 'CRACK',
-                  enabled: true,
-                  position: 'bottom',
-                },
+    <>
+      <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
+        <Line
+          padding="0"
+          id="main-graph"
+          data={INITALLDATA}
+          ref={mainGraph}
+          options={{
+            annotation: {
+              annotations, // recebe o vetor e renderiza a linha
+            },
+            legend: {
+              position: 'bottom',
+              labels: {
+                fontFamily: 'Quicksand',
+                fontColor: theme?.fontColor || 'black',
+                fontSize: 14,
               },
-            ],
-          },
-          legend: {
-            position: 'bottom',
-            labels: {
+            },
+            maintainAspectRatio: false,
+
+            title: {
+              text: ' Tempo de torra ',
               fontFamily: 'Quicksand',
+              fontSize: 26,
               fontColor: theme?.fontColor || 'black',
-              fontSize: 25,
+              display: true,
             },
-          },
-          maintainAspectRatio: false,
 
-          title: {
-            fontFamily: 'Quicksand',
-            fontSize: 30,
-            fontColor: theme?.fontColor || 'black',
-            display: true,
-          },
-
-          elements: {
-            line: {
-              tension: 0,
-            },
-          },
-          scales: {
-            yAxes: [{
-              id: 'left',
-              type: 'linear',
-              position: 'left',
-              ticks: {
-                min: 0,
-                max: 100,
-                stepSize: 10,
-                fontColor: theme?.fontColor || 'black',
-                fontSize: 25,
-              },
-            }, {
-              id: 'right',
-              type: 'linear',
-              position: 'right',
-              ticks: {
-                min: 0,
-                max: 100,
-                stepSize: 10,
-                fontColor: theme?.fontColor || 'black',
-                fontSize: 25,
+            elements: {
+              line: {
+                tension: 0,
               },
             },
-            ],
-            xAxes: [
-              {
+            scales: {
+              yAxes: [{
+                id: 'left',
+                type: 'linear',
+                position: 'left',
                 ticks: {
-                  autoSkip: true,
+                  min: 0,
+                  max: 100,
+                  stepSize: 10,
                   fontColor: theme?.fontColor || 'black',
-                  maxTicksLimit: 20,
-                  beginAtZero: true,
-                  fontSize: 25,
                 },
               },
-            ],
-          },
-        }}
-      />
-    </div>
+              {
+                id: 'right',
+                type: 'linear',
+                position: 'right',
+                ticks: {
+                  min: 0,
+                  max: 100,
+                  stepSize: 10,
+                  fontColor: theme?.fontColor || 'black',
+                },
+              },
+              ],
+              xAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    fontColor: theme?.fontColor || 'black',
+                    maxTicksLimit: 20,
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          }}
+        />
+      </div>
+    </>
   );
 };

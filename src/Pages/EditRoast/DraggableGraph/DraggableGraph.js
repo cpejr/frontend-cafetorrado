@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useContext, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { DragData } from './dragData';
@@ -19,14 +18,14 @@ function desestructData(data) {
   }
 }
 
-const parseCount = (data) => {
-  let correctTime = [];
-  data.forEach((data)=>{
+const parseCount = (datas) => {
+  const correctTime = [];
+  datas.forEach((data) => {
     const second = (parseInt(((data / 300) % 1) * 60, 10));
     const minute = Math.trunc(data / 300);
     correctTime.push(`${minute.toLocaleString(undefined, { minimumIntegerDigits: 2 })}:${second.toLocaleString(undefined, { minimumIntegerDigits: 2 })}`);
   });
-  return correctTime
+  return correctTime;
 };
 
 function updateData(refGraph, data) {
@@ -71,7 +70,7 @@ const DraggableGraph = React.forwardRef((props, ref) => {
             labels: {
               fontFamily: 'Quicksand',
               fontColor: theme?.fontColor || 'black',
-              fontSize: 16,
+              fontSize: 20,
             },
           },
           responsive: false,
@@ -90,6 +89,7 @@ const DraggableGraph = React.forwardRef((props, ref) => {
                 min: 0,
                 max: 100,
                 stepSize: 10,
+                fontSize: 20,
                 fontColor: theme?.fontColor || 'black',
               },
             }, {
@@ -100,6 +100,7 @@ const DraggableGraph = React.forwardRef((props, ref) => {
                 min: 0,
                 max: 100,
                 stepSize: 10,
+                fontSize: 20,
                 fontColor: theme?.fontColor || 'black',
               },
             },
@@ -109,6 +110,7 @@ const DraggableGraph = React.forwardRef((props, ref) => {
               position: 'right',
               ticks: {
                 stepSize: 10,
+                fontSize: 20,
                 fontColor: theme?.fontColor || 'black',
               },
             },
@@ -119,6 +121,7 @@ const DraggableGraph = React.forwardRef((props, ref) => {
                   min: 0,
                   max: 100,
                   autoSkip: true,
+                  fontSize: 20,
                   fontColor: theme?.fontColor || 'black',
                   maxTicksLimit: 20,
                   beginAtZero: true,
@@ -126,6 +129,10 @@ const DraggableGraph = React.forwardRef((props, ref) => {
               }, {
                 id: 'LUTS',
                 labels: ['0 minutos de torra', '3 minutos de torra', '5 minutos de torra', '7 minutos de torra', '10 minutos de torra'],
+
+                ticks: {
+                  fontSize: 20,
+                },
                 fontColor: theme?.fontColor || 'black',
                 beginAtZero: true,
               },

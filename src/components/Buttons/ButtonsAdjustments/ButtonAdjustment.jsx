@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react';
-import { Knob } from 'react-rotary-knob-skin-pack';
+// eslint-disable-next-line
+import { Knob, Value } from 'react-rotary-knob';
 import * as skins from 'react-rotary-knob-skin-pack';
 import useDebounce from '../../Functions/useDebounce';
 import { sendESPData } from '../../Functions/RequestHandler/RequestHandler';
@@ -24,7 +25,7 @@ function ButtonAdjustment({ name }) {
     <div>
       <Knob
         id={name}
-        onChange={changeValue}
+        onChange={() => changeValue}
         debounceTimeout={200}
         value={buttonValue}
         style={knobstyle}

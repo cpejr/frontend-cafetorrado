@@ -91,5 +91,5 @@ const sendUploadFile = (file) => {
 export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
-  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, sendMachineParams,
+  deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, sendMachineParams, saveMarks,
 };

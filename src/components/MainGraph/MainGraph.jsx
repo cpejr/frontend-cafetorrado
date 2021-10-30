@@ -122,14 +122,7 @@ export const MainGraph = ({ setter }) => {
         (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
       );
     }
-<<<<<<< HEAD
-  }
-  useEffect(() => { // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
-    window.crackIt = crackIt;
-  }, [crackTime]);
-=======
   };
->>>>>>> origin/main
 
   useEffect(() => {
     window.markIt = markIt;
@@ -137,15 +130,7 @@ export const MainGraph = ({ setter }) => {
     if (markTime.length > MAX_MARKS) { setDisable(true); } // desabilita click do botão (ainda não implementado no onClick do marcador)
   }, [markTime]);
 
-<<<<<<< HEAD
-  // eslint-disable-next-line
-  const createLabelForMarkdown = (input) => `${Math.round(input)}`
-
-  useEffect(() => { // sempre que ocorrer uma mudança qualquer, ou evento, executa os atributos no if
-    const annot = [];
-=======
     const auxArray = [];
->>>>>>> origin/main
 
     if (crackTime) {
       annot.push({ // adiciona no vetor caso ocorra click
@@ -162,25 +147,6 @@ export const MainGraph = ({ setter }) => {
           enabled: true,
           position: 'bottom',
         },
-<<<<<<< HEAD
-      });
-    }
-    annot.push({ // retorna as marcações do markTime
-      drawTime: 'afterDatasetsDraw',
-      type: 'line',
-      mode: 'vertical',
-      scaleID: 'x-axis-0',
-      value: markTime[markTime.length - 1],
-      borderWidth: 2,
-      borderColor: 'yellow',
-      label: {
-        fontFamily: 'quicksand',
-        content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
-        enabled: true,
-        position: 'bottom',
-      },
-    });
-=======
         isCrack: true,
       });
 
@@ -228,7 +194,6 @@ export const MainGraph = ({ setter }) => {
   }, [markTime]);
 
   const createLabelForMarkdown = (input) => `${Math.round(input)}`;
->>>>>>> origin/main
 
     setAnnotations((prev) => [...prev, ...annot]); // guarda os dados do vetor annot e no vetor anottations
   }, [markTime, crackTime]);

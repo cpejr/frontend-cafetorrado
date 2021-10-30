@@ -15,8 +15,14 @@ const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
 
-  const sendManual = () => history.push('/RecipeSelection', 'manual');
-  const sendAutomatic = () => history.push('/RecipeSelection', 'automatic');
+  const sendManual = () => {
+    sendESPData({ MdlManChr: 1 });
+    history.push('/RecipeSelection', 'manual');
+  };
+  const sendAutomatic = () => {
+    sendESPData({ MdlManChr: 2 });
+    history.push('/RecipeSelection', 'automatic');
+  };
 
   return (
     <div className="container">
@@ -25,13 +31,13 @@ const Home = () => {
         <Modal open={modalOpen} setOpen={setModalOpen} />
         <div className="upper-row">
           <div className="automatic-section">
-            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendManual(); }}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendAutomatic(); }}>
               <MdFlashAuto />
               <p>Torra automática</p>
             </button>
           </div>
           <div className="manual-section">
-            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendAutomatic(); }}>
+            <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); sendManual(); }}>
               <GiHand />
               <p>Torra manual</p>
             </button>

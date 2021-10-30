@@ -38,15 +38,15 @@ function RecipeSelection(props) {
     setRoastData(data);
   }, []);
 
-  useEffect(() => {
-    const { state } = props.location;
-    if (state === 'manual') {
-      sendESPData({ MdlManChr: 1 }); return;
-    }
-    if (state === 'automatic') {
-      sendESPData({ MdlManChr: 2 });
-    }
-  }, []);
+  // useEffect(() => {
+  //   const { state } = props.location;
+  //   if (state === 'manual') {
+  //     sendESPData({ MdlManChr: 1 }); return;
+  //   }
+  //   if (state === 'automatic') {
+  //     sendESPData({ MdlManChr: 2 });
+  //   }
+  // }, []);
 
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);

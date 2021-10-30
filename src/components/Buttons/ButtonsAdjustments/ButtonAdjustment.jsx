@@ -25,7 +25,7 @@ function ButtonAdjustment({ name }) {
     <div>
       <Knob
         id={name}
-        onChange={changeValue}
+        onChange={() => changeValue}
         debounceTimeout={200}
         value={buttonValue}
         style={knobstyle}

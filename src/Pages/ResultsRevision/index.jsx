@@ -67,10 +67,8 @@ useEffect(()=> console.log(mark), [mark])
             Salvar
           </button>
           <button type="button" onClick={deleteLastRoast}>
-            <CloseIcon />
-            Excluir
-          </button>
-        </div>
+
+     </div>
       </div>
     </div>
   );

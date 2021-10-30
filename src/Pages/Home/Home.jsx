@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,6 +7,7 @@ import { GiHand } from 'react-icons/gi';
 import { FiBook } from 'react-icons/fi';
 import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler';
 import { Modal } from './Modal/Modal';
+import { useGlobalContext } from '../../Context/GlobalContext';
 import './home.css';
 
 const wifiName = 'o nome vai aqui';
@@ -23,6 +24,12 @@ const Home = () => {
     sendESPData({ MdlManChr: 2 });
     history.push('/RecipeSelection', 'automatic');
   };
+
+  const { setter } = useGlobalContext();
+
+  useEffect(() => {
+    setter([]);
+  }, []);
 
   return (
     <div className="container">

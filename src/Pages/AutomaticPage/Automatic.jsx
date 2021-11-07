@@ -44,7 +44,7 @@ function Automatic() {
                 onClick={(e) => {
                   e.preventDefault();
                   changeColorMixer();
-                  sendESPData({ MdlModReq: 1 });
+                  sendESPData({ ItfModReq: 1 });
                   history.push('/Manual');
                 }}
               >

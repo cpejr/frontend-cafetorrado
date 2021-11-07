@@ -17,11 +17,11 @@ const Home = () => {
   const history = useHistory();
 
   const sendManual = () => {
-    sendESPData({ MdlManChr: 1 });
+    sendESPData({ ItfModReq: 1 });
     history.push('/RecipeSelection', 'manual');
   };
   const sendAutomatic = () => {
-    sendESPData({ MdlManChr: 2 });
+    sendESPData({ ItfModReq: 2 });
     history.push('/RecipeSelection', 'automatic');
   };
 

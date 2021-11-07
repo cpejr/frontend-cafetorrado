@@ -77,9 +77,9 @@ const DrawerMenu = ({ drawerOpen }) => {
           key={title}
           onClick={() => {
             if (route === 'manual') {
-              sendESPData({ MdlManChr: 1 });
+              sendESPData({ ItfModReq: 1 });
             } else if (route === 'automatic') {
-              sendESPData({ MdlManChr: 2 });
+              sendESPData({ ItfModReq: 2 });
             }
             history.push(`/${route}`);
           }}

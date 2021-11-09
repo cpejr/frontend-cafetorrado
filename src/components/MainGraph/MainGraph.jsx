@@ -40,7 +40,6 @@ function updateData(mainGraph, data, setGraphData) {
   // aux.datasets[6] = velocityData
 
   setGraphData(mainGraph.current.chartInstance.data)
-  // console.log(mainGraph.current.chartInstance.data.labels);
 }
 
 const INITALLDATA = {
@@ -98,13 +97,13 @@ const INITALLDATA = {
   ],
 };
 
-export const MainGraph = ({ setter, setArrayAnnotation }) => {
+export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) => {
 
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
   const [markTime, setMarkTime] = useState([]); // para guardar as marcações
   const [graphWidth, setGraphWidth] = useState(1850);
-  const mainGraph = useRef();
+  let mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
   const {
@@ -115,15 +114,19 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   } = useGlobalContext();
 
   useEffect(() => {
-    console.log('called');
-    mainGraph.current.chartInstance.data = INITALLDATA
-
-    if (graphData.length) {
-      mainGraph.current.chartInstance.data = graphData
+    if (resetOnLoad) {
+      console.log('inside!');
+      mainGraph.current.chartInstance.data.datasets[0].data = []
+      mainGraph.current.chartInstance.data.datasets[1].data = []
+      mainGraph.current.chartInstance.data.datasets[2].data = []
+      mainGraph.current.chartInstance.data.datasets[3].data = []
+      mainGraph.current.chartInstance.data.datasets[4].data = []
+      mainGraph.current.chartInstance.data.labels = []
     }
 
+    console.log(mainGraph.current.chartInstance.data.datasets);
+
     socket.on('realData', (data) => {
-      console.log(data.fields.BchPrsScl);
       updateData(mainGraph, data, setGraphData);
       if (setter && !done) { setter(false); done = true; }
     });
@@ -209,7 +212,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
         borderColor: 'yellow',
         label: {
           fontFamily: 'quicksand',
-          content: createLabelForMarkdown(markTime), // cria as labels de cada marcador
+          content: createLabelForMarkdown(markTime[markTime.length - 1]), // cria as labels de cada marcador
           enabled: true,
           position: 'bottom',
         },
@@ -255,7 +258,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   return (
     <>
       {/* <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button> */}
-      <div style={{ width: graphWidth, height: 750, position: 'relative' }}>
+      <div style={{ width: graphWidth, height: 750, position: 'relative', marginLeft: 16 }}>
         <Line
           padding="0"
           id="main-graph"
@@ -296,7 +299,7 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
                 position: 'left',
                 ticks: {
                   min: 0,
-                  max: 100,
+                  // max: 100,
                   stepSize: 10,
                   fontColor: theme?.fontColor || 'black',
                 },

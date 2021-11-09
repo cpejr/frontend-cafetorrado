@@ -71,8 +71,6 @@ export const ResultsRevision = () => {
 
   const { annotations } = window;
 
-  console.log(graphData);
-
   const calculateAverage = (index) => {
     const dataArray = graphData.datasets[index] ? graphData.datasets[index].data : [];
 
@@ -89,7 +87,7 @@ export const ResultsRevision = () => {
     <div className="content">
 
       <div className="graph_">
-        <MainGraph />
+        <MainGraph resetOnLoad={false} />
       </div>
       <h1 className="title">Informações</h1>
       <div className="informations-revision">

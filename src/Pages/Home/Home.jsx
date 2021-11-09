@@ -1,7 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import { MdFlashAuto, MdInput } from 'react-icons/md';
 import { GiHand } from 'react-icons/gi';
 import { FiBook } from 'react-icons/fi';
@@ -9,8 +7,6 @@ import { sendESPData } from '../../components/Functions/RequestHandler/RequestHa
 import { Modal } from './Modal/Modal';
 import { useGlobalContext } from '../../Context/GlobalContext';
 import './home.css';
-
-const wifiName = 'o nome vai aqui';
 
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);

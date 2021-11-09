@@ -19,7 +19,7 @@ function ButtonController2() {
         type="button"
         onClick={(e) => {
           e.preventDefault();
-          sendESPData({ MdlIgnAcv: sentData });
+          sendESPData({ MdlExhAcv: sentData });
           changeColorRefrigerator();
           setSendData(!sentData);
         }}

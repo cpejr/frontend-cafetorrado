@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { sendMachineParams } from '../../../../../backend-cafetorrado/src/Clients/client_LUTs';
 
 const api = axios.create({ baseURL: 'http://localhost:8080' });
 
@@ -17,41 +16,22 @@ const disconnectWifi = () => { api.get('/disconnectWifi'); };
 const connectWifi = () => { api.get('connectWifi'); };
 
 const setChartParams = async (RoastName) => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const parameters = {
-      name: RoastName,
-      description: 'Uma descrição legal',
-    };
-    const result = await api.post('/setChartParams', parameters);
-    return result.data;
-  } catch (error) {
-    throw error;
-  }
+  const parameters = {
+    name: RoastName,
+    description: 'Uma descrição legal',
+  };
+  const result = await api.post('/setChartParams', parameters);
+  return result.data;
 };
 
 const saveMarks = async (mark, roastId) => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    // const markParams = {
-    //   mark_name: mark,
-    //   mark_value: value,
-    //   is_crack: isCrack,
-    // };
-    return await api.post(`/saveMark/${roastId}`, mark);
-  } catch (error) {
-    throw error;
-  }
+  const response = await api.post(`/saveMark/${roastId}`, mark);
+  return response;
 };
 
 const getMarksByRoastId = async (roastId) => {
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const response = await api.get(`/marks/${roastId}`);
-    return response.data;
-  } catch (err) {
-    throw err;
-  }
+  const response = await api.get(`/marks/${roastId}`);
+  return response.data;
 };
 
 const deleteLastRoast = () => { api.delete('/deleteLastRoast'); };
@@ -64,11 +44,8 @@ const getUniqueRoastData = async (roast_id) => {
 };
 
 const sendESPData = (parameters) => {
-  // eslint-disable-next-line
   for (const key in parameters) {
-    if (parameters[key]) {
-      api.post('/sendData', parameters);
-    } else if (parameters.MdlIgnAcv !== undefined || parameters.MdlMisAcv !== undefined) {
+    if (parameters[key] !== undefined && parameters[key] !== null) {
       api.post('/sendData', parameters);
     }
   }

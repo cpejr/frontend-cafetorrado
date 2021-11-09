@@ -1,11 +1,9 @@
 import { React, useState } from 'react';
-import { BiPlayCircle } from 'react-icons/bi';
 import { FiPower } from 'react-icons/fi';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { sendESPData } from '../Functions/RequestHandler/RequestHandler';
 import { ReactComponent as Logo } from './vector-logo.svg';
-import data from '../RevisionGraph/data';
-import MainGraph from '../MainGraph/MainGraph';
 
 import './Header.css';
 
@@ -16,6 +14,16 @@ function Header() {
   const handleClick = () => {
     changeColorPower();
     setShowDropdown(!showDropdown);
+  };
+
+  const handleDropdownModes = (e) => {
+    if (e.target.innerText === 'Desligar') {
+      sendESPData({ ItfModReq: 0 });
+    } else if (e.target.innerText === 'Shutdown') {
+      sendESPData({ ItfModReq: 7 });
+    } else {
+      sendESPData({ ItfModReq: 3 });
+    }
   };
 
   const changeColorPower = () => {
@@ -37,10 +45,9 @@ function Header() {
       </button>
       {showDropdown && (
         <div className="dropdown">
-          <div className="dropdown-child">
-            <a href="http://wwww.seudominio.com/pagina1.html"> Desligar </a>
-            <a href="http://wwww.seudominio.com/pagina1.html"> Wake Up </a>
-          </div>
+          <button onClick={handleDropdownModes} type="button">Desligar</button>
+          <button onClick={handleDropdownModes} type="button">Shutdown</button>
+          <button onClick={handleDropdownModes} type="button">Interbateladas</button>
         </div>
       )}
     </div>

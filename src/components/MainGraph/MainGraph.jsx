@@ -40,7 +40,7 @@ const INITALLDATA = {
     },
     {
       fill: false,
-      label: 'Temperatura do GrÃ£o',
+      label: 'Temperatura do Grão',
       yAxisID: 'left',
       data: [],
       borderColor: '',

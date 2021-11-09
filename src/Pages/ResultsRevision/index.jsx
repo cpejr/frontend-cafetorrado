@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
-import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
-import CloseIcon from '@material-ui/icons/Close';
+import { MdAddToPhotos, MdClose } from 'react-icons/md';
 
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
@@ -11,8 +10,7 @@ import { useGlobalContext } from '../../Context/GlobalContext';
 
 export const ResultsRevision = () => {
   const history = useHistory();
-  const [isNull, setIsNull] = useState([]);
-  // Guarda os valores digitados nos inputs
+
   const MAX_MARKS = 5;
   const [markNames, setMarkNames] = useState([]); // strings dos marcadores
   const {
@@ -162,12 +160,12 @@ export const ResultsRevision = () => {
         </div>
         <div className="save-name">
           <button type="button" onClick={handleSave}>
-            <AddToPhotosIcon />
+            <MdAddToPhotos />
             {' '}
             Salvar
           </button>
           <button type="button" onClick={() => { deleteLastRoast(); setter([]); history.push('/'); }}>
-            <CloseIcon />
+            <MdClose />
             Excluir
           </button>
         </div>

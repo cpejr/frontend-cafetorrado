@@ -8,7 +8,6 @@
   align-items: center;
 }
 
-/* Campo para salvar nome */
 .save-name {
   height: 40px;
   display: flex;
@@ -28,7 +27,7 @@
 }
 .save-name button {
   padding: 30px;
-  width: 150px;
+  width: 210px;
   height: 100%;
   border: none;
   box-sizing: border-box;
@@ -39,18 +38,15 @@
   gap: 10px;
   color: white;
   background-color: var(--buttonColor) !important;
-  /* margin-left:30%; */
   margin-bottom: -20%;
   margin-top:8%;
 }
 
-/* Grafico */
 .graph_ {
   height: 400px !important;
   margin-top: 20%;
 }
 
-/* Informações */
 .informations-revision {
   height: 200px;
   width: 100%;
@@ -61,18 +57,11 @@
   justify-content: space-between;
   margin-left:-5%;
 }
-/* .informations-revision h1 {
-  font-size: 26px;
-  line-height: 0;
-  justify-content: center;
-
-} */
 .title{
   margin-top: 450px;
   justify-content: center;
   font-size: 26px;
   line-height: 0;
-  /* margin-left:48%; */
   align-items: center;
 }
 

@@ -25,19 +25,19 @@ function Manual({location}) {
         <div className="control-buttons">
           <div className="buttons">
             <div className="button">
-              <p>Mexedor</p>
+              <p className="fontColor">Mexedor</p>
               <ButtonController1 />
             </div>
             <div className="button">
-              <p>Resfriador</p>
+              <p className="fontColor">Resfriador</p>
               <ButtonController2 />
             </div>
             <div className="button">
-              <p>Crack</p>
+              <p className="fontColor">Crack</p>
               <ButtonController3 />
             </div>
             <div className="button">
-              <p>Marcador</p>
+              <p className="fontColor">Marcador</p>
               <ButtonController4 />
             </div>
           </div>
@@ -49,15 +49,15 @@ function Manual({location}) {
           <div className="adjustments-buttons">
             <div className="rotation">
               <ButtonAdjustment name="MdlManCdr" initialValue={location?.state?.drumPct}/>
-              <p>Rotação do Tambor</p>
+              <p className="fontColor">Rotação do Tambor</p>
             </div>
             <div className="air">
               <ButtonAdjustment name="MdlManCar" initialValue={location?.state?.airPct}/>
-              <p>Velocidade do Ar</p>
+              <p className="fontColor">Velocidade do Ar</p>
             </div>
             <div className="flame">
               <ButtonAdjustment name="MdlManInj" initialValue={location?.state?.flamePct}/>
-              <p>Intensidade da chama</p>
+              <p className="fontColor">Intensidade da chama</p>
             </div>
           </div>
         </div>

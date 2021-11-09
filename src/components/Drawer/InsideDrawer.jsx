@@ -6,14 +6,12 @@ import {
   ListItemIcon,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useLocation, useHistory } from 'react-router-dom';
-import Brightness6Icon from '@material-ui/icons/Brightness6';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import { MdFlashAuto, MdInput } from 'react-icons/md';
+import { useHistory } from 'react-router-dom';
+import {
+  MdFlashAuto, MdInput, MdBrightness6, MdMenu, MdSearch,
+} from 'react-icons/md';
 import { GiHand } from 'react-icons/gi';
 import { FaHome } from 'react-icons/fa';
-import clsx from 'clsx';
 import { ThemeContext } from '../../Context/ThemeContext';
 import './NewDrawer.css';
 import { sendESPData } from '../Functions/RequestHandler/RequestHandler';
@@ -31,7 +29,7 @@ const DrawerHeader = ({ drawerToggle }) => (
   <List className="header">
     <ListItem button onClick={drawerToggle}>
       <ListItemIcon>
-        <MenuIcon className="menu-icon" />
+        <MdMenu className="menu-icon" />
       </ListItemIcon>
       <ListItemText> Menu </ListItemText>
     </ListItem>
@@ -47,7 +45,7 @@ const DrawerMenu = ({ drawerOpen }) => {
     },
     {
       title: 'Selecionar Receita',
-      icon: <SearchIcon />,
+      icon: <MdSearch />,
       route: 'RecipeSelection',
     },
     {
@@ -90,7 +88,7 @@ const DrawerMenu = ({ drawerOpen }) => {
       ))}
 
       <ListItem button onClick={toggleTheme}>
-        <ListItemIcon className="menu-icon"><Brightness6Icon /></ListItemIcon>
+        <ListItemIcon className="menu-icon"><MdBrightness6 /></ListItemIcon>
         <ListItemText className="menu-text" primary="Temas" />
       </ListItem>
 

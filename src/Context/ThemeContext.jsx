@@ -100,7 +100,7 @@ export const ThemeContext = React.createContext({});
 
 function ThemeContextProvider({ children }) {
   const [themeName, setThemeName] = useState();
-  const [theme, setTheme] = useState();
+  const [theme, setTheme] = useState('technologic');
 
   useEffect(async () => {
     const lastTheme = await getLastTheme();

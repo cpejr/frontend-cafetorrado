@@ -17,7 +17,9 @@ export const ResultsRevision = () => {
   // Guarda os valores digitados nos inputs
   const MAX_MARKS = 5;
   const [markNames, setMarkNames] = useState([]); // strings dos marcadores
-  const { marksGraph, setter } = useGlobalContext();
+  const {
+    marksGraph, setter, setGraphData, graphData,
+  } = useGlobalContext();
 
   const handleInput = (e) => {
     const annot = markNames;
@@ -62,11 +64,26 @@ export const ResultsRevision = () => {
 
     if (isOk) {
       setter([]);
+      // setGraphData([]);
       history.push('/RecipeSelection');
     }
   };
 
   const { annotations } = window;
+
+  console.log(graphData);
+
+  const calculateAverage = (index) => {
+    const dataArray = graphData.datasets[index] ? graphData.datasets[index].data : [];
+
+    let sum = 0;
+
+    dataArray.forEach((value) => {
+      sum += value;
+    });
+
+    return (sum / dataArray.length).toFixed(2);
+  };
 
   return (
     <div className="content">
@@ -78,18 +95,55 @@ export const ResultsRevision = () => {
       <div className="informations-revision">
         <div className="cols-info">
           <div className="col-info">
-            <p>Temperatura mínima: </p>
-            <p>Temperatura média: </p>
-            <p>Temperatura máxima: </p>
+            <p>
+              Temperatura mínima do grão:
+              {' '}
+              {graphData !== []
+                ? Math.min(...graphData.datasets[1].data).toFixed(2)
+                : 0}
+              °C
+            </p>
+            <p>
+              Temperatura média do grão:
+              {' '}
+              {graphData !== []
+                ? calculateAverage(1)
+                : 0}
+              °C
+            </p>
+            <p>
+              Temperatura máxima do grão:
+              {' '}
+              {graphData !== []
+                ? Math.max(...graphData.datasets[1].data).toFixed(2)
+                : 0}
+              °C
+            </p>
           </div>
           <div className="col-info">
-            <p>Duração da torra: </p>
-            <p>Pressão média: </p>
-            <p>Velocidade média do tambor: </p>
-          </div>
-          <div className="col-info">
-            <p>Data: </p>
-            <p>Hora: </p>
+            <p>
+              Duração da torra:
+              {' '}
+              { Math.max(...graphData.labels.map((label) => parseInt(label, 10)))}
+              {' '}
+              segundos
+            </p>
+            {/* <p>
+              Pressão média:
+              {' '}
+              {graphData !== []
+                ? calculateAverage(6)
+                : 0}
+              mbar
+            </p>
+            <p>
+              Percentual médio de velocidade do tambor:
+              {' '}
+              {graphData !== []
+                ? calculateAverage(7)
+                : 0}
+              %
+            </p> */}
           </div>
           <div>
             <h2>Marcadores</h2>

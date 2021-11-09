@@ -12,7 +12,14 @@ const MAX_MARKS = 5;
 
 let time = 0;
 
-function updateData(mainGraph, data) {
+let pressureData = {
+  data: []
+};
+let velocityData = {
+  data: []
+};
+
+function updateData(mainGraph, data, setGraphData) {
   if (!(mainGraph?.current?.chartInstance)) return;
   mainGraph.current.chartInstance.data.labels.push((data.fields.MdlRunCnt * 0.2).toFixed(2));
   mainGraph.current.chartInstance.data.datasets[0].data.push(data.fields.MdlAirScl);
@@ -23,6 +30,17 @@ function updateData(mainGraph, data) {
 
   mainGraph.current.chartInstance.update();
   time = data.fields.MdlRunCnt;
+
+  // let aux = mainGraph.current.chartInstance.data;
+
+  // pressureData.data.push(data.fields.BchPrsScl)
+  // velocityData.data.push(data.fields.MdlDruOut)
+
+  // aux.datasets[5] = pressureData
+  // aux.datasets[6] = velocityData
+
+  setGraphData(mainGraph.current.chartInstance.data)
+  // console.log(mainGraph.current.chartInstance.data.labels);
 }
 
 const INITALLDATA = {
@@ -81,6 +99,7 @@ const INITALLDATA = {
 };
 
 export const MainGraph = ({ setter, setArrayAnnotation }) => {
+
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
   const [markTime, setMarkTime] = useState([]); // para guardar as marcações
@@ -91,11 +110,21 @@ export const MainGraph = ({ setter, setArrayAnnotation }) => {
   const {
     marksGraph: annotations,
     setter: setAnnotations,
+    graphData,
+    setGraphData,
   } = useGlobalContext();
 
   useEffect(() => {
+    console.log('called');
+    mainGraph.current.chartInstance.data = INITALLDATA
+
+    if (graphData.length) {
+      mainGraph.current.chartInstance.data = graphData
+    }
+
     socket.on('realData', (data) => {
-      updateData(mainGraph, data);
+      console.log(data.fields.BchPrsScl);
+      updateData(mainGraph, data, setGraphData);
       if (setter && !done) { setter(false); done = true; }
     });
   }, []);

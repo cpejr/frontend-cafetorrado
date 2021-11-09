@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getServerData, disconnectData } from '../Functions/RequestHandler/RequestHandler';
+import { getServerData, disconnectData, sendESPData } from '../Functions/RequestHandler/RequestHandler';
 import { socket } from '../../index';
 import { useGlobalContext } from '../../Context/GlobalContext';
+
 import './Chronometer.css';
 
 function Chronometer({ setter }) {
@@ -21,7 +22,15 @@ function Chronometer({ setter }) {
         <button id="change" type="button" onClick={() => { getServerData(); setter(true); }}>
           Iniciar
         </button>
-        <button id="change" type="button" onClick={() => { disconnectData(); history.push({ pathname: '/ResultsRevision' }); }}>
+        <button
+          id="change"
+          type="button"
+          onClick={() => {
+            sendESPData({ ItfModReq: 7 });
+            disconnectData();
+            history.push({ pathname: '/ResultsRevision' });
+          }}
+        >
           Review
         </button>
       </div>

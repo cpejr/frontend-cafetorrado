@@ -33,6 +33,7 @@
   flex-direction: row;
   justify-content: space-around;
   padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .automatic-section {

@@ -8,19 +8,20 @@ import ButtonController3 from '../../components/Buttons/ButtonsControllers/Butto
 import ButtonController4 from '../../components/Buttons/ButtonsControllers/ButtonController4';
 import ButtonAdjustment from '../../components/Buttons/ButtonsAdjustments/ButtonAdjustment';
 import Loader from '../../components/Loader/loader';
-import { sendESPData } from '../../components/Functions/RequestHandler/RequestHandler';
+
 import './Manual.css';
 
-function Manual() {
+function Manual({location}) {
   const [loaderStatus, setLoaderStatus] = useState(false);
+  const [arrayAnnotation, setArrayAnnotation] = useState([]);
+
   return (
     <div className="tela-container">
       <div className="upper-part">
         <Loader status={loaderStatus} />
-        <MainGraph />
+        <MainGraph setter={setLoaderStatus} setArrayAnnotation={setArrayAnnotation}/>
       </div>
       <div className="lower-part">
-        {/* } <RealData /> */}
         <div className="control-buttons">
           <div className="buttons">
             <div className="button">
@@ -42,20 +43,20 @@ function Manual() {
           </div>
         </div>
         <div className="time-chronometer">
-          <Chronometer setter={setLoaderStatus} />
+          <Chronometer setter={setLoaderStatus}/>
         </div>
         <div className="adjustments">
           <div className="adjustments-buttons">
             <div className="rotation">
-              <ButtonAdjustment name="MdlManCdr" />
+              <ButtonAdjustment name="MdlManCdr" initialValue={location?.state?.drumPct}/>
               <p>Rotação do Tambor</p>
             </div>
             <div className="air">
-              <ButtonAdjustment name="MdlManCar" />
+              <ButtonAdjustment name="MdlManCar" initialValue={location?.state?.airPct}/>
               <p>Velocidade do Ar</p>
             </div>
             <div className="flame">
-              <ButtonAdjustment name="MdlManInj" />
+              <ButtonAdjustment name="MdlManInj" initialValue={location?.state?.flamePct}/>
               <p>Intensidade da chama</p>
             </div>
           </div>

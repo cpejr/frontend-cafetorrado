@@ -11,10 +11,6 @@ export default function ContextProvider({ children }) {
   const [marksGraph, setMarksGraph] = useState([]);
   const [graphData, setGraphData] = useState([]);
 
-  useEffect(() => {
-    console.log(graphData);
-  }, [graphData]);
-
   return (
     <GlobalContext.Provider
       value={{

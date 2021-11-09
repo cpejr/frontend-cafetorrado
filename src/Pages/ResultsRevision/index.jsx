@@ -3,9 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './styles.css';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import CloseIcon from '@material-ui/icons/Close';
-import { set } from 'date-fns/esm';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Prompt } from 'react-router';
+
 import { MainGraph } from '../../components/MainGraph/MainGraph';
 import { deleteLastRoast } from '../../components/Functions/RequestHandler/RequestHandler';
 import getChartParams from '../../components/Functions/getChartParams';
@@ -29,6 +27,14 @@ export const ResultsRevision = () => {
       annot[e.target.name] = e.target.value;
       setMarkNames([...annot]);
     }
+  };
+
+  const secondsToMinutes = (secs) => {
+    let minutes = Math.floor(secs / 60);
+    minutes = (minutes < 10) ? `0${minutes}` : minutes;
+    let seconds = Math.floor(secs % 60);
+    seconds = (seconds < 10) ? `0${seconds}` : seconds;
+    return `${minutes}:${seconds}`;
   };
 
   const handleSave = async (e) => {
@@ -69,10 +75,8 @@ export const ResultsRevision = () => {
     }
   };
 
-  const { annotations } = window;
-
-  const calculateAverage = (index) => {
-    const dataArray = graphData.datasets[index] ? graphData.datasets[index].data : [];
+  const calculateAverage = (index, local) => {
+    const dataArray = graphData[local][index] ? graphData[local][index].data : [];
 
     let sum = 0;
 
@@ -105,7 +109,7 @@ export const ResultsRevision = () => {
               Temperatura média do grão:
               {' '}
               {graphData !== []
-                ? calculateAverage(1)
+                ? calculateAverage(1, 'datasets')
                 : 0}
               °C
             </p>
@@ -122,29 +126,28 @@ export const ResultsRevision = () => {
             <p>
               Duração da torra:
               {' '}
-              { Math.max(...graphData.labels.map((label) => parseInt(label, 10)))}
+              { secondsToMinutes(Math.max(...graphData.labels.map((label) => parseInt(label, 10))))}
               {' '}
-              segundos
+              minutos
             </p>
-            {/* <p>
-              Pressão média:
+            <p>
+              {graphData.extraDatas?.[0].name}
               {' '}
               {graphData !== []
-                ? calculateAverage(6)
+                ? calculateAverage(0, 'extraDatas')
                 : 0}
               mbar
             </p>
             <p>
-              Percentual médio de velocidade do tambor:
+              {graphData.extraDatas?.[1].name}
               {' '}
               {graphData !== []
-                ? calculateAverage(7)
+                ? calculateAverage(1, 'extraDatas')
                 : 0}
               %
-            </p> */}
+            </p>
           </div>
           <div>
-            <h2>Marcadores</h2>
             <div style={{
               display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '10px',
             }}
@@ -155,26 +158,15 @@ export const ResultsRevision = () => {
               <input className="Mark" name="3" placeholder="Marcador 4" type="text" value={markNames[3]} onChange={handleInput} />
               <input className="Mark" name="4" placeholder="Marcador 5" type="text" value={markNames[4]} onChange={handleInput} />
             </div>
-            {/* <button style={{display: "flex", flexDirection:
-            "column", marginTop: "10px"}} onClick={}> Salvar </button> */}
           </div>
         </div>
-        { /* eslint-disable */}
-        {/* LIMPAR O ANNOTATIONS STATE DO CONTEXT API QUANDO O USUÁRIO SALVAR OU APAGAR A TORRA, IMPEDIR QUE O USUÁRIO MUDE DE TELA */}
         <div className="save-name">
-          {/* em teoria o Prompt vai verificar se isNull!='NAO' é verdadeiro - ou seja, não clicou em salvar ou
-          excluir ainda - se for true, vai exibir a mensagem antes de sair da página, NAO SEI SE FUNCIONA AINDA */}
-          {/* <Prompt
-            when={isNull != 'NAO'}
-            message='Voce não salvou a torra, se não salvar ela será excluida, tem certeza que quer sair?'
-          /> */}
-          {/* <input type="text" name="name" /> */}
           <button type="button" onClick={handleSave}>
             <AddToPhotosIcon />
             {' '}
             Salvar
           </button>
-          <button type="button" onClick={() => { deleteLastRoast(); setter([]); history.push('/') }}>
+          <button type="button" onClick={() => { deleteLastRoast(); setter([]); history.push('/'); }}>
             <CloseIcon />
             Excluir
           </button>

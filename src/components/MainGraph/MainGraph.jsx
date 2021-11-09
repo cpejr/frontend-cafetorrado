@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, {
   useEffect, useRef, useState, useContext,
 } from 'react';
@@ -8,16 +7,7 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import { useGlobalContext } from '../../Context/GlobalContext';
 import 'chartjs-plugin-annotation';
 
-const MAX_MARKS = 5;
-
 let time = 0;
-
-let pressureData = {
-  data: []
-};
-let velocityData = {
-  data: []
-};
 
 function updateData(mainGraph, data, setGraphData) {
   if (!(mainGraph?.current?.chartInstance)) return;
@@ -27,23 +17,27 @@ function updateData(mainGraph, data, setGraphData) {
   mainGraph.current.chartInstance.data.datasets[2].data.push(data.fields.MdlManInj);
   mainGraph.current.chartInstance.data.datasets[3].data.push(data.fields.MdlManCdr);
   mainGraph.current.chartInstance.data.datasets[4].data.push(data.fields.MdlManCar);
+  mainGraph.current.chartInstance.data.extraDatas[0].data.push(data.fields.BchPrsScl);
+  mainGraph.current.chartInstance.data.extraDatas[1].data.push(data.fields.MdlDruOut);
 
   mainGraph.current.chartInstance.update();
   time = data.fields.MdlRunCnt;
 
-  // let aux = mainGraph.current.chartInstance.data;
-
-  // pressureData.data.push(data.fields.BchPrsScl)
-  // velocityData.data.push(data.fields.MdlDruOut)
-
-  // aux.datasets[5] = pressureData
-  // aux.datasets[6] = velocityData
-
-  setGraphData(mainGraph.current.chartInstance.data)
+  setGraphData(mainGraph.current.chartInstance.data);
 }
 
 const INITALLDATA = {
   type: 'line',
+  extraDatas: [
+    {
+      name: 'Pressão média:',
+      data: [],
+    },
+    {
+      name: 'Percentual médio de velocidade do tambor:',
+      data: [],
+    },
+  ],
   labels: [],
   datasets: [
     {
@@ -98,12 +92,11 @@ const INITALLDATA = {
 };
 
 export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) => {
-
   let done = false;
   const [crackTime, setCrackTime] = useState(0);
   const [markTime, setMarkTime] = useState([]); // para guardar as marcações
   const [graphWidth, setGraphWidth] = useState(1850);
-  let mainGraph = useRef();
+  const mainGraph = useRef();
   const { theme } = useContext(ThemeContext);
 
   const {
@@ -115,16 +108,13 @@ export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) =>
 
   useEffect(() => {
     if (resetOnLoad) {
-      console.log('inside!');
-      mainGraph.current.chartInstance.data.datasets[0].data = []
-      mainGraph.current.chartInstance.data.datasets[1].data = []
-      mainGraph.current.chartInstance.data.datasets[2].data = []
-      mainGraph.current.chartInstance.data.datasets[3].data = []
-      mainGraph.current.chartInstance.data.datasets[4].data = []
-      mainGraph.current.chartInstance.data.labels = []
+      mainGraph.current.chartInstance.data.datasets[0].data = [];
+      mainGraph.current.chartInstance.data.datasets[1].data = [];
+      mainGraph.current.chartInstance.data.datasets[2].data = [];
+      mainGraph.current.chartInstance.data.datasets[3].data = [];
+      mainGraph.current.chartInstance.data.datasets[4].data = [];
+      mainGraph.current.chartInstance.data.labels = [];
     }
-
-    console.log(mainGraph.current.chartInstance.data.datasets);
 
     socket.on('realData', (data) => {
       updateData(mainGraph, data, setGraphData);
@@ -139,14 +129,15 @@ export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) =>
     const color4 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor4');
     const color5 = getComputedStyle(document.documentElement).getPropertyValue('--graphColor5');
 
-    (!mainGraph.current.chartInstance) ? false
-      : (mainGraph.current.chartInstance.data.datasets[0].borderColor = color1,
-        mainGraph.current.chartInstance.data.datasets[1].borderColor = color2,
-        mainGraph.current.chartInstance.data.datasets[2].borderColor = color3,
-        mainGraph.current.chartInstance.data.datasets[3].borderColor = color4,
-        mainGraph.current.chartInstance.data.datasets[4].borderColor = color5,
+    if (mainGraph.current.chartInstance) {
+      mainGraph.current.chartInstance.data.datasets[0].borderColor = color1;
+      mainGraph.current.chartInstance.data.datasets[1].borderColor = color2;
+      mainGraph.current.chartInstance.data.datasets[2].borderColor = color3;
+      mainGraph.current.chartInstance.data.datasets[3].borderColor = color4;
+      mainGraph.current.chartInstance.data.datasets[4].borderColor = color5;
 
-        mainGraph.current.chartInstance.update());
+      mainGraph.current.chartInstance.update();
+    }
   }, [theme]);
 
   const crackIt = () => {
@@ -161,13 +152,13 @@ export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) =>
         (prev) => [...prev, mainGraph.current.chartInstance.data.datasets[0].data.length],
       );
     }
-  }
+  };
 
   // a cada mudança de crackTime executa as intruções e armazena no vetor crackTime
   useEffect(() => {
     window.crackIt = crackIt;
 
-    let auxArray = [];
+    const auxArray = [];
 
     if (crackTime) {
       auxArray.push({ // adiciona no vetor caso ocorra click
@@ -199,7 +190,7 @@ export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) =>
   useEffect(() => {
     window.markIt = markIt;
 
-    let auxArray = [];
+    const auxArray = [];
 
     if (markTime.length > 0) {
       auxArray.push({ // retorna as marcações do markTime
@@ -221,17 +212,16 @@ export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) =>
 
       // guarda os dados do vetor annot e no vetor anottations
       if (
-        annotations.length < 6 && // maximo 6 no total
-        auxArray.length > 0 &&
-        markTime.length <= 5 // maximo 5 mark it
+        annotations.length < 6 // maximo 6 no total
+        && auxArray.length > 0
+        && markTime.length <= 5 // maximo 5 mark it
       ) {
         setAnnotations((prev) => [...prev, ...auxArray]);
       }
     }
   }, [markTime]);
 
-  // eslint-disable-next-line
-  const createLabelForMarkdown = (input) => `${Math.round(input)}`
+  const createLabelForMarkdown = (input) => `${Math.round(input)}`;
 
   useEffect(() => {
     window.annotations = annotations;
@@ -258,7 +248,11 @@ export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) =>
   return (
     <>
       {/* <button type="button" onClick={createLabelForMarkdown}>UM BOTÃO</button> */}
-      <div style={{ width: graphWidth, height: 750, position: 'relative', marginLeft: 16 }}>
+      <div
+        style={{
+          width: graphWidth, height: 750, position: 'relative', marginLeft: 16,
+        }}
+      >
         <Line
           padding="0"
           id="main-graph"
@@ -276,7 +270,6 @@ export const MainGraph = ({ setter, setArrayAnnotation, resetOnLoad = true }) =>
                 fontSize: 14,
               },
             },
-            /*  responsive: true, */
             maintainAspectRatio: false,
 
             title: {

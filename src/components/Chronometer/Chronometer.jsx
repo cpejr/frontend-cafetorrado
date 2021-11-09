@@ -27,8 +27,11 @@ function Chronometer({ setter }) {
           type="button"
           onClick={() => {
             sendESPData({ ItfModReq: 7 });
-            disconnectData();
-            history.push({ pathname: '/ResultsRevision' });
+
+            setTimeout(() => {
+              disconnectData();
+              history.push({ pathname: '/ResultsRevision' });
+            }, 600);
           }}
         >
           Review

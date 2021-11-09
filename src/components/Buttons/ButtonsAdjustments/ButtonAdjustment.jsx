@@ -8,7 +8,13 @@ import { sendESPData } from '../../Functions/RequestHandler/RequestHandler';
 function ButtonAdjustment({ name }) {
   const [buttonValue, setButtonValue] = useState(0);
   const debouncedButtonValue = useDebounce(buttonValue, 200);
+
+  const flameControl = (value) => !(value === 0);
+
   useEffect(() => {
+    if (name === 'MdlManInj') {
+      sendESPData({ MdlIgnAcv: flameControl(debouncedButtonValue) });
+    }
     sendESPData({ [name]: debouncedButtonValue });
   }, [debouncedButtonValue]);
 
@@ -25,7 +31,7 @@ function ButtonAdjustment({ name }) {
     <div>
       <Knob
         id={name}
-        onChange={changeValue}
+        onChange={() => changeValue}
         debounceTimeout={200}
         value={buttonValue}
         style={knobstyle}

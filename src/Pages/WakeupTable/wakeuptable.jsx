@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 import Modal from '@material-ui/core/Modal';
 import './wakeuptable.css';
+import { sendUploadFile } from '../../components/Functions/RequestHandler/RequestHandler'
+import { set } from 'date-fns/esm';
 
 function wakeuptable() {
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState('');
   const [open, setOpen] = useState(false);
 
-  const [upload, setUpload] = useState();
-
   const handleOpen = () => {
-    if (fileName.split('.').pop() === 'bin') {
+    if (fileName.split('.').pop() === 'hex') {
       setOpen(true);
     } else {
       setOpen(false);
@@ -32,14 +32,20 @@ function wakeuptable() {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('fileName', fileName);
-    sendUploadFile(file);
+    if(file){
+      sendUploadFile(formData);
+      handleClose();
+      alert('Enviado com sucesso');
+    }else {
+      alert('Selecione um arquivo');
+    }
   };
 
   return (
     <div className="WakeContainer">
       <div className="Input-Button">
-        <h1> Envie seu Arquivo binário </h1>
-        <input className="Input" type="file" accept=".bin" onChange={saveFile} />
+        <h1> Envie seu Arquivo hexadecimal </h1>
+        <input className="Input" type="file" accept=".hex" onChange={saveFile} />
         <button className="Button" type="button" onClick={handleOpen}>
           Fazer Upload
         </button>

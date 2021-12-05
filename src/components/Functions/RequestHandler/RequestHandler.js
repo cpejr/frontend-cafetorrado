@@ -77,7 +77,11 @@ const updateLastTheme = (themeName) => {
 };
 
 const sendUploadFile = (file) => {
-  const result = api.post('/sendUploadFiles', file);
+  const result = api.post('/sendUploadFile', file, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
   return result;
 };
 

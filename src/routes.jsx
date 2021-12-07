@@ -7,6 +7,7 @@ import { ResultsRevision } from './Pages/ResultsRevision';
 import TemplateWithDrawer from './templates';
 import Automatic from './Pages/AutomaticPage/Automatic';
 import Manual from './Pages/ManualPage/Manual';
+// eslint-disable-next-line import/no-named-as-default
 import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
 import RecipeSelection from './Pages/RecipeSelection/RecipeSelection';
@@ -45,13 +46,13 @@ const RouterComponent = () => {
                   >
                     <Switch location={location}>
                       <Route path="/Login" exact component={Login} />
-                      <PrivateRoute path="/Home" component={Home} />
-                      <PrivateRoute path="/RecipeSelection" component={RecipeSelection} />
-                      <PrivateRoute path="/Manual" component={Manual} />
-                      <PrivateRoute path="/ResultsRevision" component={ResultsRevision} />
-                      <PrivateRoute path="/automatic" component={Automatic} />
-                      <PrivateRoute path="/editRoast" component={EditRoast} />
-                      <PrivateRoute path="/wakeuptable" component={wakeuptable} />
+                      <Route path="/" exact component={Home} />
+                      <Route path="/RecipeSelection" component={RecipeSelection} />
+                      <Route path="/Manual" component={Manual} />
+                      <Route path="/ResultsRevision" component={ResultsRevision} />
+                      <Route path="/automatic" component={Automatic} />
+                      <Route path="/editRoast" component={EditRoast} />
+                      <Route path="/wakeuptable" component={wakeuptable} />
                     </Switch>
                   </CSSTransition>
                 </TransitionGroup>

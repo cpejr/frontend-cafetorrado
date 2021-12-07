@@ -13,10 +13,11 @@ export const Login = () => {
     }
   }
   return (
-    <div>
-      <div className="containerLogin">
+    <div className="tudo">
+      <div className="container_Login">
+        <h1> Login</h1>
         <input
-          className="inputs"
+          className="inputlogin"
           placeholder="Usuário"
           name="user"
           type="text"
@@ -24,18 +25,18 @@ export const Login = () => {
         />
 
         <input
-          className="inputs"
+          className="inputlogin2"
           placeholder="Senha"
           name="senha"
           type="text"
           onChange={(e) => setPassword(e.target.value)}
         />
-      </div>
 
-      <div className="login">
-        <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); handleLogin(); }}>
-          <p>Login</p>
-        </button>
+        <div className="login">
+          <button type="button" className="upper-button-login" onClick={(e) => { e.preventDefault(); handleLogin(); }}>
+            <p>Login</p>
+          </button>
+        </div>
       </div>
     </div>
   );

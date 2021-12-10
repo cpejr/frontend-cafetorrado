@@ -15,7 +15,8 @@ export const Login = () => {
       history.push('/Home');
       console.log('mas aqui não');
     } catch (error) {
-      alert(error);
+      console.log('deu ruim');
+      alert('Dados incorretos. Tente novamente');
     }
   }
   return (

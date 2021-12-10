@@ -56,8 +56,8 @@ const RouterComponent = () => {
                     classNames="fade"
                   >
                     <Switch location={location}>
-                      <Route path="/Login" exact component={Login} />
-                      <PrivateRoute path="/" exact component={Home} />
+                      <Route path="/" exact component={Login} />
+                      <PrivateRoute path="/Home" component={Home} />
                       <PrivateRoute path="/RecipeSelection" component={RecipeSelection} />
                       <PrivateRoute path="/Manual" component={Manual} />
                       <PrivateRoute path="/ResultsRevision" component={ResultsRevision} />

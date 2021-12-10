@@ -43,7 +43,7 @@ const DrawerMenu = ({ drawerOpen }) => {
     {
       title: 'Início',
       icon: <FaHome />,
-      route: '',
+      route: 'Home',
     },
     {
       title: 'Selecionar Receita',

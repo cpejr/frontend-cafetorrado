@@ -8,10 +8,12 @@ export const Login = () => {
   const [password, setPassword] = useState();
   const history = useHistory();
 
-  async function handleLogin(e) {
-    e.preventDefault();
+  async function handleLogin() {
     try {
-      login(username, password);
+      await login(username, password);
+      console.log('deu');
+      history.push('/Home');
+      console.log('mas aqui não');
     } catch (error) {
       alert(error);
     }

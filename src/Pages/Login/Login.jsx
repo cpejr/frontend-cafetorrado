@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { login } from '../../components/Functions/RequestHandler/RequestHandler';
 import './Login.css';
 
 export const Login = () => {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const history = useHistory();
 
-  async function handleInput() {
-    // eslint-disable-next-line no-empty
+  async function handleLogin(e) {
+    e.preventDefault();
     try {
-    // eslint-disable-next-line no-empty
+      login(username, password);
     } catch (error) {
+      alert(error);
     }
   }
   return (
@@ -20,7 +24,7 @@ export const Login = () => {
           placeholder="Usuário"
           name="user"
           type="text"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
         />
 
         <input
@@ -33,7 +37,7 @@ export const Login = () => {
       </div>
 
       <div className="login">
-        <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); handleLogin(); }}>
+        <button type="button" className="upper-button" onClick={(e) => { e.preventDefault(); handleLogin(e); }}>
           <p>Login</p>
         </button>
       </div>

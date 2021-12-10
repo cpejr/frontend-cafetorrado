@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { persistUser } from '../../../services/auth';
 
 const api = axios.create({ baseURL: 'http://localhost:8080' });
 
@@ -14,6 +15,15 @@ const getRoasts = () => {
 const disconnectWifi = () => { api.get('/disconnectWifi'); };
 
 const connectWifi = () => { api.get('connectWifi'); };
+
+const login = async (username, password) => {
+  const parameters = {
+    username,
+    password,
+  };
+  const { data } = await api.post('/login', parameters);
+  persistUser(data);
+};
 
 const setChartParams = async (RoastName) => {
   const parameters = {
@@ -85,4 +95,5 @@ export {
   getServerData, disconnectData, disconnectWifi, connectWifi, setChartParams, deleteLastRoast,
   getUniqueRoastData, getRoasts, sendESPData, getWifiData, setWifiData, sendStaticParameters,
   deleteSpecificRoast, getLastTheme, updateLastTheme, sendUploadFile, saveMarks, getMarksByRoastId,
+  login,
 };

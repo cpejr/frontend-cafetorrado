@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  BrowserRouter as Router, Route, Switch,
+  BrowserRouter as Router, Route, Switch, Redirect,
 } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { ResultsRevision } from './Pages/ResultsRevision';
@@ -16,6 +16,7 @@ import WifiModal from './components/WifiModal/WifiModal';
 import EditRoast from './Pages/EditRoast/EditRoast';
 import { socket } from './index';
 import wakeuptable from './Pages/WakeupTable/wakeuptable';
+import { isAuthenticated } from './services/auth';
 
 const valuesInfo = {
   pressão: 8.9,
@@ -28,6 +29,16 @@ const RouterComponent = () => {
       setWifiState(state);
     });
   }, []);
+
+  const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={() => (isAuthenticated()
+        ? <Component {...rest} />
+        : <Redirect to="/" />)}
+
+    />
+  );
 
   const [wifiState, setWifiState] = useState(true);
 
@@ -46,13 +57,13 @@ const RouterComponent = () => {
                   >
                     <Switch location={location}>
                       <Route path="/Login" exact component={Login} />
-                      <Route path="/" exact component={Home} />
-                      <Route path="/RecipeSelection" component={RecipeSelection} />
-                      <Route path="/Manual" component={Manual} />
-                      <Route path="/ResultsRevision" component={ResultsRevision} />
-                      <Route path="/automatic" component={Automatic} />
-                      <Route path="/editRoast" component={EditRoast} />
-                      <Route path="/wakeuptable" component={wakeuptable} />
+                      <PrivateRoute path="/" exact component={Home} />
+                      <PrivateRoute path="/RecipeSelection" component={RecipeSelection} />
+                      <PrivateRoute path="/Manual" component={Manual} />
+                      <PrivateRoute path="/ResultsRevision" component={ResultsRevision} />
+                      <PrivateRoute path="/automatic" component={Automatic} />
+                      <PrivateRoute path="/editRoast" component={EditRoast} />
+                      <PrivateRoute path="/wakeuptable" component={wakeuptable} />
                     </Switch>
                   </CSSTransition>
                 </TransitionGroup>

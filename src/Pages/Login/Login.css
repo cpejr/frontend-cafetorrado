@@ -1,39 +1,63 @@
-.containerLogin{
+.tudo{
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  align-items: center;
+
+
+}.container_Login{
   display: flex;
   flex-direction: column;
-  background-color: white;
+  text-align: center;
+  background-color: var(--buttonAlternative) !important;
+  border-radius: 10px;
+  padding: 20px 35px;
+  justify-content: center;
+  width:  30%;
+  height: 500px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.container_Login h1{
+  color:var(--fontColorContrast);
+}
+.inputlogin{
+  display: flex;
+  flex-direction: column;
+  background-color:rgb(240, 236, 236);
   border-radius: 10px;
   margin-top: 20px;
   padding: 20px 35px;
-  border: 5px solid  rgb(91, 99, 133);;
   font-weight: bold;
   font-size: 20px;
-  color: rgb(91, 99, 133);
 }
-.containerLogin-input-inputs{
+.inputlogin2{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: rgb(240, 236, 236);
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px 35px;
+  font-weight: bold;
+  font-size: 20px;
 }
 .login-button{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 .login {
   display: flex;
   justify-content: center;
 }
-.upper-button{
+.upper-button-login{
   border-radius: 10px;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 15px 80px;
   margin-left: 20px;
   margin-bottom: 20px;
-  border: 3px solid  rgb(91, 99, 133);
+  background-color: var(--buttonColor) !important;;
   font-weight: bold;
   font-size: 20px;
 }

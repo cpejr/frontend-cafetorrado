@@ -13,6 +13,7 @@ export const Login = () => {
       await login(username, password);
       history.push('/Home');
     } catch (error) {
+      // eslint-disable-next-line no-alert
       alert('Dados incorretos. Tente novamente');
     }
   }

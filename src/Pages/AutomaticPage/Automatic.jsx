@@ -17,6 +17,24 @@ function Automatic() {
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [colorMixer, setColorMixer] = useState('#202020');
   const [arrayAnnotation, setArrayAnnotation] = useState([]);
+  const [uppData, setUppData] = useState({
+    fields: {
+      BlkBegDaq: 3435973836,
+      BlkEndDaq: 3722304989,
+      BlkNotTrc: '',
+      BlkNt2Trc: '',
+      MdlAirOut: 0,
+      MdlAirScl: 0,
+      MdlDisErr: 5,
+      MdlDruOut: 0,
+      MdlGraScl: 0,
+      MdlInjOut: 0,
+      MdlRunCnt: 27677,
+      BchPrsScl: 0,
+      BchHumScl: 0,
+      BchTmpScl: 0,
+    },
+  });
 
   const history = useHistory();
   const changeColorMixer = () => {
@@ -45,7 +63,12 @@ function Automatic() {
                   e.preventDefault();
                   changeColorMixer();
                   sendESPData({ ItfModReq: 1 });
-                  history.push('/Manual');
+                  history.push('/Manual',
+                    {
+                      flamePct: uppData.fields.MdlInjOut,
+                      drumPct: uppData.fields.MdlDruOut,
+                      airPct: uppData.fields.MdlAirOut,
+                    });
                 }}
               >
                 <GiHand size={35} />
@@ -70,10 +93,10 @@ function Automatic() {
           </div>
         </div>
         <div className="time-chronometer">
-          <Chronometer setter={setLoaderStatus} arrayAnnotation={setArrayAnnotation} />
+          <Chronometer setter={setLoaderStatus} />
         </div>
         <div className="informations">
-          <RealData />
+          <RealData uppData={uppData} setUppData={setUppData} />
         </div>
       </div>
     </div>

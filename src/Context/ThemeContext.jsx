@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Brightness6Icon from '@material-ui/icons/Brightness6';
+import { MdBrightness6 } from 'react-icons/md';
 import {
-  List,
   ListItem,
   ListItemText,
   ListItemIcon,
-  FormControl,
-  FormControlLabel,
-  RadioGroup,
 } from '@material-ui/core';
 import './ThemeContext.css';
 import { getLastTheme, updateLastTheme } from '../components/Functions/RequestHandler/RequestHandler';
@@ -22,11 +18,11 @@ const themes = {
     dashboardBackground: '#091929',
     componentsBackgroud: '#0E1317',
     fontColorComponents: '#FFFFFF',
-    graphColor1: 'blue',
-    graphColor2: '#C6DBEF',
-    graphColor3: '#9ECAE1',
-    graphColor4: '#4292C6',
-    graphColor5: '#2171B5',
+    graphColor1: '#C6DBEF',
+    graphColor2: '#9ECAE1',
+    graphColor3: '#4292C6',
+    graphColor4: '#2171B5',
+    graphColor5: 'blue',
     graphColor6: '#08306B',
     graphColor7: '#ff8c00',
     buttonColor: '#01097d',
@@ -64,11 +60,11 @@ const themes = {
     dashboardBackground: '#9F9C9C',
     componentsBackgroud: '#0E1317',
     fontColorComponents: '#0E1317',
-    graphColor1: 'blue',
-    graphColor2: '#C6DBEF',
-    graphColor3: '#9ECAE1',
-    graphColor4: '#4292C6',
-    graphColor5: '#2171B5',
+    graphColor1: '#C6DBEF',
+    graphColor2: '#9ECAE1',
+    graphColor3: '#4292C6',
+    graphColor4: '#2171B5',
+    graphColor5: 'blue',
     graphColor6: '#08306B',
     graphColor7: '#ff8c00',
     buttonColor: '#000000',
@@ -84,12 +80,12 @@ const themes = {
     dashboardBackground: '#1b2126',
     componentsBackgroud: '#0E1317',
     fontColorComponents: '#FFFFFF',
-    graphColor1: '#DEEBF7',
-    graphColor2: '#C6DBEF',
-    graphColor3: '#9ECAE1',
-    graphColor4: '#4292C6',
-    graphColor5: '#2171B5',
-    graphColor6: '#08306B',
+    graphColor1: '#C6DBEF',
+    graphColor2: '#9ECAE1',
+    graphColor3: '#4292C6',
+    graphColor4: '#2171B5',
+    graphColor5: '#08306B',
+    graphColor6: 'black',
     graphColor7: '#ff8c00',
     buttonColor: '#0060a0',
     buttonAlternative: '#325175',
@@ -161,7 +157,7 @@ function ThemeContextProvider({ children }) {
         checked={themeName === 'technologic'}
       >
         <ListItemIcon>
-          <Brightness6Icon
+          <MdBrightness6
             checkedIcon={false}
             uncheckedIcon={false}
             className="button-theme"

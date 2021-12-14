@@ -20,7 +20,7 @@ import './RecipeSelection.css';
 
 let dataToRender = null;
 
-function RecipeSelection(props) {
+function RecipeSelection({ location }) {
   function animateButton() {
     setWrongData(false);
     setTimeout(() => { setWrongData(true); }, 500);
@@ -38,16 +38,6 @@ function RecipeSelection(props) {
     setRoastData(data);
   }, []);
 
-  // useEffect(() => {
-  //   const { state } = props.location;
-  //   if (state === 'manual') {
-  //     sendESPData({ MdlManChr: 1 }); return;
-  //   }
-  //   if (state === 'automatic') {
-  //     sendESPData({ MdlManChr: 2 });
-  //   }
-  // }, []);
-
   const roastDate = (roast) => {
     const date = new Date(roast.timestamp * 1);
     const dataformatted = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
@@ -60,7 +50,7 @@ function RecipeSelection(props) {
   const handleSelect = async () => {
     sendStaticParameters(DataIdSelected);
 
-    if (props.location.state === 'manual') {
+    if (location.state === 'manual') {
       history.push('/manual');
     } else {
       history.push('/automatic');

@@ -11,11 +11,8 @@ export const Login = () => {
   async function handleLogin() {
     try {
       await login(username, password);
-      console.log('deu');
       history.push('/Home');
-      console.log('mas aqui não');
     } catch (error) {
-      console.log('deu ruim');
       alert('Dados incorretos. Tente novamente');
     }
   }
@@ -35,7 +32,7 @@ export const Login = () => {
           className="inputlogin2"
           placeholder="Senha"
           name="senha"
-          type="text"
+          type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { persistUser } from '../../../services/auth';
 
-const api = axios.create({ baseURL: 'https://cafetorrado-backend.herokuapp.com' });
+const api = axios.create({ baseURL: 'http://localhost:9000' });
 
 const getServerData = () => { api.get('/connectData'); };
 

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { persistUser } from '../../../services/auth';
+import config from '../../../config';
 
-const api = axios.create({ baseURL: 'http://localhost:9000' });
+const api = axios.create({ baseURL: config.httpURL });
 
 const getServerData = () => { api.get('/connectData'); };
 

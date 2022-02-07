@@ -26,7 +26,7 @@ function clearData(refGraph) {
   refGraph.current.chartInstance.data.datasets[2].data = [];
   refGraph.current.chartInstance.data.datasets[3].data = [];
   refGraph.current.chartInstance.data.datasets[4].data = [];
-  refGraph.current.chartInstance.update();
+  // refGraph.current.chartInstance.update();
 }
 
 const parseCount = (datas) => {
@@ -40,17 +40,22 @@ const parseCount = (datas) => {
 };
 
 function updateData(refGraph, data) {
+  // console.log('ate aqui cheguei');
   clearData(refGraph);
+  // console.log(refGraph);
   desestructData(data);
   const parsed = parseCount(runCnt);
-  if (!(refGraph?.current?.chartInstance)) return;
+  if (!(refGraph?.current?.chartInstance)) {
+    console.log('deu ruim');
+    return;
+  }
   refGraph.current.chartInstance.data.labels.push(...parsed);
   refGraph.current.chartInstance.data.datasets[0].data.push(...airScl);
   refGraph.current.chartInstance.data.datasets[1].data.push(...graScl);
   refGraph.current.chartInstance.data.datasets[2].data.push(...injOut);
   refGraph.current.chartInstance.data.datasets[3].data.push(...druOut);
   refGraph.current.chartInstance.data.datasets[4].data.push(...airOut);
-  refGraph.current.chartInstance.update();
+  // refGraph.current.chartInstance.update();
 }
 
 const StaticRefGraph = React.forwardRef((props, ref) => {

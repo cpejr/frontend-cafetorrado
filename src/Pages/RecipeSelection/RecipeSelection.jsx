@@ -29,7 +29,23 @@ function RecipeSelection({ location }) {
   const [roastData, setRoastData] = useState([{}]);
   const [wrongData, setWrongData] = useState(true);
   const [DataIdSelected, setDataIdSelected] = useState({});
-  const graphRef = useRef();
+
+  const dataTest = {
+    chartInstance: {
+      data: {
+        labels: [],
+        datasets: [
+          { data: [] },
+          { data: [] },
+          { data: [] },
+          { data: [] },
+          { data: [] },
+        ],
+      },
+    },
+  };
+
+  const graphRef = useRef(dataTest);
 
   const { setter } = useGlobalContext();
 
@@ -97,6 +113,7 @@ function RecipeSelection({ location }) {
               <list
                 className="roast-items"
                 onClick={async (event) => {
+                  console.log(graphRef);
                   event.preventDefault();
                   dataToRender = (await getUniqueRoastData(elem.roast_id)).data.data;
                   setDataIdSelected(elem.roast_id);

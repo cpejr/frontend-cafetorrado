@@ -110,7 +110,7 @@ function RecipeSelection({ location }) {
             ))}
           </div>
           <div className="graph">
-            <MainGraph />
+            <StaticRefGraph ref={graphRef} />
             <div>
               <button type="button" className="select-button" onClick={handleSelect}>
                 <p>Selecionar Torra</p>

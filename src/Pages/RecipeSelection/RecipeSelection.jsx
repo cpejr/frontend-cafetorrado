@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { FiEdit2 } from 'react-icons/fi';
 import { TiDelete } from 'react-icons/ti';
 import { AiOutlineSelect } from 'react-icons/ai';
+import { isEmptyObject } from 'js-var-type';
 import { StaticRefGraph, updateData } from './StaticGraph/StaticGraph';
 import {
   getRoasts,
@@ -44,10 +45,19 @@ function RecipeSelection({ location }) {
     return <h5>{dataformatted}</h5>;
   };
   const handleDelete = () => {
+    if (isEmptyObject(DataIdSelected)) {
+      alert('Por favor, selecione uma torra');
+      return;
+    }
+
     deleteSpecificRoast(DataIdSelected);
     window.location.reload();
   };
   const handleSelect = async () => {
+    if (isEmptyObject(DataIdSelected)) {
+      alert('Por favor, selecione uma torra');
+      return;
+    }
     sendStaticParameters(DataIdSelected);
 
     if (location.state === 'manual') {
